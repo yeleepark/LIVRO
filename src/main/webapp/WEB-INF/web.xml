@@ -28,7 +28,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
 			/WEB-INF/spring/appServlet/servlet-context.xml
-			/WEB-INF/spring/appServlet/aop-context.xml
+			/WEB-INF/spring/appServlet/aopContext.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
@@ -59,7 +59,7 @@
 
 	<filter>
 		<filter-name>logFilter</filter-name>
-		<filter-class>com.mvc.upgrade.common.filter.LogFilter</filter-class>
+		<filter-class>com.kh.livro.common.LogFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>logFilter</filter-name>
