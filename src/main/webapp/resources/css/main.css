@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* 메인 */
+.main-wrapper {
+	width: 100%;
+	height: 100vh;
+	background-image: url('../img/BG.jpg');
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#liveBtn {
+	width: 300px;
+	height: 100px;
+	font-weight: bold;
+	letter-spacing: 0.5rem;
+	background-color: transparent;
+	color: white;
+	border: 5px solid #d22c2c;
+}

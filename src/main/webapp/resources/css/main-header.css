@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing : border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul, li{
+    list-style: none;
+}
+
+input, button{
+    cursor: pointer;
+}
+
+input,button:focus{
+    outline: none;
+}
+
+/* 헤더 */
+header{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    padding : 10px 20px;
+}
+
+.header-bar{
+    display: flex;
+    align-items: center;
+}
+
+
+/* 왼쪽 */
+.header-left{
+    flex : 1;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.2rem;
+}
+
+.header-left a{
+    color: white;
+}
+
+
+/* 중앙 */
+.header-center{
+    flex : 1;
+    justify-content: center;
+}
+
+#searchForm{
+    width : 20vw;
+    padding : 5px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+#searchForm::placeholder{
+    color : white;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+    font-weight: 200;
+}
+
+#searchForm:focus::placeholder{
+    color: gray;
+}
+
+#searchBtn{
+    padding : 5px;
+    text-align: center;
+    background-color: transparent;
+    color : white;
+    border: none;;
+}
+
+
+/* 오른쪽 */
+.header-right{
+    flex : 1;
+    justify-content: flex-end;
+}
+
+.header-right input, nav{
+    margin-left: 15px;
+}
+
+#loginForm{
+    width : 80px;
+    height: 30px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    font-weight: 200;
+    letter-spacing: 0.1rem;
+}
+
+#registForm{
+    width : 80px;
+    height: 30px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    font-weight: 200;
+    letter-spacing: 0.1rem;
+}
+
+
+
+/* 네비게이션 */
+
+#menuIcon{
+    width: 100%;
+    height: 30px;
+    color : white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.side-bar{
+    display: none;
+}
+
+.active{
+    width: 300px;
+    position: absolute;
+    margin-top: 70px;
+    top : 0;
+    right: 0;
+    transition: all .3s;
+}
+
+.active li{
+    padding: 20px 30px;
+    margin: 5px;
+    text-align: right;
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+    transition: all 0.3s;
+    border-radius: 10px 0px 0px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown{
+    from{
+        padding: 0px;
+    }
+    to{
+        padding: 20px 30px;
+    }
+}
+
+.active a{
+    color: white;
+}
+
+.active a:hover{
+    color: #d22c2c;
+}
+
+
+@media screen and (max-width:768px) {
+    .header-left{
+        font-size: 1.5rem;
+    }
+
+    #searchForm{
+        padding: 5px;
+    }
+
+    #searchBtn{
+        display: none;
+    }
+
+    #registForm{
+        display: none;
+    }
+
+    #loginForm{
+        display: none;
+    }
+
+    .active{
+        width: 100%;
+        height: 100vh;
+        background-color: white;
+    }
+
+    .active li{
+        padding: 20px 30px;
+        text-align: right;
+        font-size: 1.5rem;
+        letter-spacing: 0.3rem;
+        transition: all 0.3s;
+        border-radius: 10px 0px 0px 10px;
+        animation: slideDown 0.3s ease-out;
+        color: black;
+    }
+
+    .active li:hover{
+        color: #d22c2c;
+    }
+}
