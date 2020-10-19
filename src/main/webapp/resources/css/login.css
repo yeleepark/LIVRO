@@ -9,51 +9,64 @@
 
 body{
     max-width: 1920px;
-    width: 100%;
+}
+
+/* 로그인 */
+section{
+	width: 100%;
     height: 100vh;
-    background-image: url('img/BG.jpg');
+    background-image: url('../img/BG.jpg');
     background-size : cover;
-}
-
-input:focus{
-    outline: none;
-}
-
-a{
-    text-decoration: none;
 }
 
 .login-wrapper{
     padding : 60px;
     width : 320px;
-    margin : auto;
-    color: white;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%, -50%);
 }
 
-.login-wrapper label{
-    display: block;
-    font-size: 1rem;
+.login-wrapper h2{
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-.login-wrapper input{
+.login-wrapper input[type="text"],
+input[type="password"]{
     width : 200px;
+    padding : 5px 10px;
+    margin-bottom: 10px;
 }
 
-.login-wrapper button{
-    width : 100px;
-    margin : 10 0 10 0 ;
+.login-wrapper input[type="text"]::placeholder,
+input[type="password"]::placeholder{
+    font-family: "Font Awesome 5 Free";
+}
+
+.login-wrapper input[type="text"]:focus::placeholder,
+input[type="password"]:focus::placeholder{
+    color : white;
 }
 
 #goLoginBtn{
     background-color: transparent;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid black;
     padding : 5px 20px;
-    margin-top: 10px;
+    width : 200px;
+    padding : 5px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
-#goLoginBtn + a{
-    font-size: 0.8rem;
-    font-weight: 300;
+#goLoginBtn + span{
+    display: flex;
+    justify-content: space-between;
+}
+
+#goLoginBtn + span a{
+    font-size: 0.5rem;
+    color : black;
 }

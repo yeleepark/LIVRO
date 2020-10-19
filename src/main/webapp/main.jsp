@@ -12,6 +12,7 @@
 </head>
 <body>
 	<jsp:include page="WEB-INF/views/header/main-header.jsp"/>
+	
 	<main>
 		<div class="main-wrapper">
 			<button id="liveBtn">

@@ -13,11 +13,11 @@ ul, li {
 	list-style: none;
 }
 
-input, button {
+button {
 	cursor: pointer;
 }
 
-input, button:focus {
+input:focus, button:focus {
 	outline: none;
 }
 

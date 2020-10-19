@@ -41,7 +41,7 @@ CREATE TABLE MEMBER(
 	CONSTRAINT EMAIL_MEMBER_UNQ UNIQUE(MEMBER_EMAIL),
 	--M : 관리자 A : 아티스트 U : 일반
 	CONSTRAINT MEMBER_ROLE_MEMBER_CHK CHECK(MEMBER_ROLE IN('M', 'A', 'U')),
-	--Y - 일반회원, N - 탈퇴한 회원, R - 신고된 회원
+	--Y - 일반회원, N - 탈퇴한 회원, A - 신고된 회원
 	CONSTRAINT ENABLED_MEMBER_CHK CHECK(MEMBER_ENABLED IN('Y','N','A'))
 );
 
@@ -49,10 +49,11 @@ ALTER TABLE MEMBER
 ADD CONSTRAINT MEMBER_PROFILE_UNQ UNIQUE(MEMBER_PROFILE);
 
 INSERT INTO MEMBER
-VALUES( 'admin', 'admin1234', 'admin1234', MEMBER_NO_SEQ.NEXTVAL , '관리자', '관리자', '서울시 강남구', 'email', '010-1234-1234', 'M', 'Y', SYSDATE, null);
+VALUES( 'admin', 'admin1234', 'admin1234', MEMBER_NO_SEQ.NEXTVAL , '관리자', '관리자1', '서울시 강남구', 'admin1@email.com', '010-1234-1234', 'M', 'Y', SYSDATE, null);
 
 INSERT INTO MEMBER
-VALUES( 'admin2', 'admin1234', 'admin1234', MEMBER_NO_SEQ.NEXTVAL , '관리자', '관리자2', '서울시 강남구', '@email', '010-1234-1111', 'M', 'Y', SYSDATE, null);
+VALUES( 'admin2', 'admin1234', 'admin1234', MEMBER_NO_SEQ.NEXTVAL , '관리자', '관리자2', '서울시 강남구', 'admin2@email.com', '010-1234-1111', 'M', 'Y', SYSDATE, null);
+
 
 
 SELECT *

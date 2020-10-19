@@ -9,10 +9,3 @@ menuIcon.addEventListener('click', function() {
 		sideBar.classList.add('side-bar');
 	}
 });
-
-let mainArea = document.getElementsByTagName('main')[0];
-
-mainArea.addEventListener('click', function() {
-	sideBar.classList.add('side-bar')
-	sideBar.classList.remove('active')
-})
