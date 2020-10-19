@@ -15,7 +15,7 @@
 	<section>
 		<div class="login-wrapper">
 			<h2>Welcome!</h2>
-			<form action="#">
+			<form action="login.do" method="post">
 				<input type="text" name="member_id" autocomplete="off" placeholder="&#xf2bd; User ID">
 				<input type="password" name="member_pw" autocomplete="off" placeholder="&#xf2bd; Password"> 
 				<input type="submit" value="Log In" id="goLoginBtn"> 

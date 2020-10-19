@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class MemberDto {
 
-	private String memeber_id;
+	private String member_id;
 	private String member_pw;
 	private String member_pwchk;
 	private int member_no;
@@ -13,18 +13,21 @@ public class MemberDto {
 	private String member_addr;
 	private String member_email;
 	private String member_phone;
-	private char member_role;
-	private char member_enabled; // 데이터 타입 확인
+	private String member_role;
+	private String member_enabled;
 	private Date regdate; // import 확인
 	private String member_profile;
 
 	public MemberDto() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public MemberDto(String memeber_id, String member_pw, String member_pwchk, int member_no, String member_name,
-			String member_nickname, String member_addr, String member_email, String member_phone, char member_role,
-			char member_enabled, Date regdate, String member_profile) {
-		this.memeber_id = memeber_id;
+	public MemberDto(String member_id, String member_pw, String member_pwchk, int member_no, String member_name,
+			String member_nickname, String member_addr, String member_email, String member_phone, String member_role,
+			String member_enabled, Date regdate, String member_profile) {
+		super();
+		this.member_id = member_id;
 		this.member_pw = member_pw;
 		this.member_pwchk = member_pwchk;
 		this.member_no = member_no;
@@ -39,12 +42,12 @@ public class MemberDto {
 		this.member_profile = member_profile;
 	}
 
-	public String getMemeber_id() {
-		return memeber_id;
+	public String getMember_id() {
+		return member_id;
 	}
 
-	public void setMemeber_id(String memeber_id) {
-		this.memeber_id = memeber_id;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 
 	public String getMember_pw() {
@@ -111,19 +114,19 @@ public class MemberDto {
 		this.member_phone = member_phone;
 	}
 
-	public char getMember_role() {
+	public String getMember_role() {
 		return member_role;
 	}
 
-	public void setMember_role(char member_role) {
+	public void setMember_role(String member_role) {
 		this.member_role = member_role;
 	}
 
-	public char getMember_enabled() {
+	public String getMember_enabled() {
 		return member_enabled;
 	}
 
-	public void setMember_enabled(char member_enabled) {
+	public void setMember_enabled(String member_enabled) {
 		this.member_enabled = member_enabled;
 	}
 

@@ -11,14 +11,14 @@
 		<param-value>/WEB-INF/spring/appServlet/applicationContext.xml</param-value>
 	</context-param>
 	
-	<welcome-file-list>
-		<welcome-file>main.jsp</welcome-file>
-	</welcome-file-list>
-
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<welcome-file-list>
+		<welcome-file>/main.do</welcome-file>
+	</welcome-file-list>
 
 	<!-- Processes application requests -->
 	<servlet>

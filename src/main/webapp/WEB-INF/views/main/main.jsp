@@ -11,7 +11,7 @@
 <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<jsp:include page="WEB-INF/views/header/main-header.jsp"/>
+	<jsp:include page="/WEB-INF/views/header/main-header.jsp"/>
 	
 	<main>
 		<div class="main-wrapper">

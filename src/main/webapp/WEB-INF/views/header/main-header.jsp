@@ -1,5 +1,8 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,10 +26,16 @@
 		</div>
 
 		<div class="header-bar header-right">
-			<input type="button" value="Login" id="loginForm" onclick="location.href='loginForm.do'"> 
-			<input type="button" value="Regist" id="registForm" onclick="location.href='registForm.do'">
-			<!-- <input type="button" value="LogOut" onclick="#"> 
-			<input type="button" value="Mypage" onclick="#"> -->
+			<c:choose>
+			<c:when test="${empty dto }">
+				<input type="button" value="Login" id="loginForm" onclick="location.href='loginForm.do'"> 
+				<input type="button" value="Regist" id="registForm" onclick="location.href='registForm.do'">
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="LogOut" id="loginForm" onclick="location.href='logout.do'"> 
+				<input type="button" value="Mypage" id="registForm" onclick="#">
+			</c:otherwise>
+			</c:choose>
 			<nav role="navigation">
 				<span id="menuIcon"><i class="fas fa-bars"></i></span>
 				<ul class="side-bar">
