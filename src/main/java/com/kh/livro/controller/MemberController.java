@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.livro.biz.MemberBiz;
 import com.kh.livro.dto.MemberDto;
@@ -53,9 +54,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/logout.do")
-	public String logout() {
+	public String logout(HttpSession session, Model model) {
 		
-		return "";
+		session.invalidate();
+		
+		model.addAttribute("msg", "로그아웃 성공");
+		model.addAttribute("uri", "/");
+		
+		return "redirect";
 	}
 	
 	@RequestMapping("/registForm.do")
@@ -63,7 +69,5 @@ public class MemberController {
 		logger.info("[registForm.do]");
 		return "regist/regist";
 	}
-	
-	
 
 }

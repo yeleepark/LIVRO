@@ -1,4 +1,9 @@
-
+<%
+response.setHeader("pragma","No-cache");
+response.setHeader("Cache-Control","no-cache");
+response.addHeader("Cache-Control","No-store");
+response.setDateHeader("Expires",1L);
+%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -39,8 +44,15 @@
 			<nav role="navigation">
 				<span id="menuIcon"><i class="fas fa-bars"></i></span>
 				<ul class="side-bar">
+					<c:choose>
+					<c:when test="${empty dto }">
 					<li class="lists"><a href="loginForm.do">LOGIN</a></li>
 					<li class="lists"><a href="registForm.do ">REGIST</a></li>
+					</c:when>
+					<c:otherwise>
+					<li class="lists"><a href="logout.do">LOGOUT</a></li>
+					</c:otherwise>
+					</c:choose>
 					<li><a href="#">NOTICE</a></li>
 					<li><a href="#">Q&A</a></li>
 					<li><a href="#">LIVE</a></li>
