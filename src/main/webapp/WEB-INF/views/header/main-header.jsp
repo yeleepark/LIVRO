@@ -23,13 +23,15 @@
 		</div>
 
 		<div class="header-bar header-right">
-			<input type="button" value="Login" id="loginForm" onclick="location.href='loginForm.do'"> 
-			<input type="button" value="Regist" id="registForm" onclick="location.href='registForm.do'">
+			<input type="button" value="Login" onclick="location.href='loginForm.do'"> 
+			<input type="button" value="Regist" onclick="location.href='registForm.do'">
+			<!-- <input type="button" value="LogOut" onclick="#"> 
+			<input type="button" value="Mypage" onclick="#"> -->
 			<nav role="navigation">
 				<span id="menuIcon"><i class="fas fa-bars"></i></span>
 				<ul class="side-bar">
-					<li class="lists"><a href="#">LOGIN</a></li>
-					<li class="lists"><a href="#">REGIST</a></li>
+					<li class="lists"><a href="login.do">LOGIN</a></li>
+					<li class="lists"><a href="regist.do ">REGIST</a></li>
 					<li><a href="#">NOTICE</a></li>
 					<li><a href="#">Q&A</a></li>
 					<li><a href="#">LIVE</a></li>

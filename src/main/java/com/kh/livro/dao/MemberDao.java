@@ -4,5 +4,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MemberDao {
+	
+	String NAMESPACE ="member.";
 
 }

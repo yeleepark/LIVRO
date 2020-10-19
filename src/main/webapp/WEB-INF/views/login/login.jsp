@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +16,11 @@
 		<div class="login-wrapper">
 			<h2>Welcome!</h2>
 			<form action="#">
-				<input type="text" id="user" name="" autocomplete="off" placeholder="&#xf2bd; User ID">
-				<input type="password" id="password" name="" autocomplete="off" placeholder="&#xf2bd; Password"> 
-				<input type="submit" value="Log In" onclick="#" id="goLoginBtn"> 
+				<input type="text" name="member_id" autocomplete="off" placeholder="&#xf2bd; User ID">
+				<input type="password" name="member_pw" autocomplete="off" placeholder="&#xf2bd; Password"> 
+				<input type="submit" value="Log In" id="goLoginBtn"> 
 				<span> 
-					<a href="#">Don't have an Account?</a> 
+					<a href="registForm.do">Don't have an Account?</a> 
 					<a href="#">ID/PW찾기</a>
 				</span>
 			</form>
