@@ -4,10 +4,12 @@
 	<typeAliases>
 		<typeAlias type="com.kh.livro.dto.MemberDto" alias="MemberDto"/>
 		<typeAlias type="com.kh.livro.dto.BroadcastDto" alias="BroadcastDto"/>
+		<typeAlias type="com.kh.livro.dto.NoticeDto" alias="NoticeDto"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mybatis/member-mapper.xml"/>
 		<mapper resource="mybatis/broadcast-mapper.xml"/>
+		<mapper resource="mybatis/notice-mapper.xml"/>
 	</mappers>
 </configuration>
