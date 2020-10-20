@@ -8,12 +8,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel ="stylesheet" href="resources/css/notice.css">
 <title>LIVRO-공지사항</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
 	
 	<div id="table">
+		<div id="firstRow">
+			<span>공지사항 번호</span>
+			<span>관리자</span>
+			<span>공지사항 제목</span>
+			<span>작성시간</span>
+		</div>
 		<c:choose>
 		<c:when test="${empty list }">
 		<div class="rows">
@@ -24,15 +31,15 @@
 			<c:forEach items="${list }" var="dto">
 				<div class="rows">
 					<span>${dto.notice_no }</span>
-					<span><a href="detail.do?notice_no=${dto.notice_no }">${dto.notice_title }</a></span>
 					<span>${dto.member_id }</span>
+					<span><a href="detail.do?notice_no=${dto.notice_no }">${dto.notice_title }</a></span>
 					<span>${dto.notice_regdate }</span>
 				</div>
 			</c:forEach>
 		</c:otherwise>
 		</c:choose>
-		<div id="lastRow">
-			<input type="button" value="글작성" onclick="#">
+		<div id="lastRow" align="right">
+			<input type="button" value="글작성" onclick="location.href='insert.do'">
 		</div>
 	</div>
 
