@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="broadcast">
+
+	<select id="selectList" resultType="BroadcastDto">
+		SELECT BROADCAST_NO, MEMBER_ID, BROADCAST_TITLE, BROADCAST_CONTENT,
+			   BROADCAST_REGDATE, BROADCAST_CATEGORY, MEMBER_PROFILE
+		FROM BROADCAST
+		ORDER BY BROADCAST_NO DESC
+	</select>
+	
+	<select id="selectOne" parameterType="BroadcastDto">
+		SELECT BROADCAST_NO, MEMBER_ID, BROADCAST_TITLE, BROADCAST_CONTENT,
+			   BROADCAST_REGDATE, BROADCAST_CATEGORY, MEMBER_PROFILE
+		FROM BROADCAST
+		WHERE BROADCAST_NO = #{broadcast_no}
+	</select>
+</mapper>

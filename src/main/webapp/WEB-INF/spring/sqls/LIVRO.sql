@@ -57,6 +57,10 @@ VALUES( 'admin2', 'admin1234', 'admin1234', MEMBER_NO_SEQ.NEXTVAL , '관리자',
 INSERT INTO MEMBER
 VALUES( 'artist', 'artist1234', 'artist1234', MEMBER_NO_SEQ.NEXTVAL , '아티스트', '아티스트1', '서울시 강남구', 'artist1@email.com', '010-2222-2222', 'A', 'Y', SYSDATE, null);
 
+INSERT INTO MEMBER
+VALUES( 'artist2', 'artist1234', 'artist1234', MEMBER_NO_SEQ.NEXTVAL , '아티스트', '아티스트2', '서울시 강남구', 'artist2@email.com', '010-2222-1122', 'A', 'Y', SYSDATE, 'testimage');
+
+
 SELECT *
 FROM MEMBER;
 
@@ -314,7 +318,12 @@ CREATE TABLE BROADCAST(
 
 );
 
+INSERT INTO BROADCAST
+VALUES(BROADCAST_NO_SEQ.NEXTVAL, 'artist2', '방송테스트1', '방송테스트 설명입니다', SYSDATE, '카테고리', 'testimage');
 
+SELECT * 
+FROM BROADCAST
+ORDER BY BROADCAST_NO;
 
 --신고
 DROP SEQUENCE REPORT_NO_SEQ;
