@@ -64,4 +64,11 @@ public class NoticeController {
 		
 		return "redirect:detail.do?notice_no="+dto.getNotice_no();
 	}
+	
+	@RequestMapping(value="delete.do")
+	public String noticeDelete(int notice_no, Model model) {
+		
+		model.addAttribute("res", noticeBiz.delete(notice_no));
+		return "redirect:notice.do";
+	}
 }
