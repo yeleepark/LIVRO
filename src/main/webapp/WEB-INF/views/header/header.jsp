@@ -27,10 +27,12 @@ response.setDateHeader("Expires",1L);
 		</div>
 
 		<div class="header-bar header-center">
-			<input type="text" placeholder="search" id="searchForm" name="keyword">
-			<button type="submit" id="searchBtn">
-				<i class="fas fa-search"></i>
-			</button>
+			<form action="search.do" method="post">
+				<input type="text" placeholder="search" id="searchForm" name="keyword">
+				<button type="submit" id="searchBtn">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
 		</div>
 
 		<div class="header-bar header-right">
@@ -62,7 +64,7 @@ response.setDateHeader("Expires",1L);
 					</c:otherwise>
 					</c:choose>
 					<li><a href="notice.do">NOTICE</a></li>
-					<li><a href="#">Q&A</a></li>
+					<li><a href="qnalist.do">Q&A</a></li>
 					<li><a href="broadcast.do">LIVE</a></li>
 					<li><a href="#">FOLLOWING</a></li>
 					<li><a href="#">RANKING</a></li>

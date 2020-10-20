@@ -26,7 +26,6 @@ input:focus, button:focus {
 /* 헤더 */
 header{
     display: flex;
-    position: absolute;
     width: 100%;
     padding : 10px 20px;
 }
@@ -81,7 +80,7 @@ header{
     text-align: center;
     background-color: transparent;
     color : white;
-    border: none;;
+    border: none;
 }
 
 

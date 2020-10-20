@@ -58,6 +58,7 @@ header {
 	background-color: transparent;
 	border: none;
 	border-bottom: 1px solid white;
+	color : white;
 }
 
 #searchForm::placeholder {
@@ -76,7 +77,7 @@ header {
 	text-align: center;
 	background-color: transparent;
 	color: white;
-	border: none;;
+	border: none;
 }
 
 /* 오른쪽 */
@@ -97,6 +98,7 @@ header {
 	border: 1px solid white;
 	font-weight: 200;
 	letter-spacing: 0.1rem;
+	cursor : pointer;
 }
 
 #registForm {
@@ -107,6 +109,7 @@ header {
 	border: 1px solid white;
 	font-weight: 200;
 	letter-spacing: 0.1rem;
+	cursor : pointer;
 }
 
 /* 네비게이션 */

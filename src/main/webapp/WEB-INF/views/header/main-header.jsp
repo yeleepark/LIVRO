@@ -15,7 +15,10 @@ response.setDateHeader("Expires",1L);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
 <link rel="stylesheet" href="resources/css/main-header.css" type="text/css">
+<!-- font awesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
+<!-- google font -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 	<header role="header">
@@ -61,7 +64,7 @@ response.setDateHeader("Expires",1L);
 					</c:otherwise>
 					</c:choose>
 					<li><a href="notice.do">NOTICE</a></li>
-					<li><a href="#">Q&A</a></li>
+					<li><a href="qnalist.do">Q&A</a></li>
 					<li><a href="broadcast.do">LIVE</a></li>
 					<li><a href="#">FOLLOWING</a></li>
 					<li><a href="#">RANKING</a></li>
