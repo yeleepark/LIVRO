@@ -43,7 +43,7 @@ public class MemberController {
 		model.addAttribute("res", res);
 		
 		if(res != null) {
-			session.setAttribute("dto", res);
+			session.setAttribute("logindto", res);
 			model.addAttribute("msg", "로그인 성공 ");
 			model.addAttribute("url", "/");
 			return "redirect";

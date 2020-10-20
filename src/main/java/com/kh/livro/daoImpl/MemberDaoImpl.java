@@ -31,4 +31,24 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 
+	@Override
+	public int join(MemberDto dto) {
+		int res = 0;
+		try {
+			res = sqlSession.insert(NAMESPACE+"join", dto);
+		} catch (Exception e) {
+			logger.info("[Error] join");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public MemberDto idChk(String id) {
+		
+		return null;
+	}
+
+	
+
 }
