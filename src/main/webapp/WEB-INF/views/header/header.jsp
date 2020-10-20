@@ -13,7 +13,7 @@ response.setDateHeader("Expires",1L);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
-<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="resources/css/header.css">
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
 <!-- google font -->
@@ -23,7 +23,7 @@ response.setDateHeader("Expires",1L);
 
 	<header role="header">
 		<div class="header-bar header-left">
-			<a href="#">LIVRO</a>
+			<a href="main.do">LIVRO</a>
 		</div>
 
 		<div class="header-bar header-center">
@@ -58,7 +58,7 @@ response.setDateHeader("Expires",1L);
 					</c:choose>
 					<li><a href="#">NOTICE</a></li>
 					<li><a href="#">Q&A</a></li>
-					<li><a href="#">LIVE</a></li>
+					<li><a href="broadcast.do">LIVE</a></li>
 					<li><a href="#">FOLLOWING</a></li>
 					<li><a href="#">RANKING</a></li>
 				</ul>

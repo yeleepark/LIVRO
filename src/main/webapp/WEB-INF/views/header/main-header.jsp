@@ -8,6 +8,7 @@ response.setDateHeader("Expires",1L);
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +56,7 @@ response.setDateHeader("Expires",1L);
 					</c:choose>
 					<li><a href="#">NOTICE</a></li>
 					<li><a href="#">Q&A</a></li>
-					<li><a href="#">LIVE</a></li>
+					<li><a href="broadcast.do">LIVE</a></li>
 					<li><a href="#">FOLLOWING</a></li>
 					<li><a href="#">RANKING</a></li>
 				</ul>

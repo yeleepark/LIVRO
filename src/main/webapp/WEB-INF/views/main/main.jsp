@@ -26,7 +26,7 @@ window.open(url, "pop", "location=0,left=500,top=180,width=480,height=640");
 	
 	<main>
 		<div class="main-wrapper">
-			<button id="liveBtn">
+			<button id="liveBtn" onclick="location.href='broadcast.do'">
 				<span><i class="fas fa-play"></i></span><span>LIVE</span>
 			</button>
 		</div>
