@@ -11,5 +11,6 @@
 		<mapper resource="mybatis/member-mapper.xml"/>
 		<mapper resource="mybatis/broadcast-mapper.xml"/>
 		<mapper resource="mybatis/notice-mapper.xml"/>
+		<mapper resource="mybatis/search-mapper.xml"/>
 	</mappers>
 </configuration>
