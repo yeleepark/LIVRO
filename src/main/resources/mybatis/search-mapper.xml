@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="search">
+	<select id="broadlist" resultType="BroadcastDto">
+		SELECT *
+		FROM BROADCAST
+		WHERE BROADCAST_TITLE LIKE '%'||#{keyword}||'%'
+		ORDER BY BROADCAST_NO DESC
+	</select>
+
+	<select id="memberlist" resultType="MemberDto">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_NICKNAME LIKE '%'||#{keyword}||'%'
+		ORDER BY MEMBER_NO
+	</select>
+</mapper>
