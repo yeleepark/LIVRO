@@ -58,8 +58,11 @@ INSERT INTO MEMBER
 VALUES( 'artist', 'artist1234', 'artist1234', MEMBER_NO_SEQ.NEXTVAL , '아티스트', '아티스트1', '서울시 강남구', 'artist1@email.com', '010-2222-2222', 'A', 'Y', SYSDATE, null);
 
 INSERT INTO MEMBER
-VALUES( 'artist2', 'artist1234', 'artist1234', MEMBER_NO_SEQ.NEXTVAL , '아티스트', '아티스트2', '서울시 강남구', 'artist2@email.com', '010-2222-1122', 'A', 'Y', SYSDATE, 'testimage');
+VALUES( 'artist3', 'artist1234', 'artist1234', MEMBER_NO_SEQ.NEXTVAL , '아티스트', '방송', '서울시 강남구', 'artist3@email.com', '010-2222-1122', 'A', 'Y', SYSDATE, 'testimage');
 
+
+INSERT INTO MEMBER
+VALUES( 'admin2', 'admin1234', 'admin1234', MEMBER_NO_SEQ.NEXTVAL , '관리자', '관리자2', '서울시 강남구', 'admin2@email.com', '010-1234-1111', 'M', 'Y', SYSDATE, null);
 
 SELECT *
 FROM MEMBER;

@@ -8,4 +8,26 @@
 		ORDER BY NOTICE_NO DESC	
 	</select>
 	
+	<select id="selectOne" resultType="NoticeDto" parameterType="int">
+		SELECT NOTICE_NO, MEMBER_ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE
+		FROM NOTICE_BOARD
+		WHERE NOTICE_NO = #{notice_no}
+	</select>
+	
+	<insert id="insert" parameterType="NoticeDto">
+		INSERT INTO NOTICE_BOARD
+		VALUES(NOTICE_NO_SEQ.NEXTVAL, #{member_id}, #{notice_title}, #{notice_content}, SYSDATE) 		
+	</insert>
+	
+	<update id="update" parameterType="NoticeDto">
+		UPDATE NOTICE_BOARD
+		SET NOTICE_TITLE = #{notice_title},NOTICE_CONTENT = #{notice_content}
+		WHERE NOTICE_NO = #{notice_no}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE
+		FROM NOTICE_BOARD
+		WHERE NOTICE_NO = #{notice_no}
+	</delete>
 </mapper>

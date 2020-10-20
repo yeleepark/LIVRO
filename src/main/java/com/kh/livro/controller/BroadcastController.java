@@ -1,4 +1,4 @@
-package com.kh.livro.controller;
+ package com.kh.livro.controller;
 
 import java.util.List;
 
@@ -38,7 +38,5 @@ public class BroadcastController {
 	public String broadcastInsert() {
 		return "broadcast/broadcast_insert";
 	}
-	
-	
 	
 }
