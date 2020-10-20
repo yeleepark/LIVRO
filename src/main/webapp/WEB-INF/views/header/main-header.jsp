@@ -25,10 +25,12 @@ response.setDateHeader("Expires",1L);
 		</div>
 
 		<div class="header-bar header-center">
-			<input type="text" placeholder="search" id="searchForm">
-			<button type="submit" id="searchBtn">
-				<i class="fas fa-search"></i>
-			</button>
+			<form action="search.do" method="post">
+				<input type="text" placeholder="search" id="searchForm" name="keyword">
+				<button type="submit" id="searchBtn">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
 		</div>
 
 		<div class="header-bar header-right">
@@ -39,7 +41,8 @@ response.setDateHeader("Expires",1L);
 			</c:when>
 			<c:otherwise>
 				<input type="button" value="LogOut" id="loginForm" onclick="location.href='logout.do'"> 
-				<input type="button" value="Mypage" id="registForm" onclick="#">
+				<input type="button" value="Mypage" id="registForm" onclick="location.href='userPage.do'">
+				<!-- <input type="button" value="Mypage" id="registForm" onclick="location.href='adminPage.do'"> -->
 			</c:otherwise>
 			</c:choose>
 			<nav role="navigation">
@@ -47,11 +50,11 @@ response.setDateHeader("Expires",1L);
 				<ul class="side-bar">
 					<c:choose>
 					<c:when test="${empty dto }">
-					<li class="lists"><a href="loginForm.do">LOGIN</a></li>
-					<li class="lists"><a href="registForm.do ">REGIST</a></li>
+						<li class="lists"><a href="loginForm.do">LOGIN</a></li>
+						<li class="lists"><a href="registForm.do ">REGIST</a></li>
 					</c:when>
 					<c:otherwise>
-					<li class="lists"><a href="logout.do">LOGOUT</a></li>
+						<li class="lists"><a href="logout.do">LOGOUT</a></li>
 					</c:otherwise>
 					</c:choose>
 					<li><a href="notice.do">NOTICE</a></li>

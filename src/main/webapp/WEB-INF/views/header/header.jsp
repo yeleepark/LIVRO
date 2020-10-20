@@ -27,7 +27,7 @@ response.setDateHeader("Expires",1L);
 		</div>
 
 		<div class="header-bar header-center">
-			<input type="text" placeholder="search" id="searchForm">
+			<input type="text" placeholder="search" id="searchForm" name="keyword">
 			<button type="submit" id="searchBtn">
 				<i class="fas fa-search"></i>
 			</button>
