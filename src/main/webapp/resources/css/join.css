@@ -1,72 +1,106 @@
 @charset "UTF-8";
 
-*{
-    margin : 0px;
-    padding : 0px;
-    box-sizing: border-box;
-    font-family: 'Noto Sans KR', sans-serif;
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
-body{
-    max-width: 1920px;
+body {
+	max-width: 1920px;
 }
 
 /* 로그인 */
-section{
+section {
 	width: 100%;
-    height: 100vh;
-    background-image: url('../img/BG.jpg');
-    background-size : cover;
+	height: 100vh;
+	background-image: url('../img/BG.jpg');
+	background-size: cover;
 }
 
-.-wrapper{
-    padding : 60px;
-    width : 320px;
-    background-color: rgba(255, 255, 255, 0.6);
-    position: absolute;
-    top : 50%;
-    left : 50%;
-    transform : translate(-50%, -50%);
+.join-wrapper {
+	padding: 60px;
+	width: 800px;
+	background-color: rgba(255, 255, 255, 0.6);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	align-content: center;
 }
 
-.-wrapper h2{
-    text-align: center;
-    margin-bottom: 10px;
+.join-left {
+	width: 50%;
+	float: left;
 }
 
-.-wrapper input[type="text"],
-input[type="password"]{
-    width : 200px;
-    padding : 5px 10px;
-    margin-bottom: 10px;
+.join-right {
+	width: 50%;
+	float: right;
 }
 
-.-wrapper input[type="text"]::placeholder,
-input[type="password"]::placeholder{
-    font-family: "Font Awesome 5 Free";
+.join-wrapper h2 {
+	text-align: center;
+	margin-bottom: 10px;
 }
 
-.-wrapper input[type="text"]:focus::placeholder,
-input[type="password"]:focus::placeholder{
-    color : white;
+.join-wrapper input[type="text"], input[type="password"] {
+	width: 200px;
+	padding: 5px 10px;
+	margin-bottom: 10px;
 }
 
-#goBtn{
-    background-color: transparent;
-    border: 1px solid black;
-    padding : 5px 20px;
-    width : 200px;
-    padding : 5px 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
+.join-wrapper input[type="text"]::placeholder, input[type="password"]::placeholder
+	{
+	font-family: "Font Awesome 5 Free";
 }
 
-#goBtn + span{
-    display: flex;
-    justify-content: space-between;
+.join-wrapper input[type="text"]:focus::placeholder, input[type="password"]:focus::placeholder
+	{
+	color: white;
 }
 
-#goBtn + span a{
-    font-size: 0.5rem;
-    color : black;
+.goJoinBtn {
+	background-color: transparent;
+	border: 1px solid black;
+	padding: 5px 20px;
+	width: 200px;
+	padding: 5px 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+/* 중복확인 , 주소찾기 버튼 */
+.joinChkBtn {
+	background-color: transparent;
+	border: 1px solid black;
+	padding: 5px 20px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.goJoinBtn+span {
+	display: flex;
+	justify-content: space-between;
+}
+
+.goJoinBtn+span a {
+	font-size: 0.5rem;
+	color: black;
+}
+
+.join-left>div>label {
+	display: block;
+	font-size: 0.8rem;
+}
+
+.join-right>div>label {
+	display: block;
+	font-size: 0.8rem;
+}
+
+/* placeholder 스타일 변경 */
+input::placeholder{
+	font-size: 0.7rem;
 }
