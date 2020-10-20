@@ -4,6 +4,9 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -21,6 +24,13 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		 
 		return "/main/main";
+	}
+	
+	@RequestMapping("/popup.do")
+	public String popup(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("들어와야댐");
+		
+		return "/main/livromainpopup";
 	}
 	
 }
