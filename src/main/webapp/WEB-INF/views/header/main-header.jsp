@@ -54,7 +54,7 @@ response.setDateHeader("Expires",1L);
 					<li class="lists"><a href="logout.do">LOGOUT</a></li>
 					</c:otherwise>
 					</c:choose>
-					<li><a href="#">NOTICE</a></li>
+					<li><a href="notice.do">NOTICE</a></li>
 					<li><a href="#">Q&A</a></li>
 					<li><a href="broadcast.do">LIVE</a></li>
 					<li><a href="#">FOLLOWING</a></li>
