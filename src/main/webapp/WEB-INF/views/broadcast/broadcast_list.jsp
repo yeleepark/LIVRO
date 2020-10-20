@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,14 +16,25 @@
     <section>
     	<input type="button" value="방송하기" onclick="location.href='broadInsert.do'">
         <div class="broadcast-table">
-            <div class="broadcast-thumnail">
-
-            </div>
-            <div class="broadcast-name">
-                <p><a href="#">아티스트이름</a></p>
-                <p><a href="#">방제목</a></p>
-                <p>설명</p>
-            </div>
+        	<c:choose>
+        	<c:when test="${empty list }">
+        		<div>
+        			<span>방송 없습니다~~</span>
+        		</div>
+        	</c:when>
+        	<c:otherwise>
+        		<c:forEach items="${list }" var="dto">
+		            <div class="broadcast-thumnail">
+						
+		            </div>
+		            <div class="broadcast-name">
+		                <p><a href="#">${dto.member_id }</a></p>
+		                <p><a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a></p>
+		                <p>${dto.broadcast_content }</p>
+		            </div>
+	            </c:forEach>
+            </c:otherwise>
+            </c:choose>
         </div>
     </section>
 
