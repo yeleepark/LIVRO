@@ -22,7 +22,7 @@
 		<div>
 			<input type="button" value="목록" onclick="location.href='list.do'">
 			<input type="button" value="수정" onclick="location.href='update.do'">
-			<input type="button" value="삭제" onclick="location.href='delete.do'">
+			<input type="button" value="삭제" onclick="location.href='delete.do?notice_no=${dto.notice_no}'">
 		</div>
 	</div>
 
