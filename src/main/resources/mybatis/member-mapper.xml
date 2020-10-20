@@ -2,11 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 
-	<select id="login" parameterType="MemberDto" resultType="MemberDto">
+	<select id="login" parameterType="MemberDto"
+		resultType="MemberDto">
 		SELECT *
 		FROM MEMBER
 		WHERE MEMBER_ID = #{member_id}
-		AND MEMBER_PW = #{member_pw}
+		AND
+		MEMBER_PW = #{member_pw}
 	</select>
+
+
+	<insert id="join" parameterType="MemberDto">
+		INSERT INTO MEMBER(member_id,
+		member_pw, member_pwchk,member_no, member_name, member_nickname,
+		member_addr, member_email, member_phone, member_regdate)
+		VALUES(
+		#{member_id}, #{member_pw}, #{member_pwchk},
+		MEMBER_NO_SEQ.NEXTVAL,
+		#{member_name}, #{member_nickname},
+		#{member_addr}, #{member_email},
+		#{member_phone}, SYSDATE
+		)
+	</insert>
 	
+	<select id="idChk" parameterType="String">
+		SELECT member_id
+		FROM MEMBER 
+		WHERE member_id =#{member_id}
+	</select>
+
 </mapper>
