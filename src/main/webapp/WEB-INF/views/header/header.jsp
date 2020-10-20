@@ -35,16 +35,16 @@ response.setDateHeader("Expires",1L);
 
 		<div class="header-bar header-right">
 			<c:choose>
-			<c:when test="${empty dto }">
+			<c:when test="${empty logindto }">
 				<input type="button" value="Login" id="loginForm" onclick="location.href='loginForm.do'"> 
 				<input type="button" value="Regist" id="registForm" onclick="location.href='registForm.do'">
 			</c:when>
 			<c:otherwise>
 				<input type="button" value="LogOut" id="loginForm" onclick="location.href='logout.do'"> 
-				<c:if test="${dto.member_role == 'M' }">
+				<c:if test="${logindto.member_role == 'M' }">
 				<input type="button" value="Mypage" id="registForm" onclick="location.href='adminPage.do'">
 				</c:if>
-				<c:if test="${dto.member_role == 'U' || dto.member_role == 'A'}">
+				<c:if test="${logindto.member_role == 'U' || logindto.member_role == 'A'}">
 				<input type="button" value="Mypage" id="registForm" onclick="location.href='userPage.do'">
 				</c:if>
 			</c:otherwise>
@@ -53,7 +53,7 @@ response.setDateHeader("Expires",1L);
 				<span id="menuIcon"><i class="fas fa-bars"></i></span>
 				<ul class="side-bar">
 					<c:choose>
-					<c:when test="${empty dto }">
+					<c:when test="${empty logindto }">
 					<li class="lists"><a href="loginForm.do">LOGIN</a></li>
 					<li class="lists"><a href="registForm.do ">REGIST</a></li>
 					</c:when>
