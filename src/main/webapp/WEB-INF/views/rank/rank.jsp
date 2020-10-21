@@ -9,7 +9,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
 	<section>
-	
+		랭킹
 	</section>
 </body>
 </html>
