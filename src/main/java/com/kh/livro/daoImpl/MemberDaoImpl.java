@@ -30,7 +30,7 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return res;
 	}
-
+ 
 	@Override
 	public int join(MemberDto dto) {
 		int res = 0;

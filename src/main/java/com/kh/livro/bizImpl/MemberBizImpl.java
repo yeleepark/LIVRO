@@ -12,7 +12,7 @@ public class MemberBizImpl implements MemberBiz {
 
 	@Autowired
 	private MemberDao memberDao;
-
+ 
 	@Override
 	public MemberDto login(MemberDto dto) {
 		
