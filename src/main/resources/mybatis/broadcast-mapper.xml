@@ -9,7 +9,7 @@
 		ORDER BY BROADCAST_NO DESC
 	</select>
 	
-	<select id="selectOne" parameterType="BroadcastDto">
+	<select id="selectOne" parameterType="BroadcastDto" resultType="BroadcastDto">
 		SELECT BROADCAST_NO, MEMBER_NICKNAME, BROADCAST_TITLE, BROADCAST_CONTENT,
 			   BROADCAST_REGDATE, BROADCAST_CATEGORY, MEMBER_PROFILE
 		FROM BROADCAST
