@@ -2,6 +2,8 @@ package com.kh.livro.dto;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberDto {
 
 	private String member_id;
@@ -16,7 +18,7 @@ public class MemberDto {
 	private String member_role;
 	private String member_enabled;
 	private Date regdate; // import 확인
-	private String member_profile;
+	private MultipartFile member_profile;
 
 	public MemberDto() {
 		super();
@@ -25,7 +27,7 @@ public class MemberDto {
 
 	public MemberDto(String member_id, String member_pw, String member_pwchk, int member_no, String member_name,
 			String member_nickname, String member_addr, String member_email, String member_phone, String member_role,
-			String member_enabled, Date regdate, String member_profile) {
+			String member_enabled, Date regdate, MultipartFile member_profile) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -138,11 +140,11 @@ public class MemberDto {
 		this.regdate = regdate;
 	}
 
-	public String getMember_profile() {
+	public MultipartFile getMember_profile() {
 		return member_profile;
 	}
 
-	public void setMember_profile(String member_profile) {
+	public void setMember_profile(MultipartFile member_profile) {
 		this.member_profile = member_profile;
 	}
 
