@@ -22,7 +22,7 @@
 		#{member_name}, #{member_nickname},
 		#{member_addr}, #{member_email},
 		#{member_phone}, SYSDATE
-		)
+		) 
 	</insert>
 
 
