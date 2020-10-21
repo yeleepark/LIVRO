@@ -20,10 +20,18 @@
 				<li class="tab-link" data-tab="tab-2">Support</li>
 				<li class="tab-link" data-tab="tab-3">Calendar</li>
 			</ul>
+			
+			
+			<!-- 음원 -->
 			<div id="tab-1" class="tab-content current">
 				<!-- 현승 작업 여기서 -->
+				<audio src="resources/audio/doli.mp3" controls></audio>
 				<input type="button" value="음원 업로드">
 			</div>
+			<!-- 음원 -->
+			
+			
+			
 			
 			<div id="tab-2" class="tab-content">
 				응원
