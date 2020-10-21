@@ -24,11 +24,6 @@
 		#{member_phone}, SYSDATE
 		)
 	</insert>
-	
-	<select id="idChk" parameterType="String">
-		SELECT member_id
-		FROM MEMBER 
-		WHERE member_id =#{member_id}
-	</select>
+
 
 </mapper>

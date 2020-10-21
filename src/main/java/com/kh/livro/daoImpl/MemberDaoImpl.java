@@ -43,11 +43,8 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 
-	@Override
-	public MemberDto idChk(String id) {
-		
-		return null;
-	}
+
+	
 
 	
 
