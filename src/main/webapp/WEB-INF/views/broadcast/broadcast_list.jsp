@@ -28,7 +28,7 @@
 						
 		            </div>
 		            <div class="broadcast-name">
-		                <p><a href="#">${dto.member_id }</a></p>
+		            	<p><a href="artist.do?member_nickname=${dto.member_nickname }">${dto.member_nickname }</a></p>
 		                <p><a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a></p>
 		                <p>${dto.broadcast_content }</p>
 		            </div>
