@@ -12,5 +12,6 @@
 		<mapper resource="mybatis/broadcast-mapper.xml"/>
 		<mapper resource="mybatis/notice-mapper.xml"/>
 		<mapper resource="mybatis/search-mapper.xml"/>
+		<mapper resource="mybatis/artist-mapper.xml"/>
 	</mappers>
 </configuration>
