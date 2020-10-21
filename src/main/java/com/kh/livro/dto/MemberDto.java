@@ -120,7 +120,7 @@ public class MemberDto {
 
 	public void setMember_role(String member_role) {
 		this.member_role = member_role;
-	}
+	} 
 
 	public String getMember_enabled() {
 		return member_enabled;

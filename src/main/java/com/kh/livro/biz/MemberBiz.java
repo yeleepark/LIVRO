@@ -8,4 +8,7 @@ public interface MemberBiz {
 
 	public MemberDto login(MemberDto dto);
 	public int join(MemberDto dto);
+	
+
+	
 }
