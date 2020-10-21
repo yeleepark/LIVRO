@@ -9,7 +9,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
 	<section>
-	
+		팔로우
 	</section>
 </body>
 </html>
