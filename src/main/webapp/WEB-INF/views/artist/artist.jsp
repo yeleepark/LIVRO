@@ -20,14 +20,23 @@
 				<li class="tab-link" data-tab="tab-2">Support</li>
 				<li class="tab-link" data-tab="tab-3">Calendar</li>
 			</ul>
-			<div id="tab-1" class="tab-content current">음원</div>
-			<div id="tab-2" class="tab-content">응원</div>
-			<div id="tab-3" class="tab-content ">일정</div>
+			<div id="tab-1" class="tab-content current">
+				<!-- 현승 작업 여기서 -->
+				<input type="button" value="음원 업로드">
+			</div>
+			
+			<div id="tab-2" class="tab-content">
+				응원
+			</div>
+			
+			<div id="tab-3" class="tab-content">
+				일정
+			</div>
 		</div>
 		<div class="right-wrapper">
 			<div id="artist-profile"></div>
 			<div id="artist-desc">
-				<p>아티스트 이름</p>
+				<p>${artistdto.member_nickname }</p>
 				<input type="button" value="팔로우">
 			</div>
 		</div>
