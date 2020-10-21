@@ -14,7 +14,7 @@ public class MemberDto {
 	private String member_nickname;
 	private String member_addr;
 	private String member_email;
-	private String member_phone;
+	private String member_phone; 
 	private String member_role;
 	private String member_enabled;
 	private Date regdate; // import 확인
