@@ -13,6 +13,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>LIVRO-회원가입</title>
 <script type="text/javascript">
 	//정규식
@@ -30,52 +31,41 @@
 	// 휴대폰번호 정규식
 	var phoneR = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
 
-	/* $(document).ready(function(){
-		
-		//아이디 중복확인
-		$("#member_id").blur(function(){
-			if(("#member_id").val()==''){
-				$("#id_check").text("아이디를 입력하세요.");
-				$("#id_check").css("color", "red");
-			}else if(idR.test($("#member_id").val()!=true)){
-				$("#id_check").text("5~20자의 영문소문자, 숫자만 사용가능합니다.");
-				$("#id_check").css("color","red");
-			}else if($("#member_id").val()!=''){
-				$.ajax({
-					async: true,
-					type : 'POST',
-					data : member_id //member_id라는 이름으로 member_id라는 데이터를 controller.do에 보냄
-					urlc
-				})
-			}
-			
-		})
-	}); */
-	function idChk(){
-		id = $("#member_id").val();
-		
+	
+	$("#member_id").blur(function(){
+		var member_id = $('#member_id').val();
 		$.ajax({
-			url : 'idChk',
+			url : 'idcheck.do',
 			type: 'POST',
-			dataType : 'text' //서버로부터 내가 받는 데이터의 타입 
-			contentType : 'text/html; charset=UTF-8' , //내가 서버로 보내는 데이터 타입
-			data : id,
+			data : member_id,
+			dataType : JSON,
 			success : function(data){
-				if(data==0){
-					console.log("아이디 없음");
-					alert("사용하실 수 있는 아이디입니다.");
-					
+				console.log("1이면 중복 0이면 중복아님 " + data);
+				if(data==1){
+					$('#id_check').text('사용중인 아이디 입니다.');
+					$('#id_check').css('color','red');
+					$('re')
 				}else{
-					console.log("아이디 있음");
-					alert("중복된 아이디가 존재합니다.");
-				},
-				error : function(){
-					alert("통신실패");
-				}
+					if(idR.test(member_id)){
+						//0 : 아이디길이 / 문자열검사
+						$('#id_check').text("");
+					}else if(member_id == ""){
+						$('#id_check').text('아이디를 입력해주세요.');
+						$('#id_check').css('color', 'red');
+						
+					}else {
+						$('#id_check').tect("아이디는 소문자, 숫자, 특수문자(_,-) 5~20자리로만 가능합니다.")
+						$('#id_check').css('color','red');
 				
+					}
+				}
+			}, 
+			error : function(){
+				console.log("실패");
 			}
 		});
-	}
+	});
+	
 </script>
 </head>
 <body>
@@ -86,8 +76,8 @@
 				<div class="join-left">
 					<div>
 						<label for=member_id>아이디</label><input type="text" id="member_id"
-							autocomplete="off" /> <input type="button" class="joinChkBtn"
-							value="중복확인" onclick="idChk();">
+							autocomplete="off" name="member_id" required="required"/> <input type="button" class="joinChkBtn"
+							value="중복확인">
 						<div class="msg_check" id="id_check"></div>
 					</div>
 					<div>
@@ -97,8 +87,7 @@
 					</div>
 					<div>
 						<label for=member_pwchk>비밀번호 확인</label><input type="password"
-							id="member_pwchk" /> <input type="button" class="joinChkBtn"
-							value="중복확인">
+							id="member_pwchk" /> 
 						<div class="msg_check" id="pwchk_check"></div>
 					</div>
 					<div>
@@ -149,7 +138,7 @@
 
 					<!-- <input value="Agree" type="checkbox" id="" name="Agree" /> Agree
 					to terms and conditions ( 회원가입 동의 ) <span> <br> -->
-					<input type="submit" value="Sign Up" onclick="" id="confirm"
+					<input type="submit" value="Sign Up" id="confirm"
 						class="goJoinBtn">
 					<!-- </span> -->
 				</div>

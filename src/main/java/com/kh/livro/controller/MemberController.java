@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,6 +29,8 @@ public class MemberController {
 	
 	@Autowired
 	private MemberBiz memberBiz;
+	
+
 	
 	@RequestMapping("/loginForm.do")
 	public String login() {
@@ -71,7 +74,23 @@ public class MemberController {
 		return "regist/regist";
 	}
 	
+	@RequestMapping("/join.do")
+	public String registRes(MemberDto dto) {
+		logger.info("[join.do]");
+		int res = memberBiz.join(dto);
+		if(res>0) {
+			return "redirect:loginForm.do";
+		}
+		return "redirect:loginForm.do";
+		
+		
+		
+		
+	}
+	
 
+	
+	
 	
 
 }
