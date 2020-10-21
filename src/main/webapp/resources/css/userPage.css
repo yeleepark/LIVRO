@@ -15,25 +15,38 @@ li{
 }
 
 /*  */
-.user-container{
+.mypage-container{
     width : 1200px;
     margin: 0 auto;
-    border : 3px solid black;
-    display: flex;
-    justify-content: center;
     padding: 20px;
 }
 
-.menu-wrapper{
-    width : 300px;
-    border : 1px solid red;
-    padding : 20px;
-    float: left;
+.mypage-container ul.tabs{
+	width : 20%;
+	float : left;
 }
 
-.right-container{
-    width : 700px;
-    border : 1px solid pink;
-    padding : 20px;
-    float: right;
+.mypage-container ul.tabs li{
+	background: none;
+	color: #222;
+	padding: 10px 15px;
+	cursor: pointer;
+}
+
+.mypage-container ul.tabs li.current{
+	background: #ededed;
+	color: #222;
+}
+
+
+.tab-content{
+	width : 80%;
+	display: none;
+	border : 1px solid black;
+	padding: 15px;
+	float : right;
+}
+
+.tab-content.current{
+	display: inherit;
 }

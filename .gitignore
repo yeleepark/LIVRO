@@ -76,3 +76,9 @@ db.properties
 .sts4-cache/
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride

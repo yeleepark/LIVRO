@@ -28,15 +28,7 @@
         <beans:property name="maxInMemorySize" value="100000000"/>
         <beans:property name="defaultEncoding" value="UTF-8"/>
     </beans:bean>
-	
-	<!-- 트랜잭션 매니저 bean 을 등록합니다. -->
-    <beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <beans:property name="dataSource" ref="dataSource"/>
-     </beans:bean>
     
 	<context:component-scan base-package="com.kh.livro" />
 	
-	<!-- 어노테이션 기반의 트랜잭션을 사용합니다. -->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-
 </beans:beans>
