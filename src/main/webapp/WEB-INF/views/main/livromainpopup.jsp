@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>팝업</title>
+<style type="text/css">* {margin:0px; padding:0px;}</style>
 </head>
 <body>
-들어왔냐 
+	<img alt="livropopup" src="resources/img/livro_popup.jpg" style="width: 100vw; height: auto;">
 </body>
 </html>
