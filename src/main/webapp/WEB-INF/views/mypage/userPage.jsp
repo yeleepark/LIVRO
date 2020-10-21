@@ -31,12 +31,7 @@
             </div>
             <div class="tab-content" id="tab-4">
             	<p>아티스트 채널 개설</p>
-				<!-- <input type="button" value="사진업로드" onclick="popUp();" id="fileBtn"> -->
-				<form action="profileUpload.do" method="post" enctype="multipart/form-data">
-					<input type="text" value="${logindto.member_id }">
-					<input type="file" value="프로필사진 올리기">
-	            	<input type="button" value="채널개설">
-            	</form>
+				<input type="button" value="사진업로드" onclick="popUp();" id="fileBtn">
             </div>
         </div>
 	</section>
@@ -55,11 +50,11 @@
 
 		})
 		
-		/* function popUp(){
-			var url = "profileUpload.do";
+		function popUp(){
+			var url = "profileForm.do";
 			var option = "width=300px, height=200px, resizable=no, location=no, top=300px, left=500px";
 			window.open(url, "프로필 사진 업로드", option);
-		} */
+		}
 		
 	</script>
 </body>
