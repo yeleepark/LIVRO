@@ -82,29 +82,29 @@
 					</div>
 					<div>
 						<label for=member_pw>비밀번호</label><input type="password"
-							id="member_pw" autocomplete="off" />
+							id="member_pw" autocomplete="off" name="member_pw" />
 						<div class="msg_check" id="pw_check"></div>
 					</div>
 					<div>
 						<label for=member_pwchk>비밀번호 확인</label><input type="password"
-							id="member_pwchk" /> 
+							id="member_pwchk" name="member_pwchk" /> 
 						<div class="msg_check" id="pwchk_check"></div>
 					</div>
 					<div>
 						<label for=member_name>이름</label><input type="text"
-							id="member_name" />
+							id="member_name" name="member_name"/>
 						<div class="msg_check" id="name_check"></div>
 					</div>
 					<div>
 						<label for=member_nickname>닉네임</label> <input type="text"
-							id="member_nickname" /> <input type="button" class="joinChkBtn"
+							id="member_nickname" name="member_nickname"/> <input type="button" class="joinChkBtn"
 							value="중복확인">
 						<div class="msg_check" id="nickname_check"></div>
 					</div>
 				</div>
 				<div class=join-right>
 
-					<div>
+				 	<div>
 						<label for="member_addr">주소</label> <input placeholder="우편번호"
 							type="text" readonly="readonly" id="member_addr">
 						<button type="button" class="joinChkBtn" onclick="execPostCode();">
@@ -112,26 +112,26 @@
 						</button>
 					</div>
 					<div>
-						<input placeholder="도로명 주소" name="member_addr" id="member_addr"
+						<input placeholder="도로명 주소" id="member_addr"
 							type="text" readonly="readonly" />
-					</div>
+					</div> 
 					<div>
-						<input placeholder="상세주소" type="text" name="member_detailaddress"
-							id="member_detailaddress" />
+						<input placeholder="상세주소" type="text" 
+							id="member_detailaddress" name="member_addr"/>
 					</div>
 
 
 
 					<div>
 						<label for=member_email>이메일</label> <input type="text"
-							id="member_email" placeholder="ex)livro@naver.com" /> <input
+							id="member_email" placeholder="ex)livro@naver.com" name="member_email"/> <input
 							type="button" class="joinChkBtn" value="이메일인증">
 						<div class="msg_check" id="email_check"></div>
 					</div>
 					<div>
 
 						<label for=member_phone>휴대폰번호</label><input type="text"
-							id="member_phone" placeholder="-생략하고 입력해주세요." />
+							id="member_phone" placeholder="-생략하고 입력해주세요." name="member_phone"/>
 						<div class="msg_check" id="phone_check"></div>
 					</div>
 
