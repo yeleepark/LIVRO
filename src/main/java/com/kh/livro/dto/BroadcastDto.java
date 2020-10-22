@@ -6,7 +6,6 @@ public class BroadcastDto {
 
 	private int broadcast_no;
 	private String member_id;
-	private String member_nickname;
 	private String broadcast_title;
 	private String broadcast_content;
 	private Date broadcast_regdate;
@@ -16,11 +15,10 @@ public class BroadcastDto {
 	public BroadcastDto() {
 	}
 
-	public BroadcastDto(int broadcast_no, String member_id, String member_nickname, String broadcast_title, String broadcast_content,
+	public BroadcastDto(int broadcast_no, String member_id, String broadcast_title, String broadcast_content,
 			Date broadcast_regdate, String broadcast_category, String member_profile) {
 		this.broadcast_no = broadcast_no;
 		this.member_id = member_id;
-		this.member_nickname = member_nickname;
 		this.broadcast_title = broadcast_title;
 		this.broadcast_content = broadcast_content;
 		this.broadcast_regdate = broadcast_regdate;
@@ -42,14 +40,6 @@ public class BroadcastDto {
 
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
-	}
-
-	public String getMember_nickname() {
-		return member_nickname;
-	}
-
-	public void setMember_nickname(String member_nickname) {
-		this.member_nickname = member_nickname;
 	}
 
 	public String getBroadcast_title() {
