@@ -2,4 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="music">
 
+	<select id="selectList">
+		SELECT MEMBER_ID, MEMBER_NICKNAME, MUSIC_TITLE,
+		MUSIC_CONTENT,
+		MUSIC_SAVENAME, MUSIC_REALNAME, MUSIC_DATE
+		FROM MUSIC
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+
+	<insert id="insert">
+		INSERT INTO MUSIC
+		VALUES (#{member_id},
+		#{member_nickname}, #{music_title}, #{music_content},
+		#{music_savename}, #{music_realname}, SYSDATE )
+	</insert>
+
+	<update id="update">
+		UPDATE MUSIC
+		SET MUSIC_TITLE = #{music_title} ,
+		MUSIC_CONTENT = #{music_content} ,
+		MUSIC_SAVENAME = #{music_savename}
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+
+	<delete id="delete">
+		DELETE
+		FROM MUSIC
+		WHERE MEMBER_ID = #{member_id}
+	</delete>
 </mapper>
