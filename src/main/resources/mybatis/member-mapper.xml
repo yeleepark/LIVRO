@@ -24,6 +24,20 @@
 		#{member_phone}, SYSDATE
 		) 
 	</insert>
+	
+	<!-- 아이디 중복체크 / 아이디를 조건으로 카운트 : 있으면 1 없으면 0이 조회
+	조회 결과타입을 resultType int로 설정-->
+	<select id="idChk" resultType="int">
+	SELECT COUNT(*) 
+	FROM MEMBER
+	WHERE MEMBER_ID = #{member_id}
+	</select>
 
-
+	
+	<!--닉네임 중복체크 -->
+	<select id="nickChk" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_NICKNAME = #{member_nickname}
+	</select>
 </mapper>

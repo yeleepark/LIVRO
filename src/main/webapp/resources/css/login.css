@@ -70,3 +70,9 @@ input[type="password"]:focus::placeholder{
     font-size: 0.5rem;
     color : black;
 }
+
+/* 아이디 비밀번호가 다를 시 뜨는 문구
+평소엔 안보임!*/
+#logincheck{
+	width: 300px;
+}

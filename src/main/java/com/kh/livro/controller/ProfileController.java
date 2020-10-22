@@ -34,6 +34,8 @@ public class ProfileController {
 	@RequestMapping(value="/profileUpload.do", method =  RequestMethod.POST)
 	public String profileUpload(HttpServletRequest request, ProfileDto profiledto, String member_id) {
 		
+		logger.info("------멤버아이디------" + member_id);
+		
 		// MultipartFile : 스프링에서 제공하는 인터페이스.
 		// profile란 변수에 업로드한 사진 데이터를 담는다
 		MultipartFile profile = profiledto.getProfile();
@@ -44,7 +46,6 @@ public class ProfileController {
 
 		// 파일의 실제 이름
 		String profile_realname = profile.getOriginalFilename();
-		
 
 		// 자바에서 데이터는 스트림을 통해 입출력된다.
 		// 스트림은 단일 방향으로 연속적으로 흘러가는 것을 뜻하며, 물이 높은 곳에서 낮은곳으로 흐르듯
@@ -112,10 +113,10 @@ public class ProfileController {
 		
 		profiledto.setProfile_savedname(profile_savedname); // 서버에 저장할 이름 넣고
 		profiledto.setProfile_realname(profile_realname); // 실제 이름을 넣고
-		profileBiz.profileInsert(profiledto);
+		profileBiz.profileInsert(profiledto); //db에 값 저장
 
 		
-		return "redirect:userPage.do?member_id=" + member_id;
+		return "redirect:mypageIndex.do?member_id=" + member_id;
 	}
 	
 

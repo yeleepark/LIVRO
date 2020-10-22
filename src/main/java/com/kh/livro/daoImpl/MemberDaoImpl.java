@@ -43,6 +43,31 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 
+	@Override
+	public int idChk(MemberDto dto) {
+		int res = 0;
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"idChk",dto);
+		} catch (Exception e) {
+			logger.info("[Error] idChk");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int nickChk(MemberDto dto) {
+		int res = 0;
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"nickChk",dto);
+		} catch (Exception e) {
+			logger.info("[Error] nickChk");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 
 	
 

@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/userPage.css">
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript"src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
+<!-- google font -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
@@ -23,34 +25,67 @@
 				<li class="tab-link" data-tab="tab-3">후원내역조회</li>
 				<li class="tab-link" data-tab="tab-4">채널개설</li>
 			</ul>
+			
+			<!-- 회원 정보 수정 탭 -->
 			<div class="tab-content current" id="tab-1">
-				<p>정보수정</p>
-				<p>프로필 사진</p>
-				<p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
-				<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
-				<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p>
-				<img src="<spring:url value='/image/${profiledto.profile_savedname }'/>"/>
-				<input type="file" value="프로필사진수정">	
+				<h2><i class="fas fa-lock"></i> 정보수정</h2>
+				<div class="tab-1-container">
+					<div class="tab-1-left">
+						<label for ="member_id">아이디</label>
+						<input type="text" name="member_id" value="${logindto.member_id }" disabled="disabled">
+						<label for ="member_nickname">닉네임</label>
+						<input type="text" name="member_nickname" value="${logindto.member_id }">
+						<label for ="member_email">이메일</label>
+						<input type="text" name="member_email" value="${logindto.member_email }">
+						<label for ="member_addr">주소</label>
+						<input type="text" name="member_addr" value="${logindto.member_addr }">
+						<label for ="member_phone">전화번호</label>
+						<input type="text" name="member_phone" value="${logindto.member_phone }">
+						<input type="button" value="수정">
+					</div>
+					<div class="tab-1-right">
+						<p>프로필 사진</p>
+						<%-- <p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
+						<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
+						<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p> --%>
+						${profiledto.profile_savedname }
+						<input type="file" value="프로필사진수정">	
+					</div>
+				</div>
 			</div>
-			<div class="tab-content" id="tab-2">팔로우 목록</div>
-			<div class="tab-content" id="tab-3">후원내역조회</div>
+			
+			<!-- 팔로우 목록 탭 -->
+			<div class="tab-content" id="tab-2">
+				<h2><i class="fas fa-users"></i> 팔로우 목록</h2>
+			</div>
+			
+			<!-- 후원 내역 조회 탭 -->
+			<div class="tab-content" id="tab-3">
+				<h2><i class="fas fa-hand-holding-usd"></i> 후원 내역 조회</h2>
+			</div>
+			
+			<!-- 아티스트 채널 탭 -->
 			<div class="tab-content" id="tab-4">
-				<p>아티스트 채널 개설</p>
-				<!-- <input type="button" value="사진업로드" onclick="popUp();" id="fileBtn"> -->
-				<section>
-					<form:form method="post" enctype="multipart/form-data"
-						modelAttribute="uploadFile" action="profileUpload.do">
-						<p>[프로필 사진 업로드]</p>
-						<p>이름 : ${logindto.member_id }</p>
-						<input type="file" name="profile">
-						<input type="text" name="member_id" value="${logindto.member_id }" >
-						<input type="text" name="member_nickname" value="${logindto.member_nickname }">
-						<br />
-						<form:errors path="profile" />
-						<br />
-						<input type="submit" value="등록">
-					</form:form>
-				</section>
+				<h2><i class="fas fa-sliders-h"></i> 아티스트 채널 개설</h2>
+				<div class="tab-4-container">	
+					<div class="tab-4-left">
+						<label for ="member_id">아이디</label>
+						<input type="text" name="member_id" value="${logindto.member_id }" disabled="disabled">
+						<label for ="member_nickname">닉네임</label>
+						<input type="text" name="member_nickname" value="${logindto.member_nickname }" disabled="disabled">
+						<input type="button" value="닉네임변경">
+						<label for ="member_email">이메일</label>
+						<input type="text" name="member_email" value="${logindto.member_email }" disabled="disabled">
+					</div>
+					<div class="tab-4-right">
+					<form method="post" enctype="multipart/form-data" action="profileUpload.do">
+						<input type="text" name="member_id" value="${logindto.member_id }">
+						<label for="profile">프로필 사진을 등록해주세요</label>
+						<input type="file" name="profile" required="required">
+						<input type="submit" value="개설" id="submitBtn">
+					</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -68,13 +103,6 @@
 			});
 
 		})
-		
-		/* function popUp(){
-			var url = "profileForm.do";
-			var option = "width=300px, height=200px, resizable=no, location=no, top=300px, left=500px";
-			window.open(url, "프로필 사진 업로드", option);
-		} */
-		
 	</script>
 </body>
 </html>
