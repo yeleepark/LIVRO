@@ -33,6 +33,11 @@ public class MypageController {
 
 	private Logger logger = LoggerFactory.getLogger(MypageController.class);
 
+	@RequestMapping("/mypageIndex.do")
+	public String indexPage() {
+		return "mypage/mypageIndex";
+	}
+
 	@RequestMapping("/adminPage.do")
 	public String adminPage() {
 		return "mypage/adminPage";
@@ -138,7 +143,7 @@ public class MypageController {
 		// profileObj라는 이름으로 profileObj를 페이지에 전달
 		model.addAttribute("profileObj", profileObj);
 
-		return "redirect:userPage.do?member_id="+member_id;
+		return "redirect:userPage.do?member_id=" + member_id;
 	}
 
 	@RequestMapping("/profileUpdate.do")

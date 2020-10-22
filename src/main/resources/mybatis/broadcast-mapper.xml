@@ -16,5 +16,4 @@
 		WHERE BROADCAST_NO = #{broadcast_no}
 	</select>
 
-	
 </mapper>

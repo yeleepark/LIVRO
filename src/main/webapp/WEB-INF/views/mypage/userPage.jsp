@@ -17,7 +17,7 @@
 	<section>
 		<div class="mypage-container">
 			<ul class="tabs">
-				<li class="tab-link current" data-tab="tab-1">정보수정${userdto.member_id }</li>
+				<li class="tab-link current" data-tab="tab-1">정보수정</li>
 				<li class="tab-link" data-tab="tab-2">팔로우목록</li>
 				<li class="tab-link" data-tab="tab-3">후원내역조회</li>
 				<li class="tab-link" data-tab="tab-4">채널개설</li>
