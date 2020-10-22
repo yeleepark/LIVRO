@@ -2,24 +2,25 @@
     margin : 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 header{
     width : 100%;
     height: 60px;
-    border : 1px solid black;
 }
 
 li{
     list-style: none;
 }
 
-/*  */
 .mypage-container{
     width : 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px;
 }
+
+/* 탭메뉴 */
 
 .mypage-container ul.tabs{
 	width : 20%;
@@ -38,15 +39,90 @@ li{
 	color: #222;
 }
 
-
 .tab-content{
 	width : 80%;
 	display: none;
-	border : 1px solid black;
-	padding: 15px;
+	padding: 0px 60px;
 	float : right;
 }
 
 .tab-content.current{
 	display: inherit;
+}
+
+.tab-content h2{
+	display : block;
+	font-size: 2rem;
+	margin-bottom: 30px;
+}
+
+/* 회원정보수정*/
+.tab-1-container {
+	display: flex;
+	width: 100%;
+}
+
+.tab-1-container input{
+	display: block;
+}
+
+.tab-1-left{
+	flex : 1;
+}
+
+.tab-1-right{
+	flex : 1;
+}
+
+
+#tab-1 label{
+	display: block;
+}
+
+/* 팔로우 목록 */
+
+/* 후원내역조회 */
+
+
+/* 아티스트 채널 개설 */
+
+
+#tab-4 label{
+	display: block;
+}
+
+#tab-4 input[type="text"]{
+	
+}
+
+#tab-4 input[type="submit"]{
+	display : block;
+}
+
+#submitBtn{
+	width : 100%;
+	padding : 10px 20px;
+	background: transparent;
+	border : 1px solid black;
+	cursor: pointer;
+}
+
+#tab-4 input {
+	margin-bottom : 20px;
+}
+
+.tab-4-container{
+	display: flex;
+}
+
+.tab-4-left{
+	flex : 1;
+}
+
+.tab-4-right{
+	flex : 1
+}
+
+#tab-4 input[type="submit"]{
+	margin : 0 auto;
 }
