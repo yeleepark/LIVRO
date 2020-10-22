@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="resources/css/artist.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    
     <title>LIVRO-Artist</title>
 </head>
 <body>
@@ -27,28 +29,22 @@
 			<!-- 음원 -->
 			<div id="tab-1" class="tab-content current">
 				<!-- 현승 작업 여기서 -->
-				<audio src="resources/audio/doli.mp3" controls></audio>
-				<!-- 
-				-->
-				<audio src="C:\workspace\Final_Project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\LIVRO\resources\storage\doli.mp3" controls></audio>
-				<audio src="C:/workspace/Final_Project/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LIVRO/resources/storage/doli.mp3" controls></audio>
-				<audio src="/.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\LIVRO\resources\storage\doli.mp3" controls></audio>
-				<audio src="/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LIVRO/resources/storage/doli.mp3" controls></audio> 
+				
 				<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
-
+					<input type="hidden" name="member_id" value=""><!-- 작성 중 -->
 					file<br><!-- 파일 -->
 					<input type="file" name="music_file" /> 
 					<span style="color:red; font-weight: bold;"><form:errors path="music_file"/></span>
 					
 					<!-- 에러시 문자열 반환 -->
-					
-
 					<input type="text" name="music_content" placeholder="설명문">
-					
 					<input type="submit" value="send">
 		
 				</form:form>
-	
+				
+				<audio src="resources/audio/브라운 아이드 소울-04-정말 사랑했을까-192k.mp3" controls></audio>
+				
+				
 			</div>
 			<!-- 음원 -->
 			
