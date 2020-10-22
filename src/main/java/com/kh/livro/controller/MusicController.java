@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
-import com.kh.livro.bizImpl.MusicFileValidator;
+import com.kh.livro.biz.MusicBiz;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
 
@@ -24,16 +24,10 @@ import com.kh.livro.dto.MusicDto;
 public class MusicController {
 
 	@Autowired
-	private MusicFileValidator fileValidator;
-	/*
-	@Autowired
-	private 
-	*/
+	private MusicBiz musicBiz;
+	
 	@RequestMapping(value="upload")//upload리턴 받아오면 upload.jsp
 	public String fileUpload(HttpServletRequest request, Model model, MemberDto memberdto, MusicDto musicDto, BindingResult result) {
-		
-		//validateor = 유효성 검사 도구 : 객체를 받아서 예외가 발생한다면 
-		fileValidator.validate(musicDto, result);
 		
 		if (result.hasErrors()) {	//유효성 검사 결과 에러가 도출된 경우 upload 리턴
 			return "upload";
@@ -90,6 +84,6 @@ public class MusicController {
 		model.addAttribute("fileObj",fileObj); //모델객체에 파일객체속성 추가 
 		
 		
-		return "redirect:artist.do?member_nickname="+memberdto.getMember_nickname();
+		return "redirect:artist.do?member_id="+musicDto.getMember_id();
 	}
 }

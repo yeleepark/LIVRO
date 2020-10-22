@@ -6,6 +6,7 @@
 		<typeAlias type="com.kh.livro.dto.BroadcastDto" alias="BroadcastDto"/>
 		<typeAlias type="com.kh.livro.dto.NoticeDto" alias="NoticeDto"/>
 		<typeAlias type="com.kh.livro.dto.ProfileDto" alias="ProfileDto"/>
+		<typeAlias type="com.kh.livro.dto.MusicDto" alias="MusicDto"/>
 	</typeAliases>
 	
 	<mappers>
@@ -16,5 +17,6 @@
 		<mapper resource="mybatis/artist-mapper.xml"/>
 		<mapper resource="mybatis/profile-mapper.xml"/>
 		<mapper resource="mybatis/mypage-mapper.xml"/>
+		<mapper resource="mybatis/music-mapper.xml"/>
 	</mappers>
 </configuration>
