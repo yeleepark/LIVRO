@@ -113,6 +113,7 @@ public class ProfileController {
 		
 		profiledto.setProfile_savedname(profile_savedname); // 서버에 저장할 이름 넣고
 		profiledto.setProfile_realname(profile_realname); // 실제 이름을 넣고
+		
 		profileBiz.profileInsert(profiledto); //db에 값 저장
 
 		
@@ -122,6 +123,8 @@ public class ProfileController {
 
 	@RequestMapping("/profileUpdate.do")
 	public String profileUpdate(HttpServletRequest request, Model model, ProfileDto profiledto, String member_id) {
+		
+		
 		return "";
 	}
 	

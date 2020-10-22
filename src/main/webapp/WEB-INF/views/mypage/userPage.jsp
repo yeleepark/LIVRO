@@ -45,11 +45,10 @@
 					</div>
 					<div class="tab-1-right">
 						<p>프로필 사진</p>
-						<%-- <p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
+						<p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
 						<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
-						<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p> --%>
-						${profiledto.profile_savedname }
-						<input type="file" value="프로필사진수정">	
+						<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p>
+						<input type="file" value="프로필사진수정" onclick="location.href='profileUpdate.do'">	
 					</div>
 				</div>
 			</div>
