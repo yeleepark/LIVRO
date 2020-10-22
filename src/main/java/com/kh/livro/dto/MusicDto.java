@@ -7,27 +7,23 @@ import org.springframework.web.multipart.MultipartFile;
 public class MusicDto {
 
 	private String member_id;
-	private String member_nickname;
 	private String music_title;
 	private String music_content;
 	private String music_savename;
 	private String music_realname;
-	private int music_size;
 	private Date music_date;
 	
 	private MultipartFile music_file;
 	
 	public MusicDto() {}
 
-	public MusicDto(String member_id,String member_nickname , String music_title, String music_content, String music_savename,
-			String music_realname, int music_size, Date music_date, MultipartFile music_file) {
+	public MusicDto(String member_id, String music_title, String music_content, String music_savename,
+			String music_realname, Date music_date, MultipartFile music_file) {
 		this.member_id = member_id;
-		this.member_nickname = member_nickname;
 		this.music_title = music_title;
 		this.music_content = music_content;
 		this.music_savename = music_savename;
 		this.music_realname = music_realname;
-		this.music_size = music_size;
 		this.music_date = music_date;
 		this.music_file = music_file;
 	}
@@ -40,14 +36,6 @@ public class MusicDto {
 		this.member_id = member_id;
 	}
 	
-	public String getMember_nickname() {
-		return member_nickname;
-	}
-	
-	public void setMember_nickname(String member_nickname) {
-		this.member_nickname = member_nickname;
-	}
-
 	public String getMusic_title() {
 		return music_title;
 	}
@@ -78,14 +66,6 @@ public class MusicDto {
 
 	public void setMusic_realname(String music_realname) {
 		this.music_realname = music_realname;
-	}
-
-	public int getMusic_size() {
-		return music_size;
-	}
-
-	public void setMusic_size(int music_size) {
-		this.music_size = music_size;
 	}
 
 	public Date getMusic_date() {
