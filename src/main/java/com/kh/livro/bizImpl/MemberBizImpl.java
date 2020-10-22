@@ -25,6 +25,18 @@ public class MemberBizImpl implements MemberBiz {
 		return memberDao.join(dto);
 	}
 
+	@Override
+	public int idChk(MemberDto dto) {
+		
+		return memberDao.idChk(dto);
+	}
+
+	@Override
+	public int nickChk(MemberDto dto) {
+		
+		return memberDao.nickChk(dto);
+	}
+
 
 
 }
