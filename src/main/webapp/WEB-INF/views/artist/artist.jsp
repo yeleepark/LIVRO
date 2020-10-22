@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +28,27 @@
 			<div id="tab-1" class="tab-content current">
 				<!-- 현승 작업 여기서 -->
 				<audio src="resources/audio/doli.mp3" controls></audio>
-				<input type="button" value="음원 업로드">
+				<!-- 
+				-->
+				<audio src="C:\workspace\Final_Project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\LIVRO\resources\storage\doli.mp3" controls></audio>
+				<audio src="C:/workspace/Final_Project/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LIVRO/resources/storage/doli.mp3" controls></audio>
+				<audio src="/.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\LIVRO\resources\storage\doli.mp3" controls></audio>
+				<audio src="/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LIVRO/resources/storage/doli.mp3" controls></audio> 
+				<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
+
+					file<br><!-- 파일 -->
+					<input type="file" name="music_file" /> 
+					<span style="color:red; font-weight: bold;"><form:errors path="music_file"/></span>
+					
+					<!-- 에러시 문자열 반환 -->
+					
+
+					<input type="text" name="music_content" placeholder="설명문">
+					
+					<input type="submit" value="send">
+		
+				</form:form>
+	
 			</div>
 			<!-- 음원 -->
 			

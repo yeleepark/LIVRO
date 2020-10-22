@@ -2,6 +2,8 @@ package com.kh.livro.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MusicDto {
 
 	private String member_id;
@@ -12,10 +14,12 @@ public class MusicDto {
 	private int music_size;
 	private Date music_date;
 	
+	private MultipartFile music_file;
+	
 	public MusicDto() {}
 
 	public MusicDto(String member_id, String music_title, String music_content, String music_savename,
-			String music_realname, int music_size, Date music_date) {
+			String music_realname, int music_size, Date music_date, MultipartFile music_file) {
 		this.member_id = member_id;
 		this.music_title = music_title;
 		this.music_content = music_content;
@@ -23,6 +27,7 @@ public class MusicDto {
 		this.music_realname = music_realname;
 		this.music_size = music_size;
 		this.music_date = music_date;
+		this.music_file = music_file;
 	}
 
 	public String getMember_id() {
@@ -81,5 +86,14 @@ public class MusicDto {
 		this.music_date = music_date;
 	}
 
+	public MultipartFile getMusic_file() {
+		return music_file;
+	}
+
+	public void setMusic_file(MultipartFile music_file) {
+		this.music_file = music_file;
+	}
+	
 	
 }
+
