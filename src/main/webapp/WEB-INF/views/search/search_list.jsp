@@ -22,7 +22,7 @@
 				<c:otherwise>
 					<c:forEach items="${map.memberlist }" var="memberdto" >
 						<div>
-						<p><a href="artist.do?member_nickname=${memberdto.member_nickname }">${memberdto.member_nickname }</a></p>
+						<p><a href="artist.do?member_id=${memberdto.member_id }">${memberdto.member_nickname }</a></p>
 						</div>
 					</c:forEach>
 				</c:otherwise>

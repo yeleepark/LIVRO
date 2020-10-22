@@ -34,8 +34,5 @@ public class ProfileBizValidator implements Validator {
 
 	}
 	
-	public int profileInsert(String member_id) {
-		return profileDao.profileInsert(member_id);
-	}
 
 }

@@ -8,5 +8,4 @@ public interface MypageDao {
 	
 	public ProfileDto selectProfile(String member_id);
 	
-
 }
