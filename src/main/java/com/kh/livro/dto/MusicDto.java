@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class MusicDto {
 
+	private int music_no;
 	private String member_id;
 	private String music_title;
 	private String music_content;
@@ -17,8 +18,9 @@ public class MusicDto {
 	
 	public MusicDto() {}
 
-	public MusicDto(String member_id, String music_title, String music_content, String music_savename,
+	public MusicDto(int music_no, String member_id, String music_title, String music_content, String music_savename,
 			String music_realname, Date music_date, MultipartFile music_file) {
+		this.music_no = music_no;
 		this.member_id = member_id;
 		this.music_title = music_title;
 		this.music_content = music_content;
@@ -27,7 +29,15 @@ public class MusicDto {
 		this.music_date = music_date;
 		this.music_file = music_file;
 	}
-
+	
+	public int getMusic_no() {
+		return music_no;
+	}
+	
+	public void setMusic_no(int music_no) {
+		this.music_no = music_no;
+	}
+	
 	public String getMember_id() {
 		return member_id;
 	}
