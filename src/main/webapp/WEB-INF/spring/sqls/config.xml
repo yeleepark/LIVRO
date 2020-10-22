@@ -15,5 +15,6 @@
 		<mapper resource="mybatis/search-mapper.xml"/>
 		<mapper resource="mybatis/artist-mapper.xml"/>
 		<mapper resource="mybatis/profile-mapper.xml"/>
+		<mapper resource="mybatis/mypage-mapper.xml"/>
 	</mappers>
 </configuration>

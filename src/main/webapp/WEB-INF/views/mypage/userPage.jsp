@@ -22,7 +22,14 @@
 				<li class="tab-link" data-tab="tab-3">후원내역조회</li>
 				<li class="tab-link" data-tab="tab-4">채널개설</li>
 			</ul>
-			<div class="tab-content current" id="tab-1">정보수정</div>
+			<div class="tab-content current" id="tab-1">
+				<p>정보수정</p>
+				<p>프로필 사진</p>
+				<p>서버에 저장된 프로필 사진 이름 : ${userdto.profile_savedname }</p>
+				<p>프로필 사진의 실제 파일 이름 : ${userdto.profile_realname }</p>
+				<p>프로필 사진 등록된 시간 : ${userdto.profile_regdate }</p>
+				<input type="file" value="프로필사진수정">	
+			</div>
 			<div class="tab-content" id="tab-2">팔로우 목록</div>
 			<div class="tab-content" id="tab-3">후원내역조회</div>
 			<div class="tab-content" id="tab-4">
@@ -34,8 +41,7 @@
 						<p>[프로필 사진 업로드]</p>
 						<p>이름 : ${logindto.member_id }</p>
 						<input type="file" name="profile">
-						<input type="hidden" name="member_id"
-							value="${logindto.member_id }">
+						<input type="hidden" name="member_id" value="${logindto.member_id }">
 						<br />
 						<form:errors path="profile" />
 						<br />

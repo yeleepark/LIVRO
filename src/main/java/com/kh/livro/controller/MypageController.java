@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
+import com.kh.livro.biz.MypageBIz;
 import com.kh.livro.biz.ProfileBiz;
 import com.kh.livro.bizImpl.ProfileBizValidator;
 import com.kh.livro.dao.ProfileDao;
@@ -30,30 +31,32 @@ public class MypageController {
 
 	@Autowired
 	private ProfileBiz profileBiz;
+	
+	@Autowired
+	private  MypageBIz mypageBiz;
 
 	private Logger logger = LoggerFactory.getLogger(MypageController.class);
 
+	//마이페이지 인덱스 : 관리자로 갈건지 일반유저로 갈건지
 	@RequestMapping("/mypageIndex.do")
 	public String indexPage() {
 		return "mypage/mypageIndex";
 	}
 
+	//어드민 페이지로 이동
 	@RequestMapping("/adminPage.do")
 	public String adminPage() {
 		return "mypage/adminPage";
 	}
 
+	//일반유저 페이지로 이동
 	@RequestMapping("/userPage.do")
-	public String userPage(Model model, ProfileDto dto) {
-		model.addAttribute("userdto", dto);
+	public String userPage(Model model, String member_id) {
+		model.addAttribute("userdto", mypageBiz.selectProfile(member_id));
 		return "mypage/userPage";
 	}
 
-	@RequestMapping("/profileForm.do")
-	public String uploadForm() {
-		return "mypage/profileForm";
-	}
-
+	//프로필 사진 업로드	
 	@RequestMapping("/profileUpload.do")
 	public String profileUpload(HttpServletRequest request, Model model, ProfileDto profiledto, String member_id) {
 
