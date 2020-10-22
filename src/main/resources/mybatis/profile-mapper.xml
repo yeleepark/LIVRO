@@ -4,13 +4,13 @@
 	
 	<insert id="profileInsert" parameterType="ProfileDto">
 		INSERT INTO PROFILE
-		VALUES(#{member_id}, #{profile_savedname}, #{profile_realname}, SYSDATE, 'Y')
+		VALUES (#{member_id }, #{profile_savedname }, #{profile_realname }, SYSDATE, 'Y')
 	</insert>
 	
-	<update id="profileUpdate" parameterType="ProfileDto">
-		UPDATE PROFILE
-		SET PROFILE_SAVEDNAME = #{profile_savedname}, PROFILE_REALNAME = ${profile_realname}, SYSDATE, 'Y')
+	<select id="profileList">
+		SELECT *
+		FROM PROFILE
 		WHERE MEMBER_ID = #{member_id }
-	</update>
+	</select>
 	
 </mapper>
