@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,14 +28,8 @@ public class MusicController {
 	private MusicBiz musicBiz;
 	
 	@RequestMapping(value="upload")//upload리턴 받아오면 upload.jsp
-	public String fileUpload(HttpServletRequest request, Model model, MemberDto memberdto, MusicDto musicDto, BindingResult result) {
-		
-		if (result.hasErrors()) {	//유효성 검사 결과 에러가 도출된 경우 upload 리턴
-			return "upload";
-		}
-		
-		
-		
+	public String fileUpload(HttpServletRequest request, Model model, MusicDto musicDto) {
+			
 		MultipartFile file = musicDto.getMusic_file();	//업로드된 멀티파트객체(파일)을 변수에 저장
 		String name = file.getOriginalFilename();	//파일의 이름 변수에 저장
 			
@@ -63,7 +58,7 @@ public class MusicController {
 			
 			outputStream = new FileOutputStream(newFile); //출력스트램 객체에 경로명+파일명을 가진 출력스트림을 만듬
 			
-			int read = 0;
+			int read = 0;  
 			byte[] b = new byte[(int) file.getSize()];	//업로드할 파일의 크기를 바이트로 저장 
 			
 			while((read=inputStream.read(b)) != -1) {	
@@ -83,7 +78,21 @@ public class MusicController {
 		}
 		model.addAttribute("fileObj",fileObj); //모델객체에 파일객체속성 추가 
 		
-		
 		return "redirect:artist.do?member_id="+musicDto.getMember_id();
+	}
+	
+	
+	public String insert(Model model, MusicDto dto) {
+		
+		UUID saveVar = UUID.randomUUID();
+		
+		try {
+			model.addAttribute("musicdto", musicBiz.insert(dto));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "";
+		
 	}
 }
