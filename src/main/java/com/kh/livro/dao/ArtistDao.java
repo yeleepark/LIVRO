@@ -6,5 +6,5 @@ public interface ArtistDao {
 	
 	String NAMESPACE = "artist.";
 
-	public MemberDto selectArtist(String member_nickname);
+	public MemberDto selectArtist(String member_id);
 }

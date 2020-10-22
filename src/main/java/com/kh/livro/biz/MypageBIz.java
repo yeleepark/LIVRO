@@ -1,12 +1,9 @@
-package com.kh.livro.dao;
+package com.kh.livro.biz;
 
 import com.kh.livro.dto.ProfileDto;
 
-public interface MypageDao {
-
-	String NAMESPACE = "mypage.";
+public interface MypageBIz {
 	
 	public ProfileDto selectProfile(String member_id);
-	
 
 }

@@ -15,9 +15,9 @@ public class ArtistController {
 	private ArtistBiz artistBiz;
 	
 	@RequestMapping("/artist.do")
-	public String artist(Model model, String member_nickname) {
+	public String artist(Model model, String member_id) {
 		
-		MemberDto dto = artistBiz.selectArtist(member_nickname);
+		MemberDto dto = artistBiz.selectArtist(member_id);
 		model.addAttribute("artistdto", dto);
 		
 		return "artist/artist";

@@ -4,5 +4,5 @@ import com.kh.livro.dto.MemberDto;
 
 public interface ArtistBiz {
 
-	public MemberDto selectArtist(String member_nickname);
+	public MemberDto selectArtist(String member_id);
 }
