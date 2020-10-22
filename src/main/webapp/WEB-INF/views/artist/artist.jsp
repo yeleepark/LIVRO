@@ -31,7 +31,7 @@
 				<!-- 현승 작업 여기서 -->
 				
 				<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
-					<input type="hidden" name="member_id" value=""><!-- 작성 중 -->
+					<input type="hidden" name="member_id" value="${artistdto.member_id }">
 					file<br><!-- 파일 -->
 					<input type="file" name="music_file" /> 
 					<span style="color:red; font-weight: bold;"><form:errors path="music_file"/></span>
