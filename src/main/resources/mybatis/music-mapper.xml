@@ -2,15 +2,4 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="music">
 
-	<select id="selectList">
-		SELECT MEMBER_ID, MUSIC_NICKNAME, MUSIC_TITLE, MUSIC_CONTENT, MUSIC_SAVENAME, MUSIC_REALNAME, MUSIC_SIZE, MUSIC_DATE
-		FROM MUSIC
-		WHERE MEMBER_ID = #{member_id}
-	</select>
-	
-	<insert id="">
-		INSERT INTO MUSIC
-		VALUES(#{member_id),#{member_pw},#{music_title}
-	</insert>
-
 </mapper>
