@@ -5,7 +5,7 @@
 	<select id="selectArtist" parameterType="MemberDto" resultType="MemberDto">
 		SELECT *
 		FROM MEMBER
-		WHERE MEMBER_NICKNAME = #{member_nickname}
+		WHERE MEMBER_ID = #{member_id}
 	</select>
 
 </mapper>

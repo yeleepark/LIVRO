@@ -18,12 +18,12 @@ public class ArtistDaoImpl implements ArtistDao {
 	private Logger logger = LoggerFactory.getLogger(ArtistDao.class);
 
 	@Override
-	public MemberDto selectArtist(String member_nickname) {
+	public MemberDto selectArtist(String member_id) {
 		
 		MemberDto dto = new MemberDto();
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE+"selectArtist", member_nickname);
+			dto = sqlSession.selectOne(NAMESPACE+"selectArtist", member_id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.info("[ERROR]");

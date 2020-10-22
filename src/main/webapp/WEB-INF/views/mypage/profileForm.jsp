@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<section>
-		<form:form method="post" enctype="multipart/form-data" modelAttribute="uploadFile" action="profileUpload.do">
+		<form:form method="post" enctype="multipart/form-data"
+			modelAttribute="uploadFile" action="profileUpload.do">
 			<p>[프로필 사진 업로드]</p>
 			<p>이름 : ${logindto.member_id }</p>
 			<input type="file" name="profile">
@@ -21,6 +21,5 @@
 			<input type="submit" value="등록">
 		</form:form>
 	</section>
-
 </body>
 </html>

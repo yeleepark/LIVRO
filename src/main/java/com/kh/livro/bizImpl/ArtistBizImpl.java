@@ -15,8 +15,8 @@ public class ArtistBizImpl implements ArtistBiz{
 	
 
 	@Override
-	public MemberDto selectArtist(String member_nickname) {
-		return artistDao.selectArtist(member_nickname);
+	public MemberDto selectArtist(String member_id) {
+		return artistDao.selectArtist(member_id);
 	}
 
 }
