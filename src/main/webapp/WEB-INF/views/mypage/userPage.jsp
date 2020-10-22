@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,7 @@
 				<p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
 				<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
 				<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p>
-				<img src="<spring:url value='/image/${profiledto.profile_savedname }'">
+				<img src="<spring:url value='/image/${profiledto.profile_savedname }'/>"/>
 				<input type="file" value="프로필사진수정">	
 			</div>
 			<div class="tab-content" id="tab-2">팔로우 목록</div>
