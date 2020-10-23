@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.kh.livro.biz.MusicBiz;
@@ -28,6 +29,8 @@ public class MusicController {
 	@RequestMapping(value="upload.do")//upload리턴 받아오면 upload.jsp
 	public String fileUpload(HttpServletRequest request, Model model, MusicDto musicDto, String member_id, String music_content) {
 			
+		ModelAndView mav = new ModelAndView();
+		
 		MultipartFile music = musicDto.getMusic_file();	//업로드된 멀티파트객체(파일)을 변수에 저장
 		
 		
@@ -52,9 +55,15 @@ public class MusicController {
 			inputStream = music.getInputStream(); //업로드된 파일의 입력스트림을 변수에 저장
 			
 			//프로젝트 내부에 파일 업로드하는 경로  
-			String path = WebUtils.getRealPath(request.getSession().getServletContext() , "/resources/storage");
+			String path = WebUtils.getRealPath(request.getSession().getServletContext() , "/resources/music");
 			
+			model.addAttribute("filepath", path+music_savename);
+			//model.addAttribute("artistdto", member_id);
+			
+			mav.addObject("filepath", path+"/"+music_savename);
+			mav.setViewName("artist");
 			//현재 사용중인 프로젝트 경로가 어디인가
+			System.out.println("중요중요중요중요"+"filepath"+ model);
 			System.out.println("업로드될 실제 경로 : "+ path);
 			
 			File storage = new File(path);	//문자열로 만들어진 경로를 파일객체로 저장
@@ -66,7 +75,8 @@ public class MusicController {
 			if (!newFile.exists()) {	//경로에 해당하는 파일이 존재하지 않는 경우
 				newFile.createNewFile();	//파일 생성(프로젝트안에 업로드) 용량은 0바이트
 			}
-			
+			System.out.println(path+music_savename);
+			System.out.println(newFile);
 			outputStream = new FileOutputStream(newFile); //출력스트램 객체에 경로명+파일명을 가진 출력스트림을 만듬
 			
 			int read = 0;  
@@ -95,7 +105,15 @@ public class MusicController {
 		musicBiz.insert(musicDto);
 		
 		
-		return "redirect:artist.do?member_id="+member_id;
+		return "redirect:artistwithid.do?member_id="+member_id;
+	//	return "artist/goartistwithid";
+	}
+	
+	@RequestMapping(value="artistwithid.do")
+	public String selectList(Model model, String member_id) {
+		
+		model.addAttribute("artistdto", member_id);
+		return "artist/goartistwithid";
 	}
 	
 	

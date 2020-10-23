@@ -42,7 +42,8 @@
 		
 				</form:form>
 				
-				<audio src="resources/audio/브라운 아이드 소울-04-정말 사랑했을까-192k.mp3" controls></audio>
+				<audio src="${filepath }" controls></audio>
+				<input type="text" value="${filepath }">
 				
 				
 			</div>

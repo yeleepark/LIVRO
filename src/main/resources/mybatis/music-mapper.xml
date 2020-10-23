@@ -3,7 +3,7 @@
 <mapper namespace="music">
 
 	<select id="selectList">
-		SELECT MEMBER_ID, MUSIC_TITLE,
+		SELECT MUSIC_NO, MEMBER_ID, MUSIC_TITLE,
 		MUSIC_CONTENT,
 		MUSIC_SAVENAME, MUSIC_REALNAME, MUSIC_DATE
 		FROM MUSIC
@@ -12,7 +12,7 @@
 
 	<insert id="insert">
 		INSERT INTO MUSIC 
-		VALUES(#{member_id}, #{music_title}, #{music_content}, #{music_savename}, #{music_realname}, SYSDATE)
+		VALUES(MUSIC_NO_SEQ.NEXTVAL ,#{member_id}, #{music_title}, #{music_content}, #{music_savename}, #{music_realname}, SYSDATE)
 	</insert>
 
 	<update id="update">

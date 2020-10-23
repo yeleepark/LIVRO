@@ -23,4 +23,5 @@ public class ArtistController {
 		return "artist/artist";
 	}
 
+	
 }
