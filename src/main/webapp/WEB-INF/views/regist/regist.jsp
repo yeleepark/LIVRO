@@ -20,161 +20,197 @@
 
 </script> -->
 <script type="text/javascript">
-//정규식
-//모든 공백 체크 정규식
-var empR = /\s/g;
-//아이디 정규식(5~20자의 영문 소문자, 숫자와 사용가능)
-var idR = /^[a-z0-9]{5,20}$/;
-//비밀번호 정규식(8~15 특수문자 / 문자 / 숫자 반드시 포함)
-var pwR =/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-//이름 정규식(한글2~6자 이내 특수기호, 공백사용안돼)
-var nameR = /^[가-힣]{2,6}/;
-//닉네임 정규식(한글, 소문자 ,숫자 사용가능 )
-var nickR = /^[가-힣a-zA-Z]{2,20}$/;
-//이메일 검사 정규식
-var mailR = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-// 휴대폰번호 정규식
-var phoneR = /^[0-9]{2,3}[0-9]{3,4}[0-9]{4}$/;
+	//정규식
+	//모든 공백 체크 정규식
+	var empR = /\s/g;
+	//아이디 정규식(5~20자의 영문 소문자, 숫자와 사용가능)
+	var idR = /^[a-z0-9]{5,20}$/;
+	//비밀번호 정규식 (영문, 숫자, 특문 반드시 포함 / 공백 x / 8~20자리)
+	var pwR =/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 
-$(document).ready(function() {
-	//비밀번호 확인 및 정규화
-	//비밀번호창과 비밀번호확인창에 둘다 입력을 했을 경우 실행되는 함수 :keyup()
-	$("#member_pw" && "#member_pwchk").keyup(function(){
-		//if문에 사용할 비밀번호값을 변수에 저장해줌
-		var memberpw = $("#member_pw").val().trim();
-		var memberpwchk = $("#member_pwchk").val().trim();
-		
-		
-		if(memberpw != null || memberpw !="" || memberpwchk != "" || memberpwchk != null){
-			//일치여부 확인 , 정규식 검사 후 비밀번호를 사용가능한 문구출력
-			if((pwR.test($("#member_pw").val()) && pwR.test($("#member_pwchk").val()) && (memberpw == memberpwchk))){
-				$('#pwchk_check').text('비밀번호를 사용할 수 있습니다.');
-				$('#pwchk_check').css({
-					'color' : 'blue',
-					'font-size' : '13px'
-				});
-				
-			}else if(pwR.test($('#member_pw').val()) == false && pwR.test($('#member_pwchk').val()) == false){
-				//정규식을 만족하지 못했을 경우
-				$('#pwchk_check').text('비밀번호는 8~15자 이내 문자, 특수문자, 숫자를 반드시 포함해야합니다.');
-				$('#pwchk_check').css({
-					'color' : 'red',
-					'font-size' : '13px'
-					});
-			
-			}
-			else{
-			//입력된 비밀번호가 일치하지 않을 때
-			$('#pwchk_check').text('비밀번호가 일치하지 않습니다.');
-			$('#pwchk_check').css({
-				'color' : 'red',
-				'font-size' : '13px'
-				});
-			}
-					
-		}
-		
-	});
+	//이름 정규식(한글2~6자 이내 특수기호, 공백사용안돼)
+	var nameR = /^[가-힣]{2,6}/;
+	//닉네임 정규식(한글, 소문자 ,숫자 사용가능 )
+	var nickR = /^[가-힣a-zA-Z0-9]{2,20}$/;
+	//이메일 검사 정규식
+	var mailR = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+	// 휴대폰번호 정규식
+	var phoneR = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+	//특문 정규식
+	var speR = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
 
-	//이름 정규식 확인 
-	$("#member_name").keydown(function(){
-		var member_name = $("#member_name").val().trim();
-				if(nameR.test($('#member_name').val()) == false){
+
+	
+	$(document).ready(function() {
+		//비밀번호 확인 및 정규화
+		//비밀번호창과 비밀번호확인창에 둘다 입력을 했을 경우 실행되는 함수 :keyup()
+		$("#member_pw" && "#member_pwchk").keyup(function(){
+		 //if문에 사용할 비밀번호값을 변수에 저장해줌
+		 var memberpw = $("#member_pw").val().trim();
+		 var memberpwchk = $("#member_pwchk").val().trim();
+		
+		
+		 if(memberpw != null || memberpw !="" || memberpwchk != "" || memberpwchk != null){
+		 //일치여부 확인 , 정규식 검사 후 비밀번호를 사용가능한 문구출력
+		 if((pwR.test(memberpw) && pwR.test(memberpwchk) && (memberpw == memberpwchk))){
+		 $('#pwchk_check').text('비밀번호를 사용할 수 있습니다.');
+		 $('#pwchk_check').css({
+		 'color' : 'blue',
+		 'font-size' : '13px'
+		 });
+		
+		 }else if(pwR.test(memberpw) == false && pwR.test(memberpwchk) == false){
+		 //정규식을 만족하지 못했을 경우
+		 $('#pwchk_check').text('비밀번호는 8~15자 이내 문자, 특수문자, 숫자를 반드시 포함해야합니다.');
+		 $('#pwchk_check').css({
+		 'color' : 'red',
+		 'font-size' : '13px'
+		 });
+		
+		 }          
+		 else{
+		 //입력된 비밀번호가 일치하지 않을 때
+		 $('#pwchk_check').text('비밀번호가 일치하지 않습니다.');
+		 $('#pwchk_check').css({
+		 'color' : 'red',
+		 'font-size' : '13px'
+		 });
+		 }
+		
+		 }
+		
+		 }); 
+	
+		$("#member_pwchk").blur(function(){
+			if($("#member_pw").val() != $("#member_pwchk").val()){
+				if($("#member_pwchk").val() != ''){
+					 $('#pwchk_check').text('비밀번호를 다시 입력해주세요.');
+					 $('#pwchk_check').css({
+					 'color' : 'red',
+					 'font-size' : '13px'
+					 });
+					 $("#member_pwchk").val('');
+					 $("#member_pw").focus();
+				}
+			}
+		})
+	
+		//이름 정규식 확인 
+		$("#member_name").keydown(function() {
+			var member_name = $("#member_name").val().trim();
+			if (nameR.test(member_name) == false) {
 				$("#name_check").text('이름은 한글만 가능합니다.');
 				$('#name_check').css({
 					'color' : 'red',
 					'font-size' : '13px'
-					});
-				}else{
-					$("#name_check").text('');
-				}
-		})
-	});
-	
-	
-
-//비밀번호 먼저 입력 후, 비밀번호 확인 창으로 넘어가게끔
-function disFunc(){
-	alert("비밀번호 먼저 입력해주세요!")
-	var memberpw = $("#member_pw").val().trim();
-	if(memberpw == null || memberpw == ""){
-		$("#member_pw").focus();
-	}
-	
-}
-
-function id_Chk() {
-	$.ajax({
-		url : "idChk.do",
-		type : "post",
-		dataType : "json",
-		data : {
-			"member_id" : $("#member_id").val().trim()
-		},
-		success : function(data) {
-			if (data == 1) {
-				$('#id_check').text('사용중인 아이디 입니다.');
-				$('#id_check').css({
-					'color' : 'red',
-					'font-size' : '13px'
 				});
 			} else {
-				if (data == 0 && idR.test($('#member_id').val())) {
-					$('#id_check').text('사용가능한 아이디입니다.');
+				$("#name_check").text('');
+			}
+		})
+		
+		//휴대폰번호 정규식 확인
+			$("#member_phone").keydown(function() {
+			var member_phone = $("#member_phone").val().trim();
+			console.log(phoneR.test(member_phone) );
+			 if(phoneR.test(member_phone) == false){
+				   $("#phone_check").text('휴대폰번호를 다시 입력해주세요.');
+		            $('#phone_check').css({
+		               'color' : 'yellow',
+		               'font-size' : '13px'
+		            });
+			 }else{
+				 $("#phone_check").text('');
+			 }
+		})
+	});
+
+	//비밀번호 먼저 입력 후, 비밀번호 확인 창으로 넘어가게끔
+/* 	function disFunc() {
+		alert("비밀번호 먼저 입력해주세요!")
+		var memberpw = $("#member_pw").val().trim();
+		if (memberpw == null || memberpw == "") {
+			$("#member_pw").focus();
+		}
+
+	}
+ */
+	function id_Chk() {
+		$.ajax({
+			url : "idChk.do",
+			type : "post",
+			dataType : "json",
+			data : {
+				"member_id" : $("#member_id").val().trim()
+			},
+			success : function(data) {
+				if (data == 1) {
+					$('#id_check').text('사용중인 아이디 입니다.');
 					$('#id_check').css({
-						'color' : 'blue',
+						'color' : 'red',
 						'font-size' : '13px'
 					});
 				} else {
-					$('#id_check').text('아이디는 5~20자 이내 소문자,숫자만 사용가능합니다.');
-					$('#id_check').css({
-						'color' : 'red',
-						'font-size' : '13px'
-					});
+					if (data == 0 && idR.test($('#member_id').val())) {
+						$('#id_check').text('사용가능한 아이디입니다.');
+						$('#id_check').css({
+							'color' : 'blue',
+							'font-size' : '13px'
+						});
+					} else {
+						$('#id_check').text('아이디는 5~20자 이내 소문자,숫자만 사용가능합니다.');
+						$('#id_check').css({
+							'color' : 'red',
+							'font-size' : '13px'
+						});
+					}
 				}
 			}
-		}
-	})
-}
+		})
+	}
 
-//닉네임 중복체크
-function nick_Chk(){
-	$.ajax({
-		url : "nickChk.do",
-		type : "post",
-		dataType : "json",
-		data : {
-			"member_nickname" : $("#member_nickname").val().trim()
-		},
-		success : function(data){
-			if(data == 1){
-				$('#nickname_check').text('사용중인 닉네임 입니다.');
-				$('#nickname_check').css({
-					'color' : 'red',
-					'font-size' : '13px'
-				});
-			}else{
-				if(data == 0 && nickR.test($("#member_nick").val())){
-					$('#nickname_check').text('사용가능한 닉네임입니다.');
-					$('#nickname_check').css({
-						'color' : 'blue',
-						'font-size' : '13px'
-					});
-				}else{
-					$('#nickname_check').text('닉네임은 3~20자 이내 한글,소문자,숫자만 사용가능합니다.');
+	//닉네임 중복체크
+	function nick_Chk() {
+		$.ajax({
+			url : "nickChk.do",
+			type : "post",
+			dataType : "json",
+			data : {
+				"member_nickname" : $("#member_nickname").val().trim()
+			},
+			success : function(data) {
+				if (data == 1) {
+					$('#nickname_check').text('사용중인 닉네임 입니다.');
 					$('#nickname_check').css({
 						'color' : 'red',
 						'font-size' : '13px'
 					});
+				} else {
+					if (data == 0 && nickR.test($("#member_nickname").val())) {
+						$('#nickname_check').text('사용가능한 닉네임입니다.');
+						$('#nickname_check').css({
+							'color' : 'blue',
+							'font-size' : '13px'
+						});
+					} else {
+						$('#nickname_check').text(
+								'닉네임은 3~20자 이내 한글,영문,숫자만 사용가능합니다.');
+						$('#nickname_check').css({
+							'color' : 'red',
+							'font-size' : '13px'
+						});
+					}
+
 				}
-				
+
 			}
-			
-		}
-		
-		
-	})
-}
+
+		})
+	}
+	
+	//이메일 인증
+	
+	
 </script>
 </head>
 <body>
@@ -186,7 +222,7 @@ function nick_Chk(){
 					<div>
 						<label for=member_id>아이디</label><input type="text" id="member_id"
 							autocomplete="off" name="member_id" required="required"
-							title="아이디는 5~20자 이내 소문자,숫자만 사용가능합니다." /> <input type="button"
+							title="아이디는 5~20자 이내 소문자,숫자만 사용가능합니다." placeholder = "아이디 입력" /> <input type="button"
 							class="joinChkBtn" id="idChkBtn" value="중복확인" onclick="id_Chk();">
 						<div class="msg_check" id="id_check"></div>
 					</div>
@@ -194,26 +230,27 @@ function nick_Chk(){
 						<label for=member_pw>비밀번호</label><input type="password"
 							id="member_pw" autocomplete="off" name="member_pw"
 							required="required"
-							title="비밀번호는 8~15자 이내 문자, 특수문자, 숫자를 반드시 포함해야합니다." />
+							title="비밀번호는 8~15자 이내 문자, 특수문자, 숫자를 반드시 포함해야합니다." placeholder = "비밀번호 입력"/>
 						<div class="msg_check" id="pw_check"></div>
 					</div>
 					<div>
 						<label for=member_pwchk>비밀번호 확인</label><input type="password"
 							id="member_pwchk" name="member_pwchk" required="required"
-							title="비밀번호를 먼저 입력해주세요." onclick="disFunc();"/>
+							title="비밀번호를 먼저 입력해주세요." onclick="disFunc();" placeholder = "비밀번호 입력 확인" />
 						<div class="msg_check" id="pwchk_check"></div>
 					</div>
 					<div>
 						<label for=member_name>이름</label><input type="text"
 							id="member_name" name="member_name" required="required"
-							title="이름은 2~6자 이내 한글로만 가능합니다." />
+							title="이름은 2~6자 이내 한글로만 가능합니다." placeholder = "이름"/>
 						<div class="msg_check" id="name_check"></div>
 					</div>
 					<div>
 						<label for=member_nickname>닉네임</label> <input type="text"
 							id="member_nickname" name="member_nickname" required="required"
-							title="닉네임은 4~20자 이내 한글,소문자,숫자만 사용가능합니다." /> <input
-							type="button" class="joinChkBtn" value="중복확인" onclick="nick_Chk();">
+							title="닉네임은 4~20자 이내 한글,소문자,숫자만 사용가능합니다." placeholder = "닉네임"/> <input
+							type="button" class="joinChkBtn" value="중복확인"
+							onclick="nick_Chk();">
 						<div class="msg_check" id="nickname_check"></div>
 					</div>
 				</div>
@@ -248,7 +285,7 @@ function nick_Chk(){
 					<div>
 
 						<label for=member_phone>휴대폰번호</label><input type="text"
-							id="member_phone" placeholder="-생략하고 입력해주세요." name="member_phone"
+							id="member_phone" placeholder="- 생략하고 입력해주세요." name="member_phone"
 							required="required" />
 						<div class="msg_check" id="phone_check"></div>
 					</div>
@@ -257,6 +294,7 @@ function nick_Chk(){
 					<!-- <input value="Agree" type="checkbox" id="" name="Agree" /> Agree
 					to terms and conditions ( 회원가입 동의 ) <span> <br> -->
 					<input type="submit" value="Sign Up" id="confirm" class="goJoinBtn">
+					<input type="button" value="돌아가기" class="goJoinBtn" onclick="historyback();">
 					<!-- </span> -->
 				</div>
 			</form>
