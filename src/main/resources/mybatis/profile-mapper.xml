@@ -4,7 +4,8 @@
 	
 	<insert id="profileInsert" parameterType="ProfileDto">
 		INSERT INTO PROFILE
-		VALUES (#{member_id }, #{profile_savedname }, #{profile_realname }, SYSDATE, 'Y')
+		VALUES (#{member_id }, #{profile_savedname }, #{profile_realname }, 
+		#{profile_path}, SYSDATE)
 	</insert>
 	
 	<select id="profileList">

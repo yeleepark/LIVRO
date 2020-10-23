@@ -48,6 +48,8 @@
 						<p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
 						<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
 						<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p>
+<%-- 						<p>경로:${profiledto.profile_path }</p> --%>
+						<img src="file:///Users/seoyoon/Desktop/LIVRO/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LIVRO/resources/storage/${profiledtp.profile_savedname }">
 						<input type="file" value="프로필사진수정" onclick="location.href='profileUpdate.do'">	
 					</div>
 				</div>
