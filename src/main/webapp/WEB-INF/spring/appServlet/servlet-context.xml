@@ -34,8 +34,8 @@
     <beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
     	<beans:property name="host" value="stmp.gail.com"></beans:property>
     	<beans:property name="port" value="587"></beans:property> <!-- 465 or 25 -->
-    	<beans:property name="username" value="이메일@gmail.com"></beans:property>
-    	<beans:property name="passwork" value="비밀번호"></beans:property>
+    	<beans:property name="username" value="dywjdal1995@naver.com"></beans:property>
+    	<beans:property name="password" value="xptmxmqlqjs123!"></beans:property>
     	<beans:property name="defaultEncoding" value="utf-8"></beans:property>
     	<beans:property name="JavaMailProperties">
     		<beans:props>
