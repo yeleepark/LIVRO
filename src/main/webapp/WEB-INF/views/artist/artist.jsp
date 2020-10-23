@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +44,8 @@
 				</form:form>
 				
 				<audio src="${filepath }" controls></audio>
+				<audio src="C:\workspace\Final_Project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\LIVRO\resources\music7fa32f8d-52a2-4920-b83a-95f36c3365ae브라운 아이드 소울-04-정말 사랑했을까-192k.mp3" controls></audio>
+				<audio src="C:/workspace/Final_Project/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LIVRO/resources/music7fa32f8d-52a2-4920-b83a-95f36c3365ae브라운 아이드 소울-04-정말 사랑했을까-192k.mp3" controls></audio>
 				<input type="text" value="${filepath }">
 				
 				
