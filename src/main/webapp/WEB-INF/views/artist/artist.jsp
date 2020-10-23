@@ -32,18 +32,18 @@
 				<!-- 음원 업로드 공간 -->
 				<div>
 				<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
-					<input type="hidden" name="member_id" value="${logindto.member_id }">
 					file<br><!-- 파일 -->
 					<input type="file" name="music_file" /> 
 					<span style="color:red; font-weight: bold;"><form:errors path="music_file"/></span>
-					
 					<!-- 에러시 문자열 반환 -->
 					<input type="text" name="music_content" placeholder="설명문">
+					<input type="hidden" name="member_id" value="${logindto.member_id }">
 					<input type="submit" value="send">
 				</form:form>
 				</div>
 				
 				<br><br><br><br><br>
+				
 				<!-- 음원 출력 공간 -->
 				<div>
 					<div class="music-table">
@@ -54,6 +54,8 @@
 						<c:otherwise>
 							<c:forEach items="${musicdto }" var ="music">
 								<div>제목 : ${music.music_title }</div>
+								<div>설명 : ${music.music_content }</div>
+								<div>이름 : ${music_member_id }..출력이안돼요</div>
 							</c:forEach>
 						</c:otherwise>
 						</c:choose>

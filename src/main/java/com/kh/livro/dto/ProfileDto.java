@@ -9,22 +9,23 @@ public class ProfileDto {
 	private String member_id;
 	private String profile_savedname;
 	private String profile_realname;
+	private String profile_path;
 	private Date profile_regdate;
-	private String profile_delflag;
 	private MultipartFile profile;
 
 	public ProfileDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	};
-
-	public ProfileDto(String member_id, String profile_savedname, String profile_realname, Date profile_regdate,
-			String profile_delflag, MultipartFile profile) {
+	public ProfileDto(String member_id, String profile_savedname, String profile_realname, String profile_path,
+			Date profile_regdate, MultipartFile profile) {
 		super();
 		this.member_id = member_id;
 		this.profile_savedname = profile_savedname;
 		this.profile_realname = profile_realname;
+		this.profile_path = profile_path;
 		this.profile_regdate = profile_regdate;
-		this.profile_delflag = profile_delflag;
 		this.profile = profile;
 	}
 
@@ -52,20 +53,20 @@ public class ProfileDto {
 		this.profile_realname = profile_realname;
 	}
 
+	public String getProfile_path() {
+		return profile_path;
+	}
+
+	public void setProfile_path(String profile_path) {
+		this.profile_path = profile_path;
+	}
+
 	public Date getProfile_regdate() {
 		return profile_regdate;
 	}
 
 	public void setProfile_regdate(Date profile_regdate) {
 		this.profile_regdate = profile_regdate;
-	}
-
-	public String getProfile_delflag() {
-		return profile_delflag;
-	}
-
-	public void setProfile_delflag(String profile_delflag) {
-		this.profile_delflag = profile_delflag;
 	}
 
 	public MultipartFile getProfile() {
