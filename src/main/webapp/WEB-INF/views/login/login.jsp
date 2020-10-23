@@ -81,7 +81,8 @@
 					placeholder="&#xf2bd; Password">
 				<div id="logincheck"></div>
 				<input type="submit" value="Log In" id="goLoginBtn"
-					onclick="loginChk()"> <span> <a href="registForm.do">Don't
+					onclick="loginChk()"> 
+					<span> <a href="registForm.do">Don't
 						have an Account?</a> <a href="#">ID/PW찾기</a>
 				</span>
 			</form>
