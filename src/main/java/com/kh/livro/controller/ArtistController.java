@@ -18,9 +18,10 @@ public class ArtistController {
 	
 	@RequestMapping("/artist.do")
 	public String artist(Model model,String member_id) {
-
-		model.addAttribute("musicdto", musicbiz.selectList(member_id));
 		
+		System.out.println("아티스트컨트롤러 맴버아이디 출력 : "+member_id);
+		model.addAttribute("musicdto", musicbiz.selectList(member_id));
+		System.out.println("아티스트 컨트롤러 모델모델모델모델객체 : "+model);
 		return "artist/artist";
 	}
 

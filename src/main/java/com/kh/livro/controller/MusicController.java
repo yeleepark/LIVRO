@@ -117,18 +117,5 @@ public class MusicController {
 		return "redirect:artist.do?member_id="+member_id;
 	}
 	
-	@RequestMapping(value="artistwithid.do")
-	public String selectList(Model model, String member_id) {
-		
-		model.addAttribute("artistdto", member_id);
-		return "artist/goartistwithid";
-	}
-	
-	@RequestMapping(value="/musiclist.do")
-	public String selectOne(Model model, String member_id) {
-		model.addAttribute("musicdto", musicBiz.selectOne(member_id));
-		return "redirect:";
-	}
-	
 
 }
