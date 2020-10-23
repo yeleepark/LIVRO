@@ -16,8 +16,8 @@ public class MusicBizImpl implements MusicBiz {
 	private MusicDao musicDao;
 	
 	@Override
-	public List<MusicDto> selectList() {
-		return musicDao.selectList();
+	public List<MusicDto> selectList(String member_id) {
+		return musicDao.selectList(member_id);
 	}
 
 	@Override

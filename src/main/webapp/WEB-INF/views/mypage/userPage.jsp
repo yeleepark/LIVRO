@@ -32,7 +32,7 @@
 				<div class="tab-1-container">
 					<div class="tab-1-left">
 						<label for ="member_id">아이디</label>
-						<input type="text" name="member_id" value="${logindto.member_id }" disabled="disabled">
+						<input type="text" name="member_id" value="${logindto.member_id }" readonly="readonly">
 						<label for ="member_nickname">닉네임</label>
 						<input type="text" name="member_nickname" value="${logindto.member_id }">
 						<label for ="member_email">이메일</label>
@@ -66,8 +66,8 @@
 			<!-- 아티스트 채널 탭 -->
 			<div class="tab-content" id="tab-4">
 				<h2><i class="fas fa-sliders-h"></i> 아티스트 채널 개설</h2>
-				<div class="tab-4-container">	
-					<div class="tab-4-left">
+				<div class="tab-4-container">
+					<div class="uploadProfile">	
 						<label for ="member_id">아이디</label>
 						<input type="text" name="member_id" value="${logindto.member_id }" disabled="disabled">
 						<label for ="member_nickname">닉네임</label>
@@ -75,15 +75,14 @@
 						<input type="button" value="닉네임변경">
 						<label for ="member_email">이메일</label>
 						<input type="text" name="member_email" value="${logindto.member_email }" disabled="disabled">
+						<form method="post" enctype="multipart/form-data" action="profileUpload.do">
+							<input type="text" name="member_id" value="${logindto.member_id }">
+							<label for="profile">프로필 사진을 등록해주세요</label>
+							<input type="file" name="profile" required="required" id="profileImg">
+							<input type="submit" value="개설" id="submitBtn">
+						</form>
 					</div>
-					<div class="tab-4-right">
-					<form method="post" enctype="multipart/form-data" action="profileUpload.do">
-						<input type="text" name="member_id" value="${logindto.member_id }">
-						<label for="profile">프로필 사진을 등록해주세요</label>
-						<input type="file" name="profile" required="required">
-						<input type="submit" value="개설" id="submitBtn">
-					</form>
-					</div>
+					<div class="selectImg"><img src="" /></div>
 				</div>
 			</div>
 		</div>
@@ -102,6 +101,17 @@
 			});
 
 		})
+		
+		$("#profileImg").change(function(){
+			if(this.files && this.files[0]) {
+			    var reader = new FileReader;
+			    reader.onload = function(data) {
+			     	$(".selectImg img").attr("src", data.target.result).width(200);
+			     	$(".selectImg img").attr("src", data.target.result).height(200);
+		    	}
+		    reader.readAsDataURL(this.files[0]);
+		    }
+		});
 	</script>
 </body>
 </html>

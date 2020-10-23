@@ -6,19 +6,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.livro.biz.ArtistBiz;
+import com.kh.livro.biz.MusicBiz;
 import com.kh.livro.dto.MemberDto;
+import com.kh.livro.dto.MusicDto;
 
 @Controller
 public class ArtistController {
 	
 	@Autowired
-	private ArtistBiz artistBiz;
+	private MusicBiz musicbiz;
 	
 	@RequestMapping("/artist.do")
-	public String artist(Model model, String member_id) {
+	public String artist(Model model,String member_id) {
 		
-		MemberDto dto = artistBiz.selectArtist(member_id);
-		model.addAttribute("artistdto", dto);
+		model.addAttribute("musicdto", musicbiz.selectList(member_id));
 		
 		return "artist/artist";
 	}
