@@ -13,12 +13,16 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+
 <title>LIVRO-회원가입</title>
 <!-- <script type="text/javascript" src="resources/js/regist.js">
 
 </script> -->
+
+
 <script type="text/javascript">
 	//정규식
 	//모든 공백 체크 정규식
@@ -42,8 +46,10 @@
 
 	
 	$(document).ready(function() {
+		
+		
 		//비밀번호 확인 및 정규화
-		//비밀번호창과 비밀번호확인창에 둘다 입력을 했을 경우 실행되는 함수 :keyup()
+		//비밀번호창과 비밀번호확인창에 둘다 입력을 했을 경우(키보드에서 손을 뗐을때?) 실행되는 함수 :keyup()
 		$("#member_pw" && "#member_pwchk").keyup(function(){
 		 //if문에 사용할 비밀번호값을 변수에 저장해줌
 		 var memberpw = $("#member_pw").val().trim();
@@ -81,6 +87,7 @@
 		
 		 }); 
 	
+		//blur : 입력하고 다른 곳을 클릭했을 떄 실행되는 함수
 		$("#member_pwchk").blur(function(){
 			if($("#member_pw").val() != $("#member_pwchk").val()){
 				if($("#member_pwchk").val() != ''){
@@ -96,6 +103,7 @@
 		})
 	
 		//이름 정규식 확인 
+		//keydown : 입력하고 나서!
 		$("#member_name").keydown(function() {
 			var member_name = $("#member_name").val().trim();
 			if (nameR.test(member_name) == false) {
@@ -112,7 +120,7 @@
 		//휴대폰번호 정규식 확인
 			$("#member_phone").keydown(function() {
 			var member_phone = $("#member_phone").val().trim();
-			console.log(phoneR.test(member_phone) );
+			console.log(phoneR.test(member_phone));
 			 if(phoneR.test(member_phone) == false){
 				   $("#phone_check").text('휴대폰번호를 다시 입력해주세요.');
 		            $('#phone_check').css({
@@ -123,6 +131,33 @@
 				 $("#phone_check").text('');
 			 }
 		})
+		
+		//이메일 정규식
+		$("#emailChkBtn").hide(); //이메일 정규식을 만족했을 때 버튼 활성화 시킬 것!
+		$("#member_email").keydown(function(){
+			var member_email = $("#member_email").val().trim();
+			
+			console.log(mailR.test(member_email));
+			if(mailR.test(member_email) == false){
+				   $("#email_check").text('올바른 이메일 형식으로 입력해주세요.');
+		            $('#email_check').css({
+		               'color' : 'red',
+		               'font-size' : '13px'
+		            });
+			 }else{
+				 $("#email_check").text('');
+				$("#emailChkBtn").show();
+				 $("#email_check").append("<label for=codechk>인증번호</label><input type='text'/>")
+				 .css({ 'color' : 'black',
+		               'font-size' : '13px'});
+			 }
+			
+		})
+		  
+		
+		
+
+
 	});
 
 	//비밀번호 먼저 입력 후, 비밀번호 확인 창으로 넘어가게끔
@@ -207,9 +242,56 @@
 
 		})
 	}
-	
 	//이메일 인증
 	
+	//우편번호찾기
+	 function execPostCode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("sample6_extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('member_postcode').value = data.zonecode;
+                document.getElementById("member_addr").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("member_addrdetail").focus();
+            }
+        }).open();
+    } 
 	
 </script>
 </head>
@@ -222,33 +304,36 @@
 					<div>
 						<label for=member_id>아이디</label><input type="text" id="member_id"
 							autocomplete="off" name="member_id" required="required"
-							title="아이디는 5~20자 이내 소문자,숫자만 사용가능합니다." placeholder = "아이디 입력" /> <input type="button"
-							class="joinChkBtn" id="idChkBtn" value="중복확인" onclick="id_Chk();">
+							title="아이디는 5~20자 이내 소문자,숫자만 사용가능합니다." placeholder="아이디 입력" /> <input
+							type="button" class="joinChkBtn" id="idChkBtn" value="중복확인"
+							onclick="id_Chk();">
 						<div class="msg_check" id="id_check"></div>
 					</div>
 					<div>
 						<label for=member_pw>비밀번호</label><input type="password"
 							id="member_pw" autocomplete="off" name="member_pw"
 							required="required"
-							title="비밀번호는 8~15자 이내 문자, 특수문자, 숫자를 반드시 포함해야합니다." placeholder = "비밀번호 입력"/>
+							title="비밀번호는 8~15자 이내 문자, 특수문자, 숫자를 반드시 포함해야합니다."
+							placeholder="비밀번호 입력" />
 						<div class="msg_check" id="pw_check"></div>
 					</div>
 					<div>
 						<label for=member_pwchk>비밀번호 확인</label><input type="password"
 							id="member_pwchk" name="member_pwchk" required="required"
-							title="비밀번호를 먼저 입력해주세요." onclick="disFunc();" placeholder = "비밀번호 입력 확인" />
+							title="비밀번호를 먼저 입력해주세요." onclick="disFunc();"
+							placeholder="비밀번호 입력 확인" />
 						<div class="msg_check" id="pwchk_check"></div>
 					</div>
 					<div>
 						<label for=member_name>이름</label><input type="text"
 							id="member_name" name="member_name" required="required"
-							title="이름은 2~6자 이내 한글로만 가능합니다." placeholder = "이름"/>
+							title="이름은 2~6자 이내 한글로만 가능합니다." placeholder="이름" />
 						<div class="msg_check" id="name_check"></div>
 					</div>
 					<div>
 						<label for=member_nickname>닉네임</label> <input type="text"
 							id="member_nickname" name="member_nickname" required="required"
-							title="닉네임은 4~20자 이내 한글,소문자,숫자만 사용가능합니다." placeholder = "닉네임"/> <input
+							title="닉네임은 4~20자 이내 한글,소문자,숫자만 사용가능합니다." placeholder="닉네임" /> <input
 							type="button" class="joinChkBtn" value="중복확인"
 							onclick="nick_Chk();">
 						<div class="msg_check" id="nickname_check"></div>
@@ -258,7 +343,7 @@
 
 					<div>
 						<label for="member_addr">주소</label> <input placeholder="우편번호"
-							type="text" readonly="readonly" id="member_addr"
+							type="text" readonly="readonly" id="member_postcode"
 							required="required">
 						<button type="button" class="joinChkBtn" onclick="execPostCode();">
 							<i class="fa fa-search"></i> 우편번호 찾기
@@ -269,7 +354,7 @@
 							readonly="readonly" required="required" />
 					</div>
 					<div>
-						<input placeholder="상세주소" type="text" id="member_detailaddress"
+						<input placeholder="상세주소" type="text" id="member_addrdetail"
 							name="member_addr" required="required" />
 					</div>
 
@@ -279,14 +364,14 @@
 						<label for=member_email>이메일</label> <input type="text"
 							id="member_email" placeholder="ex)livro@naver.com"
 							name="member_email" required="required" /> <input type="button"
-							class="joinChkBtn" value="이메일인증">
+							class="joinChkBtn" value="이메일인증" id="emailChkBtn">
 						<div class="msg_check" id="email_check"></div>
 					</div>
 					<div>
 
 						<label for=member_phone>휴대폰번호</label><input type="text"
-							id="member_phone" placeholder="- 생략하고 입력해주세요." name="member_phone"
-							required="required" />
+							id="member_phone" placeholder="- 생략하고 입력해주세요."
+							name="member_phone" required="required" />
 						<div class="msg_check" id="phone_check"></div>
 					</div>
 
@@ -294,8 +379,10 @@
 					<!-- <input value="Agree" type="checkbox" id="" name="Agree" /> Agree
 					to terms and conditions ( 회원가입 동의 ) <span> <br> -->
 					<input type="submit" value="Sign Up" id="confirm" class="goJoinBtn">
-					<input type="button" value="돌아가기" class="goJoinBtn" onclick="historyback();">
+					<input type="button" value="홈으로" class="goJoinBtn"
+						onclick="historyback();">
 					<!-- </span> -->
+
 				</div>
 			</form>
 		</div>
