@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
@@ -26,7 +27,7 @@ public class MusicController {
 	@Autowired
 	private MusicBiz musicBiz;
 	
-	@RequestMapping(value="upload.do")//upload리턴 받아오면 upload.jsp
+	@RequestMapping(value="upload.do", method = RequestMethod.POST)//upload리턴 받아오면 upload.jsp
 	public String fileUpload(HttpServletRequest request, Model model, MusicDto musicDto, String member_id, String music_content) {
 			
 		ModelAndView mav = new ModelAndView();
@@ -57,11 +58,11 @@ public class MusicController {
 			//프로젝트 내부에 파일 업로드하는 경로  
 			String path = WebUtils.getRealPath(request.getSession().getServletContext() , "/resources/music");
 			
-			model.addAttribute("filepath", path+music_savename);
+			//model.addAttribute("filepath", path+music_savename);
 			//model.addAttribute("artistdto", member_id);
 			
-			mav.addObject("filepath", path+"/"+music_savename);
-			mav.setViewName("artist");
+			mav.addObject("filepath", path+"\\"+music_savename);
+			mav.setViewName("redirect:artist.do?member_id"+member_id);
 			//현재 사용중인 프로젝트 경로가 어디인가
 			System.out.println("중요중요중요중요"+"filepath"+ model);
 			System.out.println("업로드될 실제 경로 : "+ path);
@@ -104,9 +105,10 @@ public class MusicController {
 		musicDto.setMusic_realname(music_realname);
 		musicBiz.insert(musicDto);
 		
+		System.out.println("모델앤뷰뷰ㅠㅠ"+mav);
 		
-		return "redirect:artistwithid.do?member_id="+member_id;
-	//	return "artist/goartistwithid";
+		
+		return "redirect:artist.do?member_id="+member_id;
 	}
 	
 	@RequestMapping(value="artistwithid.do")
