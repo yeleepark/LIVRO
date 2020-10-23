@@ -3,23 +3,19 @@
 <mapper namespace="music">
 
 	<select id="selectList" resultType="MusicDto">
-		SELECT MUSIC_NO, MEMBER_ID, MUSIC_TITLE,
-		MUSIC_CONTENT,
-		MUSIC_SAVENAME, MUSIC_REALNAME, MUSIC_DATE
+		SELECT MUSIC_NO, MEMBER_ID, MUSIC_TITLE, MUSIC_CONTENT, MUSIC_SAVENAME, MUSIC_REALNAME, MUSIC_DATE
 		FROM MUSIC
 		WHERE MEMBER_ID = #{member_id}
 	</select>
 
 	<insert id="insert">
 		INSERT INTO MUSIC 
-		VALUES(MUSIC_NO_SEQ.NEXTVAL ,#{member_id}, #{music_title}, #{music_content}, #{music_savename}, #{music_realname}, SYSDATE)
+		VALUES(MUSIC_NO_SEQ.NEXTVAL, #{member_id}, #{music_title}, #{music_content}, #{music_savename}, #{music_realname}, SYSDATE)
 	</insert>
 
 	<update id="update">
 		UPDATE MUSIC
-		SET MUSIC_TITLE = #{music_title} ,
-		MUSIC_CONTENT = #{music_content} ,
-		MUSIC_SAVENAME = #{music_savename}
+		SET MUSIC_TITLE = #{music_title}, MUSIC_CONTENT = #{music_content}, MUSIC_SAVENAME = #{music_savename}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 
