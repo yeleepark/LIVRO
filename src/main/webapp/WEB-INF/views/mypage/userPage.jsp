@@ -48,8 +48,8 @@
 						<p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
 						<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
 						<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p>
-<%-- 						<p>경로:${profiledto.profile_path }</p> --%>
-						<img src="file:///Users/seoyoon/Desktop/LIVRO/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LIVRO/resources/storage/${profiledtp.profile_savedname }">
+						<%-- <p>${profiledto.profile_profile_path }</p> --%>
+						<%-- <img src="/var/lib/tomcat9/webapps/livro/profile/${profiledto.profile_path }"> --%>
 						<input type="file" value="프로필사진수정" onclick="location.href='profileUpdate.do'">	
 					</div>
 				</div>
@@ -70,6 +70,7 @@
 				<h2><i class="fas fa-sliders-h"></i> 아티스트 채널 개설</h2>
 				<div class="tab-4-container">
 					<div class="uploadProfile">	
+					<form action="">
 						<label for ="member_id">아이디</label>
 						<input type="text" name="member_id" value="${logindto.member_id }" disabled="disabled">
 						<label for ="member_nickname">닉네임</label>
@@ -77,14 +78,14 @@
 						<input type="button" value="닉네임변경">
 						<label for ="member_email">이메일</label>
 						<input type="text" name="member_email" value="${logindto.member_email }" disabled="disabled">
-						<form method="post" enctype="multipart/form-data" action="profileUpload.do">
-							<input type="text" name="member_id" value="${logindto.member_id }">
-							<label for="profile">프로필 사진을 등록해주세요</label>
-							<input type="file" name="profile" required="required" id="profileImg">
-							<input type="submit" value="개설" id="submitBtn">
-						</form>
+						<input type="submit" value="개설하기">
+					</form>
+					<input type="button" value="프로필 등록하기" onclick="insertProfile();">
+					<p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
+					<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
+					<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p>
+					<input type="button" value="수정하기" onclick="updateProfile();">
 					</div>
-					<div class="selectImg"><img src="" /></div>
 				</div>
 			</div>
 		</div>
@@ -104,16 +105,24 @@
 
 		})
 		
-		$("#profileImg").change(function(){
-			if(this.files && this.files[0]) {
-			    var reader = new FileReader;
-			    reader.onload = function(data) {
-			     	$(".selectImg img").attr("src", data.target.result).width(200);
-			     	$(".selectImg img").attr("src", data.target.result).height(200);
-		    	}
-		    reader.readAsDataURL(this.files[0]);
-		    }
-		});
+		   function insertProfile() {
+            // window.name = "부모창 이름";            
+            window.name = "userPage.do"; //필요한건가?
+            
+            // window.open("자식창 이름", "불러올 자식 창의 닉네임", "팝업창 옵션");
+            window.open("profileForm.do", "insert",
+                    "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
+        	}
+		
+			function updateProfile(){
+				// window.name = "부모창 이름";            
+	            window.name = "userPage.do"; //필요한건가?
+	            
+	            // window.open("자식창 이름", "불러올 자식 창의 닉네임", "팝업창 옵션");
+	            window.open("updateForm.do", "insert",
+	                    "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
+			}
+
 	</script>
 </body>
 </html>

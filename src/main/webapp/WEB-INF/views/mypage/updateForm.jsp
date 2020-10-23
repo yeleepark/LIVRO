@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="resources/css/profileForm.css">
+<link rel="stylesheet" href="resources/css/updateForm.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" enctype="multipart/form-data" action="profileUpload.do" name="profileForm">
+	<form method="post" enctype="multipart/form-data" action="profileUpdate.do" name="updateForm">
 		<input type="hidden" name="member_id" value="${logindto.member_id }">
 		<label for="profile">프로필 사진을 등록해주세요</label> 
 		<input type="file" name="profile" required="required" id="profileImg"> 
@@ -23,8 +23,8 @@
 window.onload=function(){
 	  var pop_btn = document.getElementById('submitBtn');
 	  pop_btn.onclick=function(){
-	   document.profileForm.target= opener.name; //호출하고자하는 부모창의 이름
-	   document.profileForm.submit(); // 폼 전송
+	   document.updateForm.target= opener.name; //호출하고자하는 부모창의 이름
+	   document.updateForm.submit(); // 폼 전송
 	   self.close(); //창 닫기 
 	  }
 	 };

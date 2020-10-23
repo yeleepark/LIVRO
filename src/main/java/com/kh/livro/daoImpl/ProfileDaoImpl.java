@@ -29,11 +29,11 @@ public class ProfileDaoImpl implements ProfileDao {
 	}
 
 	@Override
-	public int profileUpdate(String member_id) {
+	public int profileUpdate(ProfileDto dto) {
 		int res = 0;
 				
 		try {
-			res = sqlSession.update(NAMESPACE+"profileUpdate", member_id);
+			res = sqlSession.update(NAMESPACE+"profileUpdate", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

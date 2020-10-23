@@ -9,7 +9,7 @@ public interface ProfileDao {
 	String NAMESPACE = "profile.";
 	
 	public int profileInsert(ProfileDto dto);
-	public int profileUpdate(String member_id);
+	public int profileUpdate(ProfileDto dto);
 	public List<ProfileDto> prifileList(String member_id);
 
 }

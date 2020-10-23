@@ -21,8 +21,8 @@ public class ProfileBizImpl implements ProfileBiz {
 	}
 
 	@Override
-	public int profileUpdate(String member_id) {
-		return profileDao.profileUpdate(member_id);
+	public int profileUpdate(ProfileDto dto) {
+		return profileDao.profileUpdate(dto);
 	}
 
 	@Override
