@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="music">
 
-	<select id="selectList">
+	<select id="selectList" resultType="MusicDto">
 		SELECT MUSIC_NO, MEMBER_ID, MUSIC_TITLE,
 		MUSIC_CONTENT,
 		MUSIC_SAVENAME, MUSIC_REALNAME, MUSIC_DATE

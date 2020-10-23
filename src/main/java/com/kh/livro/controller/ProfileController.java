@@ -117,7 +117,7 @@ public class ProfileController {
 		profileBiz.profileInsert(profiledto); //db에 값 저장
 
 		
-		return "redirect:mypageIndex.do?member_id=" + member_id;
+		return "redirect:mypageIndex.do";
 	}
 	
 

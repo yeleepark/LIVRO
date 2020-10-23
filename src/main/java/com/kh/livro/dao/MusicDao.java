@@ -7,7 +7,7 @@ import com.kh.livro.dto.MusicDto;
 public interface MusicDao {
 
 	public String NAMESPACE = "music.";
-	public List<MusicDto> selectList();
+	public List<MusicDto> selectList(String member_id);
 	public MusicDto selectOne(String member_id);
 	public int insert(MusicDto dto);
 	public int update(MusicDto dto);

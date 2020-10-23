@@ -91,16 +91,30 @@ li{
 	display: block;
 }
 
-#tab-4 input[type="text"]{
-	
-}
-
 #tab-4 input[type="submit"]{
 	display : block;
 }
 
-#submitBtn{
+.tab-4-container{
 	width : 100%;
+}
+
+#tab-4 .uploadProfile{
+	width : 400px;
+	height : 100%;
+	float : left;
+}
+
+#tab-4 .selectImg{
+	width : 200px;
+	height : 200px;
+	border : 1px solid black;
+	float : right;
+	box-sizing: content-box;
+}
+
+
+#submitBtn{
 	padding : 10px 20px;
 	background: transparent;
 	border : 1px solid black;
@@ -111,18 +125,3 @@ li{
 	margin-bottom : 20px;
 }
 
-.tab-4-container{
-	display: flex;
-}
-
-.tab-4-left{
-	flex : 1;
-}
-
-.tab-4-right{
-	flex : 1
-}
-
-#tab-4 input[type="submit"]{
-	margin : 0 auto;
-}

@@ -29,10 +29,10 @@
 			
 			<!-- 음원 -->
 			<div id="tab-1" class="tab-content current">
-				<!-- 현승 작업 여기서 -->
-				
+				<!-- 음원 업로드 공간 -->
+				<div>
 				<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
-					<input type="hidden" name="member_id" value="${artistdto.member_id }">
+					<input type="hidden" name="member_id" value="${logindto.member_id }">
 					file<br><!-- 파일 -->
 					<input type="file" name="music_file" /> 
 					<span style="color:red; font-weight: bold;"><form:errors path="music_file"/></span>
@@ -40,14 +40,25 @@
 					<!-- 에러시 문자열 반환 -->
 					<input type="text" name="music_content" placeholder="설명문">
 					<input type="submit" value="send">
-		
 				</form:form>
+				</div>
 				
-				<audio src="${filepath }" controls></audio>
-				<audio src="C:\workspace\Final_Project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\LIVRO\resources\music7fa32f8d-52a2-4920-b83a-95f36c3365ae브라운 아이드 소울-04-정말 사랑했을까-192k.mp3" controls></audio>
-				<audio src="C:/workspace/Final_Project/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LIVRO/resources/music7fa32f8d-52a2-4920-b83a-95f36c3365ae브라운 아이드 소울-04-정말 사랑했을까-192k.mp3" controls></audio>
-				<input type="text" value="${filepath }">
-				
+				<br><br><br><br><br>
+				<!-- 음원 출력 공간 -->
+				<div>
+					<div class="music-table">
+						<c:choose>
+						<c:when test="${empty musicdto }">
+							<p>업로드된 음원이 없습니다</p>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${musicdto }" var ="music">
+								<div>제목 : ${music.music_title }</div>
+							</c:forEach>
+						</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
 				
 			</div>
 			<!-- 음원 -->
@@ -66,7 +77,7 @@
 		<div class="right-wrapper">
 			<div id="artist-profile"></div>
 			<div id="artist-desc">
-				<p>${artistdto.member_nickname }</p>
+				<p>닉네임 출력 해야됨,,</p>
 				<input type="button" value="팔로우">
 			</div>
 		</div>

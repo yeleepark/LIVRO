@@ -9,6 +9,8 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,9 +29,12 @@ public class MusicController {
 	@Autowired
 	private MusicBiz musicBiz;
 	
+	private Logger logger = LoggerFactory.getLogger(MusicController.class);
+	
 	@RequestMapping(value="upload.do", method = RequestMethod.POST)//upload리턴 받아오면 upload.jsp
 	public String fileUpload(HttpServletRequest request, Model model, MusicDto musicDto, String member_id, String music_content) {
 			
+		logger.info("뮤직컨트롤러 " + member_id);
 		ModelAndView mav = new ModelAndView();
 		
 		MultipartFile music = musicDto.getMusic_file();	//업로드된 멀티파트객체(파일)을 변수에 저장
@@ -63,6 +68,7 @@ public class MusicController {
 			
 			mav.addObject("filepath", path+"\\"+music_savename);
 			mav.setViewName("redirect:artist.do?member_id"+member_id);
+			
 			//현재 사용중인 프로젝트 경로가 어디인가
 			System.out.println("중요중요중요중요"+"filepath"+ model);
 			System.out.println("업로드될 실제 경로 : "+ path);
@@ -118,6 +124,11 @@ public class MusicController {
 		return "artist/goartistwithid";
 	}
 	
+	@RequestMapping(value="/musiclist.do")
+	public String selectOne(Model model, String member_id) {
+		model.addAttribute("musicdto", musicBiz.selectOne(member_id));
+		return "redirect:";
+	}
 	
 
 }
