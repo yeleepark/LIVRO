@@ -16,15 +16,7 @@ public class MusicBizImpl implements MusicBiz {
 	@Autowired
 	private MusicDao musicDao;
 	
-	@Override
-	public List<MusicDto> selectList(String member_id) {
-		return musicDao.selectList(member_id);
-	}
-
-	@Override
-	public MusicDto selectOne(String member_id) {
-		return musicDao.selectOne(member_id);
-	}
+	
 
 	@Override
 	public int insert(MusicDto dto) {

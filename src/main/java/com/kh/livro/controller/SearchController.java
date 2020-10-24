@@ -39,4 +39,11 @@ public class SearchController {
 		return "search/search_list";
 	}
 	
+	@RequestMapping("/artist.do")
+	public String artist(Model model,String member_id) {
+		model.addAttribute("musicdto", searchbiz.selectList(member_id));
+		model.addAttribute("musicnickdto", searchbiz.selectOne(member_id));
+		return "artist/artist";
+	}
+	
 }

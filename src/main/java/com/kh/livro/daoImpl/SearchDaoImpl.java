@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.livro.dao.SearchDao;
 import com.kh.livro.dto.BroadcastDto;
 import com.kh.livro.dto.MemberDto;
+import com.kh.livro.dto.MusicDto;
 
 @Repository
 public class SearchDaoImpl implements SearchDao {
@@ -53,6 +54,28 @@ public class SearchDaoImpl implements SearchDao {
 			logger.info("[MemberList ERROR]");
 		}
 		return memberlist;
+	}
+	
+	@Override
+	public List<MusicDto> selectList(String member_id) {
+		List<MusicDto> list = new ArrayList<MusicDto>();
+		try {
+			list = sqlSession.selectList(NAMESPACE+"selectList",member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public MusicDto selectOne(String member_id) {
+		MusicDto dto = new MusicDto();
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne",member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 
 }
