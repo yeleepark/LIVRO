@@ -84,10 +84,7 @@
 			<div id="artist-profile"></div>
 			<div id="artist-desc">
 				<p>
-					<c:forEach items="${musicdto }" var ="musicdto" begin="0" end="0">
-						<div>${musicdto.member_nickname}</div>
-					</c:forEach>
-					${musicnickdto.member_nickname }
+						${musicnickdto.member_nickname }
 				</p>
 				<input type="button" value="팔로우">
 			</div>
