@@ -20,6 +20,13 @@ public class ArtistController {
 	public String channelForm() {
 		return "artist/channel";
 	}
+	
+	@RequestMapping("/artist.do")
+	public String artist(Model model,String member_id) {
+		model.addAttribute("musicdto", artistBiz.selectList(member_id));
+		model.addAttribute("musicnickdto", artistBiz.selectOne(member_id));
+		return "artist/artist";
+	}
 
 	
 }

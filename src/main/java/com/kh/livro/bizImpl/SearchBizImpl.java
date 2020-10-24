@@ -29,14 +29,5 @@ public class SearchBizImpl implements SearchBiz {
 		return searchdao.MemberList(keyword);
 	}
 	
-	@Override
-	public List<MusicDto> selectList(String member_id) {
-		return searchdao.selectList(member_id);
-	}
-
-	@Override
-	public MusicDto selectOne(String member_id) {
-		return searchdao.selectOne(member_id);
-	}
-
+	
 }

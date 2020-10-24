@@ -49,14 +49,14 @@
 				<!-- 음원 출력 공간 -->
 				<div>
 					<div class="music-table">
+						<audio src="resources/audio/브라운 아이드 소울-04-정말 사랑했을까-192k.mp3" controls="controls"></audio><br>
 						<c:choose>
 						<c:when test="${empty musicdto }">
 							<p>업로드된 음원이 없습니다</p>
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${musicdto }" var ="musicdto">
-								<audio src="resources/audio/브라운 아이드 소울-04-정말 사랑했을까-192k.mp3" controls="controls"></audio>
-								<audio src="C:\workspace\Final_Project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\LIVRO\resources\music\21e7c44c-a086-4592-98f1-4e14e1521a22브라운 아이드 소울-04-정말 사랑했을까-192k.mp3	" controls="controls"></audio>
+								<audio src="/LIVRO/resources/music/21e7c44c-a086-4592-98f1-4e14e1521a22브라운 아이드 소울-04-정말 사랑했을까-192k.mp3" controls></audio>
 									${musicdto.music_title }
 									${musicdto.music_content }
 								<br>
