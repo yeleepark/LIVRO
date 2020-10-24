@@ -73,7 +73,22 @@
 			
 			
 			<div id="tab-2" class="tab-content">
-				응원
+				<div id="supportTable">
+					<c:choose>
+					<c:when test="${empty supportdto }">
+						<div class="rows"><span>작성된 글이 없습니다</span></div>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${supportdto }" var="support">
+						<div class="rows">
+							<p>${supportdto.support_title }</p>
+							<p>${supportdto.support_content }</p>
+							<p>${supportdto.support_regdate }</p>
+						</div>
+						</c:forEach>
+					</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 			
 			<div id="tab-3" class="tab-content">

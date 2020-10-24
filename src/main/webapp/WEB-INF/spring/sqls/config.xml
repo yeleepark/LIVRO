@@ -7,6 +7,7 @@
 		<typeAlias type="com.kh.livro.dto.NoticeDto" alias="NoticeDto"/>
 		<typeAlias type="com.kh.livro.dto.ProfileDto" alias="ProfileDto"/>
 		<typeAlias type="com.kh.livro.dto.MusicDto" alias="MusicDto"/>
+		<typeAlias type="com.kh.livro.dto.SupportDto" alias="SupportDto"/>
 	</typeAliases>
 	
 	<mappers>

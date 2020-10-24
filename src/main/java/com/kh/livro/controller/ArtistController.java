@@ -16,15 +16,12 @@ public class ArtistController {
 	@Autowired
 	private ArtistBiz artistBiz;
 	
-	@RequestMapping("/channelForm.do")
-	public String channelForm() {
-		return "artist/channel";
-	}
-	
 	@RequestMapping("/artist.do")
 	public String artist(Model model,String member_id) {
 		model.addAttribute("musicdto", artistBiz.selectList(member_id));
 		model.addAttribute("musicnickdto", artistBiz.selectOne(member_id));
+		model.addAttribute("supportdto", artistBiz.supportList(member_id));
+		
 		return "artist/artist";
 	}
 
