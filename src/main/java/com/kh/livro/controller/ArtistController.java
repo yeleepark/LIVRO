@@ -14,14 +14,7 @@ import com.kh.livro.dto.MusicDto;
 public class ArtistController {
 	
 	@Autowired
-	private MusicBiz musicbiz;
-	
-	@RequestMapping("/artist.do")
-	public String artist(Model model,String member_id) {
-		model.addAttribute("musicdto", musicbiz.selectList(member_id));
-		model.addAttribute("musicnickdto", musicbiz.selectOne(member_id));
-		return "artist/artist";
-	}
+	private ArtistBiz artistBiz;
 	
 	@RequestMapping("/channelForm.do")
 	public String channelForm() {

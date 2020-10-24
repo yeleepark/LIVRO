@@ -14,4 +14,21 @@
 		WHERE MEMBER_NICKNAME LIKE '%'||#{keyword}||'%'
 		ORDER BY MEMBER_NO
 	</select>
+	
+	
+	<!-- 아티스트 페이지 이동 -->
+	<select id="selectList" resultType="MusicDto">
+		SELECT MU.MUSIC_NO, MU.MEMBER_ID, ME.MEMBER_NICKNAME, MU.MUSIC_TITLE, MU.MUSIC_CONTENT, MU.MUSIC_SAVENAME, MU.MUSIC_REALNAME, MU.MUSIC_DATE
+		FROM MUSIC MU
+		JOIN MEMBER ME
+		ON MU.MEMBER_ID = ME.MEMBER_ID
+		WHERE MU.MEMBER_ID = #{member_id} 
+	</select>
+	
+	<select id="selectOne" resultType="MusicDto">
+		SELECT MEMBER_NICKNAME
+		FROM MEMBER ME
+		WHERE MEMBER_ID = #{member_id} 
+	</select>
+	<!-- 아티스트 페이지 이동 -->
 </mapper>

@@ -17,27 +17,7 @@ public class MusicDaoImpl implements MusicDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	@Override
-	public List<MusicDto> selectList(String member_id) {
-		List<MusicDto> list = new ArrayList<MusicDto>();
-		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList",member_id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-
-	@Override
-	public MusicDto selectOne(String member_id) {
-		MusicDto dto = new MusicDto();
-		try {
-			dto = sqlSession.selectOne(NAMESPACE+"selectOne",member_id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return dto;
-	}
+	
 
 	@Override
 	public int insert(MusicDto dto) {
