@@ -10,6 +10,7 @@ public interface ProfileDao {
 	
 	public int profileInsert(ProfileDto dto);
 	public int profileUpdate(ProfileDto dto);
+	public int roleUpdate(String member_id);
 	public List<ProfileDto> prifileList(String member_id);
 
 }
