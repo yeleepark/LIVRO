@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.kh.livro.biz.MusicBiz;
@@ -35,8 +35,8 @@ public class MusicController {
 	public String fileUpload(HttpServletRequest request, Model model, MusicDto musicDto, String member_id, String music_content) {
 			
 		logger.info("뮤직컨트롤러 " + member_id);
-		ModelAndView mav = new ModelAndView();
-		
+		System.out.println("뮤직디티오 겟맴버 아이디"+musicDto.getMember_id());
+		System.out.println("ㅇ니링날ㅇ널"+musicDto.getMember_nickname());
 		MultipartFile music = musicDto.getMusic_file();	//업로드된 멀티파트객체(파일)을 변수에 저장
 		
 		
@@ -65,9 +65,6 @@ public class MusicController {
 			
 			//model.addAttribute("filepath", path+music_savename);
 			//model.addAttribute("artistdto", member_id);
-			
-			mav.addObject("filepath", path+"\\"+music_savename);
-			mav.setViewName("redirect:artist.do?member_id"+member_id);
 			
 			//현재 사용중인 프로젝트 경로가 어디인가
 			System.out.println("중요중요중요중요"+"filepath"+ model);
@@ -105,14 +102,12 @@ public class MusicController {
 			}
 		}
 		musicDto.setMember_id(member_id);
+		musicDto.setMember_nickname(musicDto.getMember_nickname());
 		musicDto.setMusic_title(music_title);
 		musicDto.setMusic_content(music_content);
 		musicDto.setMusic_savename(music_savename);
 		musicDto.setMusic_realname(music_realname);
 		musicBiz.insert(musicDto);
-		
-		System.out.println("모델앤뷰뷰ㅠㅠ"+mav);
-		
 		
 		return "redirect:artist.do?member_id="+member_id;
 	}
