@@ -33,6 +33,8 @@
 				<div>
 				<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
 					<input type="hidden" name="member_id" value="${logindto.member_id }">
+					<input type="hidden" name="member_nickname" value="${logindto.member_nickname }">
+					
 					file<br><!-- 파일 -->
 					<input type="file" name="music_file" /> 
 					<span style="color:red; font-weight: bold;"><form:errors path="music_file"/></span>
@@ -53,8 +55,11 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${musicdto }" var ="musicdto">
-								<div>제목 : ${musicdto.music_title }</div>
-								<div>이름1 : ${musicdto.member_id }</div>
+								<audio src="resources/audio/브라운 아이드 소울-04-정말 사랑했을까-192k.mp3" controls="controls"></audio>
+								<iframe src="C:\workspace\Final_Project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\LIVRO\resources\music\21e7c44c-a086-4592-98f1-4e14e1521a22브라운 아이드 소울-04-정말 사랑했을까-192k.mp3	"></iframe>
+									${musicdto.music_title }
+									${musicdto.music_content }
+								<br>
 							</c:forEach>
 						</c:otherwise>
 						</c:choose>
@@ -79,16 +84,10 @@
 			<div id="artist-profile"></div>
 			<div id="artist-desc">
 				<p>
-					<c:choose>
-						<c:when test="${empty musicdto }">
-							<p>업로드된 음원이 없습니다</p>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${musicdto }" var ="musicdto">
-								<div>제목 : ${musicdto.member_id}</div>
-							</c:forEach>
-						</c:otherwise>
-						</c:choose>
+					<c:forEach items="${musicdto }" var ="musicdto" begin="0" end="0">
+						<div>${musicdto.member_nickname}</div>
+					</c:forEach>
+					${musicnickdto.member_nickname }
 				</p>
 				<input type="button" value="팔로우">
 			</div>
