@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
 import com.kh.livro.biz.ProfileBiz;
+import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.ProfileDto;
 
 @Controller
@@ -39,7 +40,7 @@ public class ProfileController {
 	
 	//프로필 사진 업로드	
 	@RequestMapping(value="/profileUpload.do", method =  RequestMethod.POST)
-	public String profileUpload(HttpServletRequest request, ProfileDto profiledto, String member_id) {
+	public String profileUpload(HttpSession session, HttpServletRequest request, ProfileDto profiledto, String member_id) {
 		
 		logger.info("프로필 업로드 컨트롤러");
 		
@@ -71,12 +72,13 @@ public class ProfileController {
 			// Session에 담겨있는 객체들을 보다 짧은 코드로 넣고 빼고 할수 있으며 세션이나 쿠키 객체를 받아올수 있다
 			// request.getSession().getServletContext() : 해당 프로젝트의 경로? 파일업로드의 절대경로
 			
-//			profile_path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
-			HttpSession session = request.getSession();
+			profile_path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
+			session = request.getSession();
 			String root_path = session.getServletContext().getRealPath("/");
 			System.out.println("root__________path" + root_path);
 			profile_path = root_path + "resources/storage";
-//			profile_path = "/var/lib/tomcat9/webapps/livro/profile";
+//			profile_path = "var/lib/tomcat9/storage";
+			///var/lib/tomcat9/webapps/LIVRO
 
 			logger.info("실제 업로드 될 경로 : " + profile_path);
 
@@ -132,6 +134,10 @@ public class ProfileController {
 		
 		profileBiz.profileInsert(profiledto); //db에 저장
 		profileBiz.roleUpdate(member_id); // 멤버롤 변경
+		
+		//변경된 값 세션에 다시 담기
+		MemberDto res = profileBiz.updateSession(member_id);
+		session.setAttribute("logindto", res);
 
 		return "redirect:artist.do?member_id="+member_id;
 	}

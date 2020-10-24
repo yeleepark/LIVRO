@@ -14,4 +14,7 @@
 		WHERE MEMBER_NICKNAME LIKE '%'||#{keyword}||'%'
 		ORDER BY MEMBER_NO
 	</select>
+	
+	
+	
 </mapper>

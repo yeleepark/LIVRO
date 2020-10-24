@@ -1,6 +1,7 @@
 package com.kh.livro.bizImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,15 +16,7 @@ public class MusicBizImpl implements MusicBiz {
 	@Autowired
 	private MusicDao musicDao;
 	
-	@Override
-	public List<MusicDto> selectList(String member_id) {
-		return musicDao.selectList(member_id);
-	}
-
-	@Override
-	public MusicDto selectOne(String member_id) {
-		return musicDao.selectOne(member_id);
-	}
+	
 
 	@Override
 	public int insert(MusicDto dto) {

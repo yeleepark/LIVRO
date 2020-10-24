@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.livro.dao.SearchDao;
 import com.kh.livro.dto.BroadcastDto;
 import com.kh.livro.dto.MemberDto;
+import com.kh.livro.dto.MusicDto;
 
 @Repository
 public class SearchDaoImpl implements SearchDao {
@@ -54,5 +55,7 @@ public class SearchDaoImpl implements SearchDao {
 		}
 		return memberlist;
 	}
+	
+	
 
 }

@@ -9,6 +9,7 @@ import com.kh.livro.biz.SearchBiz;
 import com.kh.livro.dao.SearchDao;
 import com.kh.livro.dto.BroadcastDto;
 import com.kh.livro.dto.MemberDto;
+import com.kh.livro.dto.MusicDto;
 
 @Service
 public class SearchBizImpl implements SearchBiz {
@@ -27,5 +28,6 @@ public class SearchBizImpl implements SearchBiz {
 
 		return searchdao.MemberList(keyword);
 	}
-
+	
+	
 }

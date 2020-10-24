@@ -14,6 +14,12 @@
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 	
+	<select id="updateSession" resultType="MemberDto">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
 	<update id="profileUpdate">
 		UPDATE PROFILE
 		SET PROFILE_REALNAME = #{profile_realname}, PROFILE_SAVEDNAME = #{profile_savedname}, 

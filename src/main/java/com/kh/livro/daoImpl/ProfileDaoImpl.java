@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.livro.dao.ProfileDao;
+import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.ProfileDto;
 
 @Repository
@@ -52,6 +53,19 @@ public class ProfileDaoImpl implements ProfileDao {
 		
 		return res;
 	}
+	
+	@Override
+	public MemberDto updateSession(String member_id) {
+		MemberDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"updateSession", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
 
 	@Override
 	public List<ProfileDto> prifileList(String member_id) {
@@ -65,5 +79,6 @@ public class ProfileDaoImpl implements ProfileDao {
 		return list;
 	}
 
+	
 	
 }

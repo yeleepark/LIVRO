@@ -39,4 +39,6 @@ public class SearchController {
 		return "search/search_list";
 	}
 	
+
+	
 }

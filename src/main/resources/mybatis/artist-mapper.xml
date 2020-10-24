@@ -2,10 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="artist">
 
-	<select id="selectArtist" parameterType="MemberDto" resultType="MemberDto">
+	<!-- 응원게시판 -->
+	<select id="supportList" resultType="SupportDto">
 		SELECT *
-		FROM MEMBER
+		FROM SUPPORT_BOARD
 		WHERE MEMBER_ID = #{member_id}
 	</select>
+	
+	<insert id="supportInsert" parameterType="SupportDto">
+		INSERT INTO SUPPORT_BOARD
+		VALUES (SUPPORT_NO_SEQ.NEXTVAL, #{member_id}, #{support_title}, #{support_content}, SYSDATE)
+	</insert>
+	
+	<update id="supportUpdate">
+		UPDATE SUPPORT_BOARD
+		SET SUPPORT_TITLE = #{support_title}, SUPPORT_CONTENT = #{support_content}
+		WHERE SUPPORT_NO = #{support_no}
+	</update>
+	
+	<delete id="supportDelete">
+		DELETE FROM SUPPORT_BOARD
+		WHERE SUPPORT_NO = #{support_no}
+	</delete>
+	
+
+	<!-- 아티스트 페이지 이동 -->
+	<select id="selectList" resultType="MusicDto">
+		SELECT MU.MUSIC_NO, MU.MEMBER_ID, ME.MEMBER_NICKNAME, MU.MUSIC_TITLE, MU.MUSIC_CONTENT, MU.MUSIC_SAVENAME, MU.MUSIC_REALNAME, MU.MUSIC_DATE
+		FROM MUSIC MU
+		JOIN MEMBER ME
+		ON MU.MEMBER_ID = ME.MEMBER_ID
+		WHERE MU.MEMBER_ID = #{member_id} 
+	</select>
+	
+	<select id="selectOne" resultType="MusicDto">
+		SELECT MEMBER_NICKNAME
+		FROM MEMBER ME
+		WHERE MEMBER_ID = #{member_id} 
+	</select>
+	<!-- 아티스트 페이지 이동 -->
 
 </mapper>
