@@ -13,6 +13,5 @@ public interface SearchDao {
 	public List<BroadcastDto> BroadcastList(String keyword);
 	public List<MemberDto> MemberList(String keyword);
 	
-	public List<MusicDto> selectList(String memeber_id);
-	public MusicDto selectOne(String member_id);
+
 }

@@ -36,13 +36,12 @@ public class MusicController {
 			
 		logger.info("뮤직컨트롤러 " + member_id);
 		System.out.println("뮤직디티오 겟맴버 아이디"+musicDto.getMember_id());
-		System.out.println("ㅇ니링날ㅇ널"+musicDto.getMember_nickname());
 		MultipartFile music = musicDto.getMusic_file();	//업로드된 멀티파트객체(파일)을 변수에 저장
 		
 		
 		UUID uuid = UUID.randomUUID();
-		int idx = music.getOriginalFilename().indexOf(".");
-		String music_title = music.getOriginalFilename().toString().substring(0, idx);
+		int audioformat = music.getOriginalFilename().lastIndexOf(".");
+		String music_title = music.getOriginalFilename().toString().substring(0, audioformat);
 		
 		System.out.println(music_title);
 		String music_savename = uuid.toString() + music.getOriginalFilename();	//파일의 이름 변수에 저장
@@ -61,13 +60,14 @@ public class MusicController {
 			inputStream = music.getInputStream(); //업로드된 파일의 입력스트림을 변수에 저장
 			
 			//프로젝트 내부에 파일 업로드하는 경로  
+			String servpath = WebUtils.getRealPath(request.getSession().getServletContext(), "/");
 			String path = WebUtils.getRealPath(request.getSession().getServletContext() , "/resources/music");
 			
 			//model.addAttribute("filepath", path+music_savename);
 			//model.addAttribute("artistdto", member_id);
 			
 			//현재 사용중인 프로젝트 경로가 어디인가
-			System.out.println("중요중요중요중요"+"filepath"+ model);
+			System.out.println("서블렛 컨텍스트 경로 : "+ servpath);
 			System.out.println("업로드될 실제 경로 : "+ path);
 			
 			File storage = new File(path);	//문자열로 만들어진 경로를 파일객체로 저장
