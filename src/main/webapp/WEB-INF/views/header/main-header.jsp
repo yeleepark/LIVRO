@@ -43,8 +43,7 @@ response.setDateHeader("Expires",1L);
 			</c:when>
 			<c:otherwise>
 				<input type="button" value="LogOut" id="loginForm" onclick="location.href='logout.do'"> 
-				<input type="button" value="Mypage" id="registForm" onclick="location.href='mypageIndex.do'">
-			</c:otherwise>
+				<input type="button" value="Mypage" id="registForm" onclick="location.href='mypageIndex.do'">			</c:otherwise>
 			</c:choose>
 			<nav role="navigation">
 				<span id="menuIcon"><i class="fas fa-bars"></i></span>

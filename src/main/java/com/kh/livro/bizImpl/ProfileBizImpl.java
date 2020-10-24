@@ -19,10 +19,15 @@ public class ProfileBizImpl implements ProfileBiz {
 	public int profileInsert(ProfileDto dto) {
 		return profileDao.profileInsert(dto);
 	}
+	
+	@Override
+	public int roleUpdate(String member_id) {
+		return profileDao.roleUpdate(member_id);
+	}
 
 	@Override
-	public int profileUpdate(String member_id) {
-		return profileDao.profileUpdate(member_id);
+	public int profileUpdate(ProfileDto dto) {
+		return profileDao.profileUpdate(dto);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,17 +20,41 @@
 	<section>
 		<div class="mypage-container">
 			<ul class="tabs">
-				<li class="tab-link current" data-tab="tab-1">정보수정</li>
-				<li class="tab-link" data-tab="tab-2">팔로우목록</li>
-				<li class="tab-link" data-tab="tab-3">후원내역조회</li>
-				<li class="tab-link" data-tab="tab-4">채널개설</li>
+				<li class="tab-link current" data-tab="tab-1">채널개설</li>
+				<li class="tab-link" data-tab="tab-2">회원정보수정</li>
+				<li class="tab-link" data-tab="tab-3">팔로우목록 </li>
+				<li class="tab-link" data-tab="tab-4">후원내역조회</li>
 			</ul>
 			
-			<!-- 회원 정보 수정 탭 -->
+			<!-- 아티스트 채널 개설 탭 -->
 			<div class="tab-content current" id="tab-1">
-				<h2><i class="fas fa-lock"></i> 정보수정</h2>
+				<h2><i class="fas fa-sliders-h"></i> 아티스트 채널 개설</h2>
 				<div class="tab-1-container">
-					<div class="tab-1-left">
+					<form method="post" enctype="multipart/form-data" action="profileUpload.do" name="profileForm">
+					<div class="tab-1-left">	
+						<label for ="member_id">아이디</label>
+						<input type="text" name="member_id" value="${logindto.member_id }" readonly="readonly">
+						<label for ="member_nickname">닉네임</label>
+						<input type="text" name="member_nickname" value="${logindto.member_nickname }" readonly="readonly">
+						<input type="button" value="닉네임변경">
+						<label for ="member_email">이메일</label>
+						<input type="text" name="member_email" value="${logindto.member_email }" readonly="readonly">
+						<input type="submit" value="개설하기">
+					</div>
+					<div class="tab-1-right">
+						<div class="selectImg"><img src=""></div>
+						<label for="profile">프로필 사진을 등록해주세요</label> 
+						<input type="file" name="profile" required="required" id="profileImg"> 
+					</div>
+					</form>
+				</div>
+			</div>
+			
+			<!-- 회원 정보 수정 탭 -->
+			<div class="tab-content " id="tab-2">
+				<h2><i class="fas fa-lock"></i> 정보수정</h2>
+				<div class="tab-2-container">
+					<div class="tab-2-left">
 						<label for ="member_id">아이디</label>
 						<input type="text" name="member_id" value="${logindto.member_id }" readonly="readonly">
 						<label for ="member_nickname">닉네임</label>
@@ -42,15 +66,6 @@
 						<label for ="member_phone">전화번호</label>
 						<input type="text" name="member_phone" value="${logindto.member_phone }">
 						<input type="button" value="수정">
-					</div>
-					<div class="tab-1-right">
-						<p>프로필 사진</p>
-						<p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
-						<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
-						<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p>
-<%-- 						<p>경로:${profiledto.profile_path }</p> --%>
-						<img src="file:///Users/seoyoon/Desktop/LIVRO/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LIVRO/resources/storage/${profiledtp.profile_savedname }">
-						<input type="file" value="프로필사진수정" onclick="location.href='profileUpdate.do'">	
 					</div>
 				</div>
 			</div>
@@ -65,28 +80,7 @@
 				<h2><i class="fas fa-hand-holding-usd"></i> 후원 내역 조회</h2>
 			</div>
 			
-			<!-- 아티스트 채널 탭 -->
-			<div class="tab-content" id="tab-4">
-				<h2><i class="fas fa-sliders-h"></i> 아티스트 채널 개설</h2>
-				<div class="tab-4-container">
-					<div class="uploadProfile">	
-						<label for ="member_id">아이디</label>
-						<input type="text" name="member_id" value="${logindto.member_id }" disabled="disabled">
-						<label for ="member_nickname">닉네임</label>
-						<input type="text" name="member_nickname" value="${logindto.member_nickname }" disabled="disabled">
-						<input type="button" value="닉네임변경">
-						<label for ="member_email">이메일</label>
-						<input type="text" name="member_email" value="${logindto.member_email }" disabled="disabled">
-						<form method="post" enctype="multipart/form-data" action="profileUpload.do">
-							<input type="text" name="member_id" value="${logindto.member_id }">
-							<label for="profile">프로필 사진을 등록해주세요</label>
-							<input type="file" name="profile" required="required" id="profileImg">
-							<input type="submit" value="개설" id="submitBtn">
-						</form>
-					</div>
-					<div class="selectImg"><img src="" /></div>
-				</div>
-			</div>
+			
 		</div>
 	</section>
 	<script>
@@ -114,6 +108,17 @@
 		    reader.readAsDataURL(this.files[0]);
 		    }
 		});
+		
+		   function insertProfile() {
+            // window.name = "부모창 이름";            
+            /* window.name = "userPage.do"; //필요한건가? */
+            
+            // window.open("자식창 이름", "불러올 자식 창의 닉네임", "팝업창 옵션");
+            window.open("profileForm.do", "insert",
+                    "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
+        	}
+		
+
 	</script>
 </body>
 </html>

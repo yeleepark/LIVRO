@@ -11,8 +11,11 @@
 <body>
 
 	<c:choose>
-		<c:when test="${logindto.member_role == 'U' || logindto.member_role == 'A'}">
+		<c:when test="${logindto.member_role == 'U'}">
 			<c:redirect url="userPage.do?member_id=${logindto.member_id }"/>
+		</c:when>
+		<c:when test="${logindto.member_role == 'A'}">
+			<c:redirect url="artistPage.do?member_id=${logindto.member_id }"/>
 		</c:when>
 		<c:otherwise>
 			<c:redirect url="adminPage.do?member_id=${logindto.member_id }"/>

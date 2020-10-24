@@ -57,8 +57,7 @@ li{
 }
 
 
-
-/* 아티스트 채널 개설 */
+/* 회원정보수정 */
 
 .tab-1-container{
 	width : 100%;
@@ -87,7 +86,7 @@ li{
 	float : right;	
 }
 
-#tab-1 .selectImg{
+#tab-1 .profileImg{
 	width : 200px;
 	height : 200px;
 	border : 1px solid black;
@@ -102,31 +101,10 @@ li{
 }
 
 
-/* 회원정보수정*/
-.tab-2-container {
-	display: flex;
-	width: 100%;
-}
-
-.tab-2-container input{
-	display: block;
-}
-
-.tab-2-left{
-	flex : 1;
-}
-
-.tab-2-right{
-	flex : 1;
-}
-
-
-#tab-2 label{
-	display: block;
-}
-
 /* 팔로우 목록 */
 
-/* 후원내역조회 */
+/* 후원 내역 조회 */
+
+/* 후원 받은 조회 */
 
 

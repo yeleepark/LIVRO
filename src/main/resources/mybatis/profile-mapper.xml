@@ -8,6 +8,19 @@
 		#{profile_path}, SYSDATE)
 	</insert>
 	
+	<update id="roleUpdate">
+		UPDATE MEMBER
+		SET MEMBER_ROLE = 'A'
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+	
+	<update id="profileUpdate">
+		UPDATE PROFILE
+		SET PROFILE_REALNAME = #{profile_realname}, PROFILE_SAVEDNAME = #{profile_savedname}, 
+		PROFILE_PATH = #{profile_path}
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+	
 	<select id="profileList">
 		SELECT *
 		FROM PROFILE

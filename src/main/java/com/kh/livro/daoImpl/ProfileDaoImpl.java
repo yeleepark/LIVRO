@@ -27,13 +27,25 @@ public class ProfileDaoImpl implements ProfileDao {
 		}
 		return res;
 	}
+	
+	@Override
+	public int roleUpdate(String member_id) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"roleUpdate", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 
 	@Override
-	public int profileUpdate(String member_id) {
+	public int profileUpdate(ProfileDto dto) {
 		int res = 0;
 				
 		try {
-			res = sqlSession.update(NAMESPACE+"profileUpdate", member_id);
+			res = sqlSession.update(NAMESPACE+"profileUpdate", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -53,6 +65,5 @@ public class ProfileDaoImpl implements ProfileDao {
 		return list;
 	}
 
-	
 	
 }
