@@ -10,13 +10,12 @@
 		WHERE MU.MEMBER_ID = #{member_id} 
 	</select>
 	
-	<select id="selectOne" parameterType="MusicDto">
-		SELECT ME.MEMBER_NICKNAME
-		FROM MUSIC MU
-		JOIN MEMBER ME
-		ON MU.MEMBER_ID = ME.MEMBER_ID
-		WHERE MU.MEMBER_ID = #{member_id} 
+	<select id="selectOne" resultType="MusicDto">
+		SELECT MEMBER_NICKNAME
+		FROM MEMBER ME
+		WHERE MEMBER_ID = #{member_id} 
 	</select>
+
 
 	<insert id="insert">
 		INSERT INTO MUSIC 
