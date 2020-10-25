@@ -56,7 +56,7 @@
 						<c:otherwise>
 							<c:forEach items="${musicdto }" var ="musicdto">
 <%-- 									<audio src="/LIVRO/resources/audio/${musicdto.music_savename }" controls></audio> --%>
-									<audio src="getClass().getResource('/audio/${musicdto.music_savename }')" controls></audio>
+									<audio src="/LIVRO/resources/audio/${musicdto.music_savename }')" controls></audio>
 									${musicdto.music_title }
 									${musicdto.music_content }
 								<br>
