@@ -69,7 +69,6 @@ public class MusicController {
 			//String path = WebUtils.getRealPath(request.getSession().getServletContext() , "/resources/music");
 			
 			
-			
 			//model.addAttribute("filepath", path+music_savename);
 			//model.addAttribute("artistdto", member_id);
 			
