@@ -29,10 +29,10 @@
         <beans:property name="maxInMemorySize" value="100000000"/>
         <beans:property name="defaultEncoding" value="UTF-8"/>
     </beans:bean>
-    
-    <beans:bean id="uploadpath" class="java.lang.String">
-    	<beans:constructor-arg value="C:\workspace\Final_Project\LIVRO\WebContent\resources\audio"></beans:constructor-arg>
-    	    	<beans:constructor-arg value="C:\workspace\Final_Project\LIVRO\src\main\webapp\resources\audio"></beans:constructor-arg>
+
+     <beans:bean id="uploadpath" class="java.lang.String">
+    	<!-- <beans:constructor-arg value="C:\workspace\Final_Project\LIVRO\WebContent\resources\audio"></beans:constructor-arg> -->
+    	<beans:constructor-arg value="C:\workspace\Final_Project\LIVRO\src\main\webapp\resources\audio"></beans:constructor-arg>
     </beans:bean>
     
     <beans:bean id="uploadpathlinux" class="java.lang.String">

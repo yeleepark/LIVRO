@@ -264,8 +264,21 @@
     <version>${org.springframework-version}</version>
 </dependency>
 		
+<!-- SHA256	암호화 -->
+<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+<dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.15</version>
+</dependency>
 
-
+ <!-- Resource 에러 추가   -->
+      <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
+      <dependency>
+         <groupId>javax.annotation</groupId>
+         <artifactId>javax.annotation-api</artifactId>
+         <version>1.3.2</version>
+      </dependency>
 	</dependencies>
 	<build>
 		<plugins>
