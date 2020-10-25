@@ -9,10 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="resources/css/artist.css">
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-
+<script type="text/javascript"src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <title>LIVRO-Artist</title>
 </head>
 <body>
@@ -34,16 +31,14 @@
 				<div>
 					<form:form method="post" enctype="multipart/form-data"
 						modelAttribute="MusicDto" action="upload.do">
-						<input type="hidden" name="member_id"
-							value="${logindto.member_id }">
-						<input type="hidden" name="member_nickname"
-							value="${logindto.member_nickname }">
-					
-					file<br>
+						<input type="hidden" name="member_id" value="${logindto.member_id }">
+						<input type="hidden" name="member_nickname" value="${logindto.member_nickname }">
+						<p>파일</p>
 						<!-- 파일 -->
 						<input type="file" name="music_file" />
-						<span style="color: red; font-weight: bold;"><form:errors
-								path="music_file" /></span>
+						<span style="color: red; font-weight: bold;">
+						
+						<form:errors path="music_file" /></span>
 
 						<!-- 에러시 문자열 반환 -->
 						<input type="text" name="music_content" placeholder="설명문">
@@ -61,8 +56,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${musicdto }" var="musicdto">
-									<audio src="/LIVRO/resources/audio/${musicdto.music_savename }"
-										controls></audio>
+									<audio src="/LIVRO/resources/audio/${musicdto.music_savename }"controls></audio>
 									${musicdto.music_title }
 									${musicdto.music_content }
 								<br>
@@ -97,8 +91,8 @@
 										<p>${support.support_regdate }</p>
 										<div>
 											<input type="button" value="${support.support_no }">
-											<input type="button" value="수정" id="updateBtn"> <input
-												type="button" value="삭제" id="deleteBtn">
+											<input type="button" value="수정" id="updateBtn"> 
+											<input type="button" value="삭제" id="deleteBtn">
 										</div>
 									</div>
 									<div>
@@ -113,9 +107,11 @@
 				</div>
 			</div>
 
-			<!-- 응원 게시판 탭 -->
-			<div id="tab-3" class="tab-content">일정</div>
-
+			<!-- 일정 게시판 탭-->
+			<div id="tab-3" class="tab-content">
+				일정
+			</div>
+			
 		</div>
 
 		<div class="right-wrapper">
@@ -125,6 +121,7 @@
 				<input type="button" value="팔로우">
 			</div>
 		</div>
+		
 	</section>
 
 	<script>
@@ -152,22 +149,19 @@
 				var deleteNo = $(this).prev().prev().val();
 				deleteJson(deleteNo); // json 형식으로 입력
 			});
-			s
 		});
 
 		/* 응원글 작성 */
 		function insertJson() {
 
-			var member_id = "${musicnickdto.member_id }";
+			var member_id = "${musicnickdto.member_id}";
 			var member_nickname = "${logindto.member_nickname}";
 			var support_content = $("#support_content").val();
 
 			$.ajax({
 				type : "post",
 				url : "supportInsert.do",
-				headers : {
-					"Content-Type" : "application/json"
-				},
+				headers : {"Content-Type" : "application/json"},
 				dateType : "text",
 				data : JSON.stringify({
 					member_id : member_id,
@@ -230,8 +224,7 @@
 					var htmlObj = $(result);
 					$(htmlObj).find('ul.tabs li').removeClass('current');
 					$(htmlObj).find('#tab-1').removeClass('current');
-					$(htmlObj).find('ul.tabs li:nth-child(2)').addClass(
-							'current');
+					$(htmlObj).find('ul.tabs li:nth-child(2)').addClass('current');
 					$(htmlObj).find('#tab-2').addClass('current');
 					$('body').html(htmlObj);
 				}
