@@ -73,7 +73,7 @@ public class ArtistDaoImpl implements ArtistDao {
 		int res = 0;
 
 		try {
-			res = sqlSession.update(NAMESPACE + "suppotUpdate", dto);
+			res = sqlSession.update(NAMESPACE + "supportUpdate", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

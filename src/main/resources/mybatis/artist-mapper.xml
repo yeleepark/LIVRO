@@ -7,16 +7,17 @@
 		SELECT *
 		FROM SUPPORT_BOARD
 		WHERE MEMBER_ID = #{member_id}
+		ORDER BY SUPPORT_NO DESC
 	</select>
 	
 	<insert id="supportInsert" parameterType="SupportDto">
 		INSERT INTO SUPPORT_BOARD
-		VALUES (SUPPORT_NO_SEQ.NEXTVAL, #{member_id}, #{support_title}, #{support_content}, SYSDATE)
+		VALUES (SUPPORT_NO_SEQ.NEXTVAL, #{member_id}, #{member_nickname}, #{support_content}, SYSDATE)
 	</insert>
 	
 	<update id="supportUpdate">
 		UPDATE SUPPORT_BOARD
-		SET SUPPORT_TITLE = #{support_title}, SUPPORT_CONTENT = #{support_content}
+		SET SUPPORT_CONTENT = #{support_content}
 		WHERE SUPPORT_NO = #{support_no}
 	</update>
 	
@@ -36,7 +37,7 @@
 	</select>
 	
 	<select id="selectOne" resultType="MusicDto">
-		SELECT MEMBER_NICKNAME
+		SELECT *
 		FROM MEMBER ME
 		WHERE MEMBER_ID = #{member_id} 
 	</select>
