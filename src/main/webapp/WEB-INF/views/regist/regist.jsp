@@ -273,13 +273,14 @@
 					});
 
 				} else {
-					if (data == 0 && nickR.test($("#member_nickname").val() && $("#member_nickname").val().length > 10)) {
+					if (data == 0 && nickR.test($("#member_nickname").val() && $("#member_nickname").val().length < 11)) {
+						console.log("1." + $("#member_nickname").val().length);
 						$('#nickname_check').text('사용가능한 닉네임입니다.');
 						$('#nickname_check').css({
 							'color' : 'blue',
 							'font-size' : '13px'
 						});
-						console.log($("#member_nickname").val().length);
+						console.log("2." + $("#member_nickname").val().length);
 						arr[3] = true;
 					
 					} else {
