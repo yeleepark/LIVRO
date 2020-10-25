@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -31,6 +32,10 @@ public class MusicController {
 	
 	private Logger logger = LoggerFactory.getLogger(MusicController.class);
 	
+	@Resource(name="uploadpath")
+	private String path;
+	
+	
 	@RequestMapping(value="upload.do", method = RequestMethod.POST)//upload리턴 받아오면 upload.jsp
 	public String fileUpload(HttpServletRequest request, Model model, MusicDto musicDto, String member_id, String music_content) {
 			
@@ -44,7 +49,7 @@ public class MusicController {
 		String music_title = music.getOriginalFilename().toString().substring(0, audioformat);
 		
 		System.out.println(music_title);
-		String music_savename = uuid.toString() + music.getOriginalFilename();	//파일의 이름 변수에 저장
+		String music_savename = uuid.toString()+".mp3";	//파일의 이름 변수에 저장
 		String music_realname = music.getOriginalFilename();	//파일의 이름 변수에 저장
 		
 		InputStream inputStream = null;		//입력스트림의 슈퍼클래스
@@ -61,7 +66,8 @@ public class MusicController {
 			
 			//프로젝트 내부에 파일 업로드하는 경로  
 			String servpath = WebUtils.getRealPath(request.getSession().getServletContext(), "/");
-			String path = WebUtils.getRealPath(request.getSession().getServletContext() , "/resources/music");
+			//String path = WebUtils.getRealPath(request.getSession().getServletContext() , "/resources/music");
+			
 			
 			//model.addAttribute("filepath", path+music_savename);
 			//model.addAttribute("artistdto", member_id);
