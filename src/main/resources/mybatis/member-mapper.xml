@@ -2,16 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 
+
+	<!-- 로그인 -->
 	<select id="login" parameterType="MemberDto"
 		resultType="MemberDto">
 		SELECT *
 		FROM MEMBER
 		WHERE MEMBER_ID = #{member_id}
-		AND
-		MEMBER_PW = #{member_pw}
+		AND MEMBER_PW = #{member_pw}
 	</select>
-
-
 	<insert id="join" parameterType="MemberDto">
 		INSERT INTO MEMBER(member_id,
 		member_pw, member_pwchk,member_no, member_name, member_nickname,
@@ -22,22 +21,25 @@
 		#{member_name}, #{member_nickname},
 		#{member_addr}, #{member_email},
 		#{member_phone}, SYSDATE
-		) 
+		)
 	</insert>
-	
-	<!-- 아이디 중복체크 / 아이디를 조건으로 카운트 : 있으면 1 없으면 0이 조회
-	조회 결과타입을 resultType int로 설정-->
+
+	<!-- 아이디 중복체크 / 아이디를 조건으로 카운트 : 있으면 1 없으면 0이 조회 조회 결과타입을 resultType int로 
+		설정 -->
 	<select id="idChk" resultType="int">
-	SELECT COUNT(*) 
-	FROM MEMBER
-	WHERE MEMBER_ID = #{member_id}
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_ID = #{member_id}
 	</select>
 
-	
+
 	<!--닉네임 중복체크 -->
 	<select id="nickChk" resultType="int">
 		SELECT COUNT(*)
 		FROM MEMBER
-		WHERE MEMBER_NICKNAME = #{member_nickname}
+		WHERE
+		MEMBER_NICKNAME = #{member_nickname}
 	</select>
+
+
 </mapper>

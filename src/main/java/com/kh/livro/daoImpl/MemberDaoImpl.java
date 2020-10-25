@@ -69,7 +69,20 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 
-	
+	@Override
+	   public MemberDto selectOne(MemberDto dto) {
+	      
+	      MemberDto res = null;
+	      
+	      try {
+	         res = sqlSession.selectOne(NAMESPACE+"login", dto);
+	         logger.info(">> selectOne by userInfo " + dto.getMember_no());
+	      } catch (Exception e) {
+	         logger.info("[ERROR] USERINFO selectOne by userInfo");
+	         e.printStackTrace();
+	      }
+	      return res;
+	   }
 
 	
 

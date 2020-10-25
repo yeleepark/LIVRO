@@ -37,6 +37,10 @@ public class MemberBizImpl implements MemberBiz {
 		return memberDao.nickChk(dto);
 	}
 
-
+	   //일반로그인
+	   @Override
+	   public MemberDto selectOne(MemberDto dto) {
+	      return memberDao.selectOne(dto);
+	   }
 
 }
