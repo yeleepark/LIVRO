@@ -67,7 +67,6 @@ response.setDateHeader("Expires",1L);
 			</nav>
 		</div>
 	</header>
-
 <script src="resources/js/main.js"></script>
 </body>
 </html>
