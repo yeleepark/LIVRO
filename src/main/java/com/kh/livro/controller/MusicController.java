@@ -32,7 +32,7 @@ public class MusicController {
 	
 	private Logger logger = LoggerFactory.getLogger(MusicController.class);
 	
-	@Resource(name="uploadpath")
+	/* @Resource(name="uploadpath") */
 	private String path;
 	
 	
