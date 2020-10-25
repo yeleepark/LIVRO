@@ -85,7 +85,7 @@ public class ArtistDaoImpl implements ArtistDao {
 		int res = 0;
 
 		try {
-			res = sqlSession.insert(NAMESPACE + "supportDelete", support_no);
+			res = sqlSession.delete(NAMESPACE + "supportDelete", support_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
