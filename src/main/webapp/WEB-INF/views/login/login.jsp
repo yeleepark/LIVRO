@@ -17,57 +17,47 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-	/* 	$(function(){
-	 //로그인 시 아이디 비밀번호가 틀리면 나타나는 문구를 감싸줄? div 박스
-	 $("#logincheck").hide();
-	 }); */
+$(function(){
+	$("#logincheck").hide();
+});
 
-	/* 
-	최유정 : 다시해..싸발ㅡㅡ !!!
-	function loginChk() {
-		var member_id = $("#member_id").val().trim();
-		var member_pw = $("#member_pw").val().trim();
-		
-		
-
-		var loginVal = {
-			"id" : member_id,
-			"pw": member_pw
-		}
-		
-
-		if (member_id == null || member_id == "" || member_pw == null
-				|| member_pw == "") {
-			$("#logincheck").html("아이디와 비밀번호를 입력해주세요.").css({
-				"color" : "red",
-				"font-size" : "15px",
-				"font-weight" : "400"
-			});
-		} else {
-			$.ajax({
-				type : "post",
-				url : "login.do",
-				data : JSON.stringify(loginVal),
-				contentType : "application/json",
-				dataType : "json",
-				success : function(msg) {
-					if (msg.check) {
-						location.href = "/"
-
-					} else {
-						$("#logincheck").html("아이디 혹은 비밀번호가 올바르지 않습니다.").css({
-							"color" : "red",
-							"font-size" : "15px",
-							"font-weight" : "400"
-						});
-					}
-				}, 
-				error : function(){
-					alert("통신실패")
-				}
-			});
-		}
-	};  */
+function loginChk(){
+	var member_id = $("#member_id").val().trim(); //아이디 받아오고
+	var member_pw = $("#member_pw").val().trim(); //비번 받아오고
+	
+	var loginVal = {
+			"member_id" : member_id,
+			"member_pw" : member_pw
+	} // 값 넣어주고
+	
+	console.log(member_id);
+	console.log(member_pw); // 콘솔 찍히는지 확인 완.
+	
+	if(member_id == null || member_id == "" || member_pw == null || member_pw== ""){
+		$("#logincheck").show();
+		$("#logincheck").html("아이디와 비밀번호를 입력해주세요.").css("color","red");
+	} else{
+		$.ajax({
+            type:"post",
+            url : "login.do",
+            data : JSON.stringify(loginVal),
+            contentType: "application/json",
+            dataType : "json", // ->login.do 컨트롤러로 넘어간다~~~~~
+            success: function(msg){ // 로그인 성공하면
+            	
+               if(msg.check==true){ // 컨트롤러에서 받아온 boolean 타입의 check의 값이 true이면
+                  location.href ='main.do'; //메인으로
+               }else{ // 아니면 = 비밀번호나 아이디가 틀리면
+                  $("#logincheck").show(); 
+                  $("#logincheck").html("아이디 혹은 비밀번호가 올바르지 않습니다").css("color","red");
+               }
+            },
+            error : function(){
+               alert("통신 실패");
+            }
+         });
+	}
+}
 </script>
 </head>
 <body>
@@ -84,7 +74,9 @@
 					onclick="loginChk()"> 
 					<span> <a href="registForm.do">Don't
 						have an Account?</a> <a href="#">ID/PW찾기</a>
+						<a href="main.do">홈으로</a>
 				</span>
+			
 			</form>
 		</div>
 

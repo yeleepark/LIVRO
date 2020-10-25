@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.livro.biz.MemberBiz;
 import com.kh.livro.dto.MemberDto;
+import com.kh.livro.utils.PwSHA256;
 
 @Controller
 public class MemberController {
@@ -29,6 +30,7 @@ public class MemberController {
 
 	@Autowired
 	private MemberBiz memberBiz;
+
 
 	@RequestMapping("/loginForm.do")
 	public String login() {
@@ -69,6 +71,33 @@ public class MemberController {
 	 * 
 	 * }
 	 */
+	
+	/*
+	 * @ResponseBody : java 객체를 response객체의 데이터로 
+	 * @RequestBody : request 객체에 담겨져서 넘어오는 데이터 -> java 객체 binding
+	 */
+	/*
+	 * 이따 풀어! 
+	 * @RequestMapping(value = "/ajaxlogin.do", method = RequestMethod.POST)
+	 * 
+	 * @ResponseBody public Map<String, Boolean> ajaxLogin(@RequestBody MemberDto
+	 * dto, HttpSession session) { logger.info("[ajaxlogin.do]");
+	 * 
+	 * MemberDto res = memberBiz.login(dto);
+	 * 
+	 * boolean check = false; if(res != null) {
+	 * if(passwordEncoder.matches(dto.getMemberpw(), res.getMemberpw())) {
+	 * logger.info("사용자가 전달한 memberpw : " + dto.getMemberpw() );
+	 * logger.info("db에 암호화되어 저장된 memberpw : " + res.getMemberpw());
+	 * session.setAttribute("login", res); check = true; }
+	 * 
+	 * }
+	 * 
+	 * Map<String,Boolean> map = new HashMap<String, Boolean>(); map.put("check",
+	 * check);
+	 * 
+	 * return map; }
+	 */
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session, Model model) {
 
@@ -87,8 +116,26 @@ public class MemberController {
 	}
 
 	@RequestMapping("/join.do")
-	public String registRes(MemberDto dto, Model model) {
+	public String registRes(MemberDto dto, Model model, String member_addr1 , String member_addr2, String member_addr3) {
 		logger.info("[join.do]");
+		//주소 db에 넣어주기
+		String member_addr = member_addr1 + " " + member_addr2 + " " + member_addr3;
+		dto.setMember_addr(member_addr);
+		
+		
+		  logger.info("[암호화 안된 패스워드 :]" + dto.getMember_pw()); 
+		  logger.info("[암호화 안된 패스워드 체크 :]" + dto.getMember_pwchk());
+		  //비밀번호 암호화 
+		  String encryPassword = PwSHA256.encrypt(dto.getMember_pw());
+		  String encryPassword_chk = PwSHA256.encrypt(dto.getMember_pwchk());
+		  
+		  dto.setMember_pw(encryPassword);
+		  dto.setMember_pwchk(encryPassword_chk);
+		  
+		  
+		  logger.info("[암호화 된 패스워드 : ]" + dto.getMember_pw());
+		  logger.info("[암호화 된 패스워드 체크 :]" + dto.getMember_pwchk());
+		  
 		int res = memberBiz.join(dto);
 		if (res > 0) {
 			model.addAttribute("msg", "회원가입을 축하드립니다. 로그인해주세요!");
