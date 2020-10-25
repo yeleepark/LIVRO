@@ -100,6 +100,11 @@ section {
 	font-size: 0.8rem;
 }
 
+.join-right>div>div>label {
+	display: block;
+	font-size: 0.8rem;
+}
+
 /* placeholder 스타일 변경 */
 input::placeholder{
 	font-size: 0.7rem;
