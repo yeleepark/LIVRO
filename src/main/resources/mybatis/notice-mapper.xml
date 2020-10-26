@@ -3,9 +3,19 @@
 <mapper namespace="notice">
 	
 	<select id="selectList" resultType="NoticeDto">
-		SELECT NOTICE_NO, MEMBER_ID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE
-		FROM NOTICE_BOARD
-		ORDER BY NOTICE_NO DESC	
+		SELECT * 
+		FROM
+			(
+				SELECT ROW_NUMBER() OVER (ORDER BY NOTICE_NO) NUM
+				, N.*
+				FROM NOTICE_BOARD N
+				ORDER BY N.NOTICE_NO DESC	
+			)
+		WHERE NUM 
+		BETWEEN #{startList} +1 
+		AND #{startList} + #{listSize} -1
+		
+		
 	</select>
 	
 	<select id="selectOne" resultType="NoticeDto" parameterType="int">
@@ -30,4 +40,10 @@
 		FROM NOTICE_BOARD
 		WHERE NOTICE_NO = #{notice_no}
 	</delete>
+	
+	<select id="getBoardListCnt" resultType="int">
+		SELECT COUNT(*) AS LISTCNT
+		FROM NOTICE_BOARD
+	</select>
+	
 </mapper>
