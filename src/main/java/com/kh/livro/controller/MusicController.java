@@ -118,5 +118,12 @@ public class MusicController {
 		return "redirect:artist.do?member_id="+member_id;
 	}
 	
+	@RequestMapping(value="deletemusic.do")
+	public String delete(Model model, int music_no, String member_id) {
+		System.out.println(music_no);
+		model.addAttribute("res", musicBiz.deletemusic(music_no));
+		return "redirect:artist.do?member_id="+member_id;
+	}
+	
 
 }

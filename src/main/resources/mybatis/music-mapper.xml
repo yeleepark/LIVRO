@@ -16,9 +16,9 @@
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 
-	<delete id="delete">
+	<delete id="deletemusic">
 		DELETE
 		FROM MUSIC
-		WHERE MEMBER_ID = #{member_id}
+		WHERE MUSIC_NO = #{music_no}
 	</delete>
 </mapper>

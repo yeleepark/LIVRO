@@ -56,9 +56,12 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${musicdto }" var="musicdto">
-									<audio src="/LIVRO/resources/audio/${musicdto.music_savename }"controls></audio>
+									<audio src="resources/audio/${musicdto.music_savename }" controls></audio>
 									${musicdto.music_title }
 									${musicdto.music_content }
+									${musicdto.music_no }
+									<input type="button" value="삭제" onclick="location.href='deletemusic.do?member_id=${musicdto.member_id }&music_no=${musicdto.music_no }'"> 
+									
 								<br>
 								</c:forEach>
 							</c:otherwise>
