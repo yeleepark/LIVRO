@@ -88,7 +88,7 @@
 
 
 
-					<div>
+					<div>7
 						<label for=member_email>이메일</label> <input type="text"
 							id="member_email" placeholder="ex)livro@naver.com"
 							name="member_email" /> <input type="button" class="joinChkBtn"

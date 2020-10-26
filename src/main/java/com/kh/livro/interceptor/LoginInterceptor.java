@@ -20,7 +20,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// spring 3.2이상부터는 servlet-context.xml 에서 <exclude-mapping-path>를 통해 설정할 수 있다.
 		// 이 조건일때만 컨트롤러로 넘어갈 수 있게 해준거다.
 		
-		return false;
+		return true;
 	}
 
 	@Override
