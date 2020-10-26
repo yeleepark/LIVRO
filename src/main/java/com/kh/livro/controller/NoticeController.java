@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.livro.biz.NoticeBiz;
 import com.kh.livro.dto.NoticeDto;
+import com.kh.livro.utils.Pagination;
 
 @Controller
 public class NoticeController {
@@ -17,15 +20,28 @@ public class NoticeController {
 	private NoticeBiz noticeBiz;
 	
 	private Logger logger = LoggerFactory.getLogger(NoticeController.class);
-	
-	@RequestMapping(value="notice.do")
-	public String noticeList(Model model) {
+	//https://freehoon.tistory.com/112 참조
+	@RequestMapping(value="notice.do", method = RequestMethod.GET)
+	public String noticeList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
+										  @RequestParam(required = false, defaultValue = "1") int range) throws Exception {
 		logger.info("go noticeList");
 		
-		model.addAttribute("list", noticeBiz.selectList());
+		//전체 게시글 개수 count
+		int listCnt = noticeBiz.getBoardListCnt();
+		
+		//pagination 객체 생성
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, listCnt);
+		
+		model.addAttribute("pagination", pagination);
+		model.addAttribute("list", noticeBiz.selectList(pagination));
 		
 		return "notice/notice";
 	}
+	
+	
+	
+	
 	
 	@RequestMapping(value="detail.do")
 	public String noticeDetail(int notice_no, Model model) {

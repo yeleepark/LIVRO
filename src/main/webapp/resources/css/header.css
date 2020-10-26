@@ -9,7 +9,8 @@
 	text-decoration: none;
 }
 
-#header ul, li {
+#header ul, 
+#header li {
 	list-style: none;
 }
 
@@ -126,7 +127,7 @@
 	display: none;
 }
 
-.active {
+.mainActive {
 	width: 300px;
 	position: absolute;
 	margin-top: 70px;
@@ -135,7 +136,7 @@
 	transition: all .3s;
 }
 
-.active li {
+.mainActive li {
 	padding: 20px 30px;
 	margin: 5px;
 	text-align: right;
@@ -157,11 +158,11 @@
 	}
 }
 
-.active a {
+.mainActive a {
 	color: white;
 }
 
-.active a:hover {
+.mainActive a:hover {
 	color: #d22c2c;
 }
 
@@ -190,13 +191,13 @@
 		display: none;
 	}
 	
-	.active{
+	.mainActive{
         width: 100%;
         height: 100vh;
         background-color: white;
     }
     
-    .active li {
+    .mainActive li {
     	padding: 20px 30px;
         text-align: right;
         font-size: 1.5rem;
@@ -205,11 +206,11 @@
         animation: slideDown 0.3s ease-out;
     }
 
-    .active li a{
+    .mainActive li a{
         color: black;
     }
 
-    .active li:hover{
+    .mainActive li:hover{
         color: #d22c2c;
     }
 	
