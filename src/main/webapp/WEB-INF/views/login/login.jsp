@@ -25,7 +25,9 @@
 
 		var member_id = $("#member_id").val().trim();
 		var member_pw = $("#member_pw").val().trim();
+		
 
+		
 		var loginVal = {
 			"member_id" : member_id,
 			"member_pw" : member_pw
@@ -46,8 +48,9 @@
 				dataType : "json",
 				success : function(msg) {
 					if (msg.check == true) {
-						
-						location.href = 'success.do';
+						var member_name = $('input[name=member_name]').val();
+						console.log("member_name" + member_name);
+						location.href = 'success.do?member_name=' + member_name;
 					} else {
 						$("#logincheck").show();
 						$("#logincheck").html("아이디 혹은 비밀번호가 올바르지 않습니다").css({
@@ -68,8 +71,10 @@
 	<section>
 		<div class="login-wrapper">
 			<h2>Welcome!</h2>
+			<input type="hidden" name="member_name" value="${logindto.member_name}">
 			<input type="text" name="member_id" autocomplete="off" id="member_id" placeholder="&#xf2bd; User ID"> 
 			<input type="password" name="member_pw" autocomplete="off" id="member_pw" placeholder="&#xf2bd; Password">
+			
 			<div id="logincheck"></div>
 			<input type="button" value="Log In" id="goLoginBtn" onclick="loginChk()"> 
 			<span> 

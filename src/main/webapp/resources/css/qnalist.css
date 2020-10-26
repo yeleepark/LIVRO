@@ -1,0 +1,75 @@
+*{
+	margin : 0;
+	padding : 0;
+}
+
+a{
+	text-decoration: none;
+	color : inherit;
+}
+
+.board_list_wrap{
+	padding : 50px;
+}
+
+.board_list_head,
+.board_list_body .item{
+	font-size: 0;
+	padding : 10px 0;
+}
+
+.board_list_body > div{
+	text-align: center;
+}
+
+.board_list_head{
+	border-top: 2px solid red;
+	border-bottom: 1px solid #ccc;
+}
+
+.board_list_body .item{
+	border-bottom: 1px solid #ccc;
+}
+
+.board_list_head > div, 
+.board_list_body .item > div{
+	display : inline-block;
+	font-size : 14px;
+	text-align : center;
+}
+
+.board_list_head > div{
+	font-weight: 600;
+}
+
+.board_list .qna_no{
+	width : 10%;
+}
+
+.board_list .qna_title{
+	width : 55%;
+}
+
+.board_list_body div.qna_title{
+	text-align: left;
+}
+
+.board_list_body div.qna_title a:hover{
+	text-decoration: underline;
+}
+
+
+.board_list .qna_writer{
+	width : 15%;
+}
+
+.board_list .qna_date{
+	width : 20%;
+}
+
+.board_list_footer{
+	text-align: right;
+}
+.board_list_search{
+	text-align: center;
+}
