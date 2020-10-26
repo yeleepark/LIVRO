@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.livro.dao.NoticeDao;
 import com.kh.livro.dto.NoticeDto;
+import com.kh.livro.utils.Pagination;
 
 @Repository
 public class NoticeDaoImpl implements NoticeDao {
@@ -21,12 +22,12 @@ public class NoticeDaoImpl implements NoticeDao {
 	private Logger logger = LoggerFactory.getLogger(NoticeDaoImpl.class);
 	
 	@Override
-	public List<NoticeDto> selectList() {
+	public List<NoticeDto> selectList(Pagination pagination) {
 		logger.info("noticeDao selectList");
 		List<NoticeDto> list = new ArrayList<NoticeDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList");
+			list = sqlSession.selectList(NAMESPACE+"selectList", pagination);
 		} catch (Exception e) {
 			logger.info("error : noticeDao selectList");
 			e.printStackTrace();
@@ -92,6 +93,12 @@ public class NoticeDaoImpl implements NoticeDao {
 		}
 		
 		return res;
+	}
+
+	@Override
+	public int getBoardListCnt() throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+"getBoardListCnt");
 	}
 
 }
