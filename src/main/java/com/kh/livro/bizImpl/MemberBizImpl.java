@@ -14,12 +14,6 @@ public class MemberBizImpl implements MemberBiz {
 	private MemberDao memberDao;
  
 	@Override
-	public MemberDto login(MemberDto dto) {
-		
-		return memberDao.login(dto);
-	}
-
-	@Override
 	public int join(MemberDto dto) {
 		
 		return memberDao.join(dto);

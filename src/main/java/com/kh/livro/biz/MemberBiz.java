@@ -6,8 +6,6 @@ import com.kh.livro.dto.MemberDto;
 
 public interface MemberBiz {
 
-	public MemberDto login(MemberDto dto);
-
 	// 회원가입
 	public int join(MemberDto dto);
 

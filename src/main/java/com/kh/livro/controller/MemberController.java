@@ -52,89 +52,70 @@ public class MemberController {
 	}
 
 	@RequestMapping("/loginForm.do")
-	   public String login(Model model, HttpSession session) {
-	      logger.info("[loginForm.do]");
+	public String login(Model model, HttpSession session) {
+		logger.info("[loginForm.do]");
 
-	      String naverAuthUrl = loginnaverBO.getAuthorizationUrl(session);
-	      logger.info("네이버 : " + naverAuthUrl);
-	      
-	      String googleAuthUrl = logingoogleBO.getAuthorizationUrl(session);
-	      logger.info("구글 : " + googleAuthUrl );
+		String naverAuthUrl = loginnaverBO.getAuthorizationUrl(session);
+		logger.info("네이버 : " + naverAuthUrl);
 
-	      model.addAttribute("naver", naverAuthUrl);
-	      model.addAttribute("google" , googleAuthUrl);
+		String googleAuthUrl = logingoogleBO.getAuthorizationUrl(session);
+		logger.info("구글 : " + googleAuthUrl);
 
-	      return "login/login";
-	   }
+		model.addAttribute("naver", naverAuthUrl);
+		model.addAttribute("google", googleAuthUrl);
 
-	@RequestMapping("/login.do")
-	public String loginRes(MemberDto dto, Model model, HttpSession session) {
-		logger.info("[login.do]");
-
-		MemberDto res = memberBiz.login(dto);
-		model.addAttribute("res", res);
-
-		if (res != null) {
-			session.setAttribute("logindto", res);
-			model.addAttribute("msg", "로그인 성공 ");
-			model.addAttribute("url", "/");
-			return "redirect";
-		} else {
-			model.addAttribute("msg", "로그인 실패 ");
-			model.addAttribute("url", "login/login");
-			return "redirect";
-		}
+		return "login/login";
 	}
 
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = "/login.do", method = RequestMethod.POST) public
-	 * Map<String, String> login(@RequestBody MemberDto dto, HttpSession session) {
-	 * //최유정 : 유정아 다시해라....싸발 logger.info("[login.do]");
-	 * 
-	 * MemberDto res = memberBiz.login(dto);
-	 * 
-	 * Map<String, Boolean> map = new HashMap<String, Boolean>();
-	 * map.put("logindto", dto); return map;
-	 * 
-	 * }
-	 */
 
-	/*
-	 * @ResponseBody : java 객체를 response객체의 데이터로
-	 * 
-	 * @RequestBody : request 객체에 담겨져서 넘어오는 데이터 -> java 객체 binding
-	 */
-	/*
-	 * 이따 풀어!
-	 * 
-	 * @RequestMapping(value = "/ajaxlogin.do", method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public Map<String, Boolean> ajaxLogin(@RequestBody MemberDto
-	 * dto, HttpSession session) { logger.info("[ajaxlogin.do]");
-	 * 
-	 * MemberDto res = memberBiz.login(dto);
-	 * 
-	 * boolean check = false; if(res != null) {
-	 * if(passwordEncoder.matches(dto.getMemberpw(), res.getMemberpw())) {
-	 * logger.info("사용자가 전달한 memberpw : " + dto.getMemberpw() );
-	 * logger.info("db에 암호화되어 저장된 memberpw : " + res.getMemberpw());
-	 * session.setAttribute("login", res); check = true; }
-	 * 
-	 * }
-	 * 
-	 * Map<String,Boolean> map = new HashMap<String, Boolean>(); map.put("check",
-	 * check);
-	 * 
-	 * return map; }
-	 */
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> login(@RequestBody MemberDto dto, HttpSession session, Model model) {
+		logger.info("[login.do]");
+
+		String encryPassword = dto.getMember_pw();
+		
+		//팀원들을 위한 유정이의 보너스 기술
+		if(dto.getMember_pw().length() > 15) {
+			// 입력받은 비밀번호 암호화
+			encryPassword = PwSHA256.encrypt(dto.getMember_pw());
+			dto.setMember_pw(encryPassword);
+		}
+		MemberDto res = memberBiz.selectOne(dto);
+		logger.info("[res]" + res);
+		
+		
+		boolean check = false;
+		//입력받은 값이 있다면
+		if (res != null) {
+			// 입력받은 비밀번호를 암호화하고 디비에 있는 암호화 된 비밀번호 비교
+			if (encryPassword.equals(res.getMember_pw())) {
+				session.setAttribute("logindto", res);
+				check = true;
+			}
+		}
+
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		map.put("check", check);
+
+		return map;
+
+	}
+
+	@RequestMapping(value = "/success.do")
+	public String success(MemberDto dto, HttpSession session, Model model) {
+		logger.info("[success.do]");
+		model.addAttribute("msg", "환영합니다" + " " +dto.getMember_name() + "님!");
+		model.addAttribute("url", "/");
+		return "redirect";
+	}
+
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session, Model model) {
 
 		session.invalidate();
 
-		model.addAttribute("msg", "로그아웃 성공");
+		model.addAttribute("msg", "성공적으로 로그아웃하였습니다.");
 		model.addAttribute("uri", "/");
 
 		return "redirect";
@@ -155,6 +136,7 @@ public class MemberController {
 
 		logger.info("[암호화 안된 패스워드 :]" + dto.getMember_pw());
 		logger.info("[암호화 안된 패스워드 체크 :]" + dto.getMember_pwchk());
+
 		// 비밀번호 암호화
 		String encryPassword = PwSHA256.encrypt(dto.getMember_pw());
 		String encryPassword_chk = PwSHA256.encrypt(dto.getMember_pwchk());
@@ -194,34 +176,6 @@ public class MemberController {
 		int res = 0;
 		res = memberBiz.nickChk(dto);
 		return res;
-	}
-
-	@RequestMapping(value = "/faillogin.do", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Boolean> faillogin(@RequestBody MemberDto dto, HttpSession session) {
-		logger.info("[faillogin.do]");
-
-		MemberDto res = memberBiz.selectOne(dto);
-
-		logger.info(">> res : " + res);
-
-		boolean check = false;
-		if (res != null) {
-			session.setAttribute("logindto", res);
-			check = true;
-		}
-
-		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		map.put("check", check);
-
-		return map;
-
-	}
-
-	@RequestMapping(value = "/success.do")
-	public String success(MemberDto dto, HttpSession session, Model model) {
-
-		return "main/main";
 	}
 
 	// 네이버 로그인 성공시 callback호출 메소드

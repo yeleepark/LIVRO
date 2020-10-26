@@ -41,13 +41,12 @@
 		} else {
 			$.ajax({
 				type : "post",
-				url : "faillogin.do",
+				url : "login.do",
 				data : JSON.stringify(loginVal),
 				contentType : "application/json",
 				dataType : "json",
 				success : function(msg) {
 					if (msg.check == true) {
-						alert("로그인 성공!")
 						location.href = 'success.do';
 
 					} else {
