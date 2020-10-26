@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kh.livro.biz.NoticeBiz;
 import com.kh.livro.dao.NoticeDao;
 import com.kh.livro.dto.NoticeDto;
+import com.kh.livro.utils.Pagination;
 
 @Service
 public class NoticeBizImpl implements NoticeBiz {
@@ -20,8 +21,8 @@ public class NoticeBizImpl implements NoticeBiz {
 	private Logger logger = LoggerFactory.getLogger(NoticeBizImpl.class);
 	
 	@Override
-	public List<NoticeDto> selectList() {
-		return noticeDao.selectList();
+	public List<NoticeDto> selectList(Pagination pagination) {
+		return noticeDao.selectList(pagination);
 	}
 
 	@Override
@@ -42,6 +43,11 @@ public class NoticeBizImpl implements NoticeBiz {
 	@Override
 	public int delete(int notice_no) {
 		return noticeDao.delete(notice_no);
+	}
+
+	@Override
+	public int getBoardListCnt() throws Exception {
+		return noticeDao.getBoardListCnt();
 	}
 
 }
