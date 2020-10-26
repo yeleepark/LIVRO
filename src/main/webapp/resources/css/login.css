@@ -76,3 +76,14 @@ input[type="password"]:focus::placeholder{
 #logincheck{
 	width: 300px;
 }
+
+/* 네이버 로그인 이미지*/
+#naverimg{
+	width : 200px;
+	margin-top: 10px;
+}
+
+#googleimg{
+ 	width : 200px;
+ 	
+}
