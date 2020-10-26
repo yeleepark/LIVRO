@@ -17,19 +17,7 @@ public class MemberDaoImpl implements MemberDao {
 	
 	private Logger logger = LoggerFactory.getLogger(MemberDaoImpl.class);
 
-	@Override
-	public MemberDto login(MemberDto dto) {
-		MemberDto res = null;
-		
-		try {
-			res = sqlSession.selectOne(NAMESPACE+"login", dto);
-		} catch (Exception e) {
-			logger.info("[Error] login");
-			e.printStackTrace();
-		}
-		
-		return res;
-	}
+
  
 	@Override
 	public int join(MemberDto dto) {
