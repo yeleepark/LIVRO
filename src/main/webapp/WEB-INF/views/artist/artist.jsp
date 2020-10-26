@@ -9,7 +9,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="resources/css/artist.css">
-<script type="text/javascript"src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- font awesome -->
+<script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
+<!-- google font -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <title>LIVRO-Artist</title>
 </head>
 <body>
@@ -29,15 +33,13 @@
 			<div id="tab-1" class="tab-content current">
 				<!-- 음원 업로드 공간 -->
 				<div>
-					<form:form method="post" enctype="multipart/form-data"
-						modelAttribute="MusicDto" action="upload.do">
+					<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
 						<input type="hidden" name="member_id" value="${logindto.member_id }">
 						<input type="hidden" name="member_nickname" value="${logindto.member_nickname }">
 						<p>파일</p>
 						<!-- 파일 -->
 						<input type="file" name="music_file" />
-						<span style="color: red; font-weight: bold;">
-						
+						<span style="color: red; font-weight: bold;"> 
 						<form:errors path="music_file" /></span>
 
 						<!-- 에러시 문자열 반환 -->
@@ -60,9 +62,9 @@
 									${musicdto.music_title }
 									${musicdto.music_content }
 									${musicdto.music_no }
-									<input type="button" value="삭제" onclick="location.href='deletemusic.do?member_id=${musicdto.member_id }&music_no=${musicdto.music_no }'"> 
-									
-								<br>
+									<input type="button" value="삭제" onclick="location.href='deletemusic.do?member_id=${musicdto.member_id }&music_no=${musicdto.music_no }'">
+
+									<br>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
@@ -74,11 +76,29 @@
 
 			<div id="tab-2" class="tab-content">
 				<div id="supportTable">
-					<div id="supportInsert">
-						<span>${logindto.member_nickname }</span>
-						<textarea name="support_content" id="support_content"></textarea>
-						<input type="button" value="작성" id="InsertBtn">
+					<h2>${memberdto.member_nickname }님께 응원글을 남겨주세요!</h2>
+					
+					<c:choose>
+					<c:when test="${empty logindto }">
+					<div class="support-login">
+						<p> 글 작성을 원하시면 <a href="loginForm.do">로그인</a> 해주세요 </p>
 					</div>
+					</c:when>
+					<c:otherwise>
+					<div class="supportInsert">
+						<div>
+							<p>${logindto.member_nickname }</p>
+						</div>
+						<div>
+							<textarea name="support_content" id="support_content"></textarea>
+						</div>
+						<div>
+							<input type="button" value="작성" class="InsertBtn">
+						</div>
+					</div>
+					</c:otherwise>
+					</c:choose>
+
 					<div class="supportDetail">
 						<c:choose>
 							<c:when test="${empty supportdto }">
@@ -89,20 +109,33 @@
 							<c:otherwise>
 								<c:forEach items="${supportdto }" var="support">
 									<div class="rows">
-										<p>${support.member_nickname }</p>
-										<textarea>${support.support_content }</textarea>
-										<p>${support.support_regdate }</p>
 										<div>
-											<input type="button" value="${support.support_no }">
-											<input type="button" value="수정" id="updateBtn"> 
-											<input type="button" value="삭제" id="deleteBtn">
+											<p>${support.member_nickname }</p>
+										</div>
+										<div>
+											<p class="change">${support.support_content }</p>
+											<p>${support.support_regdate }</p>
+										</div>
+										<div>
+											<input type="hidden" value="${support.support_no }">
+											<c:if test="${logindto.member_nickname == support.member_nickname }">
+											<input type="button" value="수정" class="updateBtn">
+											<input type="button" value="삭제" class="deleteBtn"> 
+											</c:if>
+											<c:if test="${logindto.member_id == support.member_id }">
+											<input type="button" value="답글" class="replyBtn">
+											</c:if>
+										</div>
+										<div class="reply">
+											<div><p>댓글작성</p></div>
+											<div><textarea class="replyContent"></textarea></div>
+											<div>
+												<input type="button" value="작성" class="replyDone">
+												<input type="hidden" value="${support.support_no }">
+											</div>
 										</div>
 									</div>
-									<div>
-										<p>댓글작성</p>
-										<textarea></textarea>
-										<input type="button" value="작성">
-									</div>
+									
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
@@ -111,128 +144,180 @@
 			</div>
 
 			<!-- 일정 게시판 탭-->
-			<div id="tab-3" class="tab-content">
-				일정
-			</div>
-			
+			<div id="tab-3" class="tab-content">일정</div>
+
 		</div>
 
 		<div class="right-wrapper">
 			<div id="artist-profile"></div>
 			<div id="artist-desc">
-				<p>${musicnickdto.member_nickname }</p>
+				<p>${memberdto.member_nickname }</p>
 				<input type="button" value="팔로우">
 			</div>
 		</div>
-		
+
 	</section>
-
-	<script>
-		$(document).ready(function() {
-			$('ul.tabs li').click(function() {
-				var tab_id = $(this).attr('data-tab');
-
-				$('ul.tabs li').removeClass('current');
-				$('.tab-content').removeClass('current');
-
-				$(this).addClass('current');
-				$("#" + tab_id).addClass('current');
-			});
-
-			$("#InsertBtn").click(function() {
-				insertJson(); // json 형식으로 입력
-			});
-
-			$("#updateBtn").click(function() {
-				var updateNo = $(this).prev().val();
-				updateJson(updateNo); // json 형식으로 입력
-			});
-
-			$("#deleteBtn").click(function() {
-				var deleteNo = $(this).prev().prev().val();
-				deleteJson(deleteNo); // json 형식으로 입력
-			});
+<script>
+	$(document).ready( function() {
+		// tab menu
+		$('ul.tabs li').click(function() {
+			var tab_id = $(this).attr('data-tab');
+	
+			$('ul.tabs li').removeClass('current');
+			$('.tab-content').removeClass('current');
+	
+			$(this).addClass('current');
+			$("#" + tab_id).addClass('current');
 		});
-
-		/* 응원글 작성 */
-		function insertJson() {
-
-			var member_id = "${musicnickdto.member_id}";
-			var member_nickname = "${logindto.member_nickname}";
-			var support_content = $("#support_content").val();
-
-			$.ajax({
-				type : "post",
-				url : "supportInsert.do",
-				headers : {"Content-Type" : "application/json"},
-				dateType : "text",
-				data : JSON.stringify({
-					member_id : member_id,
-					member_nickname : member_nickname,
-					support_content : support_content
-				}),
-				success : function() {
-					listRest();
-				}
+	
+		// Insert support board
+		$(".InsertBtn").click(function() {
+			insertJson(); // json 형식으로 입력
+		});
+	
+		// Update support board
+		$(".updateBtn").click( function() {
+			alert('수정하시겠습니까?');
+			$(this).parent().parent().find('.change').contents().unwrap().wrap('<textarea></textarea>');
+			$(this).attr('value', '변경');
+			$(this).attr("value", "변경").click(function() {
+				var updateNo = $(this).prev().val();
+				var content = $(this).parent().parent().find('textarea').val();
+				updateJson(updateNo,content); // json 형식으로 입력 
+				});
 			});
+	
+		// Delete Support board
+		$(".deleteBtn").click(function() {
+			alert('삭제클릭');
+			var deleteNo = $(this).prev().prev().val();
+			deleteJson(deleteNo); // json 형식으로 입력
+			});
+	
+		$(".replyBtn").click(function() {
+			$(this).parent().parent().find('.reply').addClass('replyActive');
+		});
+		
+		// Insert Reply
+		$(".replyDone").click(function(){
+			var commContent = $(this).parent().parent().find('textarea').val();
+			var commNo = $(this).next().val();
+			var commId = "${logindto.member_id}";
+			replyInsert(commContent, commNo, commId);
+		})
+		
+	});
+	
+	/* 응원글 작성 */
+	function insertJson() {
+	
+	var member_id = "${memberdto.member_id}";
+	var member_nickname = "${logindto.member_nickname}";
+	var support_content = $("#support_content").val();
+	
+	$.ajax({
+		type : "post",
+		url : "supportInsert.do",
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		dateType : "text",
+		data : JSON.stringify({
+			member_id : member_id,
+			member_nickname : member_nickname,
+			support_content : support_content
+		}),
+		success : function() {
+			listRest();
 		}
-
-		/* 게시글 수정 */
-		function updateJson(no) {
-			var support_no = no;
-			var support_content = $("#support_content").val();
-			$.ajax({
-				type : "post",
-				url : "supportUpdate.do?suppport_no=" + no,
-				headers : {
-					"Content-Type" : "application/json"
-				},
-				dateType : "text",
-				data : JSON.stringify({
-					support_no : support_no,
-					support_content : support_content
-				}),
-				success : function() {
-					listRest();
-				}
-			});
-		};
-
-		/* 응원글 삭제 */
-		function deleteJson(no) {
-			var support_no = no;
-
-			$.ajax({
-				type : "post",
-				url : "supportDelete.do?support_no=" + no,
-				headers : {
-					"Content-Type" : "application/json"
-				},
-				dateType : "text",
-				data : JSON.stringify({
-					support_no : support_no
-				}),
-				success : function() {
-					listRest();
-				}
-			});
+	});
+	}
+	
+	/* 게시글 수정 */
+	function updateJson(no, content) {
+	var support_no = no;
+	var support_content = content;
+	console.log(support_content);
+	$.ajax({
+		type : "post",
+		url : "supportUpdate.do?suppport_no=" + no,
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		dateType : "text",
+		data : JSON.stringify({
+			support_no : support_no,
+			support_content : support_content
+		}),
+		success : function() {
+			listRest();
 		}
-
-		function listRest() {
-			console.log("출력확인");
-			$.ajax({
-				type : "get",
-				url : "artist.do?member_id=${musicnickdto.member_id }",
-				success : function(result) {
-					var htmlObj = $(result);
-					$(htmlObj).find('ul.tabs li').removeClass('current');
-					$(htmlObj).find('#tab-1').removeClass('current');
-					$(htmlObj).find('ul.tabs li:nth-child(2)').addClass('current');
-					$(htmlObj).find('#tab-2').addClass('current');
-					$('body').html(htmlObj);
-				}
-			});
+	});
+	};
+	
+	/* 응원글 삭제 */
+	function deleteJson(no) {
+	var support_no = no;
+	
+	$.ajax({
+		type : "post",
+		url : "supportDelete.do?support_no=" + no,
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		dateType : "text",
+		data : JSON.stringify({
+			support_no : support_no
+		}),
+		success : function() {
+			listRest();
 		}
-	</script>
+	});
+	}
+	
+	function replyInsert(commContent, commNo, commId){
+		var support_no = commNo;
+		var member_id = commId;
+		var comm_content = commContent;
+		console.log(support_no + " " + member_id + " " + comm_content);
+		
+		$.ajax({
+			type : "post",
+			url : "commInsert.do",
+			headers : {
+				"Content-Type" : "application/json"
+			},
+			dateType : "text",
+			data : JSON.stringify({
+				support_no : support_no,
+				member_id : member_id,
+				comm_content : comm_content
+			}),
+			success : function(result) {
+				console.log(result) //  성공..
+			}
+		});
+		
+	}
+	
+	function listRest() {
+	console.log("출력확인");
+	$.ajax({
+		type : "get",
+		url : "artist.do?member_id=${memberdto.member_id }",
+		success : function(result) {
+			var htmlObj = $(result);
+			$(htmlObj).find('ul.tabs li').removeClass('current');
+			$(htmlObj).find('#tab-1').removeClass('current');
+			$(htmlObj).find('ul.tabs li:nth-child(2)').addClass('current');
+			$(htmlObj).find('#tab-2').addClass('current');
+			$(htmlObj).find('header').remove();
+			$('body').html(htmlObj);
+		}
+	});
+	}
+	
+	
+</script>
 </body>
 </html>

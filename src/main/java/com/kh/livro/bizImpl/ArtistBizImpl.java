@@ -9,6 +9,7 @@ import com.kh.livro.biz.ArtistBiz;
 import com.kh.livro.dao.ArtistDao;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
+import com.kh.livro.dto.SupportCommDto;
 import com.kh.livro.dto.SupportDto;
 
 @Service
@@ -45,6 +46,16 @@ public class ArtistBizImpl implements ArtistBiz {
 	@Override
 	public MusicDto selectOne(String member_id) {
 		return artistDao.selectOne(member_id);
+	}
+
+	@Override
+	public List<SupportCommDto> commList(int support_no) {
+		return artistDao.commList(support_no);
+	}
+
+	@Override
+	public int commInsert(SupportCommDto dto) {
+		return artistDao.commInsert(dto);
 	}
 
 }

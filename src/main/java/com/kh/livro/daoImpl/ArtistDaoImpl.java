@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.livro.dao.ArtistDao;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
+import com.kh.livro.dto.SupportCommDto;
 import com.kh.livro.dto.SupportDto;
 
 @Repository
@@ -90,6 +91,31 @@ public class ArtistDaoImpl implements ArtistDao {
 			e.printStackTrace();
 		}
 		return res;
+	}
+
+	@Override
+	public int commInsert(SupportCommDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"commInsert", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public List<SupportCommDto> commList(int support_no) {
+		List<SupportCommDto> list = new ArrayList<SupportCommDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"commList", support_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }
