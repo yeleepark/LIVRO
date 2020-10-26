@@ -46,11 +46,11 @@ public class MusicDaoImpl implements MusicDao {
 	}
 
 	@Override
-	public int delete(String member_id) {
+	public int deletemusic(int music_no) {
 		int res = 0;
 		
 		try {
-			res = sqlSession.insert(NAMESPACE+"delete", member_id);
+			res = sqlSession.insert(NAMESPACE+"deletemusic", music_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

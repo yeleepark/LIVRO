@@ -29,8 +29,8 @@ public class MusicBizImpl implements MusicBiz {
 	}
 
 	@Override
-	public int delete(String member_id) {
-		return musicDao.delete(member_id);
+	public int deletemusic(int music_no) {
+		return musicDao.deletemusic(music_no);
 	}
 
 }

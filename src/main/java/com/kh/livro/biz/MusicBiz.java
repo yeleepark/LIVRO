@@ -11,5 +11,5 @@ public interface MusicBiz {
 	
 	public int insert(MusicDto dto);
 	public int update(MusicDto dto);
-	public int delete(String member_id);
+	public int deletemusic(int music_no);
 }
