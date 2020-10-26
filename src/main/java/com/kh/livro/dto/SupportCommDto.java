@@ -7,19 +7,19 @@ public class SupportCommDto {
 	private int comm_no;
 	private int support_no;
 	private String member_id;
-	private String member_content;
+	private String comm_content;
 	private Date comm_regdate;
 
 	public SupportCommDto() {
 		super();
 	}
 
-	public SupportCommDto(int comm_no, int support_no, String member_id, String member_content, Date comm_regdate) {
+	public SupportCommDto(int comm_no, int support_no, String member_id, String comm_content, Date comm_regdate) {
 		super();
 		this.comm_no = comm_no;
 		this.support_no = support_no;
 		this.member_id = member_id;
-		this.member_content = member_content;
+		this.comm_content = comm_content;
 		this.comm_regdate = comm_regdate;
 	}
 
@@ -47,12 +47,12 @@ public class SupportCommDto {
 		this.member_id = member_id;
 	}
 
-	public String getMember_content() {
-		return member_content;
+	public String getComm_content() {
+		return comm_content;
 	}
 
-	public void setMember_content(String member_content) {
-		this.member_content = member_content;
+	public void setComm_content(String comm_content) {
+		this.comm_content = comm_content;
 	}
 
 	public Date getComm_regdate() {
@@ -62,5 +62,6 @@ public class SupportCommDto {
 	public void setComm_regdate(Date comm_regdate) {
 		this.comm_regdate = comm_regdate;
 	}
-
+	
+	
 }

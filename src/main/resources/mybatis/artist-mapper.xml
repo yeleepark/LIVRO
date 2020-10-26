@@ -26,6 +26,19 @@
 		WHERE SUPPORT_NO = #{support_no}
 	</delete>
 	
+	<!-- 댓글작성 -->
+	<insert id="commInsert">
+		INSERT INTO SUPPORT_COMM
+		VALUES (COMM_NO_SEQ.NEXTVAL, #{support_no}, #{member_id}, #{comm_content}, SYSDATE)
+	</insert>
+	
+	<select id="commList" resultType="SupportCommDto">
+		SELECT *
+		FROM SUPPORT_COMM
+		WHERE SUPPORT_NO = ${support_no}
+		ORDER BY SUPPORT_NO
+	</select>
+
 
 	<!-- 아티스트 페이지 이동 -->
 	<select id="selectList" resultType="MusicDto">

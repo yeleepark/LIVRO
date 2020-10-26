@@ -2,6 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 section {
@@ -68,49 +69,144 @@ ul.tabs li.current {
 	border: 1px solid black;
 }
 
-#suppoirtInsert {
-	width: 100%;
-	border: 1px solid black;
+#supportTable h2{
+	display: block;
+	padding : 10px;
 }
 
+.support-login{
+	width : 100%;
+	padding: 10px;
+	text-align: right;
+}
+
+/* 작성공간 */
+.supportInsert {
+	width: 100%;
+	display: flex;
+	margin : 50px 0;
+	border : 1px solid red;
+	box-sizing: border-box;
+}
+
+.supportInsert div:nth-child(1),
+.supportInsert div:nth-child(3){
+	width : 20%;
+	border : 1px solid pink;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.supportInsert div:nth-child(2){
+	width : 60%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 작성하는 textarea */
 #support_content {
-	width: 80%; 
-	height : 100px;
+	width: 100%;
+	height : 50px;
 	resize: none;
 }
 
+.InsertBtn{
+	width : 100px;
+	height : 30px;
+	border : 1px solid black;
+	padding : 5px 10px;
+}
+
+
+/* --------------게시판 리스트-------------- */
 .supportDetail{
 	width : 100%;
 	height: 100%;
-	border: 3px solid red;
+	border : 1px solid red;
+	box-sizing: border-box;
 }
 
 #supportTable .rows {
 	display : flex;
-	padding: 10px;
-	border: 1px solid red;
+	border-bottom : 1px dotted black;
+	align-items: center;
+	margin-bottom: 10px;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#supportTable .rows div:nth-child(1),
+#supportTable .rows div:nth-child(3){
+	width : 20%;
+	height : 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column; 
+	border : 1px solid pink;
+}
+
+#supportTable .rows div:nth-child(2){
+	width : 60%;
+	height : 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border : 1px solid pink;
+}
+
+#supportTable .rows div:nth-child(2) p{
+	overflow: hidden;
+	width : 100%;
+	border: 1px dotted black;
+}
+
+#supportTable .rows div:nth-child(2) textarea{
+	display : block;
+	width : 100%;
+	border: 1px dotted black;
+	resize: none;
+}
+
+#supportTable .rows div:nth-child(2) p:nth-child(1){
+	margin-bottom: 10px;
+}
+
+#supportTable .rows div:nth-child(2) p:nth-child(2){
+	text-align: right;
 }
 
 #supportTable .rows input{
 	display: block;
+	width : 100px;
+	border : 1px solid black;
+	padding : 5px 10px;
 }
 
-#supportTable .rows p:nth-child(1){
-	flex : 1;
+/* 댓글영역 */
+.reply{
+	display: none;
+	align-items: center;
 }
 
-#supportTable .rows p:nth-child(2){
-	flex : 3;
+.replyActive{
+	display: flex;
+	width: 100%;
+	border : 1px solid red;
+	height: 100%;
 }
 
-#supportTable .rows p:nth-child(3){
-	flex : 1;
+.replyActive div:nth-child(1),
+.replyActive div:nth-child(3){
+	width : 20%;
 }
 
-#supportTable .rows p:nth-child(4){
-	flex : 1;
+.replyActive div:nth-child(2){
+	width : 60%;
 }
-
 
 /* 아티스트 프로필 출력 */
 .right-wrapper {
