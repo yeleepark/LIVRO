@@ -5,24 +5,25 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-a {
+#header a {
 	text-decoration: none;
 }
 
-ul, li {
+#header ul, li {
 	list-style: none;
 }
 
-button {
+#header button {
 	cursor: pointer;
 }
 
-input:focus, button:focus {
+#header input:focus, 
+#header button:focus {
 	outline: none;
 }
 
 /* 헤더 */
-header {
+#header {
 	display: flex;
 	width: 100%;
 	padding: 10px 20px;
