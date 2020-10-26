@@ -21,7 +21,7 @@ response.setDateHeader("Expires",1L);
 </head>
 <body>
 
-	<header role="header">
+	<header role="header" id="header">
 		<div class="header-bar header-left">
 			<a href="main.do">LIVRO</a>
 		</div>

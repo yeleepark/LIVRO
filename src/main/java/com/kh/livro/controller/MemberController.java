@@ -105,7 +105,8 @@ public class MemberController {
 	@RequestMapping(value = "/success.do")
 	public String success(MemberDto dto, HttpSession session, Model model) {
 		logger.info("[success.do]");
-		model.addAttribute("msg", "환영합니다" + " " +dto.getMember_name() + "님!");
+		
+		model.addAttribute("msg", "환영합니다"+ dto.getMember_name() + "님!");
 		model.addAttribute("url", "/");
 		return "redirect";
 	}

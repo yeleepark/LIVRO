@@ -8,6 +8,8 @@
 		<typeAlias type="com.kh.livro.dto.ProfileDto" alias="ProfileDto"/>
 		<typeAlias type="com.kh.livro.dto.MusicDto" alias="MusicDto"/>
 		<typeAlias type="com.kh.livro.dto.SupportDto" alias="SupportDto"/>
+		<typeAlias type="com.kh.livro.dto.SupportCommDto" alias="SupportCommDto"/>
+		<typeAlias type="com.kh.livro.dto.QnaDto" alias="QnaDto"/>
 	</typeAliases>
 	
 	<mappers>
@@ -19,5 +21,6 @@
 		<mapper resource="mybatis/profile-mapper.xml"/>
 		<mapper resource="mybatis/mypage-mapper.xml"/>
 		<mapper resource="mybatis/music-mapper.xml"/>
+		<mapper resource="mybatis/qna-mapper.xml"/>
 	</mappers>
 </configuration>
