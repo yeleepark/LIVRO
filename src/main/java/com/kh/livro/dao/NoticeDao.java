@@ -17,6 +17,12 @@ public interface NoticeDao {
 	public int update(NoticeDto dto);
 	public int delete(int notice_no);
 	
+	public List<NoticeDto> selectSearchList(Pagination spagination);
+	
 	// 페이징 총 게시글 개수 확인
 	public int getBoardListCnt() throws Exception;
+	//
+	public int getSearchListCnt() throws Exception;
+	
+	
 }
