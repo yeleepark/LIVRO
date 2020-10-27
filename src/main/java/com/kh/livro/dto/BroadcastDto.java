@@ -25,6 +25,13 @@ public class BroadcastDto {
 		this.broadcast_category = broadcast_category;
 		this.member_profile = member_profile;
 	}
+	
+	public BroadcastDto(String member_id, String broadcast_title, String broadcast_content, String broadcast_category) {
+		this.member_id = member_id;
+		this.broadcast_title = broadcast_title;
+		this.broadcast_content = broadcast_content;
+		this.broadcast_category = broadcast_category;
+	}
 
 	public int getBroadcast_no() {
 		return broadcast_no;
