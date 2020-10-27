@@ -67,48 +67,44 @@ public class MemberController {
 		return "login/login";
 	}
 
-
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> login(@RequestBody MemberDto dto, HttpSession session, Model model) {
+	public Map<String, Object> login(@RequestBody MemberDto dto, HttpSession session, Model model) {
 		logger.info("[login.do]");
 
+		// member_id를 가지고가서 아이디랑 비밀번호를 res에 담아서 갖고옴
+		MemberDto res = memberBiz.encryptchk(dto.getMember_id());
 		String encryPassword = dto.getMember_pw();
-		
-		//팀원들을 위한 유정이의 보너스 기술
-		if(dto.getMember_pw().length() > 15) {
-			// 입력받은 비밀번호 암호화
-			encryPassword = PwSHA256.encrypt(dto.getMember_pw());
+		System.out.println(encryPassword);
+
+		if (res.getMember_pw().length() > 15) {
+			encryPassword = PwSHA256.encrypt(encryPassword);
 			dto.setMember_pw(encryPassword);
 		}
-		MemberDto res = memberBiz.selectOne(dto);
-		logger.info("[res]" + res);
-		
-		
+
+		MemberDto login = memberBiz.selectOne(dto);
 		boolean check = false;
-		//입력받은 값이 있다면
-		if (res != null) {
-			// 입력받은 비밀번호를 암호화하고 디비에 있는 암호화 된 비밀번호 비교
-			if (encryPassword.equals(res.getMember_pw())) {
-				session.setAttribute("logindto", res);
-				check = true;
-			}
+		if (login != null) {
+			session.setAttribute("logindto", login);
+			check = true;
+
 		}
 
-		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("check", check);
+		map.put("dto", login);
 
 		return map;
 
 	}
 
 	@RequestMapping(value = "/success.do")
-	public String success(MemberDto dto, HttpSession session, Model model) {
+	public String success(HttpSession session, Model model) {
 		logger.info("[success.do]");
 		
-		model.addAttribute("msg", "환영합니다"+ dto.getMember_name() + "님!");
-		model.addAttribute("url", "/");
-		return "redirect";
+		//MemberDto res = (MemberDto)session.getAttribute("logindto");
+		
+		return "main/main";
 	}
 
 	@RequestMapping("/logout.do")

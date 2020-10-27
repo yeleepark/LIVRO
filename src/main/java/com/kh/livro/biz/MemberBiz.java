@@ -18,4 +18,6 @@ public interface MemberBiz {
 	// 일반 로그인
 	public MemberDto selectOne(MemberDto dto);
 
+	// 암호화 여부확인
+	public MemberDto encryptchk(String member_id);
 }

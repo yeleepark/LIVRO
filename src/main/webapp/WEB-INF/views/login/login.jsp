@@ -16,62 +16,14 @@
 <title>LIVRO-로그인</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$("#logincheck").hide();
-	});
-
-	function loginChk() {
-
-		var member_id = $("#member_id").val().trim();
-		var member_pw = $("#member_pw").val().trim();
-		
-
-		
-		var loginVal = {
-			"member_id" : member_id,
-			"member_pw" : member_pw
-		}
-
-		if (member_id == null || member_id == "" || member_pw == null || member_pw == "") {
-			$("#logincheck").show();
-			$("#logincheck").html("아이디와 비밀번호를 입력해주세요.").css({
-				'color' : 'red',
-				'font-size' : '13px'
-			});
-		} else {
-			$.ajax({
-				type : "post",
-				url : "login.do",
-				data : JSON.stringify(loginVal),
-				contentType : "application/json",
-				dataType : "json",
-				success : function(msg) {
-					if (msg.check == true) {
-						var member_name = $('input[name=member_name]').val();
-						console.log("member_name" + member_name);
-						location.href = 'success.do?member_name=' + member_name;
-					} else {
-						$("#logincheck").show();
-						$("#logincheck").html("아이디 혹은 비밀번호가 올바르지 않습니다").css({
-							'color' : 'red',
-							'font-size' : '13px'
-						});
-					}
-				},
-				error : function() {
-					alert("통신 실패");
-				}
-			});
-		}
-	}
+<script type="text/javascript" src="resources/js/login.js">
 </script>
 </head>
 <body>
 	<section>
 		<div class="login-wrapper">
 			<h2>Welcome!</h2>
-			<input type="hidden" name="member_name" value="${logindto.member_name}">
+		
 			<input type="text" name="member_id" autocomplete="off" id="member_id" placeholder="&#xf2bd; User ID"> 
 			<input type="password" name="member_pw" autocomplete="off" id="member_pw" placeholder="&#xf2bd; Password">
 			
