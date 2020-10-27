@@ -46,7 +46,7 @@ public class NoticeBizImpl implements NoticeBiz {
 	}
 	@Override
 	public List<NoticeDto> selectSearchList(Pagination spagination) {
-		System.out.println(spagination);
+		System.out.println("노티스 비즈"+spagination);
 		return noticeDao.selectSearchList(spagination);
 	}
 
@@ -55,8 +55,8 @@ public class NoticeBizImpl implements NoticeBiz {
 		return noticeDao.getBoardListCnt();
 	}
 	@Override
-	public int getSearchListCnt() throws Exception {
-		return noticeDao.getSearchListCnt();
+	public int getSearchListCnt(String noticeKeyword) throws Exception {
+		return noticeDao.getSearchListCnt(noticeKeyword);
 	}
 
 }

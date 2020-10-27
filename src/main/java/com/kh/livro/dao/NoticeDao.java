@@ -22,7 +22,7 @@ public interface NoticeDao {
 	// 페이징 총 게시글 개수 확인
 	public int getBoardListCnt() throws Exception;
 	//
-	public int getSearchListCnt() throws Exception;
+	public int getSearchListCnt(String noticeKeyword) throws Exception;
 	
 	
 }

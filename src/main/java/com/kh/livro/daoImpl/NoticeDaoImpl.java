@@ -99,6 +99,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	//검색 
 	public List<NoticeDto> selectSearchList(Pagination spagination) {
 		
+		System.out.println("노티스다오"+spagination);
 		List<NoticeDto> searchList = new ArrayList<NoticeDto>();
 		
 		try {
@@ -119,9 +120,8 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 
 	@Override
-	public int getSearchListCnt() throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"getSearchListCnt");
+	public int getSearchListCnt(String noticeKeyword) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getSearchListCnt",noticeKeyword);
 	}
 
 }
