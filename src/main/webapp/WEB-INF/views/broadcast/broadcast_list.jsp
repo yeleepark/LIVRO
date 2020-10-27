@@ -14,7 +14,15 @@
     <jsp:include page="/WEB-INF/views/header/header.jsp"/>
     
     <section>
-    	<input type="button" value="방송하기" onclick="location.href='broadInsert.do'">
+    	<c:if test="${logindto.member_role == 'A' }">
+    		<input type="button" id="broadgo" value="방송하기" onclick="broadGo()">
+		    	<script type="text/javascript">
+		    		function broadGo(){
+		    			open("live.do","","width=2000, height=800");
+		    		}
+		    	</script>    		
+    	</c:if>
+    	
         <div class="broadcast-table">
         	<c:choose>
         	<c:when test="${empty list }">
@@ -28,9 +36,18 @@
 						
 		            </div>
 		            <div class="broadcast-name">
-		            	<p><a href="artist.do?member_id=${dto.member_id} ">${dto.member_id }</a></p>
-		                <p><a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a></p>
-		                <p>${dto.broadcast_content }</p>
+	<c:choose>
+    	<c:when test="${empty logindto }">
+    		<p>${dto.member_id }</p>
+    		<p>${dto.broadcast_title }</p>
+    		<p>${dto.broadcast_content }</p>
+    	</c:when>
+    	<c:otherwise>   		
+		    <p><a href="artist.do?member_id=${dto.member_id }">${dto.member_id }</a></p>
+		    <p><a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a></p>
+		    <p>${dto.broadcast_content }</p>
+    	</c:otherwise>
+    </c:choose>
 		            </div>
 	            </c:forEach>
             </c:otherwise>

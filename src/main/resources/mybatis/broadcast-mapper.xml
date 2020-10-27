@@ -15,5 +15,11 @@
 		FROM BROADCAST
 		WHERE BROADCAST_NO = #{broadcast_no}
 	</select>
+	
+	<insert id="insert" parameterType="BroadcastDto">
+		INSERT INTO BROADCAST
+		VALUES(BROADCAST_NO_SEQ.NEXTVAL, #{member_id}, #{broadcast_title}, #{broadcast_content}, SYSDATE, #{broadcast_category},
+		(SELECT MEMBER_PROFILE FROM MEMBER WHERE MEMBER_ID = #{member_id}), 'Y')
+	</insert>
 
 </mapper>

@@ -2,6 +2,9 @@
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +36,23 @@ public class BroadcastController {
 		model.addAttribute("dto", dto);
 		return "broadcast/broadcast_detail";
 	}
+	
+	//broadcastlist에서 방송하기 form으로 이동
+	@RequestMapping("/live.do")
+	public String broadcastLive2() {
 
-	@RequestMapping("/broadInsert.do")
-	public String broadcastInsert() {
-		return "broadcast/broadcast_insert";
+		return "broadcast/broadcastlive";
+	}
+	
+	//broadcastlive.jsp에서 insert시킴!!
+	@RequestMapping("/liveinsert.do")
+	public String liveinsert(Model model, HttpServletRequest request, HttpServletResponse response, String member_id, String broadcast_title, String broadcast_content, String broadcast_category) {
+		logger.info("인서트해라");
+		logger.info(member_id + broadcast_title);
+		BroadcastDto dto = new BroadcastDto(member_id, broadcast_title, broadcast_content, broadcast_category);
+		
+		model.addAttribute("livedto", broadcastBiz.broadInsert(dto));
+		return "broadcast/broadcastlive";
 	}
 	
 }
