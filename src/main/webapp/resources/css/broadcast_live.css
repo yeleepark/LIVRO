@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+video {
+   width: 1200px;
+   height: 600px;
+   border-radius: 15px;
+   margin: 0;
+   padding: 0;
+}
+
+#section{
+   height: 0px;
+}
+
+#video-chat{
+   display: flex;
+   flex-direction: row;
+   height: 700px;
+   margin: 50px 50px;
+   width: 100%;
+}
+
+#video-container{
+   border:1px solid blue;
+}
+
+#chat-box{
+   border: 1px solid dodgerblue;
+   height: 700px;
+   display: flex;
+   flex-direction: column;
+}
+#chat-output{
+   height: 650px;
+}
+#input-chat{
+   height: 50px;
+}
+

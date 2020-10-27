@@ -48,18 +48,20 @@ public class BroadcastDaoImpl implements BroadcastDao {
 		return dto;
 	}
 
-	@Override
-	public int broadInsert(BroadcastDto dto) {
-		int res = 0;
-		
-		try {
-			res = sqlSession.insert(NAMESPACE + "insert", dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.info("[ERROR]");
+		//방송하기 눌러서 방제 , 내용 등 입력하면 인서트 한다.
+		@Override
+		public int broadInsert(BroadcastDto dto) {
+			logger.info("[InsertDao check]");
+			int res = 0;
+			
+			try {
+				res = sqlSession.insert(NAMESPACE + "insert", dto);
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.info("[ERROR]");
+			}
+			return res;
 		}
-		return res;
-	}
 
 	@Override
 	public int broadUpdate(BroadcastDto dto) {

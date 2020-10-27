@@ -2,6 +2,8 @@ package com.kh.livro.bizImpl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ public class BroadcastBizImpl implements BroadcastBiz {
 	
 	@Autowired
 	private BroadcastDao broadcastDao;
+	
+	private Logger logger = LoggerFactory.getLogger(BroadcastDao.class);
 
 	@Override
 	public List<BroadcastDto> selectList() {
@@ -27,6 +31,7 @@ public class BroadcastBizImpl implements BroadcastBiz {
 
 	@Override
 	public int broadInsert(BroadcastDto dto) {
+		logger.info("[BroadInsert_Biz check]");
 		return broadcastDao.broadInsert(dto);
 	}
 
