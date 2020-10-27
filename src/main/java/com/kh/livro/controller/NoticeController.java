@@ -34,7 +34,7 @@ public class NoticeController {
 		pagination.pageInfo(page, range, listCnt);
 		
 		model.addAttribute("pagination", pagination);
-		model.addAttribute("list", noticeBiz.selectList(pagination));
+		model.addAttribute("noticelist", noticeBiz.selectList(pagination));
 		
 		return "notice/notice";
 	}
@@ -86,5 +86,25 @@ public class NoticeController {
 		
 		model.addAttribute("res", noticeBiz.delete(notice_no));
 		return "redirect:notice.do";
+	}
+	
+	
+	@RequestMapping(value="noticeSearch.do", method = RequestMethod.GET)
+	public String selectSearchList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
+			  									@RequestParam(required = false, defaultValue = "1") int range,
+			  									String noticeKeyword) throws Exception { 
+		
+		//전체 게시글 개수 count
+		int listCnt = noticeBiz.getSearchListCnt();
+		
+		//pagination 객체 생성
+		Pagination spagination = new Pagination();
+		spagination.pageSearchInfo(page, range, listCnt, noticeKeyword);
+		System.out.println("pagination datas = "+page+"," +range+","+ listCnt+","+ noticeKeyword );
+		
+		model.addAttribute("searchpagination", spagination);
+		model.addAttribute("searchlist", noticeBiz.selectSearchList(spagination));
+		
+		return "notice/noticeSearch";
 	}
 }
