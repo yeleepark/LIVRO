@@ -14,8 +14,22 @@
 		WHERE NUM 
 		BETWEEN #{startList} +1 
 		AND #{startList} + #{listSize} -1
-		
-		
+	</select>
+	
+	<select id="selectSearchList" resultType="NoticeDto">
+		SELECT * 
+		FROM
+			(
+				SELECT ROW_NUMBER() OVER (ORDER BY NOTICE_NO) NUM
+				, N.*
+				FROM NOTICE_BOARD N
+				WHERE NOTICE_TITLE LIKE '%'||#{noticeKeyword}||'%'
+				OR NOTICE_CONTENT LIKE '%'||#{noticeKeyword}||'%' 
+				ORDER BY N.NOTICE_NO DESC	
+			)
+		WHERE NUM 
+		BETWEEN #{startList} +1 
+		AND #{startList} + #{listSize} -1
 	</select>
 	
 	<select id="selectOne" resultType="NoticeDto" parameterType="int">
@@ -44,6 +58,14 @@
 	<select id="getBoardListCnt" resultType="int">
 		SELECT COUNT(*) AS LISTCNT
 		FROM NOTICE_BOARD
+	</select>
+	
+	<select id="getSearchListCnt" resultType="int">
+		SELECT COUNT(*) AS SEARCHLISTCNT
+		FROM ( SELECT *
+				FROM NOTICE_BOARD
+				WHERE NOTICE_TITLE LIKE '%'||#{noticeKeyword}||'%'
+				OR NOTICE_CONTENT LIKE '%'||#{noticeKeyword}||'%' )
 	</select>
 	
 </mapper>

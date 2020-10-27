@@ -12,5 +12,9 @@ public interface NoticeBiz {
 	public int insert(NoticeDto dto);
 	public int update(NoticeDto dto);
 	public int delete(int notice_no);
+	
+	public List<NoticeDto> selectSearchList(Pagination spagination);
+	
 	public int getBoardListCnt() throws Exception;
+	public int getSearchListCnt() throws Exception;
 }

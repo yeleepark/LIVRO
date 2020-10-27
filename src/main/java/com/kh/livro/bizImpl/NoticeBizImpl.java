@@ -44,10 +44,19 @@ public class NoticeBizImpl implements NoticeBiz {
 	public int delete(int notice_no) {
 		return noticeDao.delete(notice_no);
 	}
+	@Override
+	public List<NoticeDto> selectSearchList(Pagination spagination) {
+		System.out.println(spagination);
+		return noticeDao.selectSearchList(spagination);
+	}
 
 	@Override
 	public int getBoardListCnt() throws Exception {
 		return noticeDao.getBoardListCnt();
+	}
+	@Override
+	public int getSearchListCnt() throws Exception {
+		return noticeDao.getSearchListCnt();
 	}
 
 }

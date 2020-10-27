@@ -94,11 +94,34 @@ public class NoticeDaoImpl implements NoticeDao {
 		
 		return res;
 	}
+	
+	
+	//검색 
+	public List<NoticeDto> selectSearchList(Pagination spagination) {
+		
+		List<NoticeDto> searchList = new ArrayList<NoticeDto>();
+		
+		try {
+			searchList = sqlSession.selectList(NAMESPACE+"selectSearchList", spagination);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return searchList;
+	}
+	
 
 	@Override
 	public int getBoardListCnt() throws Exception {
 		
 		return sqlSession.selectOne(NAMESPACE+"getBoardListCnt");
+	}
+
+	@Override
+	public int getSearchListCnt() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getSearchListCnt");
 	}
 
 }
