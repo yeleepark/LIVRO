@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +29,9 @@ public class ProfileController {
 
 	@Autowired
 	private ProfileBiz profileBiz;
+	
+	@Resource(name="profilepath")
+	private String path;
 	
 	private Logger logger = LoggerFactory.getLogger(ProfileController.class);
 	
@@ -62,29 +65,27 @@ public class ProfileController {
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 
-		String profile_path = "";
+		String profile_path = path;
 		
 		try {
 			inputStream = profile.getInputStream(); // 파일 읽어오기
+			
+			// 웹사이트 루트디렉토리의 실제 디스크상의 경로 알아내기.
+			// WebUtil는 SpringMVC를 다룰 때 사용하는 클래스
+			// Session에 담겨있는 객체들을 보다 짧은 코드로 넣고 빼고 할수 있으며 세션이나 쿠키 객체를 받아올수 있다
+			// request.getSession().getServletContext() : 해당 프로젝트의 경로? 파일업로드의 절대경로
+						
+			profile_path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
 
 			// 웹사이트 루트디렉토리의 실제 디스크상의 경로 알아내기.
 			// WebUtil는 SpringMVC를 다룰 때 사용하는 클래스
 			// Session에 담겨있는 객체들을 보다 짧은 코드로 넣고 빼고 할수 있으며 세션이나 쿠키 객체를 받아올수 있다
 			// request.getSession().getServletContext() : 해당 프로젝트의 경로? 파일업로드의 절대경로
-			
-			profile_path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
-			session = request.getSession();
-			String root_path = session.getServletContext().getRealPath("/");
-			System.out.println("root__________path" + root_path);
-			profile_path = root_path + "resources/storage";
-//			profile_path = "var/lib/tomcat9/storage";
-			///var/lib/tomcat9/webapps/LIVRO
-
-			logger.info("실제 업로드 될 경로 : " + profile_path);
 
 			// 기존의 파일이나 폴더에 대한 제어를 하는 데 사용하는 File 클래스
 			// 변수path에 담긴 경로에 File 객체를 생성한다
-			File storage = new File(profile_path);
+			//File storage = new File(path); 리눅스
+			File storage = new File(profile_path);// 로컬
 
 			// 스토리지가 없으면
 			if (!storage.exists()) {
@@ -94,7 +95,8 @@ public class ProfileController {
 			}
 
 			// 지정한 경로에 서버에 저장될 파일명으로 새로운 파일 객체 생성
-			File newFile = new File(profile_path + "/" + profile_savedname);
+			// File newFile = new File(path+ "/" + profile_savedname);  // 리눅스
+			File newFile = new File(profile_path+ "/" + profile_savedname);
 			if (!newFile.exists()) {
 				newFile.createNewFile(); // 지정 경로에 파일 생성
 			}
@@ -142,7 +144,7 @@ public class ProfileController {
 		return "redirect:artist.do?member_id="+member_id;
 	}
 	
-	//프로필 사진 업로드	
+	//프로필 사진 업데이트
 	@RequestMapping(value="/profileUpdate.do", method =  RequestMethod.POST)
 	public String profileUpdate(HttpServletRequest request, ProfileDto profiledto, String member_id) {
 		
@@ -166,28 +168,22 @@ public class ProfileController {
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 
-		String profile_path = "";
+		String profile_path = path;
 		
 		try {
 			inputStream = profile.getInputStream(); // 파일 읽어오기
-
+			
 			// 웹사이트 루트디렉토리의 실제 디스크상의 경로 알아내기.
 			// WebUtil는 SpringMVC를 다룰 때 사용하는 클래스
 			// Session에 담겨있는 객체들을 보다 짧은 코드로 넣고 빼고 할수 있으며 세션이나 쿠키 객체를 받아올수 있다
 			// request.getSession().getServletContext() : 해당 프로젝트의 경로? 파일업로드의 절대경로
-			
-//			profile_path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
-			HttpSession session = request.getSession();
-			String root_path = session.getServletContext().getRealPath("/");
-			System.out.println("root__________path" + root_path);
-			profile_path = root_path + "resources/storage";
-//			profile_path = "/var/lib/tomcat9/webapps/livro/profile";
-
-			logger.info("실제 업로드 될 경로 : " + profile_path);
+						
+			profile_path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
 
 			// 기존의 파일이나 폴더에 대한 제어를 하는 데 사용하는 File 클래스
 			// 변수path에 담긴 경로에 File 객체를 생성한다
-			File storage = new File(profile_path);
+			//File storage = new File(path); 리눅스
+			File storage = new File(profile_path);// 로컬
 
 			// 스토리지가 없으면
 			if (!storage.exists()) {
@@ -197,7 +193,8 @@ public class ProfileController {
 			}
 
 			// 지정한 경로에 서버에 저장될 파일명으로 새로운 파일 객체 생성
-			File newFile = new File(profile_path + "/" + profile_savedname);
+			// File newFile = new File(path+ "/" + profile_savedname);  // 리눅스
+			File newFile = new File(profile_path+ "/" + profile_savedname);
 			if (!newFile.exists()) {
 				newFile.createNewFile(); // 지정 경로에 파일 생성
 			}

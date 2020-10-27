@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
+import com.kh.livro.dto.ProfileDto;
 import com.kh.livro.dto.SupportCommDto;
 import com.kh.livro.dto.SupportDto;
 
@@ -32,4 +33,7 @@ public interface ArtistBiz {
 
 	// 응원 댓글
 	public int commInsert(SupportCommDto dto);
+
+	// 프로필 정보
+	public ProfileDto selectProfile(String member_id);
 }

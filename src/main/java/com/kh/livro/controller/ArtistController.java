@@ -1,5 +1,8 @@
 package com.kh.livro.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,7 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.livro.biz.ArtistBiz;
 import com.kh.livro.dto.SupportCommDto;
@@ -31,6 +35,7 @@ public class ArtistController {
 		model.addAttribute("musicdto", artistBiz.selectList(member_id));
 		model.addAttribute("memberdto", artistBiz.selectOne(member_id));
 		model.addAttribute("supportdto", artistBiz.supportList(member_id));
+		model.addAttribute("profiledto", artistBiz.selectProfile(member_id));
 		return "artist/artist";
 	}
 
@@ -98,7 +103,6 @@ public class ArtistController {
 		return entity;
 	}
 
-
 	// 댓글입력 (@RestController방식으로 json전달하여 댓글입력)
 	// @ResponseEntity : 데이터 + http status code
 	// @ResponseBody : 객체를 json으로 (json - String)
@@ -107,7 +111,7 @@ public class ArtistController {
 	public ResponseEntity<String> commInsert(@RequestBody SupportCommDto dto, HttpSession session) {
 
 		logger.info("[comm Insert]");
-		
+
 		ResponseEntity<String> entity = null;
 
 		try {
@@ -120,4 +124,21 @@ public class ArtistController {
 		// 입력 처리 HTTP 상태 메시지 리턴
 		return entity;
 	}
+
+	@RequestMapping(value = "/showList.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<SupportCommDto> replyRest(@RequestParam int support_no) {
+		logger.info("댓글 출력 컨트롤러");
+		System.out.println(support_no); // 찍힘
+
+		List<SupportCommDto> list = new ArrayList<SupportCommDto>();
+		try {
+			list = artistBiz.commList(support_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 }

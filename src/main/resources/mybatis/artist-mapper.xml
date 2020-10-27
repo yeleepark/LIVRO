@@ -26,6 +26,12 @@
 		WHERE SUPPORT_NO = #{support_no}
 	</delete>
 	
+	<select id="selectProfile" resultType="ProfileDto">
+		SELECT *
+		FROM PROFILE
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
 	<!-- 댓글작성 -->
 	<insert id="commInsert">
 		INSERT INTO SUPPORT_COMM
@@ -36,7 +42,7 @@
 		SELECT *
 		FROM SUPPORT_COMM
 		WHERE SUPPORT_NO = ${support_no}
-		ORDER BY SUPPORT_NO
+		ORDER BY SUPPORT_NO 
 	</select>
 
 
