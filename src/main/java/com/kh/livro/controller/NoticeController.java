@@ -95,7 +95,7 @@ public class NoticeController {
 			  									String noticeKeyword) throws Exception { 
 		
 		//전체 게시글 개수 count
-		int listCnt = noticeBiz.getSearchListCnt();
+		int listCnt = noticeBiz.getSearchListCnt(noticeKeyword);
 		
 		//pagination 객체 생성
 		Pagination spagination = new Pagination();

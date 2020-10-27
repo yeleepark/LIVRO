@@ -13,12 +13,14 @@
 
 <script type="text/javascript">
 	// 이전 버튼 이벤트 
+	
 	function fn_prev(page, range, rangeSize) {
+		var noticeKeyword = document.getElementById("noticeKeyword");
+		
 		var page = ((range - 2) * rangeSize) + 1;
 		var range = range - 1;
 		
 		var url = "${pageContext.request.contextPath}/noticeSearch.do";
-		var noticeKeyword = "${noticeKeyword}"
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
 		url = url + "&noticeKeyword=" + noticeKeyword;
@@ -28,11 +30,12 @@
 	
 	//페이지 번호 클릭 
 	function fn_pagination(page, range, rangeSize, searchType, keyword) {
+		var noticeKeyword = document.getElementById("noticeKeyword").value;
+		alert(noticeKeyword)
 		var url = "${pageContext.request.contextPath}/noticeSearch.do";
-		var noticeKeyword = "${noticeKeyword}"
 			url = url + "?page=" + page;
 			url = url + "&range=" + range;
-			url = url + "&noticeKeyword=" +  noticeKeyword;
+			url = url + "&noticeKeyword=" + noticeKeyword;
 			
 		
 		location.href = url;
@@ -40,11 +43,11 @@
 	
 	//다음 번호 이벤트
 	function fn_next(page, range, rangeSize) {
+		var noticeKeyword = document.getElementById("noticeKeyword");
 		var page = parseInt((range * rangeSize)) + 1;
 		var range = parseInt(range) + 1;
 		
 		var url = "${pageContext.request.contextPath}/noticeSearch.do";
-		var noticeKeyword = "${noticeKeyword}"
 			url = url + "?page=" + page;
 			url = url + "&range=" + range;
 			url = url + "&noticeKeyword=" + noticeKeyword;
@@ -102,7 +105,7 @@
 			</div>
 		</form>
 	</div>
-	
+	<input type="text" id="noticeKeyword" value="${searchpagination.noticeKeyword }">
 <!-- 페이지네이션 -->
 	<div id="paginationBox">
 		<ul class="pagination">
