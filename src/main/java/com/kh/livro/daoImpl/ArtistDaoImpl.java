@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.livro.dao.ArtistDao;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
+import com.kh.livro.dto.ProfileDto;
 import com.kh.livro.dto.SupportCommDto;
 import com.kh.livro.dto.SupportDto;
 
@@ -116,6 +117,18 @@ public class ArtistDaoImpl implements ArtistDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public ProfileDto selectProfile(String member_id) {
+		ProfileDto dto = new ProfileDto();
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"selectProfile", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 
 }
