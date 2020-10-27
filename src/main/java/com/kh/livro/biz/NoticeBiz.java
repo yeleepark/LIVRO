@@ -16,5 +16,5 @@ public interface NoticeBiz {
 	public List<NoticeDto> selectSearchList(Pagination spagination);
 	
 	public int getBoardListCnt() throws Exception;
-	public int getSearchListCnt() throws Exception;
+	public int getSearchListCnt(String noticeKeyword) throws Exception;
 }
