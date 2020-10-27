@@ -11,6 +11,13 @@
 		WHERE MEMBER_ID = #{member_id}
 		AND MEMBER_PW = #{member_pw}
 	</select>
+	
+	<!--암호화 여부 확인 -->
+	<select id="encryptchk" resultType="MemberDto">
+		SELECT MEMBER_ID, MEMBER_PW
+		FROM MEMBER
+		WHERE MEMBER_ID = #{member_id}
+	</select>
 	<insert id="join" parameterType="MemberDto">
 		INSERT INTO MEMBER(member_id,
 		member_pw, member_pwchk,member_no, member_name, member_nickname,

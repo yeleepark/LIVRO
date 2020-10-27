@@ -72,6 +72,20 @@ public class MemberDaoImpl implements MemberDao {
 	      return res;
 	   }
 
+	//암호화 여부 확인
+	@Override
+	public MemberDto encryptchk(String member_id) {
+		MemberDto res = null;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+ "encryptchk", member_id);
+		} catch (Exception e) {
+			logger.info("[error] encryptchk");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 	
 
 }

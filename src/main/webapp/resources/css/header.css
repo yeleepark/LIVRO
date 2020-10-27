@@ -88,7 +88,8 @@
 	justify-content: flex-end;
 }
 
-.header-right input, nav {
+.header-right input, 
+.header-right nav {
 	margin-left: 15px;
 }
 

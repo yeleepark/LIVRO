@@ -21,7 +21,7 @@ response.setDateHeader("Expires",1L);
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-	<header role="header">
+	<header role="header" id="header">
 		<div class="header-bar header-left">
 			<a href="#">LIVRO</a>
 		</div>
@@ -43,7 +43,8 @@ response.setDateHeader("Expires",1L);
 			</c:when>
 			<c:otherwise>
 				<input type="button" value="LogOut" id="loginForm" onclick="location.href='logout.do'"> 
-				<input type="button" value="Mypage" id="registForm" onclick="location.href='mypageIndex.do'">			</c:otherwise>
+				<input type="button" value="Mypage" id="registForm" onclick="location.href='mypageIndex.do'">			
+			</c:otherwise>
 			</c:choose>
 			<nav role="navigation">
 				<span id="menuIcon"><i class="fas fa-bars"></i></span>
