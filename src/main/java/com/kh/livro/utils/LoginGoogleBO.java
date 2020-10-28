@@ -29,8 +29,8 @@ public class LoginGoogleBO {
      * recommended
      */
 
-    private final static String CLIENT_ID = "978983706879-ahvk0ilq9b32qh61p5g2ksbmqeje4oij.apps.googleusercontent.com";
-    private final static String CLIENT_SECRET = " 3JV-cp-_HruMwse6ghyVLIW5";
+    private final static String CLIENT_ID = "978983706879-r9mfo3fav18cdsdsj917s3ga5oerngh7.apps.googleusercontent.com";
+    private final static String CLIENT_SECRET = "03T6jLlBPlR8LBrolKHmeR2K";
     private final static String REDIRECT_URI = "http://localhost:8787/livro/gcallback.do";
     private final static String PROTECTED_RESOURCE_URL = "https://www.googleapis.com/oauth2/v3/userinfo";
     private final static String SCOPE = "openid profile email";

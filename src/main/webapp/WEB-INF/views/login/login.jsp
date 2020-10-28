@@ -17,37 +17,36 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="resources/js/login.js">
+	
 </script>
 </head>
 <body>
 	<section>
 		<div class="login-wrapper">
 			<h2>Welcome!</h2>
-		
-			<input type="text" name="member_id" autocomplete="off" id="member_id" placeholder="&#xf2bd; User ID"> 
-			<input type="password" name="member_pw" autocomplete="off" id="member_pw" placeholder="&#xf2bd; Password">
-			
+
+			<input type="text" name="member_id" autocomplete="off" id="member_id"
+				placeholder="&#xf2bd; User ID"> <input type="password"
+				name="member_pw" autocomplete="off" id="member_pw"
+				placeholder="&#xf2bd; Password">
+
 			<div id="logincheck"></div>
-			<input type="button" value="Log In" id="goLoginBtn" onclick="loginChk()"> 
-			<span> 
-				<a href="registForm.do">Don't have an Account?</a> 
-				<a href="findForm.do">ID/PW찾기</a> 
-				<a href="main.do">홈으로</a>
+			<input type="button" value="Log In" id="goLoginBtn"
+				onclick="loginChk()"> <span> <a href="registForm.do">Don't
+					have an Account?</a> <a href="findForm.do">ID/PW찾기</a> <a
+				href="main.do">홈으로</a>
 			</span>
 
 			<div class="Naver">
-				<a href="${naver}"> 
-				<img id="naverimg" alt="Naver" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"></a>
+				<a href="${naver}"> <img id="naverimg" alt="Naver"
+					src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"></a>
 			</div>
 			<div>
-				<a href="${google} }"> 
-				<img alt="Google" id="googleimg" src ="https://developers.google.com/identity/images/btn_google_signin_light_normal_web.png?hl=ko">
+				<a href="${google} }"> <img alt="Google" id="googleimg"
+					src="https://developers.google.com/identity/images/btn_google_signin_light_normal_web.png?hl=ko">
 				</a>
 			</div>
 		</div>
-
 	</section>
-<body>
-</body>
 </body>
 </html>
