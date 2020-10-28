@@ -1,0 +1,39 @@
+.file_upload_block {
+	border-bottom: 1px solid white;
+	display: flex;
+	justify-content: space-between;
+	padding: 15px;
+}
+
+.file_up {
+	display: flex;
+	padding-right: 50px;	
+}
+
+.file_upload_wrap1 {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	
+}
+.file_upload_wrap2{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.file_upload_btn {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.file_upload_wrap2 input,
+.file_upload_wrap2 span {
+	
+	display: block;
+}
+
+.no_music, audio {
+	padding: 5px;
+}

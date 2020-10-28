@@ -108,7 +108,6 @@ public class MusicController {
 			}
 		}
 		musicDto.setMember_id(member_id);
-		musicDto.setMember_nickname(musicDto.getMember_nickname());
 		musicDto.setMusic_title(music_title);
 		musicDto.setMusic_content(music_content);
 		musicDto.setMusic_savename(music_savename);

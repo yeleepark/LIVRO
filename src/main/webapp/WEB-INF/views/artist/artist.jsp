@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="resources/css/artist.css">
+<link rel="stylesheet" href="resources/css/music.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
@@ -229,28 +230,37 @@
 			<!-- 음원 -->
 			<div id="tab-1" class="tab-content tabCurrent">
 				<!-- 음원 업로드 공간 -->
+				<c:if test="${logindto.member_nickname eq memberdto.member_nickname}">
 				<div>
 					<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
 						<input type="hidden" name="member_id" value="${logindto.member_id }">
 						<input type="hidden" name="member_nickname" value="${logindto.member_nickname }">
-						<p>파일</p>
-						<!-- 파일 -->
-						<input type="file" name="music_file" />
-						<span style="color: red; font-weight: bold;"> <form:errors path="music_file" /></span>
-
-						<!-- 에러시 문자열 반환 -->
-						<input type="text" name="music_content" placeholder="설명문">
-						<input type="submit" value="send">
+						<div class="file_upload_block">
+							<div class="file_upload_wrap1">
+								<span class="file_up">파일 업로드</span>
+							</div>
+							<!-- 파일 -->
+							<div class="file_upload_wrap2">
+								<input type="file" name="music_file" />
+								<span style="color: red; font-weight: bold;"> <form:errors path="music_file" /></span>
+								<!-- 에러시 문자열 반환 -->
+								<input type="text" name="music_content" placeholder="설명문">
+							</div>
+							<div class="file_upload_btn">
+								<input type="submit" class="uploadBtn" value="send">
+							</div>
+						</div>
 					</form:form>
 				</div>
+				</c:if>
 
-				<br> <br> <br> <br> <br>
+
 				<!-- 음원 출력 공간 -->
 				<div>
 					<div class="music-table">
 						<c:choose>
 							<c:when test="${empty musicdto }">
-								<p>업로드된 음원이 없습니다</p>
+								<div class="no_music">업로드된 음원이 없습니다</div>
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${musicdto }" var="musicdto">
