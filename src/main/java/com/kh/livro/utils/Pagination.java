@@ -14,6 +14,7 @@ public class Pagination {
 	private boolean prev;
 	private boolean next;
 	
+	//현승 : notice 키워드 
 	private String noticeKeyword;
 
 	

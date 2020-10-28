@@ -19,15 +19,25 @@
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <link rel="stylesheet" href="resources/css/qna_insertform.css">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <title>Q&A글작성</title>
 
 </head>
 <body>
+	<script type="text/javascript">
+		function secretChk() {
+			alert("비밀글 설정 ");
+			document.getElementById("qna_secret").value = "Y";
+
+		}
+	</script>
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
 
 	<form action="qnainsert.do" method="post">
 		<input type="hidden" name="member_nickname"
-			value="${logindto.member_nickname }">
+			value="${logindto.member_nickname }"> <input type="hidden"
+			name="qna_secret" value="N" id="qna_secret">
 		<div class="qna_wrap">
 			<div class="qna_writer">
 				<label>작성자</label> <span>${logindto.member_nickname }</span>
@@ -41,7 +51,7 @@
 			</div>
 			<div class="qna_footer">
 				<div class="qna_secret">
-					<input type="checkbox"><span>비밀글</span>
+					<input type="checkbox" onclick="secretChk()"><span>비밀글</span>
 				</div>
 				<input type="button" value="취소"
 					onclick="location.href='qnainsert.do'"> <input

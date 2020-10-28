@@ -3,7 +3,7 @@
 <mapper namespace="qna">
 
 <select id="selectList" resultType="QnaDto">
-	SELECT QNA_NO, QNA_FLAG,MEMBER_NICKNAME, QNA_TITLE, QNA_CONTENT, QNA_REGDATE
+	SELECT QNA_NO, QNA_FLAG,MEMBER_NICKNAME, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_SECRET
 	FROM QNA_BOARD
 	ORDER BY QNA_NO DESC
 </select>
@@ -15,8 +15,8 @@
 </select>
 
 <insert id="insert" parameterType="QnaDto">
-	INSERT INTO QNA_BOARD(QNA_NO, MEMBER_NICKNAME, QNA_TITLE, QNA_CONTENT, QNA_REGDATE)
-	VALUES(QNA_NO_SEQ.NEXTVAL, #{member_nickname}, #{qna_title}, #{qna_content}, SYSDATE)
+	INSERT INTO QNA_BOARD(QNA_NO, MEMBER_NICKNAME, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_SECRET)
+	VALUES(QNA_NO_SEQ.NEXTVAL, #{member_nickname}, #{qna_title}, #{qna_content}, SYSDATE, #{qna_secret})
 </insert>
 
 <update id="update" parameterType="QnaDto">
