@@ -86,7 +86,9 @@
 
 	<!-- pagination{e} -->
 	<div class="board_list_footer" align="right">
-		<input type="button" value="글작성" onclick="location.href='insert.do'">
+		<c:if test="${logindto.member_role eq 'M' }">
+			<input type="button" value="글작성" onclick="location.href='insert.do'">
+		</c:if>
 	</div>
 	</div>
 

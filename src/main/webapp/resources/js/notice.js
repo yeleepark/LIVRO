@@ -1,4 +1,5 @@
-// 이전 버튼 이벤트 
+
+//이전 버튼 이벤트 
 function fn_prev(page, range, rangeSize) {
 	var page = ((range - 2) * rangeSize) + 1;
 	var range = range - 1;
@@ -31,3 +32,7 @@ function fn_next(page, range, rangeSize) {
 	
 	location.href = url;
 }
+
+
+
+

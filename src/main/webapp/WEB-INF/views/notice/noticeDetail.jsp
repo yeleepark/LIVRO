@@ -26,7 +26,7 @@
 		</div>
 		
 		<div class="notice_content_wrap">
-			<div id="viewer" ></div>
+			<div id="viewer"></div>
 		</div>
 		
 		<div class="notice_btn">
