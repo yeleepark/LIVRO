@@ -33,7 +33,7 @@ public class BroadcastController {
 	@RequestMapping("/broadDetail.do")
 	public String broadcastDetail(Model model, int broadcast_no) {
 		BroadcastDto dto = broadcastBiz.selectOne(broadcast_no);
-		model.addAttribute("dto", dto);
+		model.addAttribute("broadDto", dto);
 		return "broadcast/broadcast_detail";
 	}
 	

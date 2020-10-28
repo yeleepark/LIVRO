@@ -24,34 +24,25 @@
     	</c:if>
     	
         <div class="broadcast-table">
-        	<c:choose>
-        	<c:when test="${empty list }">
-        		<div>
-        			<span>방송 없습니다~~</span>
-        		</div>
-        	</c:when>
-        	<c:otherwise>
-        		<c:forEach items="${list }" var="dto">
-		            <div class="broadcast-thumnail">
-						
-		            </div>
-		            <div class="broadcast-name">
-	<c:choose>
-    	<c:when test="${empty logindto }">
-    		<p>${dto.member_id }</p>
-    		<p>${dto.broadcast_title }</p>
-    		<p>${dto.broadcast_content }</p>
-    	</c:when>
-    	<c:otherwise>   		
-		    <p><a href="artist.do?member_id=${dto.member_id }">${dto.member_id }</a></p>
-		    <p><a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a></p>
-		    <p>${dto.broadcast_content }</p>
-    	</c:otherwise>
-    </c:choose>
-		            </div>
-	            </c:forEach>
-            </c:otherwise>
-            </c:choose>
+			<c:forEach items="${list }" var="dto">
+        		<c:choose>
+        			<c:when test="${empty list }">
+        				<div>
+        					<span>방송 없습니다~~</span>
+        				</div>
+        			</c:when>
+		        	<c:when test="${dto.broadcast_flag eq 'Y' }">
+		          	 	<div class="broadcast-thumnail">
+							<a><img src="/resources/profileimg/${profiledto.profile_savedname }"></a>
+		           		</div>
+		          		<div class="broadcast-name">
+    						<p><a href="artist.do?member_id=${dto.member_id }">${dto.member_id }</a></p>
+		  			    	<p><a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a></p>
+		 			   		<p>${dto.broadcast_content }</p>
+		            	</div>
+		        	</c:when>
+            	</c:choose>
+            </c:forEach>
         </div>
     </section>
 
