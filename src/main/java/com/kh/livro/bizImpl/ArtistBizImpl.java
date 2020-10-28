@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.livro.biz.ArtistBiz;
 import com.kh.livro.dao.ArtistDao;
+import com.kh.livro.dto.BroadcastDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
 import com.kh.livro.dto.ProfileDto;
@@ -62,6 +63,11 @@ public class ArtistBizImpl implements ArtistBiz {
 	@Override
 	public ProfileDto selectProfile(String member_id) {
 		return artistDao.selectProfile(member_id);
+	}
+
+	@Override
+	public List<BroadcastDto> broadList(String member_id) {
+		return artistDao.broadList(member_id);
 	}
 
 }

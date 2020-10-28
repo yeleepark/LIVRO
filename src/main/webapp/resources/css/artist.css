@@ -38,7 +38,7 @@ ul.tabs li {
 	cursor: pointer;
 }
 
-ul.tabs li.current {
+ul.tabs li.tabCurrent {
 	background: #ededed;
 	color: #222;
 }
@@ -46,11 +46,11 @@ ul.tabs li.current {
 /* 컨텐츠 출력 */
 .left-wrapper {
 	width: 80%;
-	height: 500px;
+	height: 100vh;
 	border: 1px solid black;
 	float: left;
 	padding: 30px;
-	overflow-y: auto;
+	overflow-y: scroll;
 }
 
 .tab-content {
@@ -59,7 +59,12 @@ ul.tabs li.current {
 	padding: 15px;
 }
 
-.tab-content.current {
+.tab-content h2 {
+	display: block;
+	padding: 10px;
+}
+
+.tab-content.tabCurrent {
 	display: inherit;
 }
 
@@ -69,10 +74,7 @@ ul.tabs li.current {
 	border: 1px solid black;
 }
 
-.supportTable h2 {
-	display: block;
-	padding: 10px;
-}
+
 
 .support-login {
 	width: 100%;
@@ -89,7 +91,8 @@ ul.tabs li.current {
 	box-sizing: border-box;
 }
 
-.supportInsert div:nth-child(1), .supportInsert div:nth-child(3) {
+.supportInsert div:nth-child(1), 
+.supportInsert div:nth-child(3) {
 	width: 20%;
 	border: 1px solid pink;
 	display: flex;
@@ -135,7 +138,8 @@ ul.tabs li.current {
 	flex-wrap: wrap;
 }
 
-.supportTable .rows div:nth-child(1), .supportTable .rows div:nth-child(3) {
+.supportTable .rows div:nth-child(1), 
+.supportTable .rows div:nth-child(3) {
 	width: 20%;
 	height: 100%;
 	display: flex;
@@ -196,7 +200,8 @@ ul.tabs li.current {
 	height: 100%;
 }
 
-.replyActive div:nth-child(1), .replyActive div:nth-child(3) {
+.replyActive div:nth-child(1), 
+.replyActive div:nth-child(3) {
 	width: 20%;
 }
 
@@ -204,14 +209,44 @@ ul.tabs li.current {
 	width: 60%;
 }
 
-.replyShow{
-	width : 100%;
-	border : 1px solid blue;
+.replyShow {
+	width: 100%;
+	border: 1px solid blue;
 }
+
+/* 일정게시판 */
+#calendar {
+}
+
+.Calendar-container {
+	width: 100%;
+	height: 100%;
+	border: 3px solid aliceblue;
+	padding : 20px;
+}
+
+#calendar-menu{
+	display: flex;
+	justify-content: space-between;
+}
+
+.tui-full-calendar-section-private {
+	display: none;
+}
+
+.tui-full-calendar-popup-section:nth-child(3), 
+.tui-full-calendar-popup-section:nth-child(5) {
+	display: none;
+}
+
+.tui-full-calendar-popup-section:nth-child(4) div:nth-child(4) {
+	display: none;
+}
+
 /* 아티스트 프로필 출력 */
 .right-wrapper {
 	width: 20%;
-	height: 500px;
+	height: 100vh;
 	border: 1px solid black;
 	float: right;
 	padding: 20px;

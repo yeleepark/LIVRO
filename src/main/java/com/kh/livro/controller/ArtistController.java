@@ -36,6 +36,7 @@ public class ArtistController {
 		model.addAttribute("memberdto", artistBiz.selectOne(member_id));
 		model.addAttribute("supportdto", artistBiz.supportList(member_id));
 		model.addAttribute("profiledto", artistBiz.selectProfile(member_id));
+		model.addAttribute("broaddto", artistBiz.broadList(member_id));
 		return "artist/artist";
 	}
 
@@ -129,7 +130,6 @@ public class ArtistController {
 	@ResponseBody
 	public List<SupportCommDto> replyRest(@RequestParam int support_no) {
 		logger.info("댓글 출력 컨트롤러");
-		System.out.println(support_no); // 찍힘
 
 		List<SupportCommDto> list = new ArrayList<SupportCommDto>();
 		try {

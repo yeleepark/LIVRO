@@ -61,5 +61,11 @@
 		WHERE MEMBER_ID = #{member_id} 
 	</select>
 	<!-- 아티스트 페이지 이동 -->
+	
+	<select id="broadList" resultType="BroadcastDto">
+		SELECT *
+		FROM BROADCAST
+		WHERE MEMBER_ID = #{member_id}
+	</select>
 
 </mapper>

@@ -10,6 +10,7 @@
 		<typeAlias type="com.kh.livro.dto.SupportDto" alias="SupportDto"/>
 		<typeAlias type="com.kh.livro.dto.SupportCommDto" alias="SupportCommDto"/>
 		<typeAlias type="com.kh.livro.dto.QnaDto" alias="QnaDto"/>
+		<typeAlias type="com.kh.livro.dto.CalendarDto" alias="CalendarDto"/>
 	</typeAliases>
 	
 	<mappers>

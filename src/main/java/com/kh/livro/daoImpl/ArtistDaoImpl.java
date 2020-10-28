@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.livro.dao.ArtistDao;
+import com.kh.livro.dto.BroadcastDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
 import com.kh.livro.dto.ProfileDto;
@@ -97,22 +98,22 @@ public class ArtistDaoImpl implements ArtistDao {
 	@Override
 	public int commInsert(SupportCommDto dto) {
 		int res = 0;
-		
+
 		try {
-			res = sqlSession.insert(NAMESPACE+"commInsert", dto);
+			res = sqlSession.insert(NAMESPACE + "commInsert", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return res;
 	}
 
 	@Override
 	public List<SupportCommDto> commList(int support_no) {
 		List<SupportCommDto> list = new ArrayList<SupportCommDto>();
-		
+
 		try {
-			list = sqlSession.selectList(NAMESPACE+"commList", support_no);
+			list = sqlSession.selectList(NAMESPACE + "commList", support_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -122,13 +123,25 @@ public class ArtistDaoImpl implements ArtistDao {
 	@Override
 	public ProfileDto selectProfile(String member_id) {
 		ProfileDto dto = new ProfileDto();
-		
+
 		try {
-			dto = sqlSession.selectOne(NAMESPACE+"selectProfile", member_id);
+			dto = sqlSession.selectOne(NAMESPACE + "selectProfile", member_id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return dto;
+	}
+
+	@Override
+	public List<BroadcastDto> broadList(String member_id) {
+		List<BroadcastDto> list = new ArrayList<BroadcastDto>();
+
+		try {
+			list = sqlSession.selectList(NAMESPACE + "broadList", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }
