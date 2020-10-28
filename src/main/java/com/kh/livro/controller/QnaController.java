@@ -84,4 +84,10 @@ public class QnaController {
 		
 		return "redirect:qnalist.do";
 	}
+	
+	//검색
+	@RequestMapping("/qnasearch.do")
+	public String qnaSearch() {
+		return "";
+	}
 }
