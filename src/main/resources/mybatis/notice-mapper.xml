@@ -40,7 +40,7 @@
 	
 	<insert id="insert" parameterType="NoticeDto">
 		INSERT INTO NOTICE_BOARD
-		VALUES(NOTICE_NO_SEQ.NEXTVAL, #{member_id}, #{notice_title}, #{notice_content}, SYSDATE) 		
+		VALUES(NOTICE_NO_SEQ.NEXTVAL, 'admin', #{notice_title}, #{notice_content}, SYSDATE) 		
 	</insert>
 	
 	<update id="update" parameterType="NoticeDto">

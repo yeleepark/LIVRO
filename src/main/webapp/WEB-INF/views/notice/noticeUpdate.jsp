@@ -12,32 +12,28 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
 <!-- Editor's Style -->
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<link rel="stylesheet" href="resources/css/noticeUpdate.css">
 <title>Insert title here</title>
 
-<style type="text/css">
 
-	#editor {
-		width: 70%;
-	}
-</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
-
+<div class="notice_update_wrap">
 	<form action="updateres.do" method="post">
 	<input type="hidden" name="notice_no" value="${dto.notice_no }">
-	<div class="table">
-		<div><input type="text" value="${dto.member_id }" readonly></div>
-		<div><input type="text" name="notice_title" value="${dto.notice_title }"></div>
-		
-		
-		<div>
+	<div >
+		<div class="notice_title_wrap">
+			<input type="text" name="notice_title" class="notice_title_input" value="${dto.notice_title }">
+		</div>
+		<div id="editor"></div>
+		<div class="notice_button_wrap">
 			<input type="submit" value="수정" onclick="formSubmit()">
 			<input type="button" value="취소" onclick="location.href='detail.do?notice_no=${dto.notice_no}'">
 		</div>
 	</div>
 	</form>
-	
+</div>
 	
 	
 	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>

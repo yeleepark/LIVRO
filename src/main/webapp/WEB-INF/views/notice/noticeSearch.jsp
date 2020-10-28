@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <% request.setCharacterEncoding("UTF-8");%>
 <% response.setContentType("text/html charset=UTF-8");%>
 
@@ -11,101 +13,45 @@
 <link rel ="stylesheet" href="resources/css/notice.css">
 <title>LIVRO-공지사항</title>
 
-<script type="text/javascript">
-	// 이전 버튼 이벤트 
-	
-	function fn_prev(page, range, rangeSize) {
-		var noticeKeyword = document.getElementById("noticeKeyword");
-		
-		var page = ((range - 2) * rangeSize) + 1;
-		var range = range - 1;
-		
-		var url = "${pageContext.request.contextPath}/noticeSearch.do";
-		url = url + "?page=" + page;
-		url = url + "&range=" + range;
-		url = url + "&noticeKeyword=" + noticeKeyword;
-		location.href = url;
-		
-	}
-	
-	//페이지 번호 클릭 
-	function fn_pagination(page, range, rangeSize, searchType, keyword) {
-		var noticeKeyword = document.getElementById("noticeKeyword").value;
-		alert(noticeKeyword)
-		var url = "${pageContext.request.contextPath}/noticeSearch.do";
-			url = url + "?page=" + page;
-			url = url + "&range=" + range;
-			url = url + "&noticeKeyword=" + noticeKeyword;
-			
-		
-		location.href = url;
-	}
-	
-	//다음 번호 이벤트
-	function fn_next(page, range, rangeSize) {
-		var noticeKeyword = document.getElementById("noticeKeyword");
-		var page = parseInt((range * rangeSize)) + 1;
-		var range = parseInt(range) + 1;
-		
-		var url = "${pageContext.request.contextPath}/noticeSearch.do";
-			url = url + "?page=" + page;
-			url = url + "&range=" + range;
-			url = url + "&noticeKeyword=" + noticeKeyword;
-		
-		location.href = url;
-	}
+<script type="text/javascript" src="resources/js/noticeSearch.js">
+
 </script>
-<style type="text/css">
 
-	.page-items{
-		visibility: visible;
-	}
-
-</style>
 </head>
 <body>
-		<jsp:include page="/WEB-INF/views/header/header.jsp"/> 
+		<jsp:include page="/WEB-INF/views/header/header.jsp"/>
 	<!-- 검색리스트 -->
-	<div id="table" >
-		<div id="firstRow">
-			<span>공지사항 번호</span>
-			<span>공지사항 제목</span>
-			<span>관리자</span>
-			<span>작성시간</span>
-		</div>
+	<div class="board_list_wrap">
+		<div class="board_list" >
+		<span>공지사항</span> 
+			<div class="board_list_head">
+				<div class="notice_no">번호</div>
+				<div class="notice_title">제목</div>
+				<div class="notice_writer">관리자</div>
+				<div class="notice_date">작성일</div>
+			</div>
 		<c:choose>
 		<c:when test="${empty searchlist }">
-		<div class="rows">
-			<span>작성된 글이 없습니다</span>
-		</div>
+				<div class="board_list_body">
+					<div>작성된 글	이 없습니다</div>
+				</div>
 		</c:when>
 		<c:otherwise>
 			<c:forEach items="${searchlist }" var="searchlist">
-				<div class="rows">
-					<span>${searchlist.notice_no }</span>
-					<span><a href="detail.do?notice_no=${dto.notice_no }">${searchlist.notice_title }</a></span>
-					<span>${searchlist.member_id }</span>
-					<span>${searchlist.notice_regdate }</span>
+				<div class="board_list_body">
+					<div class="item">
+						<div class="notice_no">${searchlist.notice_no }</div>
+						<div class="notice_title"><a href="detail.do?notice_no=${searchlist.notice_no }">${searchlist.notice_title }</a></div>
+						<div class="notice_writer">관리자</div>
+						<div class="notice_date">
+							<fmt:formatDate value="${searchlist.notice_regdate }" pattern = "yyyy-MM-dd"/>
+						</div>
+					</div>
 				</div>
 			</c:forEach>
 		</c:otherwise>
 		</c:choose>
-		<div id="lastRow" align="right">
-			<input type="button" value="글작성" onclick="location.href='insert.do'">
-		</div>
 	</div>
-	<!-- 검색 -->
-	<div>
-		<form action="noticeSearch.do" method="get">
-			<input type="hidden" name="page" value="1">
-			<input type="hidden" name="range" value="1">
-			<input type="text" name="noticeKeyword" placeholder="글 + 제목 검색">
-			<div>
-				<input type="submit" value="검색하기">
-			</div>
-		</form>
-	</div>
-	<input type="text" id="noticeKeyword" value="${searchpagination.noticeKeyword }">
 <!-- 페이지네이션 -->
 	<div id="paginationBox">
 		<ul class="pagination">
@@ -126,10 +72,25 @@
 			</c:if>
 		</ul>
 	</div>
+	<!-- 검색 -->
+	<div>
+	<div class="board_list_search">
+		<form action="noticeSearch.do" method="get">
+			<input type="hidden" name="page" value="1">
+			<input type="hidden" name="range" value="1">
+			<input type="text" name="noticeKeyword" placeholder="글 + 제목 검색">
+			<input type="submit" value="검색하기">
+		</form>
+	</div>
+	<input type="hidden" id="noticeKeyword" value="${searchpagination.noticeKeyword }">
 
 	<!-- pagination{e} -->
+	<div class="board_list_footer" align="right">
+		<input type="button" value="글작성" onclick="location.href='insert.do'">
+	</div>
+	</div>
 
-
+</div>
 
 
 </body>

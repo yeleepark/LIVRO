@@ -12,29 +12,27 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
 <!-- Editor's Style -->
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<link rel ="stylesheet" href="resources/css/noticeInsert.css">
 <title>Insert title here</title>
 
-<style type="text/css">
 
-	#editor {
-		width: 70%;
-	}
-</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
-
+<div class="notice_insert_wrap">
 	<form action="insertres.do" method="post">
 	<div>
-		<div><input type="hidden" name="member_id" value="admin" readonly></div>
-		<div><input type="text" name="notice_title"></div>
+		<div class="notice_title_wrap">
+			<input type="text" name="notice_title" class="notice_title_input" placeholder="제목">
+		</div>
 		<div id="editor"></div>
-		<div>
+		<div class="notice_button_wrap">
 			<input type="submit" value="작성" onclick="formSubmit()">
 			<input type="button" value="취소" onclick="location.href='notice.do'">
 		</div>
 	</div>
 	</form>
+</div>
 	
 	
 	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
