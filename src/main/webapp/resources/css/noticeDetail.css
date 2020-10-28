@@ -8,21 +8,22 @@
 
 }
 
+
 .notice_title_wrap {
 	float: left;
 	font-size: 20px;
-	display: block;
-	padding-right: 15px;
-	padding-bottom: 5px;
+	display: inline-block;
 }
 
 .notice_id_wrap {
 	float: left;
-	display: block;
+	display: inline-block;
+	line-height: 25pt;
 }	
 .notice_date_wrap {
 	display: block;
  	float: right;
+ 	line-height: 25pt;
 }
 
 .notice_content_wrap {
@@ -36,5 +37,9 @@
 
 .notice_btn{
 	text-align: right;
+}
+
+.notice_title_wrap, .notice_id_wrap, .notice_content_wrap, .notice_date_wrap, .notice_btn {
+	padding: 20px;
 }
 

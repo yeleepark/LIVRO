@@ -18,8 +18,8 @@
 	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
 	<div class="notice_detail_wrap">
 		<div>
-			<div class="notice_title_wrap">${dto.notice_title }</div>
-			<div class="notice_id_wrap">${dto.member_id }</div>
+			<div class="notice_title_wrap">${dto.notice_title } </div>
+			<div class="notice_id_wrap">${dto.member_id } </div>
 			<div class="notice_date_wrap">
 				<fmt:formatDate value="${dto.notice_regdate }" pattern="yy-MM-dd HH:mm" />
 			</div>
