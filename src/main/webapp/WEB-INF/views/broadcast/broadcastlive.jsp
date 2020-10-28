@@ -9,6 +9,56 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.broad span,
+	.broad input,
+	.broad textarea,
+	.broad select{
+		display: block;
+	}
+
+	#room_info{
+		position : absolute;
+		top : 50%;
+		left : 50%;
+		transform : translate(-50%, -50%);
+		margin-top : 300%;
+		margin: 0 auto;
+		border : 1px solid yellow;
+		display : flex;
+		justify-content : center;
+		align-items : center;
+		flex-direction : column;
+		width : 500px;
+		padding: 20px;
+		
+	}
+	#main_title{
+		width : 100%;
+		border : 1px solid blue;
+	}
+	#chat-box{
+		visibility: hidden;
+		background-color: yellow;
+	}
+	#video-chat{
+		visibility: hidden;
+		background-color: gray;
+		
+		
+	}
+	
+	#profileSection{
+		width : 100%;
+		border : 3px dotted black ;
+	}
+	
+	#local-video-container video {
+		width : 100% !important;
+	}
+	
+</style>
+<link rel="stylesheet" href="resources/css/join.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
     <script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
@@ -26,37 +76,79 @@
 </header>
 
    <div id="section">
+  
       <div id="room_info">
-          <input id="broadcast_title" placeholder="Unique Room ID" />
-          <button id="btn-open-or-join-room">
-              방송하기
-          </button>
-          <div>      <!-- 추후 hidden 변경  -->
-             <input type="text" id="member_id" placeholder="Unique ID" value="${logindto.member_id }">
-            </div>
-          <div>
-             내용<input type="text" id="broadcast_content" placeholder="내용을 입력하세요">
+      	<div id="main_title">
+	   	<h3>스트리밍 정보 입력</h3>
+      	</div>
+      	<div class="broad">
+      		<label>방 제목</label>
+          <input type="text" id="broadcast_title" placeholder="Unique Room ID" required="required" />
+      	</div>
+          
+          <div class="broad">
+          	<label for="member_id">Creator</label>
+	          <!-- 추후 hidden 변경  -->
+             <input type="text" id="member_id" name="member_id" placeholder="Unique ID" value="${logindto.member_id }" required="required">
           </div>
-          <div>
-          카테고리<input type="text" id="broadcast_category" placeholder="카테고리를 선택하세요">
+         
+          <div class="broad">
+             	<label for="broadcast_content">내용</label>
+             	<textarea rows="10" cols="25" style="resize: none;" id="broadcast_content" name="broadcast_content" placeholder="내용을 입력하세요" required="required"></textarea>                         
+          </div>
+          
+          <div class="broad">
+          		<label for="broadcast_category">카테고리</label> 
+          		<select name="category" id="broadcast_category" style="width:185px;" required="required">
+          			<option value="perpomence">공연</option>
+          			<option value="dance">댄스</option>
+          			<option value="sing">노래</option>
+          			<option value="playing">연주</option>
+          		</select>         	
+          <div class="broad">
+          	<label>※주의사항!</label>
+          	<textarea rows="5" cols="25" readonly="readonly" style="resize: none;">주의사항 뭐 쓸지 생각해 봅시다 ㅎ</textarea>
+          </div>
+          		          	
+          <div class="broad">
+          <button id="btn-open-or-join-room" class="goJoinBtn">
+              	방송시작!!!
+          </button>
+          </div>
+          
+          
           </div>
       </div>
    </div>
   
-     <div id="video-chat">
-       <div id="video-container">
-            <div id="local-videos-container"></div>
+  	
+     <div id="video-chat" style="width: 90%;">
+       <div id="video-container" style="width : 70%;">
+          <div id="local-videos-container"></div>
           <div id="remote-videos-container"></div>
-      </div>
-        <div id="chat-box">
-           <div id="chat-output"></div>
+          <div id="profileSection">
+			<p> 썸네일 확인~~</p>
+			<p> 썸네일 확인~~</p>
+			<p> 썸네일 확인~~</p>
+			<p> 썸네일 확인~~</p>
+			<p> 썸네일 확인~~</p>
+			<p> 썸네일 확인~~</p>
+          </div>
+       </div>
+       <div id="chat-box" style="width: 30%;">
+           <div id="chat-output" style="width: 100%;"></div>
            <div id="input-chat">
-           <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요" style="visibility: hidden">
+           <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요">
            </div>
-        </div>
-     </div>
+           <div>
           <button id="close-broadcast">연결 종료</button>
           <button id="disconnect-room">방송 종료</button>
+           </div>
+       </div>
+  	 </div>
+   
+        
+        
     <script>
     
         window.enableAdapter = true; // adapter.js 활성화
@@ -100,11 +192,18 @@
         var localVideosContainer = document.getElementById('local-videos-container');
         var remoteVideosContainer = document.getElementById('remote-videos-container');
         
+        /* value.trim() -> 공백으로 값을 채워지지 않게 각 변수에 공백 제거 설정 */
         var roomid = document.getElementById('broadcast_title'); // 입력한 ID 변수에 담기
         // roomid.value = connection.token(); <-- token생성 가능
         var userId = document.getElementById('member_id');
+        
+        var roomcontent = document.getElementById("broadcast_content");
+        var roomcategory = document.getElementById("broadcast_category");
 
         /********************************방 생성********************************/
+        
+        if(roomid.value.trim() != null && userId.value.trim() != null && roomcontent.value.trim() != null && roomcategory.value.trim() != null){
+        	 
         document.getElementById('btn-open-or-join-room').onclick = function () {
             this.disabled = true;
             console.log(roomid.value);
@@ -114,7 +213,7 @@
 
                 if (isRoomExist === true) {
                     console.log('join했습니다');
-                    connection.join(roomid.value);
+                    connection.join(roomid);
                     connection.onstream = (event) => {
                         test();
                         let video = event.mediaElement;
@@ -154,12 +253,16 @@
                     }
                 }
             });
+       	 }
         }
-
         
         function test() {
            let section = document.getElementById("section");
             section.style.visibility = "hidden";
+            let chat = document.getElementById("chat-box");
+            chat.style.visibility = "visible";
+            let video = document.getElementById("video-chat");
+            video.style.visibility = "visible";
         }
         
         // 채팅전송
