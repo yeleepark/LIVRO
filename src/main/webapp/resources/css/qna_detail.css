@@ -1,0 +1,37 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.qna_detail_wrap {
+	padding: 150px;
+}
+
+.qna_title_wrap {
+	float: left;
+	font-size: 20px;
+}
+
+.qna_nick_wrap {
+	float: right;
+}
+
+.qna_content_wrap {
+	clear: both;
+	border-top: 2px solid #ccc; 
+	border-bottom : 1px solid #ccc;
+	height: 400px;
+	border-bottom: 1px solid #ccc;
+}
+.qna_reply_wrap{
+	border: 2px solid #ccc;
+}
+
+.qna_input_reply{
+	border: 1px solid #ccc;
+}
+
+.qna_btn{
+	text-align: right;
+}
+
