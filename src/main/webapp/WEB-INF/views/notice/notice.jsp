@@ -13,9 +13,8 @@
 <link rel ="stylesheet" href="resources/css/notice.css">
 <title>LIVRO-공지사항</title>
 
-<script type="text/javascript" src="resources/js/notice.js">
-
-</script>
+<!-- <script type="text/javascript" src="resources/js/notice.js"> -->
+<script type="text/javascript" src="resources/js/notice.jsp"></script>
 <link rel="stylesheet" href="resources/css/notice.css">
 </head>
 <body>
@@ -85,8 +84,10 @@
 					<input type="submit" value="검색하기">
 				</form>
 			</div>
-			<div class="board_list_footer" align="right">
-				<input type="button" value="글작성" onclick="location.href='insert.do'">
+			<div id="insert_block" class="board_list_footer" align="right">
+				<c:if test="${logindto.member_role eq 'M'}">
+					<input type="button" value="글작성" onclick="location.href='insert.do'">
+				</c:if>
 			</div>
 		</div>
 			
