@@ -7,7 +7,7 @@
 
 	<insert id="insert">
 		INSERT INTO MUSIC 
-		VALUES(MUSIC_NO_SEQ.NEXTVAL, #{member_id}, #{member_nickname}, #{music_title}, #{music_content}, #{music_savename}, #{music_realname}, SYSDATE)
+		VALUES(MUSIC_NO_SEQ.NEXTVAL, #{member_id}, #{music_title}, #{music_content}, #{music_savename}, #{music_realname}, SYSDATE)
 	</insert>
 
 	<update id="update">
