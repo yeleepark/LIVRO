@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.gson.JsonObject;
@@ -99,11 +101,16 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/success.do")
-	public String success(HttpSession session, Model model) {
+	public String success(HttpServletRequest request, RedirectAttributes redirectAttributes, HttpSession session, Model model) {
 		logger.info("[success.do]");
 		
-		//MemberDto res = (MemberDto)session.getAttribute("logindto");
+		String referer = request.getHeader("Referer");
 		
+		logger.info(referer);
+		
+		if(referer.contains("broadDetail.do")) {
+			return "redirect:"+ referer;			
+		}
 		return "main/main";
 	}
 
