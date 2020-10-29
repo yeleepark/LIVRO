@@ -28,7 +28,7 @@
 /* 헤더 */
 #header{
     display: flex;
-    width: 100vw;
+    width: 100%;
     padding : 10px 20px;
     position: absolute;
     z-index: 9999;
