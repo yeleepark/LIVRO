@@ -21,8 +21,9 @@ video {
 }
 
 #video-chat{
-   display: flex;
+   display: none;
    flex-direction: row;
+   align-items: center;
    height: 700px;
    margin: 50px 50px;
    width: 100%;
@@ -30,10 +31,12 @@ video {
 
 #video-container{
    border:1px solid blue;
+   width: 70%;
 }
 
 #chat-box{
    border: 1px solid dodgerblue;
+   width: 30%;
    height: 700px;
    display: flex;
    flex-direction: column;
@@ -54,5 +57,10 @@ video {
 	background-color :rgba(0,0,0,.5);
 	top: 0;
 	left: 0;
+}
+
+#profileSection{
+	display: none;
+	
 }
 

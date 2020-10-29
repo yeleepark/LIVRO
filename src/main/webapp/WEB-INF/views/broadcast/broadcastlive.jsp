@@ -38,14 +38,12 @@
 		border : 1px solid blue;
 	}
 	#chat-box{
-		visibility: hidden;
-		background-color: yellow;
+		display: none;
+		
 	}
 	#video-chat{
-		visibility: hidden;
-		background-color: gray;
-		
-		
+		display: none;
+			
 	}
 	
 	#profileSection{
@@ -58,7 +56,9 @@
 	}
 	
 </style>
-<link rel="stylesheet" href="resources/css/join.css">
+
+    <link rel="stylesheet" href="resources/css/join.css">
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
     <script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
@@ -122,10 +122,23 @@
    </div>
   
   	
-     <div id="video-chat" style="width: 90%;">
-       <div id="video-container" style="width : 70%;">
+     <div id="video-chat">
+       <div id="video-container">
           <div id="local-videos-container"></div>
           <div id="remote-videos-container"></div>
+       </div>
+       <div id="chat-box">
+           <div id="chat-output"></div>
+           <div id="input-chat">
+           <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요">
+           </div>
+           <div>
+          <button id="close-broadcast">연결 종료</button>
+          <button id="disconnect-room">방송 종료</button>
+           </div>
+       </div>       
+    </div>
+       
           <div id="profileSection">
 			<p> 썸네일 확인~~</p>
 			<p> 썸네일 확인~~</p>
@@ -134,18 +147,6 @@
 			<p> 썸네일 확인~~</p>
 			<p> 썸네일 확인~~</p>
           </div>
-       </div>
-       <div id="chat-box" style="width: 30%;">
-           <div id="chat-output" style="width: 100%;"></div>
-           <div id="input-chat">
-           <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요">
-           </div>
-           <div>
-          <button id="close-broadcast">연결 종료</button>
-          <button id="disconnect-room">방송 종료</button>
-           </div>
-       </div>
-  	 </div>
    
         
         
@@ -258,11 +259,16 @@
         
         function test() {
            let section = document.getElementById("section");
-            section.style.visibility = "hidden";
+            section.style.display = "none";
             let chat = document.getElementById("chat-box");
-            chat.style.visibility = "visible";
+            chat.style.display = "block";
             let video = document.getElementById("video-chat");
-            video.style.visibility = "visible";
+            video.style.display = "block";
+            let profileSection = document.getElementById("profileSection");
+            profileSection.style.display = "block";
+            if(video.style.display = "block"){
+            	video.style.display = "flex";
+            }
         }
         
         // 채팅전송
