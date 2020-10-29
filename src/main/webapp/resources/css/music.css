@@ -36,4 +36,50 @@
 
 .no_music, audio {
 	padding: 5px;
+	float: left;
 }
+
+
+
+.music_tags {
+	padding-left: 20px;
+	padding-top: 20px;
+}
+.music_iconbox {
+	float:left;
+}
+
+.livro_icon {
+	float: left;
+	width: 23px;
+	height: 23px;
+	border-radius: 5px;
+}
+
+.music_explain {
+	margin-left: 30px;
+}
+
+.music_title_tag {
+	font-size: 12pt;
+}
+
+.music_content_tag {
+	font-size: 8pt;
+}
+
+.music_delbtn_block {
+	text-align: center;
+}
+
+.music_nextindex {
+	padding-bottom: 20px;	
+}	
+.music_nextindex::after {
+	display : block;
+	content : '';
+	clear : both;
+}
+
+
+
