@@ -37,30 +37,12 @@
       width : 100%;
       border : 1px solid blue;
     }
-    
-    /*
-        chat-box, video-chat은 방송 설정 폼에서
-        display를 none으로 처리하기 위해 내부로 선언
-        설정 폼에서 내부 js로 시작을 했을 때, 
-        display를 block으로 바꿔 줌
-    */
-   #chat-box{
-      display: none;
-      
-   }
-   #video-chat{
-      display: none;
-         
-   }
+
+
    
-   #profileSection{
-      width : 100%;
-      border : 3px dotted black ;
-   }
+  
    
-   #local-video-container video {
-      width : 100% !important;
-   }
+   
    
 </style>
 
@@ -82,7 +64,7 @@
    <jsp:include page="/WEB-INF/views/header/header.jsp"/>
 </header>
 
-   <div id="section">
+   <div id="section1">
   
       <div id="room_info">
          <div id="main_title">
@@ -129,31 +111,38 @@
    </div>
   
      
-     <div id="video-chat">
-       <div id="video-container">
+     <div id="section2">
+       <div id="section2_left">
           <div id="local-videos-container"></div>
-          <div id="remote-videos-container"></div>
+          <!--
+              <div id="remote-videos-container"></div>
+            -->
+              
+          <div id="profileSection">
+            <p> 썸네일 확인~~</p>
+            <p> 썸네일 확인~~</p>
+            <p> 썸네일 확인~~</p>
+            <p> 썸네일 확인~~</p>
+            <p> 썸네일 확인~~</p>
+            <p> 썸네일 확인~~</p>
+          </div>
        </div>
-       <div id="chat-box">
+
+       <div id="section2_right">
            <div id="chat-output"></div>
-           <div id="input-chat">
-           <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요">
-           </div>
-           <div>
-          <button id="close-broadcast">연결 종료</button>
-          <button id="disconnect-room">방송 종료</button>
-           </div>
-       </div>       
+
+            <div id="chat-input">
+                <div id="input-chat">
+                    <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요">
+                </div>
+                <div>
+                    <button id="close-broadcast">연결 종료</button>
+                    <button id="disconnect-room">방송 종료</button>
+                </div>
+            </div>
+        </div>           
     </div>
        
-          <div id="profileSection">
-         <p> 썸네일 확인~~</p>
-         <p> 썸네일 확인~~</p>
-         <p> 썸네일 확인~~</p>
-         <p> 썸네일 확인~~</p>
-         <p> 썸네일 확인~~</p>
-         <p> 썸네일 확인~~</p>
-          </div>
    
         
         
