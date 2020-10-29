@@ -244,7 +244,7 @@
 								<input type="file" name="music_file" />
 								<span style="color: red; font-weight: bold;"> <form:errors path="music_file" /></span>
 								<!-- 에러시 문자열 반환 -->
-								<input type="text" name="music_content" placeholder="설명문">
+									<input type="text" name="music_content" placeholder="설명문" required="required">
 							</div>
 							<div class="file_upload_btn">
 								<input type="submit" class="uploadBtn" value="send">
@@ -262,15 +262,30 @@
 							<c:when test="${empty musicdto }">
 								<div class="no_music">업로드된 음원이 없습니다</div>
 							</c:when>
+							
 							<c:otherwise>
 								<c:forEach items="${musicdto }" var="musicdto">
-									<audio src="resources/audio/${musicdto.music_savename }" controls></audio>
-									${musicdto.music_title }
-									${musicdto.music_content }
-									${musicdto.music_no }
-									<input type="button" value="삭제" onclick="location.href='deletemusic.do?member_id=${musicdto.member_id }&music_no=${musicdto.music_no }'">
-
-									<br>
+								<div class="music_block">
+									<div class="music_tags">
+										<div class="music_iconbox">
+											<img alt="라이브로 아이콘" src="resources/img/livro_icon.png" class="livro_icon">
+										</div>
+										<div class="music_explain">
+											<p class="music_title_tag">${musicdto.music_title }</p>
+											<p class="music_content_tag">${musicdto.music_content }</p>
+										</div>
+									</div>
+									<audio style="width:90%" controls>
+										<source src="resources/audio/${musicdto.music_savename }" class="control_panel" type="audio/mp3">
+										이 웹 브라우저가 audio 요소를 지원하지 않습니다!   
+									</audio> 
+									<div class="music_delbtn_block">
+										<c:if test="${logindto.member_nickname eq memberdto.member_nickname}">
+											<input type="button" class="music_del_btn" value="삭제" onclick="location.href='deletemusic.do?member_id=${musicdto.member_id }&music_no=${musicdto.music_no }'">
+										</c:if>
+									</div>
+									<div class="music_nextindex"></div>
+								</div>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>

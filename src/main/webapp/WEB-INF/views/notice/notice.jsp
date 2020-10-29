@@ -14,7 +14,7 @@
 <title>LIVRO-공지사항</title>
 
 <!-- <script type="text/javascript" src="resources/js/notice.js"> -->
-<script type="text/javascript" src="resources/js/notice.jsp"></script>
+<script type="text/javascript" src="resources/js/notice.js"></script>
 <link rel="stylesheet" href="resources/css/notice.css">
 </head>
 <body>
