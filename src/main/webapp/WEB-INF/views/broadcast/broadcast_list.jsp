@@ -8,12 +8,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel ="stylesheet" href="resources/css/broadcast_list.css">
 <title>LIVRO</title>
+<style type="text/css">
+	#section{
+		padding-top: 80px;
+	}
+</style>
 </head>
 <body> 
 
     <jsp:include page="/WEB-INF/views/header/header.jsp"/>
     
-    <section>
+    <section id="section">
     	<c:if test="${logindto.member_role == 'A' }">
     		<input type="button" id="broadgo" value="방송하기" onclick="broadGo()">
 		    	<script type="text/javascript">
