@@ -309,9 +309,10 @@
             // disconnect with all users
             // 내 화면이 disconnect이므로 아티스트가 누를 경우
             // 해당 화면에 방송 종료를 알리는 메시지나 이미지 삽입 필요
-            connection.getAllParticipants().forEach(function (pid) {
-                connection.disconnectWith(pid);
-            });
+            //connection.getAllParticipants().forEach(function (pid) {
+            //    connection.disconnectWith(pid);
+            //});
+            
             // 내 화면 끄기
             // stop으로 local에서 stream을 멈추면 start하는 기능도 있을 것..
             // start를 찾으면 방송 중간에 참여혹은 on / off 가능
