@@ -106,7 +106,7 @@
 	flex-direction: row;
 }
 
-#needlogin {
+#needLogin {
 	display: none;
 	position: fixed;
 	width: 100%;
@@ -115,4 +115,16 @@
 	background-color: rgba(0, 0, 0, .5);
 	top: 0;
 	left: 0;
+}
+
+#closeLogin {
+	z-index: 9999;
+	position: absolute;
+	font-size: 2vw;
+	top: 28.5%;
+	left: 56%;
+}
+
+#closeLogin:hover {
+	cursor: pointer;
 }
