@@ -221,18 +221,12 @@
             -> display 활성화 
         */
         function test() {
-           let section = document.getElementById("section");
-            section.style.display = "none";
-            let chat = document.getElementById("chat-box");
-            chat.style.display = "block";
-            let video = document.getElementById("video-chat");
-            video.style.display = "block";
-            let profileSection = document.getElementById("profileSection");
-            profileSection.style.display = "block";
-            if(video.style.display = "block"){
-               video.style.display = "flex";
+           let section1 = document.getElementById("section1");
+            section1.style.display = "none";
+            let section2 = document.getElementById("section2");
+            section2.style.display = "flex";
             }
-        }
+        
         
         // 채팅전송
         let inputText = document.getElementById('input-text-chat').onkeyup = function (e) {
