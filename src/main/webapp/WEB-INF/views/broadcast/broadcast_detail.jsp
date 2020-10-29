@@ -18,6 +18,7 @@
     <script>
     $(document).ready(function(){
         $('section').css('background-image', 'none' );
+        
     })
     </script>
 </head>
@@ -26,7 +27,7 @@
     	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
 	</header>
 	<input type="hidden" value="${broadDto.broadcast_title }" id="broadcast_title">
-	<input type="hidden" value="${logindto.member_id }" id="member_id">		
+	<input type="hidden" value="${logindto.member_id }" id="user_id">		
 	<div id="video-chat">
        <div id="video-container">
        		<div id="local-videos-container"></div>
@@ -81,16 +82,22 @@
             }
      	}
      	
+     	connection.onleave = (event) => {
+     		console.log(event.userid + '님의 상태 :' + event.status);
+     	}
+     	
      	var localVideosContainer = document.getElementById('local-videos-container');
      	var remoteVideosContainer = document.getElementById('remote-videos-container');
      	
      	var roomId = document.getElementById('broadcast_title');
-     	var userId = document.getElementById('member_id');
+     	var userId = document.getElementById('user_id');
      	console.log(userId);
      	if(userId.value == ''){
      		userId.value = connection.token();
      	}else{
-     		document.getElementById('input-text-chat').style.removeProperty("disabled");
+     		let inputTextChat = document.getElementById('input-text-chat');
+             inputTextChat.removeAttribute('onclick');
+             inputTextChat.placeholder = '내용을 입력하세요';
      	}
      	connection.userid = userId.value;
      	console.log(userId.value);
@@ -133,9 +140,9 @@
         function appendDIV(event) {
             let div = document.createElement('div');
             if (event.userid == null) { // 보내는 사람이 undefined면.. 즉, 내가 보냈다면
-                div.innerHTML = (connection.userid) + ': ' + (event.data);
+                div.innerHTML = (connection.userid) + ': ' + (event.data || event);
             } else {
-                div.innerHTML = (event.userid) + ':' + (event.data);
+                div.innerHTML = (event.userid) + ':' + (event.data || event);
             }
             console.log(event.userid + ' <-상대방 || 나->' + connection.userid);
             chatContainer.appendChild(div);
