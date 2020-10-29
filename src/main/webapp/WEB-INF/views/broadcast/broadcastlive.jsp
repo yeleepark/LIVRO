@@ -10,51 +10,58 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.broad span,
-	.broad input,
-	.broad textarea,
-	.broad select{
-		display: block;
-	}
+   .broad span,
+   .broad input,
+   .broad textarea,
+   .broad select{
+      display: block;
+   }
 
-	#room_info{
-		position : absolute;
-		top : 50%;
-		left : 50%;
-		transform : translate(-50%, -50%);
-		margin-top : 300%;
-		margin: 0 auto;
-		border : 1px solid yellow;
-		display : flex;
-		justify-content : center;
-		align-items : center;
-		flex-direction : column;
-		width : 500px;
-		padding: 20px;
-		
-	}
-	#main_title{
-		width : 100%;
-		border : 1px solid blue;
-	}
-	#chat-box{
-		display: none;
-		
-	}
-	#video-chat{
-		display: none;
-			
-	}
-	
-	#profileSection{
-		width : 100%;
-		border : 3px dotted black ;
-	}
-	
-	#local-video-container video {
-		width : 100% !important;
-	}
-	
+   #room_info{
+      position : absolute;
+      top : 50%;
+      left : 50%;
+      transform : translate(-50%, -50%);
+      margin-top : 300%;
+      margin: 0 auto;
+      border : 1px solid yellow;
+      display : flex;
+      justify-content : center;
+      align-items : center;
+      flex-direction : column;
+      width : 500px;
+      padding: 20px;
+      
+   }
+   #main_title{
+      width : 100%;
+      border : 1px solid blue;
+    }
+    
+    /*
+        chat-box, video-chat은 방송 설정 폼에서
+        display를 none으로 처리하기 위해 내부로 선언
+        설정 폼에서 내부 js로 시작을 했을 때, 
+        display를 block으로 바꿔 줌
+    */
+   #chat-box{
+      display: none;
+      
+   }
+   #video-chat{
+      display: none;
+         
+   }
+   
+   #profileSection{
+      width : 100%;
+      border : 3px dotted black ;
+   }
+   
+   #local-video-container video {
+      width : 100% !important;
+   }
+   
 </style>
 
     <link rel="stylesheet" href="resources/css/join.css">
@@ -78,41 +85,41 @@
    <div id="section">
   
       <div id="room_info">
-      	<div id="main_title">
-	   	<h3>스트리밍 정보 입력</h3>
-      	</div>
-      	<div class="broad">
-      		<label>방 제목</label>
+         <div id="main_title">
+         <h3>스트리밍 정보 입력</h3>
+         </div>
+         <div class="broad">
+            <label>방 제목</label>
           <input type="text" id="broadcast_title" placeholder="Unique Room ID" required="required" />
-      	</div>
+         </div>
           
           <div class="broad">
-          	<label for="member_id">Creator</label>
-	          <!-- 추후 hidden 변경  -->
+             <label for="member_id">Creator</label>
+             <!-- 추후 hidden 변경  -->
              <input type="text" id="member_id" name="member_id" placeholder="Unique ID" value="${logindto.member_id }" required="required">
           </div>
          
           <div class="broad">
-             	<label for="broadcast_content">내용</label>
-             	<textarea rows="10" cols="25" style="resize: none;" id="broadcast_content" name="broadcast_content" placeholder="내용을 입력하세요" required="required"></textarea>                         
+                <label for="broadcast_content">내용</label>
+                <textarea rows="10" cols="25" style="resize: none;" id="broadcast_content" name="broadcast_content" placeholder="내용을 입력하세요" required="required"></textarea>                         
           </div>
           
           <div class="broad">
-          		<label for="broadcast_category">카테고리</label> 
-          		<select name="category" id="broadcast_category" style="width:185px;" required="required">
-          			<option value="perpomence">공연</option>
-          			<option value="dance">댄스</option>
-          			<option value="sing">노래</option>
-          			<option value="playing">연주</option>
-          		</select>         	
+                <label for="broadcast_category">카테고리</label> 
+                <select name="category" id="broadcast_category" style="width:185px;" required="required">
+                   <option value="perpomence">공연</option>
+                   <option value="dance">댄스</option>
+                   <option value="sing">노래</option>
+                   <option value="playing">연주</option>
+                </select>            
           <div class="broad">
-          	<label>※주의사항!</label>
-          	<textarea rows="5" cols="25" readonly="readonly" style="resize: none;">주의사항 뭐 쓸지 생각해 봅시다 ㅎ</textarea>
+             <label>※주의사항!</label>
+             <textarea rows="5" cols="25" readonly="readonly" style="resize: none;">주의사항 뭐 쓸지 생각해 봅시다 ㅎ</textarea>
           </div>
-          		          	
+                             
           <div class="broad">
           <button id="btn-open-or-join-room" class="goJoinBtn">
-              	방송시작!!!
+                 방송시작!!!
           </button>
           </div>
           
@@ -121,7 +128,7 @@
       </div>
    </div>
   
-  	
+     
      <div id="video-chat">
        <div id="video-container">
           <div id="local-videos-container"></div>
@@ -140,12 +147,12 @@
     </div>
        
           <div id="profileSection">
-			<p> 썸네일 확인~~</p>
-			<p> 썸네일 확인~~</p>
-			<p> 썸네일 확인~~</p>
-			<p> 썸네일 확인~~</p>
-			<p> 썸네일 확인~~</p>
-			<p> 썸네일 확인~~</p>
+         <p> 썸네일 확인~~</p>
+         <p> 썸네일 확인~~</p>
+         <p> 썸네일 확인~~</p>
+         <p> 썸네일 확인~~</p>
+         <p> 썸네일 확인~~</p>
+         <p> 썸네일 확인~~</p>
           </div>
    
         
@@ -204,7 +211,7 @@
         /********************************방 생성********************************/
         
         if(roomid.value.trim() != null && userId.value.trim() != null && roomcontent.value.trim() != null && roomcategory.value.trim() != null){
-        	 
+            
         document.getElementById('btn-open-or-join-room').onclick = function () {
             this.disabled = true;
             console.log(roomid.value);
@@ -254,9 +261,13 @@
                     }
                 }
             });
-       	 }
+           }
         }
-        
+        /*
+            section -> display 비활성화
+            chat-box, video-chat , profileSection
+            -> display 활성화 
+        */
         function test() {
            let section = document.getElementById("section");
             section.style.display = "none";
@@ -267,7 +278,7 @@
             let profileSection = document.getElementById("profileSection");
             profileSection.style.display = "block";
             if(video.style.display = "block"){
-            	video.style.display = "flex";
+               video.style.display = "flex";
             }
         }
         
@@ -309,10 +320,9 @@
             // disconnect with all users
             // 내 화면이 disconnect이므로 아티스트가 누를 경우
             // 해당 화면에 방송 종료를 알리는 메시지나 이미지 삽입 필요
-            //connection.getAllParticipants().forEach(function (pid) {
-            //    connection.disconnectWith(pid);
-            //});
-            
+            connection.getAllParticipants().forEach(function (pid) {
+                connection.disconnectWith(pid);
+            });
             // 내 화면 끄기
             // stop으로 local에서 stream을 멈추면 start하는 기능도 있을 것..
             // start를 찾으면 방송 중간에 참여혹은 on / off 가능
