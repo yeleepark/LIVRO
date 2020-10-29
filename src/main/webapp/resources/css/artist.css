@@ -9,6 +9,7 @@ section {
 	width: 1200px;
 	height: 100%;
 	margin: 0 auto;
+	padding-top : 80px;
 }
 
 /* 탭메뉴 */
@@ -215,8 +216,6 @@ ul.tabs li.tabCurrent {
 }
 
 /* 일정게시판 */
-#calendar {
-}
 
 .Calendar-container {
 	width: 100%;
@@ -253,14 +252,33 @@ ul.tabs li.tabCurrent {
 }
 
 #artist-profile {
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	border-radius: 50%;
 	border: 1px solid black;
 	margin: 0 auto;
+	overflow: hidden;
+}
+
+#artist-profile img{
+	width : 150px;
+	height : 150px;
 }
 
 #artist-desc {
 	text-align: center;
 	padding: 20px;
+}
+
+#followBtn{
+	color: #3399FF;
+  font-family: "Helvetica";
+  font-size: 10pt;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #3399FF;
+  border-radius: 3px;
+  width: 85px;
+  height: 30px;
+  cursor: pointer;
 }

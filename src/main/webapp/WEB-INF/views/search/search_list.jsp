@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title>아티스트 채널, 실시간 방송 리스트</title>
 </head>
+<style>
+	section{
+		padding-top : 80px;
+	}
+</style>
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
 	
