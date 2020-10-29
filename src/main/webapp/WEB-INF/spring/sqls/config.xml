@@ -2,26 +2,30 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.kh.livro.dto.MemberDto" alias="MemberDto"/>
-		<typeAlias type="com.kh.livro.dto.BroadcastDto" alias="BroadcastDto"/>
-		<typeAlias type="com.kh.livro.dto.NoticeDto" alias="NoticeDto"/>
-		<typeAlias type="com.kh.livro.dto.ProfileDto" alias="ProfileDto"/>
-		<typeAlias type="com.kh.livro.dto.MusicDto" alias="MusicDto"/>
-		<typeAlias type="com.kh.livro.dto.SupportDto" alias="SupportDto"/>
-		<typeAlias type="com.kh.livro.dto.SupportCommDto" alias="SupportCommDto"/>
-		<typeAlias type="com.kh.livro.dto.QnaDto" alias="QnaDto"/>
-		<typeAlias type="com.kh.livro.dto.CalendarDto" alias="CalendarDto"/>
+		<typeAlias type="com.kh.livro.dto.MemberDto" alias="MemberDto" />
+		<typeAlias type="com.kh.livro.dto.BroadcastDto" alias="BroadcastDto" />
+		<typeAlias type="com.kh.livro.dto.NoticeDto" alias="NoticeDto" />
+		<typeAlias type="com.kh.livro.dto.ProfileDto" alias="ProfileDto" />
+		<typeAlias type="com.kh.livro.dto.MusicDto" alias="MusicDto" />
+		<typeAlias type="com.kh.livro.dto.SupportDto" alias="SupportDto" />
+		<typeAlias type="com.kh.livro.dto.SupportCommDto" alias="SupportCommDto" />
+		<typeAlias type="com.kh.livro.dto.QnaDto" alias="QnaDto" />
+		<typeAlias type="com.kh.livro.dto.CalendarDto" alias="CalendarDto" />
+		<typeAlias type="com.kh.livro.dto.QnareDto" alias="QnareDto" />
+				<typeAlias type="com.kh.livro.dto.QnareDto" alias="QnareDto" />
 	</typeAliases>
-	
+
 	<mappers>
-		<mapper resource="mybatis/member-mapper.xml"/>
-		<mapper resource="mybatis/broadcast-mapper.xml"/>
-		<mapper resource="mybatis/notice-mapper.xml"/>
-		<mapper resource="mybatis/search-mapper.xml"/>
-		<mapper resource="mybatis/artist-mapper.xml"/>
-		<mapper resource="mybatis/profile-mapper.xml"/>
-		<mapper resource="mybatis/mypage-mapper.xml"/>
-		<mapper resource="mybatis/music-mapper.xml"/>
-		<mapper resource="mybatis/qna-mapper.xml"/>
+		<mapper resource="mybatis/member-mapper.xml" />
+		<mapper resource="mybatis/broadcast-mapper.xml" />
+		<mapper resource="mybatis/notice-mapper.xml" />
+		<mapper resource="mybatis/search-mapper.xml" />
+		<mapper resource="mybatis/artist-mapper.xml" />
+		<mapper resource="mybatis/profile-mapper.xml" />
+		<mapper resource="mybatis/mypage-mapper.xml" />
+		<mapper resource="mybatis/music-mapper.xml" />
+		<mapper resource="mybatis/qna-mapper.xml" />
+		<mapper resource="mybatis/qnare-mapper.xml" />
+		<mapper resource="mybatis/qnare-mapper.xml" />
 	</mappers>
 </configuration>
