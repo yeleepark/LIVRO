@@ -9,43 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-   .broad span,
-   .broad input,
-   .broad textarea,
-   .broad select{
-      display: block;
-   }
-
-   #room_info{
-      position : absolute;
-      top : 50%;
-      left : 50%;
-      transform : translate(-50%, -50%);
-      margin-top : 300%;
-      margin: 0 auto;
-      border : 1px solid yellow;
-      display : flex;
-      justify-content : center;
-      align-items : center;
-      flex-direction : column;
-      width : 500px;
-      padding: 20px;
-      
-   }
-   #main_title{
-      width : 100%;
-      border : 1px solid blue;
-    }
-
-
-   
-  
-   
-   
-   
-</style>
-
     <link rel="stylesheet" href="resources/css/join.css">
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
