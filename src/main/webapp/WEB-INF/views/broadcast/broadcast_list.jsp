@@ -20,12 +20,8 @@
     
     <section id="section">
     	<c:if test="${logindto.member_role == 'A' }">
-    		<input type="button" id="broadgo" value="방송하기" onclick="broadGo()">
-		    	<script type="text/javascript">
-		    		function broadGo(){
-		    			open("live.do","","width=2000, height=800");
-		    		}
-		    	</script>    		
+    		<input type="button" id="broadgo" value="방송하기" onclick="location.href='live.do'">
+		    	  		
     	</c:if>
     	
         <div class="broadcast-table">
