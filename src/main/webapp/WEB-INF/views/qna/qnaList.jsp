@@ -12,6 +12,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="resources/css/qna_list.css">
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js"
@@ -20,20 +22,14 @@
 </head>
 <!-- 번호 제목 작성자 작성일  -->
 <jsp:include page="/WEB-INF/views/header/header.jsp" />
-<body>
-	<script type="text/javascript">
-
-function chkRole(){
-	alert("로그인 후 이용해주세요!");
-	location.href='loginForm.do';
-}
-
- function alertMsg(){
-		alert("해당 글은 작성자만 볼 수 있습니다.");
-} 
+<script type="text/javascript" src="resources/js/qnaList.js">
 </script>
+
+<body>
+
 	<div class="board_list_wrap">
 		<div class="board_list">
+			<span>Q&A</span>
 			<div class="board_list_head">
 				<div class="qna_no">번호</div>
 				<div class="qna_flag">답변여부</div>
@@ -84,6 +80,43 @@ function chkRole(){
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
+			<div id="paginationBox">
+				<ul class="pagination">
+					<c:if test="${pagination.prev}">
+						<li class="page-items">
+							<a class="page-link" href="#"
+							onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a>
+						</li>
+					</c:if>
+					<c:forEach begin="${pagination.startPage}"
+						end="${pagination.endPage}" var="idx">
+						<li class="page-items 
+							<c:out value="${pagination.page == idx ? 'qnaactive' : ''}"/> ">
+							<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+								${idx} </a>
+						</li>
+					</c:forEach>
+					<c:if test="${pagination.next}">
+						<li class="page-items">
+							<a class="page-link" href="#" onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
+			<!-- pagination{e} -->
+			<!--검색-->
+			<div class="board_list_search">
+				<form action="qnalist.do" method="get">
+					<select name="searchType" id="searchType">
+						<!-- 	<option value="qna_search_all">통합검색</option> -->
+						<option value="title">제목</option>
+						<option value="writer">작성자</option>
+					</select> 
+						<input type="text" placeholder="검색" name="keyword" id="keyword" />
+						<input type="submit" value="검색" id="btnSearch" />
+				</form>
+			</div>
+			
 			<!-- 버튼 -->
 			<div class="board_list_footer">
 				<input type="button" value="내가 쓴 글" onclick="#">
@@ -98,18 +131,14 @@ function chkRole(){
 				</c:choose>
 
 			</div>
-			<!--검색-->
-			<div class="board_list_search">
-				<form action="qnasearch.do" method="post">
-					<select name="qnaselect">
-						<option value="qna_search_title">제목</option>
-						<option valeu="qna_search_writer">작성자</option>
-					</select> <input type="text" placeholder="검색" name="qnasearch" /> <input
-						type="submit" value="검색" />
-				</form>
-			</div>
+
 		</div>
 	</div>
+
+
+
+
+
 
 </body>
 </html>

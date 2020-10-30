@@ -2,7 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="qnare">
 
+<select id="qnareselectList" resultType="QnareDto" >
+	SELECT *
+	FROM QNA_RE
+	WHERE QNA_NO = #{qna_no}
+</select>
 
+<insert id="qnareinsert" parameterType="QnareDto">
+INSERT INTO QNA_RE
+VALUES(QNARE_NO_SEQ.NEXTVAL, #{qna_no}, #{member_nickname}, #{qnare_content}, SYSDATE)
+</insert>
+
+
+<delete id="qnaredelete" parameterType="int">
+DELETE 
+FROM QNA_RE
+WHERE QNARE_NO = {#qnare_no}
+</delete>
 
 
 </mapper>

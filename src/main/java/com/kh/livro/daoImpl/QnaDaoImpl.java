@@ -1,8 +1,9 @@
 package com.kh.livro.daoImpl;
 
 import java.util.ArrayList;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.livro.dao.QnaDao;
 import com.kh.livro.dto.QnaDto;
+import com.kh.livro.utils.Pagination;
+
 
 @Repository
 public class QnaDaoImpl implements QnaDao {
@@ -22,12 +25,11 @@ public class QnaDaoImpl implements QnaDao {
 	private Logger logger = LoggerFactory.getLogger(QnaDaoImpl.class);
 
 	@Override
-	public List<QnaDto> selectList() {
+	public List<QnaDto> selectList(Pagination pagination) {
 		logger.info("[qnaDao selectList]");
 		List<QnaDto> qnalist = new ArrayList<QnaDto>();
-		
 		try {
-			qnalist = sqlSession.selectList(NAMESPACE + "selectList");
+			qnalist = sqlSession.selectList(NAMESPACE + "selectList" , pagination);
 		} catch (Exception e) {
 			logger.info("[error] qnaDao selectList");
 			e.printStackTrace();
@@ -91,5 +93,36 @@ public class QnaDaoImpl implements QnaDao {
 		}
 		return res;
 	}
+
+	//페이징
+	@Override
+	public int getQnaListCnt() throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+"getQnaListCnt");
+	}
+
+	//검색
+	@Override
+	public List<QnaDto> searchList(QnaDto dto) {
+		
+		return sqlSession.selectList(NAMESPACE+"searchList", dto);
+	}
+
+	//답변여부 업데이트
+	@Override
+	public int flagupdate(int qna_no) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "flagupdate",qna_no);
+		} catch (Exception e) {
+			logger.info("[error] flagupdate qnadaoimpl");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+
 
 }

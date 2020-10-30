@@ -85,6 +85,29 @@ public class QnaDto {
 	public void setQna_secret(String qna_secret) {
 		this.qna_secret = qna_secret;
 	}
+	
+	
+	//qna검색
+	
+	private String searchType;
+	private String keyword;
+
+
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 
 }
