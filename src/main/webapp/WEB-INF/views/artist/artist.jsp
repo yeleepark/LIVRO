@@ -18,199 +18,6 @@
 <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css" />
 <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
 <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css" />
-<script>
-		$(document).ready(function() {
-					
-					// tab menu
-					$('ul.tabs li').click(function() {
-						var tab_id = $(this).attr('data-tab');
-
-						$('ul.tabs li').removeClass('tabCurrent');
-						$('.tab-content').removeClass('tabCurrent');
-
-						$(this).addClass('tabCurrent');
-						$("#" + tab_id).addClass('tabCurrent');
-					});
-
-					// Insert support board
-					$(".InsertBtn").click(function() {
-						insertJson(); // json 형식으로 입력
-					});
-
-					// Update support board
-					$(".updateBtn").click(function() {
-								alert('수정하시겠습니까?');
-								$(this).parent().parent().find('.change').contents().unwrap().wrap('<textarea></textarea>');
-								$(this).attr('value', '변경');
-								$(this).attr("value", "변경").click(function() {
-											var updateNo = $(this).prev().val();
-											var content = $(this).parent().parent().find('textarea').val();
-											updateJson(updateNo, content); // json 형식으로 입력 
-										});
-							});
-
-					// Delete Support board
-					$(".deleteBtn").click(function() {
-						alert('삭제클릭');
-						var deleteNo = $(this).prev().prev().val();
-						deleteJson(deleteNo); // json 형식으로 입력
-					});
-
-					$(".replyBtn").click(function() {
-								$(this).parent().parent().find('.reply').addClass('replyActive');
-							});
-
-					$(".showReply").click(function() {
-							var supNo = $(this).next().val();
-							var commContent = $(this).parent().siblings('.reply').addClass('replyActive');
-								showReply(supNo);
-							})
-
-					// Insert Reply
-					$(".replyDone").click(function() {
-							var commContent = $(this).parent().parent().find('textarea').val();
-							var commNo = $(this).next().val();
-							var commId = "${logindto.member_id}";
-							replyInsert(commContent, commNo, commId);
-						})
-				});
-
-		/* 댓글 리스트 */
-		function showReply(supNo) {
-			var support_no = supNo;
-			console.log(support_no + " showReply 찍힘");
-			$.ajax({
-				type : "post",
-				url : "showList.do?support_no=" + support_no,
-				headers : {
-					"Content-Type" : "application/json"
-				},
-				dateType : "json",
-				data : JSON.stringify({
-					support_no : support_no
-				}),
-				success : function(data) {
-					console.log(data); // 일단 성공 
-					console.log(typeof (data))
-					var res = JSON.stringify(data);
-					$('.replyShow').html(res);
-				}
-			})
-		}
-
-		/* 응원글 작성 */
-		function insertJson() {
-
-			var member_id = "${memberdto.member_id}";
-			var member_nickname = "${logindto.member_nickname}";
-			var support_content = $("#support_content").val();
-
-			$.ajax({
-				type : "post",
-				url : "supportInsert.do",
-				headers : {
-					"Content-Type" : "application/json"
-				},
-				dateType : "text",
-				data : JSON.stringify({
-					member_id : member_id,
-					member_nickname : member_nickname,
-					support_content : support_content
-				}),
-				success : function() {
-					listRest();
-				}
-			});
-		}
-
-		/* 게시글 수정 */
-		function updateJson(no, content) {
-			var support_no = no;
-			var support_content = content;
-			console.log(support_content);
-			$.ajax({
-				type : "post",
-				url : "supportUpdate.do?suppport_no=" + no,
-				headers : {
-					"Content-Type" : "application/json"
-				},
-				dateType : "text",
-				data : JSON.stringify({
-					support_no : support_no,
-					support_content : support_content
-				}),
-				success : function() {
-					listRest();
-				}
-			});
-		};
-
-		/* 응원글 삭제 */
-		function deleteJson(no) {
-			var support_no = no;
-
-			$.ajax({
-				type : "post",
-				url : "supportDelete.do?support_no=" + no,
-				headers : {
-					"Content-Type" : "application/json"
-				},
-				dateType : "text",
-				data : JSON.stringify({
-					support_no : support_no
-				}),
-				success : function() {
-					listRest();
-				}
-			});
-		}
-
-		function replyInsert(commContent, commNo, commId) {
-			var support_no = commNo;
-			var member_id = commId;
-			var comm_content = commContent;
-			console.log(support_no + " " + member_id + " " + comm_content);
-
-			$.ajax({
-				type : "post",
-				url : "commInsert.do",
-				headers : {
-					"Content-Type" : "application/json"
-				},
-				dateType : "text",
-				data : JSON.stringify({
-					support_no : support_no,
-					member_id : member_id,
-					comm_content : comm_content
-				}),
-				success : function(result) {
-					console.log(result) //  성공..
-					/* replyRest(support_no); */
-				}
-			});
-
-		}
-
-		function listRest() {
-			console.log("출력확인");
-			$.ajax({
-				type : "get",
-				url : "artist.do?member_id=${memberdto.member_id }",
-				success : function(result) {
-					var htmlObj = $(result);
-					/* 			var res = htmlObj.find('.supportTable');
-					 $('.supportTable').replaceWith(res); */
-
-					$(htmlObj).find('ul.tabs li').removeClass('tabCurrent');
-					$(htmlObj).find('#tab-1').removeClass('tabCurrent');
-					$(htmlObj).find('ul.tabs li:nth-child(2)').addClass('tabCurrent');
-					$(htmlObj).find('#tab-2').addClass('tabCurrent');
-					$(htmlObj).find('header').remove();
-					$('body').html(htmlObj);
-				}
-			});
-		}
-</script>
 <title>LIVRO-Artist</title>
 </head>
 <body>
@@ -224,34 +31,35 @@
 				<li class="tab-link tabCurrent" data-tab="tab-1">Music</li>
 				<li class="tab-link" data-tab="tab-2">Support</li>
 				<li class="tab-link" data-tab="tab-3" id="tab3">Calendar</li>
+				<li class="tab-link" data-tab="tab-4">Livro</li>
 			</ul>
 
 
 			<!-- 음원 -->
 			<div id="tab-1" class="tab-content tabCurrent">
+				<h2>음원</h2>
 				<!-- 음원 업로드 공간 -->
 				<c:if test="${logindto.member_nickname eq memberdto.member_nickname}">
-				<div>
-					<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
-						<input type="hidden" name="member_id" value="${logindto.member_id }">
-						<input type="hidden" name="member_nickname" value="${logindto.member_nickname }">
-						<div class="file_upload_block">
-							<div class="file_upload_wrap1">
-								<span class="file_up">파일 업로드</span>
-							</div>
-							<!-- 파일 -->
-							<div class="file_upload_wrap2">
-								<input type="file" name="music_file" />
-								<span style="color: red; font-weight: bold;"> <form:errors path="music_file" /></span>
-								<!-- 에러시 문자열 반환 -->
+					<div>
+						<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
+							<input type="hidden" name="member_id" value="${logindto.member_id }">
+							<input type="hidden" name="member_nickname" value="${logindto.member_nickname }">
+							<div class="file_upload_block">
+								<div class="file_upload_wrap1">
+									<span class="file_up">파일 업로드</span>
+								</div>
+								<!-- 파일 -->
+								<div class="file_upload_wrap2">
+									<input type="file" name="music_file" /> <span style="color: red; font-weight: bold;"> <form:errors path="music_file" /></span>
+									<!-- 에러시 문자열 반환 -->
 									<input type="text" name="music_content" placeholder="설명문" required="required">
+								</div>
+								<div class="file_upload_btn">
+									<input type="submit" class="uploadBtn" value="send">
+								</div>
 							</div>
-							<div class="file_upload_btn">
-								<input type="submit" class="uploadBtn" value="send">
-							</div>
-						</div>
-					</form:form>
-				</div>
+						</form:form>
+					</div>
 				</c:if>
 
 
@@ -262,30 +70,30 @@
 							<c:when test="${empty musicdto }">
 								<div class="no_music">업로드된 음원이 없습니다</div>
 							</c:when>
-							
+
 							<c:otherwise>
 								<c:forEach items="${musicdto }" var="musicdto">
-								<div class="music_block">
-									<div class="music_tags">
-										<div class="music_iconbox">
-											<img alt="라이브로 아이콘" src="resources/img/livro_icon.png" class="livro_icon">
+									<div class="music_block">
+										<div class="music_tags">
+											<div class="music_iconbox">
+												<img alt="라이브로 아이콘" src="resources/img/livro_icon.png" class="livro_icon">
+											</div>
+											<div class="music_explain">
+												<p class="music_title_tag">${musicdto.music_title }</p>
+												<p class="music_content_tag">${musicdto.music_content }</p>
+											</div>
 										</div>
-										<div class="music_explain">
-											<p class="music_title_tag">${musicdto.music_title }</p>
-											<p class="music_content_tag">${musicdto.music_content }</p>
+										<audio style="width: 90%" controls>
+											<source src="resources/audio/${musicdto.music_savename }" class="control_panel" type="audio/mp3">
+											이 웹 브라우저가 audio 요소를 지원하지 않습니다!
+										</audio>
+										<div class="music_delbtn_block">
+											<c:if test="${logindto.member_nickname eq memberdto.member_nickname}">
+												<input type="button" class="music_del_btn" value="삭제" onclick="location.href='deletemusic.do?member_id=${musicdto.member_id }&music_no=${musicdto.music_no }'">
+											</c:if>
 										</div>
+										<div class="music_nextindex"></div>
 									</div>
-									<audio style="width:90%" controls>
-										<source src="resources/audio/${musicdto.music_savename }" class="control_panel" type="audio/mp3">
-										이 웹 브라우저가 audio 요소를 지원하지 않습니다!   
-									</audio> 
-									<div class="music_delbtn_block">
-										<c:if test="${logindto.member_nickname eq memberdto.member_nickname}">
-											<input type="button" class="music_del_btn" value="삭제" onclick="location.href='deletemusic.do?member_id=${musicdto.member_id }&music_no=${musicdto.music_no }'">
-										</c:if>
-									</div>
-									<div class="music_nextindex"></div>
-								</div>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
@@ -293,7 +101,7 @@
 				</div>
 
 			</div>
-			
+
 			<!-- 응원 -->
 			<div id="tab-2" class="tab-content">
 				<div class="supportTable">
@@ -316,12 +124,12 @@
 									<textarea name="support_content" id="support_content"></textarea>
 								</div>
 								<div>
-									<input type="button" value="작성" class="InsertBtn">
+									<input type="button" value="작성" class="insertBtn">
 								</div>
 							</div>
 						</c:otherwise>
 					</c:choose>
-				
+
 					<div class="supportDetail">
 						<c:choose>
 							<c:when test="${empty supportdto }">
@@ -332,35 +140,51 @@
 							<c:otherwise>
 								<c:forEach items="${supportdto }" var="support">
 									<div class="rows">
-										<div>
+										<!-- 첫줄 -->
+										<div class="rows-left">
 											<p>${support.member_nickname }</p>
 										</div>
-										<div>
-											<p class="change">${support.support_content }</p>
+										<div class="rows-center">
+											<textarea class="change" readonly="readonly">${support.support_content }</textarea>
 											<p>${support.support_regdate }</p>
-											<input type="button" value="댓글보기" class="showReply"> 
 											<input type="hidden" value="${support.support_no }">
 										</div>
-										<div>
+										<div class="rows-right">
 											<input type="hidden" value="${support.support_no }">
 											<c:if test="${logindto.member_nickname == support.member_nickname }">
 												<input type="button" value="수정" class="updateBtn">
+												<input type="button" value="완료" class="updateRes">
 												<input type="button" value="삭제" class="deleteBtn">
+												<input type="hidden" value="${support.support_no }" class="supportNo">
 											</c:if>
 										</div>
-										<div class="replyShow"></div>
-										<div class="reply">
+										<!-- 두번째줄 -->
+										<div class="rows-middle">
 											<div>
-												<p>댓글작성</p>
+												<input type="button" value="&#xf063" class="showReply">
+												<input type="button" value="&#xf00d" class="closeReply">
 											</div>
-											<div>
-												<textarea class="replyContent"></textarea>
+											<!--  반복 부분 -->
+											<div class="replyArea">
+												
 											</div>
-											<div>
-												<input type="button" value="작성" class="replyDone"> <input type="hidden" value="${support.support_no }">
+											<!-- 반복 끝 -->
+											<div class="replyInsertArea">
+												<div class="rows-left">
+													<p>댓글작성</p>
+												</div>
+												<div class="rows-center">
+													<textarea class="replyContent"></textarea>
+												</div>
+												<div class="rows-right">
+													<input type="button" value="작성" class="replyDone"> 
+													<input type="hidden" value="${support.support_no }" class="supportNo">
+												</div>
 											</div>
 										</div>
 									</div>
+									<!-- 세번째줄 -->
+
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
@@ -372,23 +196,22 @@
 			<!-- 일정 게시판 탭-->
 			<div id="tab-3" class="tab-content">
 				<div>
-					<h2>${memberdto.member_id }님의 공연 일정</h2>
+					<h2>${memberdto.member_id }님의 공연일정</h2>
 				</div>
 				<div class="Calendar-container">
 					<!-- 메뉴 -->
 					<div id="calendar-menu">
 						<span id="menu-navi-left" style="border: 1px solid black;">
 							<button type="button" id="prevBtn" data-action="move-prev">
-								<i class="fas fa-caret-square-left"></i> <!-- 이전 -->
+								<i class="fas fa-caret-square-left"></i>
+								<!-- 이전 -->
 							</button>
-							<button type="button" id="today" data-action="move-today">
-								Today
-							</button>
+							<button type="button" id="today" data-action="move-today">Today</button>
 							<button type="button" id="nextBtn" data-action="move-next">
-								<i class="fas fa-caret-square-right"></i> <!-- 다음 -->
+								<i class="fas fa-caret-square-right"></i>
+								<!-- 다음 -->
 							</button>
-						</span>
-						<span id="menu-navi-right" style="border : 1px solid black;">
+						</span> <span id="menu-navi-right" style="border: 1px solid black;">
 							<button id="dayBtn">일간</button>
 							<button id="weekBtn">주간</button>
 							<button id="monthBtn">월간</button>
@@ -396,30 +219,57 @@
 					</div>
 					<!-- 캘린더 -->
 					<div id="calendar"></div>
+					
+					<c:forEach items="${caldto }" var="cal">
+						<input type="text" value="${cal.cal_no }" class="cal_no">
+						<input type="text" value="${cal.member_id }" class="cal_member_id">
+						<input type="text" value="${cal.cal_title }" class="cal_title">
+						<input type="text" value="${cal.cal_start }" class="cal_start">
+						<input type="text" value="${cal.cal_end }" class="cal_end">
+					</c:forEach> 
 				</div>
 			</div>
-		
+
+			<!-- 방송기록 -->
+			<div id="tab-4" class="tab-content">
+				<h2>방송기록</h2>
+				
+			</div>
+
 		</div>
 
 
 		<!-- 프로필 영역 -->
 		<div class="right-wrapper">
 			<div id="artist-profile">
+				<img src="resources/img/BG.jpg">
 				<%-- <img src="${profiledto.profile_savedname }"> --%>
 			</div>
 
 			<div id="artist-desc">
-				<p>${memberdto.member_nickname }</p>
-
-				<input type="button" value="팔로우">
+				<p><i class="fas fa-microphone"></i><span>  ${memberdto.member_nickname }</span></p>
+				<c:if test="${logindto.member_id == memberdto.member_id }">
+					<button id="artistBtn" onclick="updateProfile();">프로필변경</button>
+					<button id="followerBtn">팔로워보기</button>
+				</c:if>
+				<c:if test="${logindto.member_id != memberdto.member_id }">
+					<button id="followBtn">FOLLOW</button>
+				</c:if>
 			</div>
 		</div>
-
+		<input type="hidden" value="${memberdto.member_id }" id="artistId">
+		<!--  아티스트 아이디 -->
+		<input type="hidden" value="${logindto.member_id }" id="loginId">
+		<!-- 로그인 아이디 -->
+		<input type="hidden" value="${logindto.member_nickname}" id="loginNickname">
+		<!-- 로그인 아이디 -->
 	</section>
-<script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
-<script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>
-<script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
-<script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
-<script type="text/javascript" src="resources/js/artist.js"></script>
+
+	<script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
+	<script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>
+	<script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
+	<script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
+	<script type="text/javascript" src="resources/js/artist.js"></script>
+	<script type="text/javascript" src="resources/js/artist-calendar.js"></script>
 </body>
 </html>

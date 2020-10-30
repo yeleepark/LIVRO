@@ -5,15 +5,6 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-header{
-    width : 100%;
-    height: 60px;
-}
-
-li{
-    list-style: none;
-}
-
 .mypage-container{
     width : 1200px;
     margin: 0 auto;
@@ -32,6 +23,7 @@ li{
 	color: #222;
 	padding: 10px 15px;
 	cursor: pointer;
+	list-style: none;
 }
 
 .mypage-container ul.tabs li.current{

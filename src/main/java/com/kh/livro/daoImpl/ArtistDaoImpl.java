@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.livro.dao.ArtistDao;
 import com.kh.livro.dto.BroadcastDto;
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
 import com.kh.livro.dto.ProfileDto;
@@ -133,11 +134,35 @@ public class ArtistDaoImpl implements ArtistDao {
 	}
 
 	@Override
+	public int calInsert(CalendarDto dto) {
+		int res = 0;
+
+		try {
+			res = sqlSession.insert(NAMESPACE + "calInsert", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	};
+
+	@Override
 	public List<BroadcastDto> broadList(String member_id) {
 		List<BroadcastDto> list = new ArrayList<BroadcastDto>();
 
 		try {
 			list = sqlSession.selectList(NAMESPACE + "broadList", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<CalendarDto> calList(String member_id) {
+		List<CalendarDto> list = new ArrayList<CalendarDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "calList", member_id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

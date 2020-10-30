@@ -41,8 +41,8 @@
 	<select id="commList" resultType="SupportCommDto">
 		SELECT *
 		FROM SUPPORT_COMM
-		WHERE SUPPORT_NO = ${support_no}
-		ORDER BY SUPPORT_NO 
+		WHERE SUPPORT_NO = #{support_no}
+		ORDER BY COMM_NO
 	</select>
 
 
@@ -60,12 +60,35 @@
 		FROM MEMBER ME
 		WHERE MEMBER_ID = #{member_id} 
 	</select>
-	<!-- 아티스트 페이지 이동 -->
-	
+
+	<!-- 방송기록 -->	
 	<select id="broadList" resultType="BroadcastDto">
 		SELECT *
 		FROM BROADCAST
 		WHERE MEMBER_ID = #{member_id}
 	</select>
 
+	<!-- 일정 -->
+	<select id="calList" resultType="CalendarDto">
+		SELECT CAL_NO, MEMBER_ID, CAL_TITLE, CAL_START, CAL_END, CAL_CATEGORY
+		FROM CALENDAR
+		WHERE MEMBER_ID = #{member_id}
+		ORDER BY CAL_NO DESC
+	</select>
+	
+	<insert id="calInsert">
+		INSERT INTO CALENDAR
+		VALUES (CAL_NO_SEQ.NEXTVAL, #{member_id}, #{cal_title}, #{cal_start}, #{cal_end}, 'time')
+	</insert>
+	
+	<update id="calUpdate">
+		UPDATE CALENDAR
+		SET CAL_TITLE = #{cal_title},CAL_START = #{cal_start}, CAL_END = #{cal_end}, 'time')
+		WHERE CAL_NO = #{cal_no}
+	</update>
+	
+	<delete id="calDelete">
+		DELETE FROM CALENDAR
+		WHERE CAL_NO = #{cal_no}
+	</delete>
 </mapper>

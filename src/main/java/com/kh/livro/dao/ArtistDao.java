@@ -3,6 +3,7 @@ package com.kh.livro.dao;
 import java.util.List;
 
 import com.kh.livro.dto.BroadcastDto;
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
 import com.kh.livro.dto.ProfileDto;
@@ -39,6 +40,12 @@ public interface ArtistDao {
 	
 	// 프로필 정보
 	public ProfileDto selectProfile(String member_id);
+	
+	// 일정 작성
+	public int calInsert(CalendarDto dto);
+	
+	// 일정 목록
+	public List<CalendarDto> calList(String member_id);
 	
 	// 방송기록
 	public List<BroadcastDto> broadList(String member_id);
