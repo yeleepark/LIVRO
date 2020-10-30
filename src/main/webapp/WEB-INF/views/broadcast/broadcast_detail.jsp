@@ -196,6 +196,7 @@
 
             document.getElementById('input-text-chat').focus();
         }
+
         function joinDIV(event){
            console.log('----------joinDIV-----------')
            console.log(event.userid)
