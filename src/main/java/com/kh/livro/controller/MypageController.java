@@ -23,12 +23,6 @@ public class MypageController {
 		return "mypage/mypageIndex";
 	}
 
-	// 어드민 페이지로 이동
-	@RequestMapping("/adminPage.do")
-	public String adminPage(Model model, String member_id) {
-		return "mypage/adminPage";
-	}
-
 	// 일반유저 페이지로 이동
 	@RequestMapping("/userPage.do")
 	public String userPage(Model model, String member_id) {

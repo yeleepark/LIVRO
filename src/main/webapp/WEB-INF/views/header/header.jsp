@@ -47,7 +47,12 @@ response.setDateHeader("Expires",1L);
 			</c:when>
 			<c:otherwise>
 				<input type="button" value="LogOut" id="loginForm" onclick="location.href='logout.do'"> 
-				<input type="button" value="Mypage" id="registForm" onclick="location.href='mypageIndex.do'">
+				<c:if test="${logindto.member_role eq 'M' }">
+						<input type="button" value="Admin" id="registForm" onclick="location.href='http://localhost:8788/'">			
+					</c:if>
+					<c:if test="${logindto.member_role ne 'M' }">
+						<input type="button" value="Mypage" id="registForm" onclick="location.href='mypageIndex.do'">			
+					</c:if>
 			</c:otherwise>
 			</c:choose>
 			<nav role="navigation">
