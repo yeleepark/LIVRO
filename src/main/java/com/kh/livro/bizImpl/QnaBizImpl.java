@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.kh.livro.biz.QnaBiz;
 import com.kh.livro.dao.QnaDao;
 import com.kh.livro.dto.QnaDto;
+import com.kh.livro.utils.Pagination;
+
 @Service
 public class QnaBizImpl implements QnaBiz{
 
@@ -19,8 +21,8 @@ public class QnaBizImpl implements QnaBiz{
 	private Logger logger = LoggerFactory.getLogger(QnaBizImpl.class);
 	
 	@Override
-	public List<QnaDto> selectList() {
-		return qnaDao.selectList();
+	public List<QnaDto> selectList(Pagination pagination) {
+		return qnaDao.selectList(pagination);
 	}
 
 	@Override
@@ -42,5 +44,24 @@ public class QnaBizImpl implements QnaBiz{
 	public int delete(int notice_no) {
 		return qnaDao.delete(notice_no);
 	}
+
+	@Override
+	public int getQnaListCnt() throws Exception {
+		
+		return qnaDao.getQnaListCnt();
+	}
+
+	@Override
+	public List<QnaDto> searchList(QnaDto dto) {
+		return qnaDao.searchList(dto);
+	}
+
+	@Override
+	public int flagupdate(int qna_no) {
+		return qnaDao.flagupdate(qna_no);
+	}
+
+
+	
 
 }

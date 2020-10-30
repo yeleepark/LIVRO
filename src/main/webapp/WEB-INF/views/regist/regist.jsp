@@ -114,7 +114,7 @@
 					to terms and conditions ( 회원가입 동의 ) <span> <br> -->
 					<input type="submit" value="Sign Up" id="confirm" class="goJoinBtn">
 					<input type="button" value="홈으로" class="goJoinBtn"
-						onclick="historyback();">
+						onclick="history.back();">
 					<!-- <span>	<a href="main.do">홈으로</a></span> -->
 					<!-- </span> -->
 

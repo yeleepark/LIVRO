@@ -1,5 +1,7 @@
 package com.kh.livro.bizImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,14 @@ public class QnareBizImpl implements QnareBiz {
 	@Override
 	public int delete(int qnare_no) {
 		return qnareDao.delete(qnare_no);
+	}
+
+
+
+	@Override
+	public List<QnareDto> selectList(int qna_no) {
+		
+		return qnareDao.selectList(qna_no);
 	}
 
 }

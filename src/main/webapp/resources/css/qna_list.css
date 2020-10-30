@@ -9,7 +9,14 @@ a {
 }
 
 .board_list_wrap {
-	padding: 50px;
+	padding: 70px;
+}
+
+.board_list > span{
+	font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    display: block;
 }
 
 .board_list_head, .board_list_body .item {
@@ -75,4 +82,39 @@ a {
 
 .board_list_search {
 	text-align: center;
+}
+
+#paginationBox {
+   display: flex;
+   justify-content: center;
+}
+
+
+.page-items {
+   list-style-type: none;
+   float: left;
+   margin: 5px;
+
+   
+}
+
+.page-items a:hover {
+   text-decoration: underline;
+}
+#paginationBox {
+   display: flex;
+   justify-content: center;
+}
+
+
+.page-items {
+   list-style-type: none;
+   float: left;
+   margin: 5px;
+
+   
+}
+
+.page-items a:hover {
+   text-decoration: underline;
 }

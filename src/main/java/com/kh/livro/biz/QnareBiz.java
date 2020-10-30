@@ -1,8 +1,13 @@
 package com.kh.livro.biz;
 
+import java.util.List;
+
 import com.kh.livro.dto.QnareDto;
 
 public interface QnareBiz {
+
+	//댓글목록
+	public List<QnareDto> selectList(int qna_no);
 
 	// 댓글 등록
 	public int insert(QnareDto dto);
