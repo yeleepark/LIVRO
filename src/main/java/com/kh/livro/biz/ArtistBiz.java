@@ -3,6 +3,7 @@ package com.kh.livro.biz;
 import java.util.List;
 
 import com.kh.livro.dto.BroadcastDto;
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
 import com.kh.livro.dto.ProfileDto;
@@ -29,7 +30,7 @@ public interface ArtistBiz {
 	// 멤버 정보
 	public MusicDto selectOne(String member_id);
 
-	// 응원 리스트
+	// 응원 댓글 리스트
 	public List<SupportCommDto> commList(int support_no);
 
 	// 응원 댓글
@@ -37,6 +38,12 @@ public interface ArtistBiz {
 
 	// 프로필 정보
 	public ProfileDto selectProfile(String member_id);
+
+	// 일정 작성
+	public int calInsert(CalendarDto dto);
+
+	// 일정 목록
+	public List<CalendarDto> calList(String member_id);
 
 	//방송 기록
 	public List<BroadcastDto> broadList(String member_id);

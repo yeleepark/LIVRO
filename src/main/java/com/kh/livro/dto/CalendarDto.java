@@ -1,6 +1,6 @@
 package com.kh.livro.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class CalendarDto {
 

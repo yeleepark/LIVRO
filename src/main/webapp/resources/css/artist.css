@@ -6,10 +6,9 @@
 }
 
 section {
-	width: 1200px;
-	height: 100%;
+	width: 80%;
 	margin: 0 auto;
-	padding-top : 80px;
+	padding-top : 100px;
 }
 
 /* 탭메뉴 */
@@ -33,6 +32,7 @@ ul.tabs {
 
 ul.tabs li {
 	background: none;
+	
 	color: #222;
 	display: inline-block;
 	padding: 10px 15px;
@@ -47,10 +47,8 @@ ul.tabs li.tabCurrent {
 /* 컨텐츠 출력 */
 .left-wrapper {
 	width: 80%;
-	height: 100vh;
-	border: 1px solid black;
 	float: left;
-	padding: 30px;
+	padding : 50 30;
 	overflow-y: scroll;
 }
 
@@ -72,10 +70,7 @@ ul.tabs li.tabCurrent {
 /* 응원 게시판 */
 .supportTable {
 	width: 100%;
-	border: 1px solid black;
 }
-
-
 
 .support-login {
 	width: 100%;
@@ -88,14 +83,16 @@ ul.tabs li.tabCurrent {
 	width: 100%;
 	display: flex;
 	margin: 50px 0;
-	border: 1px solid red;
 	box-sizing: border-box;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	background-color: rgba(255,255,255,0.6);
 }
 
 .supportInsert div:nth-child(1), 
 .supportInsert div:nth-child(3) {
 	width: 20%;
-	border: 1px solid pink;
+	/* border: 1px solid pink; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -126,93 +123,125 @@ ul.tabs li.tabCurrent {
 .supportDetail {
 	width: 100%;
 	height: 100%;
-	border: 1px solid red;
 	box-sizing: border-box;
 }
 
 .supportTable .rows {
 	display: flex;
-	border-bottom: 1px dotted black;
 	align-items: center;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 
-.supportTable .rows div:nth-child(1), 
-.supportTable .rows div:nth-child(3) {
+.rows-left, .rows-right{
 	width: 20%;
 	height: 100%;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	align-items : center;
 	flex-direction: column;
-	border: 1px solid pink;
 }
 
-.supportTable .rows div:nth-child(2) {
+.rows-right .updateRes{
+	display: none;
+}
+
+
+.rows-center {
 	width: 60%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	border: 1px solid pink;
+	/* border: 3px solid pink; */
 }
 
-.supportTable .rows div:nth-child(2) p {
-	overflow: hidden;
-	width: 100%;
-	border: 1px dotted black;
-}
-
-.supportTable .rows div:nth-child(2) textarea {
-	display: block;
-	width: 100%;
-	border: 1px dotted black;
+.change{
+	width : 100%;
 	resize: none;
+	background: transparent;
+	border : none;
 }
 
-.supportTable .rows div:nth-child(2) p:nth-child(1) {
-	margin-bottom: 10px;
+.changeActive{
+	background: white;
 }
 
-.supportTable .rows div:nth-child(2) p:nth-child(2) {
+.rows-center p{
+	/* border : 1px solid yellow; */
+	width: 100%;
+	padding : 5px;
+}
+
+.rows-center p:nth-child(2){
 	text-align: right;
-}
-
-.supportTable .rows input {
-	display: block;
-	width: 100px;
-	border: 1px solid black;
-	padding: 5px 10px;
+	font-size: 0.7rem;
 }
 
 /* 댓글영역 */
-.reply {
+
+.rows-middle{
+	width : 100%;
+	display: flex;
+	justify-content: center;
+	align-items : center;
+	flex-direction: column;
+	background: rgba(255,255,255,0.6);
+	padding-bottom: 10px;
+}
+
+.rows-middle div:nth-child(1){
+	display: flex;
+}
+
+.showReply{
+	font-family : FontAwesome;
+	border : none;
+	cursor : pointer;
+	margin: 5px;
+}
+
+.closeReply{
+	font-family : FontAwesome;
+	border : none;
+	cursor : pointer;
 	display: none;
+	margin: 5px;
+}
+
+.replyInsertArea{
+	display: none;
+}
+
+.insertActive{
+	width : 100%;
+	display : flex;
 	align-items: center;
 }
 
-.replyActive {
+
+
+.rows-center textarea{
+	width : 100%;
+	overflow : auto;
+	resize: none;
+}
+
+.replyArea{
+	display: none;
+}
+
+.replyActive{
+	width : 100%;
 	display: flex;
-	width: 100%;
-	border: 1px solid red;
-	height: 100%;
+	align-items: center;
+	margin-bottom: 10px;
+	transition: all ease 2s 0s;
 }
 
-.replyActive div:nth-child(1), 
-.replyActive div:nth-child(3) {
-	width: 20%;
-}
-
-.replyActive div:nth-child(2) {
-	width: 60%;
-}
-
-.replyShow {
-	width: 100%;
-	border: 1px solid blue;
+.replyTable{
+	width : 100%;
 }
 
 /* 일정게시판 */
@@ -245,15 +274,15 @@ ul.tabs li.tabCurrent {
 /* 아티스트 프로필 출력 */
 .right-wrapper {
 	width: 20%;
-	height: 100vh;
-	border: 1px solid black;
 	float: right;
-	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	padding-top: 50px;
 }
 
 #artist-profile {
-	width: 150px;
-	height: 150px;
+	width : 150px;
+	height : 150px;
 	border-radius: 50%;
 	border: 1px solid black;
 	margin: 0 auto;
@@ -266,11 +295,23 @@ ul.tabs li.tabCurrent {
 }
 
 #artist-desc {
-	text-align: center;
 	padding: 20px;
+	display : flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items: center;
 }
 
-#followBtn{
+#artist-desc p{
+	margin-bottom : 10px;
+	text-align: center;
+}
+
+#artist-desc button{
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+#followBtn, #followerBtn, #artistBtn{
 	color: #3399FF;
   font-family: "Helvetica";
   font-size: 10pt;

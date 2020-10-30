@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.Soundbank;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.JsonObject;
 import com.kh.livro.biz.ArtistBiz;
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.SupportCommDto;
 import com.kh.livro.dto.SupportDto;
 
@@ -37,6 +41,7 @@ public class ArtistController {
 		model.addAttribute("supportdto", artistBiz.supportList(member_id));
 		model.addAttribute("profiledto", artistBiz.selectProfile(member_id));
 		model.addAttribute("broaddto", artistBiz.broadList(member_id));
+		model.addAttribute("caldto", artistBiz.calList(member_id));
 		return "artist/artist";
 	}
 
@@ -61,31 +66,19 @@ public class ArtistController {
 		return entity;
 	}
 
-	// 글수정 (@RestController방식으로 json전달하여 댓글입력)
-	// @ResponseEntity : 데이터 + http status code
-	// @ResponseBody : 객체를 json으로 (json - String)
-	// @RequestBody : json을 객체로
 	@RequestMapping(value = "/supportUpdate.do", method = RequestMethod.POST)
-	public ResponseEntity<String> updateRest(@RequestBody SupportDto dto, HttpSession session) {
-
-		logger.info("[support Update]");
-		ResponseEntity<String> entity = null;
-
+	@ResponseBody
+	public SupportDto updateRest(@RequestBody SupportDto dto) {
+		logger.info("수정컨트롤러");
 		try {
 			artistBiz.supportUpdate(dto);
-			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		// 입력 처리 HTTP 상태 메시지 리턴
-		return entity;
+		return dto;
 	}
 
-	// 글삭제 (@RestController방식으로 json전달하여 댓글입력)
-	// @ResponseEntity : 데이터 + http status code
-	// @ResponseBody : 객체를 json으로 (json - String)
-	// @RequestBody : json을 객체로
+	// 글삭제 
 	@RequestMapping(value = "/supportDelete.do", method = RequestMethod.POST)
 	public ResponseEntity<String> deleteRest(@RequestBody SupportDto dto, HttpSession session) {
 
@@ -105,9 +98,6 @@ public class ArtistController {
 	}
 
 	// 댓글입력 (@RestController방식으로 json전달하여 댓글입력)
-	// @ResponseEntity : 데이터 + http status code
-	// @ResponseBody : 객체를 json으로 (json - String)
-	// @RequestBody : json을 객체로
 	@RequestMapping(value = "/commInsert.do", method = RequestMethod.POST)
 	public ResponseEntity<String> commInsert(@RequestBody SupportCommDto dto, HttpSession session) {
 
@@ -140,5 +130,30 @@ public class ArtistController {
 
 		return list;
 	}
+
+	@RequestMapping(value = "/calInsert.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<CalendarDto> calInsert(@RequestBody CalendarDto dto) {
+
+		artistBiz.calInsert(dto); // 값 인서트
+		List<CalendarDto> list = new ArrayList<CalendarDto>();
+		try {
+			list = artistBiz.calList(dto.getMember_id());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	@RequestMapping(value="/calUpdate.do", method = RequestMethod.POST)
+	public void calUpdate(@RequestBody CalendarDto dto) {
+		
+	}
+	
+	@RequestMapping(value="/calDelete.do", method = RequestMethod.POST)
+	public void calDelete(@RequestBody CalendarDto dto) {
+		
+	}
+
 
 }

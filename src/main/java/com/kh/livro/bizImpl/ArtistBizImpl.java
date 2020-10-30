@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.kh.livro.biz.ArtistBiz;
 import com.kh.livro.dao.ArtistDao;
 import com.kh.livro.dto.BroadcastDto;
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
 import com.kh.livro.dto.ProfileDto;
@@ -68,6 +69,16 @@ public class ArtistBizImpl implements ArtistBiz {
 	@Override
 	public List<BroadcastDto> broadList(String member_id) {
 		return artistDao.broadList(member_id);
+	}
+
+	@Override
+	public int calInsert(CalendarDto dto) {
+		return artistDao.calInsert(dto);
+	}
+
+	@Override
+	public List<CalendarDto> calList(String member_id) {
+		return artistDao.calList(member_id);
 	}
 
 }
