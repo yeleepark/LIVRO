@@ -45,4 +45,10 @@ public class BroadcastBizImpl implements BroadcastBiz {
 		return broadcastDao.broadDelete(broadcast_no);
 	}
 
+	@Override
+	public BroadcastDto profile(String member_id) {
+		
+		return broadcastDao.profile(member_id);
+	}
+
 }

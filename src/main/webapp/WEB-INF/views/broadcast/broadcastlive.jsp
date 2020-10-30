@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <link rel="stylesheet" href="resources/css/join.css">
-
+	
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
     <script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
@@ -82,12 +82,17 @@
             -->
               
           <div id="profileSection">
-            <p> 썸네일 확인~~</p>
-            <p> 썸네일 확인~~</p>
-            <p> 썸네일 확인~~</p>
-            <p> 썸네일 확인~~</p>
-            <p> 썸네일 확인~~</p>
-            <p> 썸네일 확인~~</p>
+          	<div>
+          	<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
+          	<p>${profile_dto.member_profile }</p>
+          	</div>            
+            <p>ARTIST : ${logindto.member_id }</p>
+            <div>
+	            방 제목 : <span id="title_res"></span>
+            </div>
+            <div>
+            방 카테고리 : <span id="category_res"></span>
+            </div>
           </div>
        </div>
 
@@ -341,5 +346,6 @@
     //     .catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for errors at the end.
         
     </script>
+    <script src="resources/js/broadcastlive.js"></script>
 </body>
 </html>

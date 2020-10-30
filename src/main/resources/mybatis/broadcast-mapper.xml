@@ -26,5 +26,10 @@
 		UPDATE BROADCAST
 		SET BROADCAST_FLAG = 'N', BROADCAST_ENDDATE = SYSDATE WHERE BROADCAST_NO = #{broadcast_no}
 	</update>
+	
+	<select id="select_profile" parameterType="String" resultType="BroadcastDto">
+		SELECT PROFILE_SAVEDNAME AS MEMBER_PROFILE FROM PROFILE
+		WHERE MEMBER_ID = #{member_id}
+	</select>
 
 </mapper>
