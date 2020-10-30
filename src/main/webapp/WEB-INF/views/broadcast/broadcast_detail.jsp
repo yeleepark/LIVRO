@@ -6,15 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>방송 시청</title>
-   <link rel="stylesheet" href="resources/css/broadcast_live.css" />
-   <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="resources/css/broadcast_live.css" />
+	<link rel="stylesheet" href="resources/css/broadcast_detail.css">
+	<script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
 <!-- google font -->
-   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-   <script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
     <script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
-   <script src="resources/js/getHTMLMediaElement.js"></script>
-    <script src="resources/js/adapter.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.1.min.js" type="application/javascript"></script>
+	<script src="resources/js/getHTMLMediaElement.js"></script>
+    <script src="resources/js/adapter.js"></script>
+    <script src="resources/js/donation.js" ></script>
     <script>
     $(document).ready(function(){
         $('section').css('background-image', 'none' );
@@ -51,16 +54,39 @@
                     <input type="text" id="input-text-chat" placeholder="로그인이 필요합니다" onclick="needLogin();">
                 </div>
                 <div>
+                	<button id="donation" onclick="donaDo();">후원하기</button>
                     <button id="close-broadcast">연결 종료</button>
                     <button id="disconnect-room">방송 종료</button>
                 </div>
             </div>
         </div>           
     </div>
+    
      <div id="needLogin">
-     <div id="closeLogin" onclick="closeLogin();" >x</div>
-      <jsp:include page="/WEB-INF/views/login/login.jsp" ></jsp:include>
+     	<div id="closeLogin" onclick="closeLogin();" >x</div>
+      	<jsp:include page="/WEB-INF/views/login/login.jsp" ></jsp:include>
      </div>
+     
+     <div id="donaProcess">
+     	<div id="donaRound">
+     		<span>${logindto.member_id }님에게 후원하기</span>
+     		<div id="donaFirst">
+     			<div id="donaPrice1" style="border: 1px solid blue">1000</div>
+     			<div id="donaPrice2" style="border: 1px solid blue">5000</div>
+     			<div id="donaPrice3" style="border: 1px solid blue">10000</div>
+     		</div>
+     		<div id="donaSecond">
+     			<input type="range" id="scale" name="scale" min=1000 max=10000 step=10 onchange="setPrice();" value="1000">
+     			<div id="donaSlide"></div>
+     			<input type="text" id="donaSlidePrice"></input>
+     		</div>
+     		<div id="donaThird">
+     			<button id="donaYes" onclick="pay();">후원하기</button>
+     			<button id="donaNo" onclick="donaNo()">취소</button>
+     		</div>
+      	</div>
+     </div>
+     
      <script>
         window.enableAdapter = true; // adapter.js 활성화
         
@@ -190,6 +216,17 @@
         function closeLogin(){
         	$('#needLogin').fadeOut();
         }
+        
+		function donaDo(){
+        	$('#donaProcess').fadeIn();
+		}
+        
+		function donaNo(){
+        	$('#donaProcess').fadeOut();
+		}
+		function setPrice(){
+		document.getElementById('donaSlidePrice').value = this.value
+		}
      </script>
 </body>
 </html>
