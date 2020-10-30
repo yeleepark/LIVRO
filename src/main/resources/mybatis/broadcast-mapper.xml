@@ -18,7 +18,7 @@
 	
 	<insert id="insert" parameterType="BroadcastDto">
 		INSERT INTO BROADCAST
-		VALUES(BROADCAST_NO_SEQ.NEXTVAL, #{member_id}, (SELECT MEMBER_PROFILE FROM MEMBER WHERE MEMBER_ID = #{member_id}), 
+		VALUES(BROADCAST_NO_SEQ.NEXTVAL, #{member_id}, (SELECT PROFILE_SAVEDNAME FROM PROFILE WHERE MEMBER_ID = #{member_id}), 
 		#{broadcast_title}, #{broadcast_content},#{broadcast_category}, 'Y', SYSDATE, NULL)
 	</insert>
 	
