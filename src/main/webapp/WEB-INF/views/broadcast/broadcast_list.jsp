@@ -20,7 +20,7 @@
     
     <section id="section">
     	<c:if test="${logindto.member_role == 'A' }">
-    		<input type="button" id="broadgo" value="방송하기" onclick="location.href='live.do'">
+    		<input type="button" id="broadgo" value="방송하기" onclick="location.href='live.do?member_id=${logindto.member_id}'">
 		    	  		
     	</c:if>
     	

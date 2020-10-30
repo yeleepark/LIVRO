@@ -39,8 +39,10 @@ public class BroadcastController {
 	
 	//broadcastlist에서 방송하기 form으로 이동
 	@RequestMapping("/live.do")
-	public String broadcastLive() {
-
+	public String broadcastLive(String member_id, Model model) {
+		BroadcastDto dto = broadcastBiz.profile(member_id);
+		model.addAttribute("profile_dto", dto);
+		
 		return "broadcast/broadcastlive";
 	}
 	
@@ -49,8 +51,7 @@ public class BroadcastController {
 	public String liveinsert(Model model, HttpServletRequest request, HttpServletResponse response, String member_id, String broadcast_title, String broadcast_content, String broadcast_category) {
 		logger.info("인서트해라");
 		logger.info(member_id + broadcast_title);
-		BroadcastDto dto = new BroadcastDto(member_id, broadcast_title, broadcast_content, broadcast_category);
-		
+		BroadcastDto dto = new BroadcastDto(member_id, broadcast_title, broadcast_content, broadcast_category);		
 		model.addAttribute("livedto", broadcastBiz.broadInsert(dto));
 		return "broadcast/broadcastlive";
 	}

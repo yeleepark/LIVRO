@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import com.kh.livro.dao.BroadcastDao;
 import com.kh.livro.dto.BroadcastDto;
@@ -87,6 +88,21 @@ public class BroadcastDaoImpl implements BroadcastDao {
 			logger.info("[ERROR]");
 		}
 		return res;
+	}
+
+	@Override
+	public BroadcastDto profile(String member_id) {
+		BroadcastDto dto = new BroadcastDto();
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "select_profile", member_id);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			logger.info("[ERROR profile]");
+		} 
+		
+		return dto;
 	}
 
 

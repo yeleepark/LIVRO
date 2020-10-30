@@ -14,4 +14,7 @@ public interface BroadcastBiz {
 	public int broadUpdate(BroadcastDto dto);
 	public int broadDelete(int broadcast_no);
 	
+	//프로필 가져오기
+	public BroadcastDto profile(String member_id); 
+	
 }
