@@ -14,6 +14,7 @@ response.setDateHeader("Expires",1L);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
+
 <link rel="stylesheet" href="resources/css/main-header.css" type="text/css">
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
@@ -27,10 +28,6 @@ response.setDateHeader("Expires",1L);
 		</div>
 
 		<div class="header-bar header-center">
-			<c:if test="${logindto.member_role == 'A' }">
-				<img src="resources/img/livro_icon.png" title="나의 아티스트 페이지로 이동" 
-				onclick="location.href='artist.do?member_id=${logindto.member_id }'">
-			</c:if>
 			<form action="search.do" method="post">
 				<input type="text" placeholder="search" id="searchForm" name="keyword" required="required"> 
 				<button type="submit" id="searchBtn">
@@ -47,7 +44,12 @@ response.setDateHeader("Expires",1L);
 			</c:when>
 			<c:otherwise>
 				<input type="button" value="LogOut" id="loginForm" onclick="location.href='logout.do'"> 
-				<input type="button" value="Mypage" id="registForm" onclick="location.href='mypageIndex.do'">			
+					<c:if test="${logindto.member_role eq 'M' }">
+						<input type="button" value="Admin" id="registForm" onclick="location.href='http://localhost:8788/'">			
+					</c:if>
+					<c:if test="${logindto.member_role ne 'M' }">
+						<input type="button" value="Mypage" id="registForm" onclick="location.href='mypageIndex.do'">			
+					</c:if>
 			</c:otherwise>
 			</c:choose>
 			<nav role="navigation">
@@ -60,7 +62,6 @@ response.setDateHeader("Expires",1L);
 					</c:when>
 					<c:otherwise>
 						<li class="lists"><a href="logout.do">LOGOUT</a></li>
-						<li class="lists"><a href="mypageIndex.do">MYPAGE</a></li>
 					</c:otherwise>
 					</c:choose>
 					<li><a href="notice.do">NOTICE</a></li>
