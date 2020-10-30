@@ -57,6 +57,15 @@
 	justify-content: center;
 }
 
+.header-center img {
+	width : 20px;
+	height : 20px;
+	border-radius: 50%;
+	margin-top : 5px;
+	margin-right: 10px;
+	cursor : pointer;
+}
+
 #searchForm {
 	width: 20vw;
 	padding: 5px 10px;
@@ -195,11 +204,23 @@
 		display: none;
 	}
 	
-	.mainActive{
-        width: 100%;
-        height: 100vh;
-        background-color: white;
+	 .mainActive li {
+    	padding: 10px 30px;
+        text-align: right;
+        font-size: 1.2rem;
+        letter-spacing: 0.3rem;
+        transition: all 0.3s;
+        animation: slideDown2 0.3s ease-out;
     }
+    
+    @keyframes slideDown2{
+    from{
+        padding: 0px;
+   	 }
+    to{
+        padding: 10px 30px;
+    	}
+		}
     
     .mainActive li {
     	padding: 20px 30px;

@@ -27,6 +27,10 @@ response.setDateHeader("Expires",1L);
 		</div>
 
 		<div class="header-bar header-center">
+			<c:if test="${logindto.member_role == 'A' }">
+				<img src="resources/img/livro_icon.png" title="나의 아티스트 페이지로 이동" 
+				onclick="location.href='artist.do?member_id=${logindto.member_id }'">
+			</c:if>
 			<form action="search.do" method="post">
 				<input type="text" placeholder="search" id="searchForm" name="keyword" required="required">
 				<button type="submit" id="searchBtn">
@@ -56,6 +60,7 @@ response.setDateHeader("Expires",1L);
 					</c:when>
 					<c:otherwise>
 					<li class="lists"><a href="logout.do">LOGOUT</a></li>
+					<li class="lists"><a href="mypageIndex.do">MYPAGE</a></li>
 					</c:otherwise>
 					</c:choose>
 					<li><a href="notice.do">NOTICE</a></li>
