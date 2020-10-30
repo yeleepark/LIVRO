@@ -39,7 +39,7 @@ public class BroadcastController {
 	
 	//broadcastlist에서 방송하기 form으로 이동
 	@RequestMapping("/live.do")
-	public String broadcastLive2() {
+	public String broadcastLive() {
 
 		return "broadcast/broadcastlive";
 	}
