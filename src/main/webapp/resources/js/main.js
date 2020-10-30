@@ -1,4 +1,4 @@
-let menuIcon = document.getElementById('menuIcon'), 
+var menuIcon = document.getElementById('menuIcon'), 
 	sideBar = document.getElementsByClassName('side-bar')[0];
 
 menuIcon.addEventListener('click', function() {
