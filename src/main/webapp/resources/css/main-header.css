@@ -190,11 +190,10 @@
 
 
 @media screen and (max-width:768px) {
-	
-	.lists{
-		display: block;
-	}
-	
+		
+		.lists{
+			display: block;
+		}
 	
     .header-left{
         font-size: 1.5rem;

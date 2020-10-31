@@ -142,8 +142,9 @@
 
 .mainActive {
 	width: 300px;
+	height : 100vh;
 	position: absolute;
-	margin-top: 70px;
+	margin-top: 65px;
 	top: 0;
 	right: 0;
 	transition: all .3s;
@@ -157,7 +158,7 @@
 	letter-spacing: 0.3rem;
 	transition: all 0.3s;
 	border-radius: 10px 0px 0px 10px;
-	background-color: #262626;
+	background-color: white;
 	animation: slideDown 0.3s ease-out;
 }
 
@@ -167,12 +168,8 @@
 		}
 
 	to {
-		padding: 20px 30px;
+		padding: 10px 30px;
 	}
-}
-
-.mainActive a {
-	color: white;
 }
 
 .mainActive a:hover {
@@ -184,27 +181,38 @@
 }
 
 @media screen and (max-width:768px) {
-	.header-left {
-		font-size: 1.5rem;
-	}
-	
-	#searchForm {
-		padding: 5px;
-	}
-	
-	#searchBtn {
-		display: none;
-	}
-	
-	#registForm {
-		display: none;
-	}
-	
-	#loginForm {
-		display: none;
-	}
-	
-	 .mainActive li {
+		
+		.lists{
+			display: block;
+			background: white;
+		}
+
+    .header-left{
+        font-size: 1.5rem;
+    }
+
+    #searchForm{
+        padding: 5px;
+    }
+
+    #searchBtn{
+        display: none;
+    }
+
+    #registForm{
+        display: none;
+    }
+
+    #loginForm{
+        display: none;
+    }
+
+    .mainActive{
+        width: 100%;
+        background-color: white;
+    }
+    
+    .mainActive li {
     	padding: 10px 30px;
         text-align: right;
         font-size: 1.2rem;
@@ -221,15 +229,6 @@
         padding: 10px 30px;
     	}
 		}
-    
-    .mainActive li {
-    	padding: 20px 30px;
-        text-align: right;
-        font-size: 1.5rem;
-        letter-spacing: 0.3rem;
-        transition: all 0.3s;
-        animation: slideDown 0.3s ease-out;
-    }
 
     .mainActive li a{
         color: black;
@@ -238,5 +237,4 @@
     .mainActive li:hover{
         color: #d22c2c;
     }
-	
 }
