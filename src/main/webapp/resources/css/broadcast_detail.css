@@ -42,3 +42,16 @@
 #donaFirst{
 	display: flex;
 }
+
+#price{
+	width: 15vw;
+}
+
+.donaPrice {
+	width: 100px;
+	text-align: center;
+}
+
+#donaYes, #donaNo{
+	width: 6vw;
+}
