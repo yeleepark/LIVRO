@@ -219,13 +219,12 @@
 					</div>
 					<!-- 캘린더 -->
 					<div id="calendar"></div>
-					
 					<c:forEach items="${caldto }" var="cal">
-						<input type="text" value="${cal.cal_no }" class="cal_no">
-						<input type="text" value="${cal.member_id }" class="cal_member_id">
-						<input type="text" value="${cal.cal_title }" class="cal_title">
-						<input type="text" value="${cal.cal_start }" class="cal_start">
-						<input type="text" value="${cal.cal_end }" class="cal_end">
+						<input type="hidden" value="${cal.cal_no }" class="cal_no">
+						<input type="hidden" value="${cal.member_id }" class="cal_member_id">
+						<input type="hidden" value="${cal.cal_title }" class="cal_title">
+						<input type="hidden" value="${cal.cal_start }" class="cal_start">
+						<input type="hidden" value="${cal.cal_end }" class="cal_end">
 					</c:forEach> 
 				</div>
 			</div>
@@ -271,5 +270,7 @@
 	<script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
 	<script type="text/javascript" src="resources/js/artist.js"></script>
 	<script type="text/javascript" src="resources/js/artist-calendar.js"></script>
+	<script type="text/javascript"></script>
+
 </body>
 </html>

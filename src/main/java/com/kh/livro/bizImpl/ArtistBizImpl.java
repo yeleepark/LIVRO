@@ -81,4 +81,14 @@ public class ArtistBizImpl implements ArtistBiz {
 		return artistDao.calList(member_id);
 	}
 
+	@Override
+	public int calUpdate(CalendarDto dto) {
+		return artistDao.calUpdate(dto);
+	}
+
+	@Override
+	public int calDelete(int cal_no) {
+		return artistDao.calDelete(cal_no);
+	}
+
 }

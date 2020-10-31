@@ -271,6 +271,14 @@ ul.tabs li.tabCurrent {
 	display: none;
 }
 
+.tui-view-44{
+	height: 400px !important;
+}
+
+.tui-full-calendar-month{
+	min-height: 430px !important;
+}
+
 /* 아티스트 프로필 출력 */
 .right-wrapper {
 	width: 20%;

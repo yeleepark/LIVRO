@@ -81,9 +81,9 @@
 		VALUES (CAL_NO_SEQ.NEXTVAL, #{member_id}, #{cal_title}, #{cal_start}, #{cal_end}, 'time')
 	</insert>
 	
-	<update id="calUpdate">
+	<update id="calUpdate" parameterType="CalendarDto">
 		UPDATE CALENDAR
-		SET CAL_TITLE = #{cal_title},CAL_START = #{cal_start}, CAL_END = #{cal_end}, 'time')
+		SET CAL_TITLE = #{cal_title}, CAL_START = #{cal_start}, CAL_END = #{cal_end}
 		WHERE CAL_NO = #{cal_no}
 	</update>
 	

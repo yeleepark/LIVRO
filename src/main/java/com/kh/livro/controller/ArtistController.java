@@ -1,6 +1,7 @@
 package com.kh.livro.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.JsonObject;
 import com.kh.livro.biz.ArtistBiz;
 import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.SupportCommDto;
@@ -131,11 +131,13 @@ public class ArtistController {
 		return list;
 	}
 
+	// 캘린더 insert
 	@RequestMapping(value = "/calInsert.do", method = RequestMethod.POST)
 	@ResponseBody
 	public List<CalendarDto> calInsert(@RequestBody CalendarDto dto) {
 
 		artistBiz.calInsert(dto); // 값 인서트
+		
 		List<CalendarDto> list = new ArrayList<CalendarDto>();
 		try {
 			list = artistBiz.calList(dto.getMember_id());
@@ -146,13 +148,15 @@ public class ArtistController {
 	}
 	
 	@RequestMapping(value="/calUpdate.do", method = RequestMethod.POST)
+	@ResponseBody
 	public void calUpdate(@RequestBody CalendarDto dto) {
-		
+		artistBiz.calUpdate(dto);
 	}
 	
 	@RequestMapping(value="/calDelete.do", method = RequestMethod.POST)
+	@ResponseBody
 	public void calDelete(@RequestBody CalendarDto dto) {
-		
+		artistBiz.calDelete(dto.getCal_no());
 	}
 
 

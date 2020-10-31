@@ -45,6 +45,12 @@ public interface ArtistBiz {
 	// 일정 목록
 	public List<CalendarDto> calList(String member_id);
 
+	// 일정 수정
+	public int calUpdate(CalendarDto dto);
+
+	// 일정 삭제
+	public int calDelete(int cal_no);
+
 	//방송 기록
 	public List<BroadcastDto> broadList(String member_id);
 }

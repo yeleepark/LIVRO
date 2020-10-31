@@ -160,13 +160,37 @@ public class ArtistDaoImpl implements ArtistDao {
 	@Override
 	public List<CalendarDto> calList(String member_id) {
 		List<CalendarDto> list = new ArrayList<CalendarDto>();
-		
+
 		try {
 			list = sqlSession.selectList(NAMESPACE + "calList", member_id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public int calUpdate(CalendarDto dto) {
+		int res = 0;
+
+		try {
+			res = sqlSession.update(NAMESPACE + "calUpdate", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int calDelete(int cal_no) {
+		int res = 0;
+
+		try {
+			res = sqlSession.delete(NAMESPACE + "calDelete", cal_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 }
