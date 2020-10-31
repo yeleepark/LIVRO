@@ -16,8 +16,68 @@
 <title>LIVRO-로그인</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="resources/js/login.js">
-	
+<!-- <script type="text/javascript" src="resources/js/login.js">
+</script> -->
+<script type="text/javascript">
+$(function() {
+	$("#logincheck").hide();
+});
+
+function loginChk() {
+
+	var member_id = $("#member_id").val().trim();
+	var member_pw = $("#member_pw").val().trim();
+
+
+
+	var loginVal = {
+		"member_id": member_id,
+		"member_pw": member_pw
+	}
+
+	if (member_id == null || member_id == "" || member_pw == null || member_pw == "") {
+		$("#logincheck").show();
+		$("#logincheck").html("아이디와 비밀번호를 입력해주세요.").css({
+			'color': 'red',
+			'font-size': '11px'
+		});
+	} else {
+		$.ajax({
+			type: "post",
+			url: "login.do",
+			data: JSON.stringify(loginVal),
+			contentType: "application/json",
+			dataType: "json",
+			success: function(msg) {
+				if (msg.check == true) {
+					console.log(msg.dto.member_enabled);
+					if(msg.dto.member_enabled == 'N'){
+						$("#logincheck").show();
+						$("#logincheck").html("로그인이 차단되었습니다. 관리자에게 문의하세요.").css({
+							'color': 'red',
+							'font-size': '11px'
+						});
+					}else{
+						location.href = 'success.do';
+					}
+				} else {
+					$("#logincheck").show();
+					$("#logincheck").html("아이디 혹은 비밀번호가 올바르지 않습니다").css({
+						'color': 'red',
+						'font-size': '11px'
+					});
+				}
+			},
+			error: function() {
+				$("#logincheck").show();
+				$("#logincheck").html("아이디 혹은 비밀번호가 올바르지 않습니다").css({
+					'color': 'red',
+					'font-size': '11px'
+				});
+			}
+		});
+	}
+}
 </script>
 </head>
 <body>
