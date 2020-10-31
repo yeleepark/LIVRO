@@ -78,12 +78,12 @@
      	<div id="donaRound">
      		<span>${logindto.member_id }님에게 후원하기</span>
      		<div id="donaFirst">
-     			<div id="donaPrice1" style="border: 1px solid blue">1000</div>
-     			<div id="donaPrice2" style="border: 1px solid blue">5000</div>
-     			<div id="donaPrice3" style="border: 1px solid blue">10000</div>
+     			<div class="donaPrice" style="border: 1px solid blue">1000</div>
+     			<div class="donaPrice" style="border: 1px solid blue">5000</div>
+     			<div class="donaPrice" style="border: 1px solid blue">10000</div>
      		</div>
      		<div id="donaSecond">
-     			<input type="range" id="scale" name="scale" min=1000 max=10000 step=10 onchange="setPrice();" value="1000">
+     			<input type="range" id="price" name="price" min=1000 max=10000 step=1000 value="1000">
      			<div id="donaSlide"></div>
      			<input type="text" id="donaSlidePrice"></input>
      		</div>
@@ -216,7 +216,6 @@
         }
         
         function needLogin(){
-           console.log('로그인요청');
            $('#needLogin').fadeIn();
         }
         
@@ -231,9 +230,20 @@
 		function donaNo(){
         	$('#donaProcess').fadeOut();
 		}
-		function setPrice(){
-		document.getElementById('donaSlidePrice').value = this.value
-		}
-     </script>
+        
+        const donaFirst = document.getElementById('donaFirst');
+        const donaSlidePrice = document.getElementById('donaSlidePrice');
+        donaFirst.addEventListener('click', (e) => {
+            donaSlidePrice.value =e.target.innerHTML
+			console.log(e.currentTarget);
+        })
+        
+        const price = document.getElementById('price');
+			price.addEventListener('click', (e) => {
+			console.log(e.currentTarget.value);
+			donaSlidePrice.value = e.currentTarget.value;
+		})        
+        
+		</script>
 </body>
 </html>
