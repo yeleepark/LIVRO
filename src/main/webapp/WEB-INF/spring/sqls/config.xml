@@ -14,6 +14,8 @@
 		<typeAlias type="com.kh.livro.dto.QnareDto" alias="QnareDto" />
 		<typeAlias type="com.kh.livro.dto.QnareDto" alias="QnareDto" />
 		<typeAlias type="com.kh.livro.dto.DonationDto" alias="DonationDto"/>
+		<typeAlias type="com.kh.livro.dto.FollowerDto" alias="FollowerDto"/>
+		<typeAlias type="com.kh.livro.dto.FollowingDto" alias="FollowingDto"/>
 	</typeAliases>
 
 	<mappers>
