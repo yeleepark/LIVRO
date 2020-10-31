@@ -91,4 +91,14 @@ public class ArtistBizImpl implements ArtistBiz {
 		return artistDao.calDelete(cal_no);
 	}
 
+	@Override
+	public int commDelete(int comm_no) {
+		return artistDao.commDelete(comm_no);
+	}
+
+	@Override
+	public int commUpdate(SupportCommDto dto) {
+		return artistDao.commUpdate(dto);
+	}
+
 }

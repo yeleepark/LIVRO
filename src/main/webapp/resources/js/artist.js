@@ -35,19 +35,13 @@ showReply.forEach(show =>{
 show.addEventListener('click', (e)=>{
 		var target = e.target.parentNode.parentNode;
 		
-		var res = target.getElementsByClassName('replyArea');
-		var res2 = target.getElementsByClassName('replyInsertArea')[0];
-		
-		for(var i =0; i < res.length ; i ++){
-			res[i].classList.add('replyActive');
-		}
-		res2.classList.add('insertActive');
+		var res = target.getElementsByClassName('replyArea')[0];
+		res.classList.add('replyActive');
 		
 		e.target.style.display = "none";
 		target.getElementsByClassName('closeReply')[0].style.display ="inherit";
 		
 		var support_no = target.getElementsByClassName('supportNo')[0].value;
-		console.log(support_no + " 댓글보기클릭")
 		
 		$.ajax({
 			type : "post",
@@ -55,53 +49,11 @@ show.addEventListener('click', (e)=>{
 			headers : {
 				"Content-Type" : "application/json"
 			},
-			dateType : "text",
 			data : JSON.stringify({
 				support_no : support_no
 			}),
 			success : function(result) {
-			/*	for(var i = 0; i < result.length; i++){
-					var firstDiv = document.createElement('div');
-					firstDiv.classList.add('rows-left');
-					var p = document.createElement('p');
-					var first = firstDiv.appendChild(p);
-					first.innerHTML = result[i].member_id;
-					
-					var secondDiv = document.createElement('div');
-					secondDiv.classList.add('rows-center');
-					var textArea = document.createElement('textarea');
-					var second = secondDiv.appendChild(textArea);
-					second.innerHTML = result[i].comm_content;
-					
-					var thirdDiv = document.createElement('div');
-					thirdDiv.classList.add('rows-right');
-					var inputUpdate = document.createElement('input');
-					inputUpdate.setAttribute('type', 'button');
-					inputUpdate.setAttribute('value', '수정');
-					inputUpdate.classList.add('commUpdate')
-					var inputUpdateRes = document.createElement('input');
-					inputUpdateRes.setAttribute('type', 'button');
-					inputUpdateRes.setAttribute('value', '완료');
-					inputUpdateRes.classList.add('commUpdateRes')
-					var inputDelete = document.createElement('input');
-					inputDelete.setAttribute('type', 'button');
-					inputDelete.setAttribute('value', '삭제');
-					inputDelete.classList.add('commDelete')
-					thirdDiv.appendChild(inputUpdate);
-					thirdDiv.appendChild(inputUpdateRes);
-					thirdDiv.appendChild(inputDelete);	
-					
-					console.log('-------');
-					console.log(firstDiv)
-					console.log(secondDiv)
-					console.log(thirdDiv)
-					console.log('-------');
-					
-					res[i].appendChild(firstDiv);
-					res[i].appendChild(secondDiv);
-					res[i].appendChild(thirdDiv);
-					
-				}*/
+				res.innerHTML = result;
 			}
 		});
 	})
@@ -113,19 +65,11 @@ closeReply.forEach(close =>{
 close.addEventListener('click', (e)=>{
 	var target = e.target.parentNode.parentNode;
 	
-	
-	var res = target.getElementsByClassName('replyArea');
-	var res2 = target.getElementsByClassName('replyInsertArea')[0];
-	
-	for(var i =0; i < res.length; i++){
-		res[i].classList.remove('replyActive');
-	}
-	
-	res2.classList.remove('insertActive');
+	var res = target.getElementsByClassName('replyArea')[0];
+	res.classList.remove('replyActive');
 	
 	e.target.style.display = "none";
 	target.getElementsByClassName('showReply')[0].style.display ="block";
-	
 	})
 })
 
@@ -133,11 +77,9 @@ close.addEventListener('click', (e)=>{
 var insertBtn = document.querySelectorAll('.insertBtn');
 insertBtn.forEach(insert =>{
 	insert.addEventListener('click', ()=>{
-		console.log('인서트 클릭');
 		 var member_id = artist_id; // 아티스트 아이디
 		 var member_nickname = login_nickname; // 글 작성자 닉네임
 		 var support_content = document.getElementById('support_content').value;// 컨텐츠
-		 console.log(support_content);
 
 		    $.ajax({
 		        type : "post",
@@ -145,7 +87,6 @@ insertBtn.forEach(insert =>{
 		        headers : {
 		            "Content-Type" : "application/json"
 		        },
-		        dateType : "html", // 서버에서 반환되는 데이터 형식
 		        data : JSON.stringify({
 		            member_id : member_id,
 		            member_nickname : member_nickname,
@@ -242,6 +183,7 @@ function listRest() {
 		type : "get",
 		url : "artist.do?member_id="+artist_id,
 		success : function(result) {
+			// 시간날 때 효율적으로 다시 짜기
 			var htmlObj = $(result);
 			/*
 			 * var res = htmlObj.find('.supportTable');
@@ -256,39 +198,93 @@ function listRest() {
 	});
 }
 
-// 댓글입력 --
-var replyDone = document.querySelectorAll('.replyDone');
-replyDone.forEach(reply =>{
-	reply.addEventListener('click', (e)=>{
-		console.log('댓글 작성 클릭');
-		var target = e.target.parentNode;
-		var support_no = target.getElementsByClassName('supportNo')[0].value;
-		var member_id = artist_id;
-		var comm_content = target.parentNode.getElementsByClassName('replyContent')[0].value;
-		console.log(support_no + " " + member_id + " " + comm_content);
+// 댓글입력
+function replyInsert(e){
+	var target = e.parentNode.parentNode.querySelector('.replyContent');
+	var comm_content = target.value;
+	var member_id = login_id;
+	var supportTarget =e.parentNode.parentNode.parentNode.parentNode;
+	var support_no = supportTarget.parentNode.querySelector('.supportNo').value;
+	$.ajax({
+        type : "post",
+        url : "commInsert.do",
+        headers : {
+			"Content-Type" : "application/json"
+		},
+		dateType : "text",
+		data : JSON.stringify({
+			member_id : member_id,
+			comm_content : comm_content,
+			support_no : support_no
+		}),
+		success: function(result){
+			console.log(result)
+			replyRest(support_no, supportTarget);
+		}
+    })
+}
+
+//댓글수정
+function replyUpdate(e){
+	e.style.display = "none";
+	var doneBtn = e.parentNode.getElementsByClassName('updateDone')[0];
+	doneBtn.style.display = "block";
+	
+	var content = e.parentNode.parentNode.querySelector('.comm_content');
+	content.readOnly = false;
+	content.classList.add('commActive');
+}
+
+function updateDone(e){
+	var comm_no = e.parentNode.querySelector('.replyNum').value;
+	var target= e.parentNode.parentNode.querySelector('.comm_content');
+	var comm_content = target.value;
+	
+	$.ajax({
+        type : "post",
+        url : "commUpdate.do?comm_no="+comm_no,
+        headers : {
+			"Content-Type" : "application/json"
+		},
+		dateType : "text",
+		data : JSON.stringify({
+			comm_no : comm_no,
+			comm_content : comm_content
+		}),
+		success: function(result){
+			console.log(result)
+		}
+    }).done(function(){
+    	e.style.display ="none";
+    	var updateBtn = e.parentNode.getElementsByClassName('replyUpdate')[0];
+    	updateBtn.style.display = "block";
+    	target.readOnly = true;
+    	target.classList.remove('commActive');
+    });
+};
+
+//댓글삭제
+function replyDelete(e){
+	var res = confirm('삭제하시겠습니까?');
+	var supportTarget =e.parentNode.parentNode.parentNode.parentNode;
+	
+	if(res){
+		var comm_no = e.parentNode.querySelector('.replyNum').value;
+		var support_no = e.parentNode.querySelector('.supportNum').value;
 		
-		    $.ajax({
+		$.ajax({
 		        type : "post",
-		        url : "commInsert.do",
-		        headers : {
-		            "Content-Type" : "application/json"
-		        },
-		        data : JSON.stringify({
-		            support_no : support_no,
-		            member_id : member_id,
-		            comm_content : comm_content
-		        }),
+		        url : "commDelete.do?comm_no="+comm_no,
 		        success : function(result) {
-		        	console.log("댓글입력 성공" + result);
-// showReply(support_no);
+		        	console.log(result);
+		        	replyRest(support_no, supportTarget);
 		        }
 		    });
-	})
-});
+	}
+}
 
-function showReply(support_no) {
-	
-	console.log(support_no + " 댓글 게시글 번호");
+//댓글 rest 출력
+function replyRest(support_no, supportTarget){
 	$.ajax({
 		type : "post",
 		url : "showList.do?support_no=" + support_no,
@@ -298,14 +294,11 @@ function showReply(support_no) {
 		data : JSON.stringify({
 			support_no : support_no
 		}),
-		success : function(data) {
-			alert('댓글 보여준다!')
-			console.log(data); // 일단 성공
-			console.log(typeof (data))
+		success : function(result) {
+			supportTarget.querySelector('.replyArea').innerHTML = result;
 		}
-	})
+	});
 }
-
 
 //------프로필
 function updateProfile(){

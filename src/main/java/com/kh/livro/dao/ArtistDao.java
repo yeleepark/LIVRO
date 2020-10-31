@@ -35,8 +35,14 @@ public interface ArtistDao {
 	// 응원 댓글 리스트 
 	public List<SupportCommDto> commList(int support_no);
 	
-	// 응원 댓글
+	// 응원 댓글 작성
 	public int commInsert(SupportCommDto dto);
+	
+	// 응원 댓글 삭제
+	public int commDelete(int comm_no);
+	
+	// 응원 댓글 수정 
+	public int commUpdate(SupportCommDto dto);
 	
 	// 프로필 정보
 	public ProfileDto selectProfile(String member_id);

@@ -44,6 +44,17 @@
 		WHERE SUPPORT_NO = #{support_no}
 		ORDER BY COMM_NO
 	</select>
+	
+	<delete id="commDelete">
+		DELETE FROM SUPPORT_COMM
+		WHERE COMM_NO = ${comm_no}
+	</delete>
+	
+	<update id="commUpdate" parameterType="SupportCommDto">
+		UPDATE SUPPORT_COMM
+		SET COMM_CONTENT = #{comm_content}
+		WHERE COMM_NO = ${comm_no}
+	</update>
 
 
 	<!-- 아티스트 페이지 이동 -->

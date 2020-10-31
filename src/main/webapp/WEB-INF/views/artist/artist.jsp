@@ -163,28 +163,15 @@
 											<div>
 												<input type="button" value="&#xf063" class="showReply">
 												<input type="button" value="&#xf00d" class="closeReply">
+												<input type="hidden" value="${support.support_no }" class="supportNo">
 											</div>
 											<!--  반복 부분 -->
 											<div class="replyArea">
 												
 											</div>
 											<!-- 반복 끝 -->
-											<div class="replyInsertArea">
-												<div class="rows-left">
-													<p>댓글작성</p>
-												</div>
-												<div class="rows-center">
-													<textarea class="replyContent"></textarea>
-												</div>
-												<div class="rows-right">
-													<input type="button" value="작성" class="replyDone"> 
-													<input type="hidden" value="${support.support_no }" class="supportNo">
-												</div>
-											</div>
 										</div>
 									</div>
-									<!-- 세번째줄 -->
-
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
@@ -232,7 +219,24 @@
 			<!-- 방송기록 -->
 			<div id="tab-4" class="tab-content">
 				<h2>방송기록</h2>
-				
+				<div class="broadTable">
+					<c:choose>
+						<c:when test="${empty broaddto }">
+							<div>
+								<p>방송 내역이 없습니다</p>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${broaddto }" var="broad">
+								<div>
+									<span>${broad.broadcast_title }</span>
+									<span>${broad.broadcast_category }</span>
+									<span>${broad.broadcast_content }</span>
+								</div>	
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 
 		</div>
@@ -270,7 +274,6 @@
 	<script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
 	<script type="text/javascript" src="resources/js/artist.js"></script>
 	<script type="text/javascript" src="resources/js/artist-calendar.js"></script>
-	<script type="text/javascript"></script>
 
 </body>
 </html>

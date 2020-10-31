@@ -193,4 +193,28 @@ public class ArtistDaoImpl implements ArtistDao {
 		return res;
 	}
 
+	@Override
+	public int commDelete(int comm_no) {
+		int res = 0;
+
+		try {
+			res = sqlSession.delete(NAMESPACE + "commDelete", comm_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int commUpdate(SupportCommDto dto) {
+		int res = 0;
+
+		try {
+			res = sqlSession.update(NAMESPACE + "commUpdate", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 }

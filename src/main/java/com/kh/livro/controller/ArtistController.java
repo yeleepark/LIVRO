@@ -66,6 +66,7 @@ public class ArtistController {
 		return entity;
 	}
 
+	// 댓글수정
 	@RequestMapping(value = "/supportUpdate.do", method = RequestMethod.POST)
 	@ResponseBody
 	public SupportDto updateRest(@RequestBody SupportDto dto) {
@@ -115,21 +116,48 @@ public class ArtistController {
 		// 입력 처리 HTTP 상태 메시지 리턴
 		return entity;
 	}
-
+	
+	// 응원 댓글 리스트
 	@RequestMapping(value = "/showList.do", method = RequestMethod.POST)
-	@ResponseBody
-	public List<SupportCommDto> replyRest(@RequestParam int support_no) {
+	public String replyList(int support_no, Model model) {
 		logger.info("댓글 출력 컨트롤러");
-
-		List<SupportCommDto> list = new ArrayList<SupportCommDto>();
+		model.addAttribute("commdto", artistBiz.commList(support_no));
+		return "artist/artistReply";
+	}
+	
+	// 응원 댓글 삭제
+	@RequestMapping(value = "/commDelete.do", method = RequestMethod.POST)
+	public ResponseEntity<String> replyDelete(@RequestParam int comm_no) {
+		logger.info("댓글삭제 컨트롤러");
+		System.out.println(comm_no);
+		ResponseEntity<String> entity = null;
 		try {
-			list = artistBiz.commList(support_no);
+			artistBiz.commDelete(comm_no);
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-
-		return list;
+		return entity;
 	}
+	
+	// 응원 댓글 업데이트
+	@RequestMapping(value="/commUpdate.do", method = RequestMethod.POST)
+	public ResponseEntity<String> replyUpdate(@RequestBody SupportCommDto dto) {
+		logger.info("댓글 수정 컨트롤러");
+		System.out.println(dto.getComm_content());
+		System.out.println(dto.getComm_no());
+		ResponseEntity<String> entity = null;
+		try {
+			artistBiz.commUpdate(dto);
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
 
 	// 캘린더 insert
 	@RequestMapping(value = "/calInsert.do", method = RequestMethod.POST)
@@ -137,7 +165,7 @@ public class ArtistController {
 	public List<CalendarDto> calInsert(@RequestBody CalendarDto dto) {
 
 		artistBiz.calInsert(dto); // 값 인서트
-		
+
 		List<CalendarDto> list = new ArrayList<CalendarDto>();
 		try {
 			list = artistBiz.calList(dto.getMember_id());
@@ -146,18 +174,17 @@ public class ArtistController {
 		}
 		return list;
 	}
-	
-	@RequestMapping(value="/calUpdate.do", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/calUpdate.do", method = RequestMethod.POST)
 	@ResponseBody
 	public void calUpdate(@RequestBody CalendarDto dto) {
 		artistBiz.calUpdate(dto);
 	}
-	
-	@RequestMapping(value="/calDelete.do", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/calDelete.do", method = RequestMethod.POST)
 	@ResponseBody
 	public void calDelete(@RequestBody CalendarDto dto) {
 		artistBiz.calDelete(dto.getCal_no());
 	}
-
 
 }
