@@ -67,14 +67,16 @@ function pay(){
                         data: JSON.stringify(dona_info),
 						dataType: "text",
                         success: function(msg){
-							console.log(msg.success);
-                            console.log('통신성공');
-                            donaNo();
+							console.log(msg);
                         },
                         error: function(msg){
-							console.log(msg.fail);
-                            console.log('통신실패');
+							console.log(msg);
                         }
+                    }).done(function(){
+						let donaDone = '님이' + price + '원을 후원하셨습니다!';
+                        donaNo();
+						appendDIV(donaDone);
+						connection.send(donaDone);
                     })
 					
                 });
