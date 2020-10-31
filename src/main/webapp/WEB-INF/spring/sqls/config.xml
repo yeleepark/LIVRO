@@ -12,7 +12,8 @@
 		<typeAlias type="com.kh.livro.dto.QnaDto" alias="QnaDto" />
 		<typeAlias type="com.kh.livro.dto.CalendarDto" alias="CalendarDto" />
 		<typeAlias type="com.kh.livro.dto.QnareDto" alias="QnareDto" />
-				<typeAlias type="com.kh.livro.dto.QnareDto" alias="QnareDto" />
+		<typeAlias type="com.kh.livro.dto.QnareDto" alias="QnareDto" />
+		<typeAlias type="com.kh.livro.dto.DonationDto" alias="DonationDto"/>
 	</typeAliases>
 
 	<mappers>
@@ -27,5 +28,6 @@
 		<mapper resource="mybatis/qna-mapper.xml" />
 		<mapper resource="mybatis/qnare-mapper.xml" />
 		<mapper resource="mybatis/qnare-mapper.xml" />
+		<mapper resource="mybatis/donation-mapper.xml"/>
 	</mappers>
 </configuration>

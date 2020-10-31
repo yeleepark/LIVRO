@@ -31,18 +31,25 @@
    </header>
    <input type="hidden" value="${broadDto.broadcast_title }" id="broadcast_title">
    <input type="hidden" value="${logindto.member_id }" id="user_id">
+   <input type="hidden" value="${logindto.member_email }" id="member_email">
+   <input type="hidden" value="${logindto.member_name}" id="member_name">
    
       <div id="section2">
        <div id="section2_left">
-          <div id="remote-videos-container"></div>
+          <div id="local-videos-container"></div>
       
           <div id="profileSection">
-            <p> 썸네일 확인~~</p>
-            <p> 썸네일 확인~~</p>
-            <p> 썸네일 확인~~</p>
-            <p> 썸네일 확인~~</p>
-            <p> 썸네일 확인~~</p>
-            <p> 썸네일 확인~~</p>
+            <div>
+          	<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
+          		<p>${broadDto.member_profile}</p>
+          	</div>            
+           		 ARTIST : <p id="artist_id">${broadDto.member_id }</p>
+            <div>
+	            방 제목 : <span>${broadDto.broadcast_title }</span>
+            </div>
+            <div>
+            방 카테고리 : <span>${broadDto.broadcast_category }</span>
+            </div>
           </div>
        </div>
 
@@ -131,7 +138,6 @@
         }
         
         var localVideosContainer = document.getElementById('local-videos-container');
-        var remoteVideosContainer = document.getElementById('remote-videos-container');
         
         var roomId = document.getElementById('broadcast_title');
         var userId = document.getElementById('user_id');
@@ -158,7 +164,7 @@
                          connection.attachStreams.forEach((localStream) => {
                              localStream.stop();
                          });
-                         remoteVideosContainer.appendChild(video);
+                         localVideosContainer.appendChild(video);
                      }
                  }else{
                  alert('오류');

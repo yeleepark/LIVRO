@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="donation">
+	<select id="selectList" resultType="DonationDto">
+		SELECT DONA_NO, MEMBER_ID, DONA_PRICE, DONA_DATE, DONA_ID
+		FROM DONATION
+	</select>
+	
+	<select id="selectUser" parameterType="String" resultType="DonationDto">
+		SELECT DONA_NO, MEMBER_ID, DONA_PRICE, DONA_DATE, DONA_ID
+		FROM DONATION
+		WHERE DONA_NO = #{dona_id}
+	</select>
+	
+	<insert id="insert" parameterType="DonationDto">
+		INSERT INTO DONATION
+		VALUES(DONA_NO_SEQ.NEXTVAL, #{member_id}, #{dona_price}, SYSDATE, #{dona_id})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM DONATION
+		WHERE DONA_ID = #{dona_no}
+	</delete>
+	
+</mapper>
