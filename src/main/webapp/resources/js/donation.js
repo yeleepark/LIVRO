@@ -1,9 +1,14 @@
-//실제 복사하여 사용시에는 모든 주석을 지운 후 사용하세요
 function pay(){
+					let price = $('#scale').val();
+					let member_id = $('#user_id').val();
+					let dona_id =  $('#artist_id').text();
+					let username = $('#member_name').val(); 
+					let email = $('#member_email').val();
+					
                     BootPay.request({
-                    price: $('#scale').val(), //실제 결제되는 가격
+                    price, //실제 결제되는 가격
                     application_id: "5f8d191a4f74b4001d74141d",
-                    name: 'xx님에게 후원', //결제창에서 보여질 이름
+                    name: dona_id + '님에게 후원', //결제창에서 보여질 이름
                     pg: 'inicis',
                     method: 'card', //결제수단, 입력하지 않으면 결제수단 선택부터 화면이 시작합니다.
                     show_agree_window: 0, // 부트페이 정보 동의 창 보이기 여부
@@ -12,17 +17,15 @@ function pay(){
                             item_name: '나는 아이템', //상품명
                             qty: 1, //수량
                             unique: '123', //해당 상품을 구분짓는 primary key
-                            price: 1000, //상품 단가
-                            cat1: 'TOP', // 대표 상품의 카테고리 상, 50글자 이내
-                            cat2: '티셔츠', // 대표 상품의 카테고리 중, 50글자 이내
-                            cat3: '라운드 티', // 대표상품의 카테고리 하, 50글자 이내
+                            price //상품 단가
                         }
                     ],
                     user_info: {
-                        username: $('user_id').val(),
+                        username,
+                        email,
                     }, 
                     order_id: '고유order_id_1234', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
-                    params: { callback1: '그대로 콜백받을 변수 1', callback2: '그대로 콜백받을 변수 2', customvar1234: '변수명도 마음대로' },
+                    params: { member_id, dona_id },
                     account_expire_at: '2020-10-25', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
                 }).error(function (data) {
                     //결제 진행시 에러가 발생하면 수행됩니다.
@@ -49,6 +52,30 @@ function pay(){
                 }).done(function (data) {
                     //결제가 정상적으로 완료되면 수행됩니다
                     //비즈니스 로직을 수행하기 전에 결제 유효성 검증을 하시길 추천합니다.
-                    console.log(data);
+					console.log(data);
+					
+					let dona_info = {
+                              		 member_id,
+                                     dona_price: price,
+/*                                     dona_date: data.purchased_at,*/
+                               		 dona_id};
+
+                    $.ajax({
+                        url: 'donation.do',
+                        type: 'post',
+						contentType: 'application/json',
+                        data: JSON.stringify(dona_info),
+						dataType: "text",
+                        success: function(msg){
+							console.log(msg.success);
+                            console.log('통신성공');
+                            donaNo();
+                        },
+                        error: function(msg){
+							console.log(msg.fail);
+                            console.log('통신실패');
+                        }
+                    })
+					
                 });
             }
