@@ -85,7 +85,7 @@
      			<div class="donaPrice" style="border: 1px solid blue">10000</div>
      		</div>
      		<div id="donaSecond">
-     			<input type="range" id="price" name="price" min=1000 max=10000 step=10 value="1000">
+     			<input type="range" id="price" min=1000 max=10000 step=1000 value="1000">
      			<div id="donaSlide"></div>
      			<input type="text" id="donaSlidePrice"></input>
      		</div>
@@ -266,21 +266,15 @@
         
 		function donaNo(){
         	$('#donaProcess').fadeOut();
-		}
-		
-		/* today.addEventListener('click', () => {
-			calendar.today();
-		}); */
+		}	
 		
 		const donaPrice = document.getElementById('donaFirst');
 		donaPrice.addEventListener('click', (e) => {
 			document.getElementById('donaSlidePrice').value = e.target.innerHTML;
 		})
 		
-		const donaSlicePrice = document.getElementById('price');
-		donaSlidePrice.addEventListener('click', (e) => {
-			console.log(e.currentTarget);
-			console.log(e.target);
+		const price = document.getElementById('price');
+		price.addEventListener('input', (e) => {
 			document.getElementById('donaSlidePrice').value = e.currentTarget.value;
 		})
      </script>

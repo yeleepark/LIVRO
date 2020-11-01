@@ -24,10 +24,10 @@
 		    	  		
     	</c:if>
     	
-        <div class="broadcast-table">
+        <div class="broadcast-table" id="broadcast-table-cnt">
 			<c:forEach items="${list }" var="dto">
-        		<c:choose>
-		        	<c:when test="${dto.broadcast_flag eq 'Y' }">
+		        	<c:if test="${dto.broadcast_flag eq 'Y' }">
+		        		<div>
 		          	 	<div class="broadcast-thumnail">
 							<a><img src="/resources/profileimg/${profiledto.profile_savedname }"></a>
 		           		</div>
@@ -45,16 +45,22 @@
 		 			   			<p>방송 카테고리 : ${dto.broadcast_category }</p>
 		 			   		</div>
 		            	</div>
-		        	</c:when>
-		        	<c:otherwise>
-		        		<div>
-		        			<h1>방송 없습니다~</h1>
-		        		</div>
-		        	</c:otherwise>
-            	</c:choose>
+		            	</div>
+					</c:if>
             </c:forEach>
         </div>
     </section>
-
+	<script>
+		let ele =document.getElementsByClassName(('broadcast-table'))[0];
+		let h1 = document.createElement('h1');
+		
+		if(ele.childElementCount < 1){
+		
+		// 방송이 하나도 없을 때 출력되는 메시지
+		h1.innerHTML = '진행중인 방송이 없습니다 헤헤';
+		
+		ele.appendChild(h1);
+		}
+	</script>
 </body>
 </html>
