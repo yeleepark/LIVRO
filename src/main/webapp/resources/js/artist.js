@@ -20,6 +20,22 @@ tabsLi.forEach(tab =>{
 	})
 })
 
+//------팔로우
+function follow(e){
+	var target = e.nextSibling.nextSibling;
+	e.style.display = "none";
+	target.style.display = "block";
+}
+
+//------언팔로우
+function unfollow(e){
+	var ask = confirm('언팔로우 하시겠습니까?');
+	var target = e.previousSibling.previousSibling;
+	if(ask){
+		e.style.display = "none";
+		target.style.display = "block";
+	}
+}
 
 //------프로필변경
 function updateProfile(){

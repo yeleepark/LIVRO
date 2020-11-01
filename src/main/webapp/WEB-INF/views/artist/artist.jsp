@@ -33,12 +33,13 @@
 				<li class="tab-link" data-tab="tab-2">Support</li>
 				<li class="tab-link" data-tab="tab-3" id="tab3">Calendar</li>
 				<li class="tab-link" data-tab="tab-4">Livro</li>
+				<li class="tab-link" data-tab="tab-5">Map</li>
 			</ul>
 
 
 			<!-- 음원 -->
 			<div id="tab-1" class="tab-content tabCurrent">
-				<h2>음원</h2>
+				<h2><i class="fas fa-volume-down"></i> 음원</h2>
 				<!-- 음원 업로드 공간 -->
 				<c:if test="${logindto.member_nickname eq memberdto.member_nickname}">
 					<div>
@@ -106,7 +107,7 @@
 			<!-- 응원 -->
 			<div id="tab-2" class="tab-content">
 				<div class="supportTable">
-					<h2>${memberdto.member_nickname }님께 응원글을 남겨주세요!</h2>
+					<h2><i class="fas fa-heart"></i> ${memberdto.member_nickname }님께 응원글을 남겨주세요!</h2>
 
 					<c:choose>
 						<c:when test="${empty logindto }">
@@ -187,7 +188,7 @@
 			<!-- 일정 게시판 탭-->
 			<div id="tab-3" class="tab-content">
 				<div>
-					<h2>${memberdto.member_nickname }님의 공연일정</h2>
+					<h2><i class="far fa-calendar-alt"></i> ${memberdto.member_nickname }님의 공연일정</h2>
 				</div>
 				<div class="Calendar-container">
 					<!-- 메뉴 -->
@@ -219,7 +220,7 @@
 
 			<!-- 방송기록 -->
 			<div id="tab-4" class="tab-content">
-				<h2>방송기록</h2>
+				<h2><i class="fas fa-record-vinyl"></i> 방송기록</h2>
 				<div class="broadTable">
 					<c:choose>
 						<c:when test="${empty broaddto }">
@@ -258,6 +259,11 @@
 					</c:choose>
 				</div>
 			</div>
+			
+			<!-- 지도 : 유정 작업 여기서부터 -->
+			<div id="tab-5" class="tab-content">
+			<h2> <i class="fas fa-map-marker-alt"></i> 팬레터 보내는 곳 ?</h2>
+			</div>
 
 		</div>
 
@@ -271,13 +277,21 @@
 
 			<div id="artist-desc">
 				<p><i class="fas fa-microphone"></i><span>  ${memberdto.member_nickname }</span></p>
-				<c:if test="${logindto.member_id == memberdto.member_id }">
-					<button id="artistBtn" onclick="updateProfile();">프로필변경</button>
-					<button id="followerBtn">팔로워보기</button>
-				</c:if>
-				<c:if test="${logindto.member_id != memberdto.member_id }">
-					<button id="followBtn">FOLLOW</button>
-				</c:if>
+				<c:choose>
+				<c:when test="${empty logindto }">
+					<button class="followBtn" onclick="alert('로그인 해주세요')">FOLLOW</button>
+				</c:when>
+				<c:otherwise>
+					<c:if test="${logindto.member_id == memberdto.member_id }">
+						<button id="artistBtn" onclick="updateProfile();">프로필변경</button>
+						<button id="followerBtn">팔로워보기</button>
+					</c:if>
+					<c:if test="${logindto.member_id != memberdto.member_id }">
+						<button class="followBtn" onclick="follow(this);">FOLLOW</button>
+						<button id="unfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+					</c:if>
+				</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<input type="hidden" value="${memberdto.member_id }" id="artistId">
