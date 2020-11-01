@@ -24,7 +24,7 @@
 	
 	<update id="update" parameterType="BroadcastDto">
 		UPDATE BROADCAST
-		SET BROADCAST_FLAG = 'N', BROADCAST_ENDDATE = SYSDATE WHERE BROADCAST_NO = #{broadcast_no}
+		SET BROADCAST_FLAG = 'N', BROADCAST_ENDDATE = SYSDATE WHERE MEMBER_ID = #{member_id}
 	</update>
 	
 	<select id="select_profile" parameterType="String" resultType="BroadcastDto">

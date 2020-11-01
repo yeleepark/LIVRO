@@ -51,4 +51,10 @@ public class BroadcastBizImpl implements BroadcastBiz {
 		return broadcastDao.profile(member_id);
 	}
 
+	@Override
+	public int broadCastClose(BroadcastDto dto) {
+		
+		return broadcastDao.broadCastClose(dto);
+	}
+
 }

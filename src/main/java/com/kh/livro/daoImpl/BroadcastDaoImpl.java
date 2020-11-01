@@ -105,5 +105,18 @@ public class BroadcastDaoImpl implements BroadcastDao {
 		return dto;
 	}
 
+	@Override
+	public int broadCastClose(BroadcastDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"update", dto);
+		} catch (Exception e) {
+			logger.info("[ERROR close]");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 
 }

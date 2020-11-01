@@ -52,10 +52,10 @@
           <div class="broad">
                 <label for="broadcast_category">카테고리</label> 
                 <select name="category" id="broadcast_category" style="width:185px;" required="required">
-                   <option value="perpomence">공연</option>
-                   <option value="dance">댄스</option>
-                   <option value="sing">노래</option>
-                   <option value="playing">연주</option>
+                   <option value="공연">공연</option>
+                   <option value="댄스">댄스</option>
+                   <option value="노래">노래</option>
+                   <option value="연주">연주</option>
                 </select>            
           <div class="broad">
              <label>※주의사항!</label>
@@ -82,6 +82,7 @@
             -->
               
           <div id="profileSection">
+          	<%-- <input type="hidden" id="hidden_no" value="${livedto.broadcast_no }"> --%>
           	<div>
           	<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
           	<p>${profile_dto.member_profile }</p>
@@ -104,7 +105,7 @@
                     <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요">
                 </div>
                 <div>
-                    <button id="close-broadcast">연결 종료</button>
+                   <!--  <button id="close-broadcast">연결 종료</button> -->
                     <button id="disconnect-room">방송 종료</button>
                 </div>
             </div>
@@ -139,25 +140,24 @@
 
         connection.onopen = (event) => {
             //connection.send('hello everyone'); //연결하나당 들어왔을 때 모두에게 보이는 MESSAGE
-            document.getElementById('input-text-chat').disabled = false;
+           /*  document.getElementById('input-text-chat').disabled = false;
             document.getElementById('input-text-chat').style.visibility = 'visible';
-            document.querySelector('h1').innerHTML = connection.getAllParticipants().join(' ') + '와 연결되었습니다!';
+            document.querySelector('h1').innerHTML = connection.getAllParticipants().join(' ') + '와 연결되었습니다!'; */
         }
 
         connection.onmessage = appendDIV;
 
-        // 누군가가 방을 나갔을 때 화면에 보여지는 부분 변경 <-- 수정해야함
+     /*    // 누군가가 방을 나갔을 때 화면에 보여지는 부분 변경 <-- 수정해야함
         connection.onclose = function () {
             if (connection.getAllParticipants().length) {
                 document.querySelector('h1').innerHTML = '계속 ' + connection.getAllParticipants().join(' ') + '와 연결되어 있습니다.';
             } else {                                                          //getAll이건 userid전부 불러오는 거
                 document.querySelector('h1').innerHTML = '나 혼자 남았네요...ㅠ';
             }
-        };
+        }; */
         var localVideosContainer = document.getElementById('local-videos-container');
         var remoteVideosContainer = document.getElementById('remote-videos-container');
         
-        /* value.trim() -> 공백으로 값을 채워지지 않게 각 변수에 공백 제거 설정 */
         var roomid = document.getElementById('broadcast_title'); // 입력한 ID 변수에 담기
         // roomid.value = connection.token(); <-- token생성 가능
         var userId = document.getElementById('member_id');
@@ -167,6 +167,7 @@
 
         /********************************방 생성********************************/
         
+        /* value.trim() -> 공백으로 값을 채워지지 않게 각 변수에 공백 제거 설정 */
         if(roomid.value.trim() != null && userId.value.trim() != null && roomcontent.value.trim() != null && roomcategory.value.trim() != null){
             
         document.getElementById('btn-open-or-join-room').onclick = function () {
@@ -266,7 +267,7 @@
         }
 
 
-        closeBroadcast = document.getElementById('close-broadcast');
+       /*  closeBroadcast = document.getElementById('close-broadcast');
         closeBroadcast.onclick = function() {
             // disconnect with all users
             // 내 화면이 disconnect이므로 아티스트가 누를 경우
@@ -286,7 +287,7 @@
             // video, audio는 살아있음 -> 상대방과의 연결이 끊김
             connection.closeSocket();
         }
-
+ */
       /*   openBroadcast = document.getElementById('open-broadcast');
         openBroadcast.onclick = function() {
             connection.attachStreams.forEach(function (localStream) {
@@ -315,19 +316,21 @@
             connection.removeStream('stream-id');
         } */
 
-        let disconnectRoom = document.getElementById('disconnect-room');
+        let disconnectRoom = document.getElementById("disconnect-room");
         disconnectRoom.onclick = function() {
-            console.log('방송종료');
-            this.disabled = true;
 
             // 만약 방을 나가는 사람이 방을 만든 사람이면 전체 세션을 닫는다. //USERID가 없어서
             // 만든 사람인지 알 수 없는 것이 아닐까 싶다.. 들어온 사람은 나가짐..
             // 방송 나가기 버튼으로도 활용 가능할 듯
             if (connection.isInitiator) {
                 connection.close();
+            console.log('방송종료');
+            alert("방송을 종료 하였습니다.");
+            this.disabled = true;
+            location.href='close.do?member_id=${logindto.member_id}'
             } else {
             connection.closeEntireSession(function () {
-            document.querySelector('h1').innerHTML = 'Entire session has been closed.';
+            //document.querySelector('h1').innerHTML = 'Entire session has been closed.';
                 });
             }
         }

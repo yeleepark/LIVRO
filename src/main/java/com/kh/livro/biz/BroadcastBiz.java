@@ -15,6 +15,8 @@ public interface BroadcastBiz {
 	public int broadDelete(int broadcast_no);
 	
 	//프로필 가져오기
-	public BroadcastDto profile(String member_id); 
+	public BroadcastDto profile(String member_id);
+	//방송 종료하기
+	public int broadCastClose(BroadcastDto dto);
 	
 }
