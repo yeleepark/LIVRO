@@ -21,7 +21,7 @@
 			<c:choose>
 				<c:when test="${empty map.memberlist }">
 					<div>
-						<span>검색값이 없습니다</span>
+						<p class="noSearch"><i class="fas fa-times"></i> 검색값이 없습니다</p>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -38,14 +38,14 @@
 			<c:choose>
 				<c:when test="${empty map.broadlist }">
 					<div>
-						<span>검색값이 없습니다</span>
+						<p class="noSearch"><i class="fas fa-times"></i> 검색값이 없습니다</p>
 					</div>
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${map.broadlist }" var="broadcastdto" >
 						<div>
-						<p>
-							${broadcastdto.broadcast_title }
+						<p><img src="resources/img/red.png" alt="생방송"> 
+							<a href="broadDetail.do?broadcast_no=${broadcastdto.broadcast_no }">${broadcastdto.broadcast_title }</a>
 						</p>
 						</div>
 					</c:forEach>

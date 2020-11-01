@@ -14,6 +14,9 @@ body{
 	height: 50%;
 }
 
+.noSearch{
+	padding-left: 30px;
+}
 
 .artist-section{
 	width : 50%;
@@ -21,7 +24,6 @@ body{
 
 .artist-section p{
 	padding-left: 30px;
-	display: block;
 }
 
 .artist-section a{
@@ -31,6 +33,19 @@ body{
 
 .broad-section{
 	width : 50%;
+}
+
+.broad-section p{
+	padding-left: 30px;
+}
+
+.broad-section a{
+	color : black;
+	padding-bottom: 5px;
+}
+
+.broad-section img{
+	width : 30px;
 }
 
 .all-list{
