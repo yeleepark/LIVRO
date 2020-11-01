@@ -11,6 +11,7 @@ import com.kh.livro.biz.QnaBiz;
 import com.kh.livro.dao.QnaDao;
 import com.kh.livro.dto.QnaDto;
 import com.kh.livro.utils.Pagination;
+import com.kh.livro.utils.QnaSearch;
 
 @Service
 public class QnaBizImpl implements QnaBiz{
@@ -21,8 +22,8 @@ public class QnaBizImpl implements QnaBiz{
 	private Logger logger = LoggerFactory.getLogger(QnaBizImpl.class);
 	
 	@Override
-	public List<QnaDto> selectList(Pagination pagination) {
-		return qnaDao.selectList(pagination);
+	public List<QnaDto> selectList(QnaSearch search) {
+		return qnaDao.selectList(search);
 	}
 
 	@Override
@@ -46,20 +47,22 @@ public class QnaBizImpl implements QnaBiz{
 	}
 
 	@Override
-	public int getQnaListCnt() throws Exception {
+	public int getQnaListCnt(QnaSearch search) throws Exception {
 		
-		return qnaDao.getQnaListCnt();
-	}
-
-	@Override
-	public List<QnaDto> searchList(QnaDto dto) {
-		return qnaDao.searchList(dto);
+		return qnaDao.getQnaListCnt(search);
 	}
 
 	@Override
 	public int flagupdate(int qna_no) {
 		return qnaDao.flagupdate(qna_no);
 	}
+
+	@Override
+	public int flagdowndate(int qna_no) {
+		
+		return qnaDao.flagdowndate(qna_no);
+	}
+
 
 
 	

@@ -17,8 +17,13 @@ VALUES(QNARE_NO_SEQ.NEXTVAL, #{qna_no}, #{member_nickname}, #{qnare_content}, SY
 <delete id="qnaredelete" parameterType="int">
 DELETE 
 FROM QNA_RE
-WHERE QNARE_NO = {#qnare_no}
+WHERE QNARE_NO = #{qnare_no}
 </delete>
 
+<update id="qnareupdate" parameterType="QnareDto">
+UPDATE QNA_RE
+SET QNARE_CONTENT = #{qnare_content}
+WHERE QNARE_NO = #{qnare_no}
+</update>
 
 </mapper>

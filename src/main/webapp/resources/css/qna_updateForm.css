@@ -1,0 +1,22 @@
+*{
+	margin: 0;
+	padding : 0;
+}
+.qna_wrap{
+	padding: 100px;
+}
+.qna_wrap label{
+	font-weight: 600;
+}
+.qna_secret{
+	display: inline-block;
+}
+.qna_secret > span{
+	margin-left: 5px;
+}
+.qna_wrap .qna_content > label{
+	float: left;
+}
+.qna_footer{
+	text-align: right;
+}

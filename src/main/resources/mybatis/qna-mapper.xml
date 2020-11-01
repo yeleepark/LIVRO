@@ -5,9 +5,20 @@
 	<select id="selectList" resultType="QnaDto">
 		SELECT *
 		FROM (
-		SELECT ROW_NUMBER() OVER (ORDER BY QNA_NO) NUM, Q.*
-		FROM QNA_BOARD Q
-		ORDER BY Q.QNA_REGDATE DESC
+			SELECT ROW_NUMBER() OVER (ORDER BY QNA_NO) NUM, Q.*
+			FROM QNA_BOARD Q
+			
+			<trim prefix="WHERE" prefixOverrides="AND|OR">
+				<if
+					test="searchType=='title' and keyword != null and keyword != '' ">
+					AND QNA_TITLE LIKE '%'||#{keyword}||'%'
+				</if>
+				<if
+					test="searchType=='writer' and keyword != null and keyword != '' ">
+					AND MEMBER_NICKNAME LIKE '%'||#{keyword}||'%'
+				</if>
+			</trim>
+			ORDER BY Q.QNA_REGDATE DESC
 		)
 		WHERE NUM
 		BETWEEN #{startList} +1
@@ -31,21 +42,34 @@
 		#{qna_secret})
 	</insert>
 
-
+	<!-- 글 수정 -->
 	<update id="update" parameterType="QnaDto">
 		UPDATE QNA_BOARD
-		SET QNA_TITLE
-		= #{qna_title},
-		QNA_CONTENT = #{qna_content}
+		SET
+		QNA_TITLE = #{qna_title},
+		QNA_CONTENT = #{qna_content},
+		QNA_SECRET =
+		#{qna_secret}
 		WHERE QNA_NO = #{qna_no}
 	</update>
 
+	<!--답변 등록시 답변여부 y 변경 -->
 	<update id="flagupdate" parameterType="int">
 		UPDATE QNA_BOARD
-		SET QNA_FLAG = 'Y'
+		SET
+		QNA_FLAG = 'Y'
 		WHERE QNA_NO = #{qna_no}
 	</update>
 
+	<!-- 댓글 없으면 다시 n으로 변경 -->
+	<update id="flagdowndate" parameterType="int">
+		UPDATE QNA_BOARD
+		SET
+		QNA_FLAG = 'N'
+		WHERE QNA_NO = #{qna_no}
+	</update>
+
+	<!-- 글 삭제 -->
 	<delete id="delete" parameterType="int">
 		DELETE
 		FROM QNA_BOARD
@@ -67,7 +91,6 @@
 				</if>
 			</if>
 		</trim>
-
 	</select>
 
 </mapper>

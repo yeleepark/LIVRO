@@ -48,13 +48,22 @@
 						<div class="board_list_body">
 							<div class="item">
 								<div class="qna_no">${qnalist.qna_no }</div>
-								<div class="qna_flag">${qnalist.qna_flag }</div>
+								<div class="qna_flag">
+									<c:choose>
+										<c:when test="${qnalist.qna_flag eq 'N'}">
+											<div>답변대기</div>
+										</c:when>
+										<c:otherwise>
+											<div>답변완료</div>
+										</c:otherwise>
+									</c:choose>
+								</div>
 								<c:choose>
 									<c:when test="${qnalist.qna_secret eq 'Y' }">
 										<div class="qna_title">
 											<c:choose>
 												<c:when
-													test="${logindto.member_nickname eq qnalist.member_nickname }">
+													test="${logindto.member_nickname eq qnalist.member_nickname  || logindto.member_role eq 'M'}">
 													<a href="qnadetail.do?qna_no=${qnalist.qna_no }">${qnalist.qna_title }</a>
 												</c:when>
 												<c:otherwise>
@@ -83,22 +92,23 @@
 			<div id="paginationBox">
 				<ul class="pagination">
 					<c:if test="${pagination.prev}">
-						<li class="page-items">
-							<a class="page-link" href="#"
+						<li class="page-items"><a class="page-link" href="#"
 							onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a>
 						</li>
 					</c:if>
 					<c:forEach begin="${pagination.startPage}"
 						end="${pagination.endPage}" var="idx">
-						<li class="page-items 
+						<li
+							class="page-items 
 							<c:out value="${pagination.page == idx ? 'qnaactive' : ''}"/> ">
-							<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+							<a class="page-link" href="#"
+							onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
 								${idx} </a>
 						</li>
 					</c:forEach>
 					<c:if test="${pagination.next}">
-						<li class="page-items">
-							<a class="page-link" href="#" onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a>
+						<li class="page-items"><a class="page-link" href="#"
+							onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a>
 						</li>
 					</c:if>
 				</ul>
@@ -108,15 +118,14 @@
 			<div class="board_list_search">
 				<form action="qnalist.do" method="get">
 					<select name="searchType" id="searchType">
-						<!-- 	<option value="qna_search_all">통합검색</option> -->
 						<option value="title">제목</option>
 						<option value="writer">작성자</option>
 					</select> 
-						<input type="text" placeholder="검색" name="keyword" id="keyword" />
-						<input type="submit" value="검색" id="btnSearch" />
+					<input type="text" placeholder="검색" name="keyword" id="keyword" />
+					<input type="submit" value="검색" id="btnSearch" />
 				</form>
 			</div>
-			
+
 			<!-- 버튼 -->
 			<div class="board_list_footer">
 				<input type="button" value="내가 쓴 글" onclick="#">

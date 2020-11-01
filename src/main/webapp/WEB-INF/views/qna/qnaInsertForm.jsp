@@ -36,7 +36,8 @@
 
 	<form action="qnainsert.do" method="post">
 		<input type="hidden" name="member_nickname"
-			value="${logindto.member_nickname }"> <input type="hidden"
+			value="${logindto.member_nickname }">
+			 <input type="hidden"
 			name="qna_secret" value="N" id="qna_secret">
 		<div class="qna_wrap">
 			<div class="qna_writer">
