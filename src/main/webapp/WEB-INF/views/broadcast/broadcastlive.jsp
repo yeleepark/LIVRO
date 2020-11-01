@@ -335,7 +335,7 @@
             }
         }
         
-    //  // Prefer camera resolution nearest to 1280x720.
+    //  // Prefer camera resolution nearest to 1280x720.   
     //     var constraints = { audio: true, video: { width: 1280, height: 720 } }; 
 
     //     navigator.mediaDevices.getUserMedia(constraints)
