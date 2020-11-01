@@ -30,7 +30,9 @@
        <jsp:include page="/WEB-INF/views/header/header.jsp"/>
    </header>
    <input type="hidden" value="${broadDto.broadcast_title }" id="broadcast_title">
-   <input type="hidden" value="${logindto.member_id }" id="user_id">
+   <input type="hidden" value="${broadDto.member_id }" id="artist_id">
+   <input type="hidden" value="${logindto.member_id }" id="member_id">
+   <input type="hidden" value="${logindto.member_nickname }" id="member_nickname">
    <input type="hidden" value="${logindto.member_email }" id="member_email">
    <input type="hidden" value="${logindto.member_name}" id="member_name">
    
@@ -43,7 +45,7 @@
           	<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
           		<p>${broadDto.member_profile}</p>
           	</div>            
-           		 ARTIST : <p id="artist_id">${broadDto.member_id }</p>
+           		 ARTIST : <p id="artist_nickname">${broadDto.member_nickname }</p>
             <div>
 	            방 제목 : <span>${broadDto.broadcast_title }</span>
             </div>
@@ -76,14 +78,14 @@
      
      <div id="donaProcess">
      	<div id="donaRound">
-     		<span>${logindto.member_id }님에게 후원하기</span>
+     		<span>${broadDto.member_nickname }님에게 후원하기</span>
      		<div id="donaFirst">
-     			<div id="donaPrice1" style="border: 1px solid blue">1000</div>
-     			<div id="donaPrice2" style="border: 1px solid blue">5000</div>
-     			<div id="donaPrice3" style="border: 1px solid blue">10000</div>
+     			<div class="donaPrice" style="border: 1px solid blue">1000</div>
+     			<div class="donaPrice" style="border: 1px solid blue">5000</div>
+     			<div class="donaPrice" style="border: 1px solid blue">10000</div>
      		</div>
      		<div id="donaSecond">
-     			<input type="range" id="scale" name="scale" min=1000 max=10000 step=10 onchange="setPrice();" value="1000">
+     			<input type="range" id="price" name="price" min=1000 max=10000 step=10 value="1000">
      			<div id="donaSlide"></div>
      			<input type="text" id="donaSlidePrice"></input>
      		</div>
@@ -152,7 +154,7 @@
         var localVideosContainer = document.getElementById('local-videos-container');
         
         var roomId = document.getElementById('broadcast_title');
-        var userId = document.getElementById('user_id');
+        var userId = document.getElementById('member_nickname');
         console.log(userId);
         if(userId.value == ''){
         	connection.userid = connection.token();
@@ -265,9 +267,22 @@
 		function donaNo(){
         	$('#donaProcess').fadeOut();
 		}
-		function setPrice(){
-		document.getElementById('donaSlidePrice').value = this.value
-		}
+		
+		/* today.addEventListener('click', () => {
+			calendar.today();
+		}); */
+		
+		const donaPrice = document.getElementById('donaFirst');
+		donaPrice.addEventListener('click', (e) => {
+			document.getElementById('donaSlidePrice').value = e.target.innerHTML;
+		})
+		
+		const donaSlicePrice = document.getElementById('price');
+		donaSlidePrice.addEventListener('click', (e) => {
+			console.log(e.currentTarget);
+			console.log(e.target);
+			document.getElementById('donaSlidePrice').value = e.currentTarget.value;
+		})
      </script>
 </body>
 </html>

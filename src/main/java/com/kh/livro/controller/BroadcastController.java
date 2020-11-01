@@ -48,10 +48,11 @@ public class BroadcastController {
 	
 	//broadcastlive.jsp에서 insert시킴!!
 	@RequestMapping("/liveinsert.do")
-	public String liveinsert(Model model, HttpServletRequest request, HttpServletResponse response, String member_id, String broadcast_title, String broadcast_content, String broadcast_category) {
+	public String liveinsert(Model model, HttpServletRequest request, HttpServletResponse response, String member_id,
+							String broadcast_title, String broadcast_content, String broadcast_category, String member_nickname) {
 		logger.info("인서트해라");		
 		logger.info(member_id + broadcast_title);		
-		BroadcastDto dto = new BroadcastDto(member_id, broadcast_title, broadcast_content, broadcast_category);		
+		BroadcastDto dto = new BroadcastDto(member_id, broadcast_title, broadcast_content, broadcast_category, member_nickname);		
 		model.addAttribute("livedto", broadcastBiz.broadInsert(dto));	
 		return "broadcast/broadcastlive";
 	}

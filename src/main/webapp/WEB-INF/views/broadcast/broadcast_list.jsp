@@ -27,18 +27,13 @@
         <div class="broadcast-table">
 			<c:forEach items="${list }" var="dto">
         		<c:choose>
-        			<c:when test="${empty list }">
-        				<div>
-        					<span>방송 없습니다~~</span>
-        				</div>
-        			</c:when>
 		        	<c:when test="${dto.broadcast_flag eq 'Y' }">
 		          	 	<div class="broadcast-thumnail">
 							<a><img src="/resources/profileimg/${profiledto.profile_savedname }"></a>
 		           		</div>
 		          		<div class="broadcast-name">
 		          			<div>
-    							<p>아티스트 : <a href="artist.do?member_id=${dto.member_id }">${dto.member_id }</a></p>
+    							<p>아티스트 : <a href="artist.do?member_id=${dto.member_id }">${dto.member_nickname }</a></p>
 		          			</div>
 		          			<div>		          				
 		  			    		<p>방송 제목 : <a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a></p>
@@ -51,6 +46,11 @@
 		 			   		</div>
 		            	</div>
 		        	</c:when>
+		        	<c:otherwise>
+		        		<div>
+		        			<h1>방송 없습니다~</h1>
+		        		</div>
+		        	</c:otherwise>
             	</c:choose>
             </c:forEach>
         </div>
