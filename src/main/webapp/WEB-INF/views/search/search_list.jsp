@@ -19,7 +19,7 @@
 		<div class="artist-section">
 		<h2><i class="fas fa-search"></i> 아티스트 채널 리스트</h2>
 			<c:choose>
-				<c:when test="${empty map }">
+				<c:when test="${empty map.memberlist }">
 					<div>
 						<span>검색값이 없습니다</span>
 					</div>
@@ -36,7 +36,7 @@
 		<div class="broad-section">
 		<h2><i class="fas fa-search"></i> 실시간 방송 리스트</h2>
 			<c:choose>
-				<c:when test="${empty map }">
+				<c:when test="${empty map.broadlist }">
 					<div>
 						<span>검색값이 없습니다</span>
 					</div>
