@@ -58,9 +58,9 @@
 }
 
 .header-center img {
-	width : 20px;
-	height : 20px;
-	border-radius: 50%;
+	width : 30px;
+	height : 30px;
+	border-radius : 5px;
 	margin-top : 5px;
 	margin-right: 10px;
 	cursor : pointer;
@@ -141,16 +141,21 @@
 }
 
 .mainActive {
-	width: 300px;
+	width: 100vw;
 	height : 100vh;
 	position: absolute;
-	margin-top: 65px;
+	margin-top: 67px;
 	top: 0;
 	right: 0;
 	transition: all .3s;
+	background-color: rgba(0,0,0,0.2);
+	display: flex;
+	flex-direction: column;
+	align-items:  flex-end;
 }
 
 .mainActive li {
+	width : 300px;
 	padding: 20px 30px;
 	margin: 5px;
 	text-align: right;
@@ -158,7 +163,8 @@
 	letter-spacing: 0.3rem;
 	transition: all 0.3s;
 	border-radius: 10px 0px 0px 10px;
-	background-color: white;
+	background-color: black;
+	color : white;
 	animation: slideDown 0.3s ease-out;
 }
 
@@ -213,7 +219,8 @@
     }
     
     .mainActive li {
-    	padding: 10px 30px;
+    		background-color : white;
+    		padding: 10px 30px;
         text-align: right;
         font-size: 1.2rem;
         letter-spacing: 0.3rem;
