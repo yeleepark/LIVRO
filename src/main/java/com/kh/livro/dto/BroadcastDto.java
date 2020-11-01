@@ -13,13 +13,14 @@ public class BroadcastDto {
 	private String broadcast_flag;
 	private Date broadcast_startdate;
 	private Date broadcast_enddate;
+	private String member_nickname;
 	
 	public BroadcastDto() {
 	}
 
 	public BroadcastDto(int broadcast_no, String member_id, String member_profile, String broadcast_title,
 			String broadcast_content, String broadcast_category, String broadcast_flag, Date broadcast_startdate,
-			Date broadcast_enddate) {
+			Date broadcast_enddate, String member_nickname) {
 		this.broadcast_no = broadcast_no;
 		this.member_id = member_id;
 		this.member_profile = member_profile;
@@ -29,14 +30,16 @@ public class BroadcastDto {
 		this.broadcast_flag = broadcast_flag;
 		this.broadcast_startdate = broadcast_startdate;
 		this.broadcast_enddate = broadcast_enddate;
+		this.member_nickname = member_nickname;
 	}
 	
 	public BroadcastDto(String member_id, String broadcast_title, String broadcast_content,
-			String broadcast_category) {
+			String broadcast_category, String member_nickname) {
 		this.member_id = member_id;
 		this.broadcast_title = broadcast_title;
 		this.broadcast_content = broadcast_content;
 		this.broadcast_category = broadcast_category;
+		this.member_nickname = member_nickname;
 		
 	}
 
@@ -112,6 +115,13 @@ public class BroadcastDto {
 		this.broadcast_enddate = broadcast_enddate;
 	}
 	
+	public String getMember_nickname() {
+		return member_nickname;
+	}
+	
+	public void setMember_nickname(String member_nickname) {
+		this.member_nickname = member_nickname;
+	}
 	
 
 	

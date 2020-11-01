@@ -41,7 +41,8 @@
           <div class="broad">
              <label for="member_id">Creator</label>
              <!-- 추후 hidden 변경  -->
-             <input type="text" id="member_id" name="member_id" placeholder="Unique ID" value="${logindto.member_id }" required="required">
+             <input type="hidden" id="member_id" name="member_id" value="${logindto.member_id }" required="required">
+             <input type="text" id="member_nickname" name="member_nickname" value="${logindto.member_nickname }" readonly="readonly">
           </div>
          
           <div class="broad">
@@ -87,7 +88,7 @@
           	<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
           	<p>${profile_dto.member_profile }</p>
           	</div>            
-            <p>ARTIST : ${logindto.member_id }</p>
+            <p>ARTIST : ${logindto.member_nickname }</p>
             <div>
 	            방 제목 : <span id="title_res"></span>
             </div>
@@ -160,7 +161,7 @@
         
         var roomid = document.getElementById('broadcast_title'); // 입력한 ID 변수에 담기
         // roomid.value = connection.token(); <-- token생성 가능
-        var userId = document.getElementById('member_id');
+        var userId = document.getElementById('member_nickname');
         
         var roomcontent = document.getElementById("broadcast_content");
         var roomcategory = document.getElementById("broadcast_category");
@@ -191,6 +192,7 @@
                 } else {
                     console.log('open했습니다');
                     var member_id = $("#member_id").val();
+                    var member_nickname = $('#member_nickname').val();
                     var broadcast_title = $("#broadcast_title").val();
                     var broadcast_content = $("#broadcast_content").val();
                     var broadcast_category = $("#broadcast_category").val();
@@ -198,10 +200,11 @@
                     $.ajax({
                        type : "POST",
                        url : "liveinsert.do",
-                       data : {member_id : member_id, 
-                             broadcast_title : broadcast_title, 
-                             broadcast_content : broadcast_content,
-                             broadcast_category : broadcast_category},
+                       data : {member_id: member_id,
+                    	   	 member_nickname: member_nickname,
+                             broadcast_title: broadcast_title, 
+                             broadcast_content: broadcast_content,
+                             broadcast_category: broadcast_category},
                        success : function(){
                           console.log("전송성공");
                           test();
