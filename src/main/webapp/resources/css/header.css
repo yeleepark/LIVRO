@@ -168,13 +168,17 @@
 	animation: slideDown 0.3s ease-out;
 }
 
+.mainActive a{
+	color : white;
+}
+
 @keyframes slideDown {
 	from { 
 		padding:0px;
 		}
 
 	to {
-		padding: 10px 30px;
+		padding: 20px 30px;
 	}
 }
 
