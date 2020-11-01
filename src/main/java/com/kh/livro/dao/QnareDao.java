@@ -14,4 +14,5 @@ public interface QnareDao {
 	public int insert(QnareDto dto);
 	//댓글 삭제
 	public int delete(int qnare_no);
+	
 }

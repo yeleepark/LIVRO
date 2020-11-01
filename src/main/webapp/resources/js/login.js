@@ -29,8 +29,16 @@ function loginChk() {
 			dataType: "json",
 			success: function(msg) {
 				if (msg.check == true) {
-					console.log(msg.logindto.member_enabled);
-					location.href = 'success.do';
+					console.log(msg.dto.member_enabled);
+					if(msg.dto.member_enabled == 'N'){
+						$("#logincheck").show();
+						$("#logincheck").html("로그인이 차단되었습니다. 관리자에게 문의하세요.").css({
+							'color': 'red',
+							'font-size': '11px'
+						});
+					}else{
+						location.href = 'success.do';
+					}
 				} else {
 					$("#logincheck").show();
 					$("#logincheck").html("아이디 혹은 비밀번호가 올바르지 않습니다").css({

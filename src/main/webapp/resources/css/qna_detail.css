@@ -18,20 +18,41 @@
 
 .qna_content_wrap {
 	clear: both;
-	border-top: 2px solid #ccc; 
-	border-bottom : 1px solid #ccc;
+	border-top: 2px solid #ccc;
+	/* border-bottom: 1px solid #ccc; */
 	height: 400px;
-	border-bottom: 1px solid #ccc;
+
 }
-.qna_reply_wrap{
-	border: 2px solid #ccc;
+.qna_reply_nick, .qna_reply_format_date{
+	display: inline-block;
+	font-weight: 500
+}
+.qna_reply_format_date{
+	font-size: 10px;
+	
+}
+.qna_reply_content{
+	font-size: 14px;
 }
 
-.qna_input_reply{
-	border: 1px solid #ccc;
+.qna_reply_wrap {
+	padding : 30px;
+	border-top: 1px solid #ccc;
+	background: #fafafa;
+	
+}
+.qna_reply_header{
+	padding: 10px;
+	color: gray;
+}
+.qna_input_reply > textarea{
+	margin-top: 30px;
+	height : 70px;
+	width : 90%;
 }
 
-.qna_btn{
+.qna_btn {
 	text-align: right;
 }
+
 

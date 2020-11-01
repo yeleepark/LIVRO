@@ -41,71 +41,113 @@ $(document).ready(function(){
 			}
 		}
 	})
+
 })
-
-
+//댓글삭제
+function qnareDelete(qnare_no){
+	   var qna_no = ${qnadetaildto.qna_no };
+	   $.ajax({
+	      url : "qnaredelete.do?qna_no=" + qna_no +"&qnare_no=" + qnare_no,
+	      type : "get",
+	      success : function(res){
+	    	  if(res>0){
+	    	  location.reload();
+	    	  alert("댓글을 삭제하는데 성공하였습니다.");
+	    	  }else{
+	    		  alert("댓글을 삭제하는데 실패하였습니다.");
+	    	  }
+	      },
+	      error : function(error){
+	         alert("댓글을 삭제하는데 실패하였습니다.");
+	      }
+	   })
+	} 
+	
+//댓글수정
+/* 	function qnareUpdate(qnare_no){
+		var qna_no = ${qnadetaildto.qna_no};
+		
+	} */
 </script>
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
 	<div class="qna_detail_wrap">
-		<div>
-			<div class="qna_title_wrap">${qnadetaildto.qna_title }</div>
-			<div class="qna_nick_wrap">${qnadetaildto.member_nickname }
-				<fmt:formatDate value="${qnadetaildto.qna_regdate }"
-					pattern="yy-MM-dd HH:mm" />
-			</div>
-
+		<div class="qna_title_wrap">${qnadetaildto.qna_title }</div>
+		<div class="qna_nick_wrap">${qnadetaildto.member_nickname }
+			<fmt:formatDate value="${qnadetaildto.qna_regdate }"
+				pattern="yy-MM-dd HH:mm" />
 		</div>
+
 
 		<div class="qna_content_wrap">
 			<div id="viewer"></div>
 		</div>
 
+		<div class="qna_reply_header">Q&A답변</div>
+		<!-- 댓글목록 -->
 		<div class="qna_reply_wrap">
 			<c:choose>
 				<c:when test="${empty qnarelist }">
 					<div>
-						<div>작성된 댓글이 없습니다.</div>
+						<div>작성된 답변이 없습니다.</div>
 					</div>
 				</c:when>
 				<c:otherwise>
+				<!-- 댓글이 있을 때 보여짐 -->
 					<c:forEach items="${qnarelist }" var="qnarelist">
-						<div>
-							<div>${qnarelist.member_nickname }
+						<div class="qna_reply_area">
+							<div class="qna_reply_nick">${qnarelist.member_nickname }</div>
+							<div class="qna_reply_format_date">
 								<fmt:formatDate value="${qnarelist.qnare_regdate }"
-									pattern="yy-MM-dd HH:mm" />
+									pattern="yyyy.MM.dd" />
 							</div>
-							<div>${qnarelist.qnare_content }
-								<input type="button" value="수정" /> 
-								<input type="button" value="삭제" />
+							<!--관리자에게만 보이는 수정,삭제버튼 -->
+							<div class="qna_reply_content">${qnarelist.qnare_content }
+								<c:if test="${logindto.member_role eq 'M' }">
+									<input type="button" value="수정" onclick="qnareUpdate(${qnarelist.qnare_no})"/>
+									<input type="hidden" name="qna_no"
+										value="${qnadetaildto.qna_no }">
+									<input type="hidden" name="qnare_no value="${qnarelist.qnare_no }">
+									<input type="button" value="삭제"
+										onclick="qnareDelete(${qnarelist.qnare_no})" />
+								</c:if>
 							</div>
 						</div>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
+			<!-- 댓글입력창 -->
+			<!-- 댓글이 하나라도 있으면 못 달게 막아버리기  -->
+			<c:choose>
+				<c:when test="${empty qnarelist }">
+					<form action="qnareinsert.do" method="post" id="reform">
+						<input type="hidden" name="qna_no" value="${qnadetaildto.qna_no }">
+						<input type="hidden" name="member_nickname"
+							value="${logindto.member_nickname }">
+						<div class="qna_input_reply">
+							<textarea placeholder="댓글은 관리지만 등록할 수 있습니다." name="qnare_content"
+								id="retext"></textarea>
 
-			<form action="qnareinsert.do" method="post" id="reform">
-				<input type="hidden" name="qna_no" value="${qnadetaildto.qna_no }">
-				<input type="hidden" name="member_nickname"
-					value="${logindto.member_nickname }">
-				<div class="qna_input_reply">
-					<input type="text" placeholder="댓글은 관리지만 등록할 수 있습니다."
-						name="qnare_content" id="retext" /> 
-						<input type="submit" value="입력">
-				</div>
-			</form>
+							<input type="submit" value="입력" class="replyBtn">
+						</div>
+					</form>
+				</c:when>
+			</c:choose>
+
 		</div>
 
+		<!-- 글쓴이만 볼 수 있는 수정,삭제버튼 + 목록으로 돌아가기 -->
 		<div class="qna_btn">
 			<input type="button" value="목록" onclick="history.go(-1);">
 			<c:if
 				test="${logindto.member_nickname eq qnadetaildto.member_nickname}">
-				<c:if test="${qnadetaildto.member_role eq 'M' }">
+
 				<input type="button" value="수정"
 					onclick="location.href='qnaupdateform.do?qna_no=${qnadetaildto.qna_no}'">
 				<input type="button" value="삭제"
-					onclick="location.href='qnadelete.do?qna_no=${qnadetaildto.qna_no}'">
-					</c:if>
+					onclick="location.href='qnadelete.do?qna_no=${qnadetaildto.qna_no }'">
+
 			</c:if>
+
 		</div>
 
 	</div>

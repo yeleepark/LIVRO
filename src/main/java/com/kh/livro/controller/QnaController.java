@@ -2,8 +2,6 @@ package com.kh.livro.controller;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,7 @@ import com.kh.livro.biz.QnareBiz;
 import com.kh.livro.dto.QnaDto;
 import com.kh.livro.dto.QnareDto;
 import com.kh.livro.utils.Pagination;
+import com.kh.livro.utils.QnaSearch;
 
 @Controller
 public class QnaController {
@@ -36,31 +35,37 @@ public class QnaController {
 	@RequestMapping(value = "/qnalist.do", method = RequestMethod.GET)
 	public String qnaList(Model model, 
 			@RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "1") int range
+			@RequestParam(required = false, defaultValue = "1") int range,
+			 @RequestParam(required = false, defaultValue = "title") String searchType
+			, @RequestParam(required = false) String keyword
 			) throws Exception {
 		logger.info("[qnalist.do]");
+		
+		
 		//페이징 상속받는 qna검색 클래스 객체 생성
-		//QnaSearch search = new QnaSearch();
-		//search.setSearchType(searchType);
-		//search.setQnaKeyword(keyword);
+		QnaSearch search = new QnaSearch();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
 
 		
+		
 		//전체 게시글 개수
-		int listCnt = qnaBiz.getQnaListCnt();
+		int listCnt = qnaBiz.getQnaListCnt(search);
+		search.pageInfo(page, range, listCnt);
 		
 		//pagination 객체 생성
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
+		//Pagination pagination = new Pagination();
+		//pagination.pageInfo(page, range, listCnt);
 		
-		model.addAttribute("pagination", pagination);
+		model.addAttribute("pagination", search);
 		
 		//페이징 객체생성
 		//Pagination pagination = new Pagination();
 		//pagination.pageInfo(page, range, listCnt);
 		
 		
-		model.addAttribute("pagination", pagination);
-		model.addAttribute("qnalist", qnaBiz.selectList(pagination));
+		model.addAttribute("pagination", search);
+		model.addAttribute("qnalist", qnaBiz.selectList(search));
 		return "qna/qnaList";
 	}
 
@@ -92,8 +97,10 @@ public class QnaController {
 		
 		//댓글 목록
 		List<QnareDto> list = qnareBiz.selectList(qna_no);
+		for(QnareDto dto : list) {
+			System.out.println(dto.getQnare_no());
+		}
 		model.addAttribute("qnarelist", list);
-
 		return "qna/qnaDetail";
 	}
 
@@ -109,8 +116,11 @@ public class QnaController {
 	@RequestMapping("/qnaupdate.do")
 	public String qnaUpdate(QnaDto dto, Model model) {
 		model.addAttribute("qnaupdatedto", qnaBiz.update(dto));
+		
+		model.addAttribute("msg", "글을 성공적으로 수정했습니다.");
+		model.addAttribute("url", "/qnalist.do");
 
-		return "redirect:qnalist.do";
+		return "redirect";
 	}
 
 	// 문의게시판 글상세에서 삭제버튼
@@ -118,8 +128,11 @@ public class QnaController {
 	public String qnaDelete(int qna_no, Model model) {
 		logger.info("[qnadelete.do]");
 		model.addAttribute("qnadeldto", qnaBiz.delete(qna_no));
+		
+		model.addAttribute("msg", "글을 성공적으로 삭제하였습니다.");
+		model.addAttribute("url", "/qnalist.do");
 
-		return "redirect:qnalist.do";
+		return "redirect";
 	}
 
 	// 검색
