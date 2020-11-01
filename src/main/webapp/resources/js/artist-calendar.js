@@ -1,5 +1,7 @@
 // 해당 아티스트의 아이디
 var artist_id = document.getElementById('artistId').value;
+// 해당 아티스트의 아이디
+var artist_nickname = document.getElementById('artistNickname').value;
 // 로그인한 유저의 아이디
 var login_id = document.getElementById('loginId').value;
 // 로그인한 유저의 닉네임
@@ -70,7 +72,7 @@ nextBtn.addEventListener('click', () => {
 calendar.setCalendars([
 	{
 		id: artist_id, // 아티스트 아이디
-		name: artist_id+'님의 공연', // 카테고리에 뜰 이름
+		name: artist_nickname+'님의 공연', // 카테고리에 뜰 이름
 		color: '#ffffff',
 		bgColor: '#ff5583',
 		dragBgColor: '#ff5583',

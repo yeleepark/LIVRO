@@ -6,20 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <title>아티스트 채널, 실시간 방송 리스트</title>
+<link rel="stylesheet" href="resources/css/search.css">
+<!-- font awesome -->
+<script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
+<!-- google font -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
-<style>
-	section{
-		padding-top : 80px;
-	}
-</style>
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
-	
-	<section>
-		<h1>아티스트 채널 리스트</h1>
-		<div>
+	<div class="wrapper">
+	<div class="search-list">
+		<div class="artist-section">
+		<h2><i class="fas fa-search"></i> 아티스트 채널 리스트</h2>
 			<c:choose>
-				<c:when test="${empty map }">
+				<c:when test="${empty map.memberlist }">
 					<div>
 						<span>검색값이 없습니다</span>
 					</div>
@@ -27,17 +27,16 @@
 				<c:otherwise>
 					<c:forEach items="${map.memberlist }" var="memberdto" >
 						<div>
-						<p><a href="artist.do?member_id=${memberdto.member_id }">${memberdto.member_nickname }</a></p>
+						<p><i class="fas fa-chevron-right"></i> <a href="artist.do?member_id=${memberdto.member_id }">${memberdto.member_nickname }</a></p>
 						</div>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</div>
-		<hr/>
-		<h1>실시간 방송 리스트</h1>
-		<div>
+		<div class="broad-section">
+		<h2><i class="fas fa-search"></i> 실시간 방송 리스트</h2>
 			<c:choose>
-				<c:when test="${empty map }">
+				<c:when test="${empty map.broadlist }">
 					<div>
 						<span>검색값이 없습니다</span>
 					</div>
@@ -53,6 +52,10 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-	</section>
+	</div>
+	<div class="all-list">
+	
+	</div>
+	</div>
 </body>
 </html>
