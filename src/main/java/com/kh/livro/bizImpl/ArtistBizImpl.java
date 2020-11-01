@@ -101,4 +101,5 @@ public class ArtistBizImpl implements ArtistBiz {
 		return artistDao.commUpdate(dto);
 	}
 
+
 }

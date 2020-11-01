@@ -26,6 +26,7 @@
 		WHERE SUPPORT_NO = #{support_no}
 	</delete>
 	
+	<!-- 프로필 사진 -->
 	<select id="selectProfile" resultType="ProfileDto">
 		SELECT *
 		FROM PROFILE
@@ -35,7 +36,7 @@
 	<!-- 댓글작성 -->
 	<insert id="commInsert">
 		INSERT INTO SUPPORT_COMM
-		VALUES (COMM_NO_SEQ.NEXTVAL, #{support_no}, #{member_id}, #{comm_content}, SYSDATE)
+		VALUES (COMM_NO_SEQ.NEXTVAL, #{support_no}, #{member_id}, #{member_nickname}, #{comm_content}, SYSDATE)
 	</insert>
 	
 	<select id="commList" resultType="SupportCommDto">

@@ -23,10 +23,10 @@ public interface ArtistBiz {
 
 	// 응원글 삭제
 	public int supportDelete(int support_no);
-
+	
 	// 음원 리스트
 	public List<MusicDto> selectList(String member_id);
-
+	
 	// 멤버 정보
 	public MusicDto selectOne(String member_id);
 
@@ -41,7 +41,7 @@ public interface ArtistBiz {
 
 	// 응원 댓글 수정 
 	public int commUpdate(SupportCommDto dto);
-
+	
 	// 프로필 정보
 	public ProfileDto selectProfile(String member_id);
 

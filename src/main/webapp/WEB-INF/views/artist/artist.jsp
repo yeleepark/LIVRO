@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -131,7 +132,11 @@
 					</c:choose>
 
 					<div class="supportDetail">
-						<c:choose>
+					<div class="support-index">
+						<span>작성자</span>
+						<span>내용</span>
+					</div>
+					<c:choose>
 							<c:when test="${empty supportdto }">
 								<div class="rows">
 									<span>작성된 글이 없습니다</span>
@@ -161,13 +166,12 @@
 										<!-- 두번째줄 -->
 										<div class="rows-middle">
 											<div>
-												<input type="button" value="&#xf063" class="showReply">
+												<input type="button" value="&#xf06b" class="showReply">
 												<input type="button" value="&#xf00d" class="closeReply">
 												<input type="hidden" value="${support.support_no }" class="supportNo">
 											</div>
 											<!--  반복 부분 -->
 											<div class="replyArea">
-												
 											</div>
 											<!-- 반복 끝 -->
 										</div>
@@ -183,25 +187,22 @@
 			<!-- 일정 게시판 탭-->
 			<div id="tab-3" class="tab-content">
 				<div>
-					<h2>${memberdto.member_id }님의 공연일정</h2>
+					<h2>${memberdto.member_nickname }님의 공연일정</h2>
 				</div>
 				<div class="Calendar-container">
 					<!-- 메뉴 -->
 					<div id="calendar-menu">
-						<span id="menu-navi-left" style="border: 1px solid black;">
+						<span id="menu-navi-left">
 							<button type="button" id="prevBtn" data-action="move-prev">
 								<i class="fas fa-caret-square-left"></i>
-								<!-- 이전 -->
 							</button>
 							<button type="button" id="today" data-action="move-today">Today</button>
 							<button type="button" id="nextBtn" data-action="move-next">
 								<i class="fas fa-caret-square-right"></i>
-								<!-- 다음 -->
 							</button>
-						</span> <span id="menu-navi-right" style="border: 1px solid black;">
-							<button id="dayBtn">일간</button>
-							<button id="weekBtn">주간</button>
-							<button id="monthBtn">월간</button>
+						</span>
+						<span id="menu-navi-right">
+							<span id="printMonth"></span><span>월</span>
 						</span>
 					</div>
 					<!-- 캘린더 -->
@@ -227,12 +228,31 @@
 							</div>
 						</c:when>
 						<c:otherwise>
+								<c:forEach items="${broaddto }" var="broad">
+								<c:if test="${broad.broadcast_flag == 'Y' }">
+								<div class="live-row">
+									<div >
+									<img src="resources/img/red.png" alt="생방송">
+									<span><a href="broadDetail.do?broadcast_no=${broad.broadcast_no }">${broad.broadcast_title }</a></span>
+									<span><i class="fas fa-mouse-pointer"></i></span>
+									</div>
+									<p><span>[ ${broad.broadcast_category } ]</span> ${broad.broadcast_content }</p>
+									<p><fmt:formatDate value="${broad.broadcast_startdate }" pattern="yyyy-MM-dd-HH:mm:ss"/><span>~ 방송중</span></p>
+								</div>
+								</c:if>
+							</c:forEach>
 							<c:forEach items="${broaddto }" var="broad">
-								<div>
+							<c:if test="${broad.broadcast_flag == 'N' }">
+								<div class="live-row">
+									<img src="resources/img/black.png" alt="지난방송">
 									<span>${broad.broadcast_title }</span>
-									<span>${broad.broadcast_category }</span>
-									<span>${broad.broadcast_content }</span>
-								</div>	
+									<p><span>[ ${broad.broadcast_category } ]</span> ${broad.broadcast_content }</p>
+									<p><fmt:formatDate value="${broad.broadcast_startdate }" pattern="yyyy-MM-dd-HH:mm:ss"/>
+										~ <span><fmt:formatDate value="${broad.broadcast_enddate }" pattern="yyyy-MM-dd-HH:mm:ss"/></span>
+									</p>
+									
+								</div>
+							</c:if>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
@@ -262,6 +282,8 @@
 		</div>
 		<input type="hidden" value="${memberdto.member_id }" id="artistId">
 		<!--  아티스트 아이디 -->
+		<input type="hidden" value="${memberdto.member_nickname }" id="artistNickname">
+		<!-- 아티스트 닉네임 -->
 		<input type="hidden" value="${logindto.member_id }" id="loginId">
 		<!-- 로그인 아이디 -->
 		<input type="hidden" value="${logindto.member_nickname}" id="loginNickname">
@@ -273,6 +295,7 @@
 	<script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
 	<script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
 	<script type="text/javascript" src="resources/js/artist.js"></script>
+	<script type="text/javascript" src="resources/js/artist-support.js"></script>
 	<script type="text/javascript" src="resources/js/artist-calendar.js"></script>
 
 </body>

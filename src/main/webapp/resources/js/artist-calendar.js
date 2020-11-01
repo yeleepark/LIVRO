@@ -14,9 +14,12 @@ var getCalEnd = document.getElementsByClassName('cal_end');
 var today = document.getElementById('today');
 var prevBtn = document.getElementById('prevBtn');
 var nextBtn = document.getElementById('nextBtn');
-var dayBtn = document.getElementById('dayBtn');
-var weekBtn = document.getElementById('weekBtn');
-var monthBtn = document.getElementById('monthBtn');
+
+//현재 달
+var date = new Date();
+var month = date.getMonth();
+var printMonth = document.getElementById('printMonth');
+printMonth.innerHTML = month+1;
 
 // ------------------------ 캘린더
 var tab3 = document.getElementById('tab3');
@@ -27,13 +30,8 @@ var calendar = new Calendar('#calendar', {
 	useDetailPopup: true,
 	useCreationPopup: true,
 	taskView: false,
-	theme: {
-		'week.timegridOneHour.height': '30px',
-		'week.timegridHalfHour.height': '15px',
-	},
 	isReadOnly : (artist_id==login_id)? false:true,
 });
-
 
 // 캘린더 탭 눌렀을 때 달력 리로드
 tab3.addEventListener('click', () => {
@@ -43,32 +41,29 @@ tab3.addEventListener('click', () => {
 //오늘 날짜로 이동
 today.addEventListener('click', () => {
 	calendar.today();
+	printMonth.innerHTML = month+1;
 });
 
-// 현재 뷰 기준 이전으로 이동
+// 현재 뷰 기준 이전달으로 이동
 prevBtn.addEventListener('click', () => {
 	calendar.prev();
+	var currentMonth = printMonth.innerHTML-1;
+	if(currentMonth  < 1 ){
+		currentMonth = 12;
+	}
+	printMonth.innerHTML = currentMonth;
 });
 
 // 현재 뷰 기준 다음으로 이동
 nextBtn.addEventListener('click', () => {
 	calendar.next();
+	var currentMonth = parseInt(printMonth.innerHTML) + 1;
+	if(currentMonth > 12 ){
+		currentMonth = 1;
+	}
+	printMonth.innerHTML = currentMonth;
 });
 
-// 일간 뷰로 변경
-dayBtn.addEventListener('click', () => {
-	calendar.changeView('day', true);
-});
-
-// 주간 뷰로 변경
-weekBtn.addEventListener('click', () => {
-	calendar.changeView('week', true);
-});
-
-// 월간 뷰로 변경
-monthBtn.addEventListener('click', () => {
-	calendar.changeView('month', true);
-});
 
 
 // 캘린더 아이디 - 아티스트 별로 캘린더 생성
@@ -129,6 +124,7 @@ calendar.on('beforeCreateSchedule', scheduleData => {
 calendar.on('beforeUpdateSchedule', event => {
 	const { schedule, changes } = event;
 	
+	
 	var member_id = schedule.calendarId; // 아티스트 아이디
 	var cal_no = schedule.id;
 	
@@ -147,6 +143,15 @@ calendar.on('beforeUpdateSchedule', event => {
 	if(changes.end != null){
 		cal_end = changes.end.toDate();
 	}
+	
+	
+	console.log('일정수정하면');
+	console.log(cal_no);
+	console.log(cal_title);
+	console.log(member_id);
+	console.log(cal_start);
+	console.log(cal_end);
+	console.log('ajax로 이동');
 	
 	$.ajax({
 		type : "post",
@@ -203,6 +208,5 @@ for (var i = 0; getCalNo.length; i++){
 	]);
 	
 }
-
 
 

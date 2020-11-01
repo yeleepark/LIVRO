@@ -81,21 +81,14 @@ public class ArtistController {
 
 	// 글삭제 
 	@RequestMapping(value = "/supportDelete.do", method = RequestMethod.POST)
-	public ResponseEntity<String> deleteRest(@RequestBody SupportDto dto, HttpSession session) {
+	@ResponseBody
+	public int deleteRest(@RequestBody SupportDto dto) {
 
 		logger.info("[support Delete]");
-		int support_no = dto.getSupport_no();
-		ResponseEntity<String> entity = null;
-
-		try {
-			artistBiz.supportDelete(support_no);
-			entity = new ResponseEntity<String>("success", HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-		// 입력 처리 HTTP 상태 메시지 리턴
-		return entity;
+		int res = artistBiz.supportDelete(dto.getSupport_no());
+		System.out.println(res);
+		
+		return res ;
 	}
 
 	// 댓글입력 (@RestController방식으로 json전달하여 댓글입력)
@@ -119,9 +112,10 @@ public class ArtistController {
 	
 	// 응원 댓글 리스트
 	@RequestMapping(value = "/showList.do", method = RequestMethod.POST)
-	public String replyList(int support_no, Model model) {
+	public String replyList(@RequestBody SupportCommDto dto, Model model) {
 		logger.info("댓글 출력 컨트롤러");
-		model.addAttribute("commdto", artistBiz.commList(support_no));
+		model.addAttribute("commdto", artistBiz.commList(dto.getSupport_no()));
+		model.addAttribute("memberdto", artistBiz.selectOne(dto.getMember_id()));
 		return "artist/artistReply";
 	}
 	

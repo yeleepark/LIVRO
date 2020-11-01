@@ -5,6 +5,11 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
+button:focus,
+input:focus{
+	outline: none;
+}
+
 section {
 	width: 80%;
 	margin: 0 auto;
@@ -74,6 +79,7 @@ ul.tabs li.tabCurrent {
 .support-login {
 	width: 100%;
 	padding: 10px;
+	margin-bottom : 20px;
 	text-align: right;
 }
 
@@ -88,7 +94,7 @@ ul.tabs li.tabCurrent {
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-.supportInsert div:nth-child(1), .supportInsert div:nth-child(3) {
+.supportInsert div:nth-child(1){
 	width: 20%;
 	/* border: 1px solid pink; */
 	display: flex;
@@ -96,8 +102,16 @@ ul.tabs li.tabCurrent {
 	align-items: center;
 }
 
+.supportInsert div:nth-child(3) {
+	width: 10%;
+	/* border: 1px solid pink; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .supportInsert div:nth-child(2) {
-	width: 60%;
+	width: 70%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -110,19 +124,41 @@ ul.tabs li.tabCurrent {
 	resize: none;
 }
 
-.InsertBtn {
-	width: 100px;
-	height: 30px;
-	border: 1px solid black;
-	padding: 5px 10px;
-}
 
 /* --------------게시판 리스트-------------- */
+
+.support-index{
+	width : 100%;
+	display: flex;
+	margin-bottom: 10px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	border-top: 1px dotted black;
+	border-bottom: 1px dotted black;
+}
+
+.support-index span:nth-child(1){
+	width : 20%;
+	display: inline-block;
+	text-align: center;
+	font-weight: bold;
+}
+
+.support-index span:nth-child(2){
+	width : 80%;
+	display: inline-block;
+	text-align: center;
+	font-weight: bold;
+}
+
 .supportDetail {
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
 }
+
+
+
 
 .supportTable .rows {
 	display: flex;
@@ -142,6 +178,26 @@ ul.tabs li.tabCurrent {
 
 .rows-right .updateRes {
 	display: none;
+}
+
+.rows-right input{
+	padding : 3px 5px;
+	font-size: 0.7rem;
+	background-color: transparent;
+	border : 0.5px solid gray;
+	border-radius: 5px;
+	margin-bottom: 3px;
+	cursor: pointer;
+}
+
+.rows-right input:hover{
+	background: rgba(255,255,255,0.4)
+}
+
+.rows span{
+	text-align: center;
+	display: inline-block;
+	width: 100%;
 }
 
 .rows-center {
@@ -196,6 +252,7 @@ ul.tabs li.tabCurrent {
 	border: none;
 	cursor: pointer;
 	margin: 5px;
+	font-size: 0.8rem;
 }
 
 .closeReply {
@@ -223,6 +280,8 @@ ul.tabs li.tabCurrent {
 }
 
 
+
+
 .replySection {
 	padding: 0;
 	display: flex;
@@ -232,13 +291,33 @@ ul.tabs li.tabCurrent {
 	display: flex;
 }
 
+.replySection span{
+	text-align: center;
+	display: inline-block;
+	width: 100%;
+}
+
 .replyInsertArea {
 	width: 100%;
 	display: flex;
 	align-items: center;
 }
 
-.rows-left, .rows-right {
+.supportInsert input{
+	padding : 3px 5px;
+	font-size: 0.7rem;
+	background-color: transparent;
+	border-radius: 5px;
+	margin-bottom: 3px;
+	cursor: pointer;
+	border : 0.3px solid gray;
+}
+
+.supportInsert input:hover{
+	background-color: rgba(255,255,255,0.6);
+}
+
+.rows-left{
 	width: 20%;
 	height: 100%;
 	display: flex;
@@ -246,8 +325,16 @@ ul.tabs li.tabCurrent {
 	flex-direction: column;
 }
 
+.rows-right{
+	width : 10%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
 .rows-center {
-	width: 60%;
+	width: 70%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -292,13 +379,43 @@ ul.tabs li.tabCurrent {
 .Calendar-container {
 	width: 100%;
 	height: 100%;
-	border: 3px solid aliceblue;
 	padding: 20px;
 }
 
 #calendar-menu {
 	display: flex;
 	justify-content: space-between;
+}
+
+#menu-navi-left, #menu-navi-right{
+	margin-bottom: 10px;
+}
+
+#menu-navi-left{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#menu-navi-left button{
+	padding : 3px 5px;
+}
+
+#today{
+	border : none;
+	border-bottom: 1px dotted black;
+	cursor : pointer;
+}
+
+#prevBtn, #nextBtn{
+	border : none;
+	background-color: none;
+	cursor : pointer;
+	font-size: 1.5rem;
+}
+
+#printMonth{
+	font-size: 2rem;
 }
 
 .tui-full-calendar-section-private {
@@ -314,12 +431,32 @@ ul.tabs li.tabCurrent {
 	display: none;
 }
 
-/* .tui-view-44 {
-	height: 400px !important;
-} */
-
 .tui-full-calendar-month {
 	min-height: 430px !important;
+}
+
+/* 방송기록 */
+.broadTable{
+	width : 100%;
+	padding : 20px;
+}
+
+.broadTable img{
+	width : 40px;
+}
+
+.live-row{
+	margin-bottom: 10px;
+}
+
+.live-row a{
+	text-decoration: none;
+	color : black;
+	background-color: rgba(255,255,255,0.6);
+	border-radius: 10px;
+	padding : 0 10px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 /* 아티스트 프로필 출력 */
