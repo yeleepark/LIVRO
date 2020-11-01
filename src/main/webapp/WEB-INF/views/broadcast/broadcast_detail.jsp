@@ -62,8 +62,8 @@
                 </div>
                 <div>
                 	<button id="donation" onclick="donaDo();">후원하기</button>
-                    <button id="close-broadcast">연결 종료</button>
-                    <button id="disconnect-room">방송 종료</button>
+                   <!--  <button id="close-broadcast">연결 종료</button> -->
+                    <button id="disconnect-room">방송 나가기</button>
                 </div>
             </div>
         </div>           
@@ -78,12 +78,12 @@
      	<div id="donaRound">
      		<span>${logindto.member_id }님에게 후원하기</span>
      		<div id="donaFirst">
-     			<div class="donaPrice" style="border: 1px solid blue">1000</div>
-     			<div class="donaPrice" style="border: 1px solid blue">5000</div>
-     			<div class="donaPrice" style="border: 1px solid blue">10000</div>
+     			<div id="donaPrice1" style="border: 1px solid blue">1000</div>
+     			<div id="donaPrice2" style="border: 1px solid blue">5000</div>
+     			<div id="donaPrice3" style="border: 1px solid blue">10000</div>
      		</div>
      		<div id="donaSecond">
-     			<input type="range" id="price" name="price" min=1000 max=10000 step=1000 value="1000">
+     			<input type="range" id="scale" name="scale" min=1000 max=10000 step=10 onchange="setPrice();" value="1000">
      			<div id="donaSlide"></div>
      			<input type="text" id="donaSlidePrice"></input>
      		</div>
@@ -121,8 +121,17 @@
         
         connection.onmessage = appendDIV;
         
+        
+        /*
+        	비로그인 일 때, 접속해 있는 사람들에게 누가 들어 왔다라는 표현 없음,
+        	로그인 일 때, userid가 들어 왔다라고 표현 해줌.
+        */
         connection.onopen = (event) => {
-            //connection.send('hello everyone'); //연결하나당 들어왔을 때 모두에게 보이는 MESSAGE
+        	if(userId.value == ''){
+        		
+        	}else{
+            connection.send('님이 들어 왔습니다.'); //연결하나당 들어왔을 때 모두에게 보이는 MESSAGE        		
+        	}
         }
         connection.onclose = function() {
            if (connection.getAllParticipants().length) {
@@ -133,7 +142,10 @@
             }
         }
         
+        //alert으로 띄운거 나중에 지용이형님이 div로 이쁘게 꾸민다고 하심!!!!!!!!!!
         connection.onleave = (event) => {
+        	alert("호스트가 방송을 종료 하였습니다");
+        	location.href='broadcast.do';
            console.log(event.userid + '님의 상태 :' + event.status);
         }
         
@@ -143,13 +155,15 @@
         var userId = document.getElementById('user_id');
         console.log(userId);
         if(userId.value == ''){
-           userId.value = connection.token();
+        	connection.userid = connection.token();
         }else{
+        	connection.userid = userId.value;
            let inputTextChat = document.getElementById('input-text-chat');
              inputTextChat.removeAttribute('onclick');
              inputTextChat.placeholder = '내용을 입력하세요';
         }
-        connection.userid = userId.value;
+       
+        //connection.userid = userId.value;
         console.log(userId.value);
         console.log(roomId.value);
         /*******************************방송 시청하기********************************/
@@ -190,8 +204,9 @@
         // 채팅 내용 담기는 부분
         function appendDIV(event) {
             let div = document.createElement('div');
+		      
             if (event.userid == null) { // 보내는 사람이 undefined면.. 즉, 내가 보냈다면
-                div.innerHTML = (connection.userid) + ': ' + (event.data || event);
+                div.innerHTML = (connection.userid) + ':' + (event.data || event);
             } else {
                 div.innerHTML = (event.userid) + ':' + (event.data || event);
             }
@@ -203,7 +218,7 @@
             document.getElementById('input-text-chat').focus();
         }
 
-        function joinDIV(event){
+       /*  function joinDIV(event){
            console.log('----------joinDIV-----------')
            console.log(event.userid)
            connection.send(event.userid)
@@ -213,9 +228,29 @@
            div.tabIndex = 0;
            div.focus();
            document.getElementById('input-text-chat').focus();
+        } */
+        
+        /*
+        	join이 된 사람이 방송을 나갔을 때,
+        	비로그인 일 때 alert + 리스트로 이동.
+        	로그인 일 때 alert + 접속자에게 userId 님이 나갔습니다 + 리스트로 이동
+        */
+        let disconnect_room = document.getElementById("disconnect-room");
+        disconnect_room.onclick = function(){
+        	console.log("방송나가기");
+			if(userId.value == ''){
+            	alert("방송 리스트로 이동합니다.");
+            	location.href='broadcast.do'
+        	}else{
+            	alert("방송 리스트로 이동합니다.");
+            	connection.send('님이 나갔습니다.');
+            	location.href='broadcast.do'
+        	}
+        	
         }
         
         function needLogin(){
+           console.log('로그인요청');
            $('#needLogin').fadeIn();
         }
         
@@ -230,20 +265,9 @@
 		function donaNo(){
         	$('#donaProcess').fadeOut();
 		}
-        
-        const donaFirst = document.getElementById('donaFirst');
-        const donaSlidePrice = document.getElementById('donaSlidePrice');
-        donaFirst.addEventListener('click', (e) => {
-            donaSlidePrice.value =e.target.innerHTML
-			console.log(e.currentTarget);
-        })
-        
-        const price = document.getElementById('price');
-			price.addEventListener('click', (e) => {
-			console.log(e.currentTarget.value);
-			donaSlidePrice.value = e.currentTarget.value;
-		})        
-        
-		</script>
+		function setPrice(){
+		document.getElementById('donaSlidePrice').value = this.value
+		}
+     </script>
 </body>
 </html>

@@ -37,9 +37,18 @@
 							<a><img src="/resources/profileimg/${profiledto.profile_savedname }"></a>
 		           		</div>
 		          		<div class="broadcast-name">
-    						<p><a href="artist.do?member_id=${dto.member_id }">${dto.member_id }</a></p>
-		  			    	<p><a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a></p>
-		 			   		<p>${dto.broadcast_content }</p>
+		          			<div>
+    							<p>아티스트 : <a href="artist.do?member_id=${dto.member_id }">${dto.member_id }</a></p>
+		          			</div>
+		          			<div>		          				
+		  			    		<p>방송 제목 : <a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a></p>
+		          			</div>
+		          			<div>
+		 			   			<p>방송 내용 : ${dto.broadcast_content }</p>
+		          			</div>
+		 			   		<div>
+		 			   			<p>방송 카테고리 : ${dto.broadcast_category }</p>
+		 			   		</div>
 		            	</div>
 		        	</c:when>
             	</c:choose>
