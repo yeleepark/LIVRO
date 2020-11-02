@@ -28,6 +28,12 @@ public class SearchBizImpl implements SearchBiz {
 
 		return searchdao.MemberList(keyword);
 	}
+
+	@Override
+	public List<MemberDto> ArtistList() {
+		
+		return searchdao.ArtistList();
+	}
 	
 	
 }

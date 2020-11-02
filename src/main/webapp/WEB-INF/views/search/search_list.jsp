@@ -54,7 +54,21 @@
 		</div>
 	</div>
 	<div class="all-list">
-	
+		<h2>전체 아티스트 리스트</h2>
+		<c:choose>
+			<c:when test="${empty map.artistlist }">
+				<div>
+					<p>아티스트가 없습니다</p>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${map.artistlist }" var="artistdto">
+					<div>
+						<p>${artistdto.member_nickname }</p>
+					</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	</div>
 </body>
