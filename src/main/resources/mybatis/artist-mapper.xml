@@ -2,6 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="artist">
 
+	<!-- 팔로우 -->
+	<insert id="follow" parameterType="FollowDto">
+		INSERT INTO FOLLOW
+		VALUES ( FOLLOW_NO_SEQ.NEXTVAL, #{member_id}, #{member_nickname}, #{artist_id}, #{artist_nickname},  SYSDATE)
+	</insert>
+
+	<insert id="follower" parameterType="FollowerDto">
+		INSERT INTO FOLLOWER
+		VALUES (FOLLOWER_NO_SEQ.NEXTVAL, #{member_id}, #{member_nickname}, #{follower_id}, #{follower_nickname}, SYSDATE)
+	</insert>
+	
+	<delete id="unfollow" parameterType="FollowDto">
+		DELETE FROM FOLLOW
+		WHERE ARTIST_ID = #{artist_id} AND MEMBER_ID = #{member_id}
+	</delete>
+	
+	<delete id="unfollower" parameterType="FollowerDto">
+		DELETE FROM FOLLOWER
+		WHERE FOLLOWER_ID = #{follower_id} AND MEMBER_ID = #{member_id}
+	</delete>
+	
+	<select id="followFlag" resultType="FollowerDto">
+		SELECT *
+		FROM FOLLOWER
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
 	<!-- 응원게시판 -->
 	<select id="supportList" resultType="SupportDto">
 		SELECT *
@@ -103,4 +130,5 @@
 		DELETE FROM CALENDAR
 		WHERE CAL_NO = #{cal_no}
 	</delete>
+	
 </mapper>

@@ -251,7 +251,6 @@
 									<p><fmt:formatDate value="${broad.broadcast_startdate }" pattern="yyyy-MM-dd-HH:mm:ss"/>
 										~ <span><fmt:formatDate value="${broad.broadcast_enddate }" pattern="yyyy-MM-dd-HH:mm:ss"/></span>
 									</p>
-									
 								</div>
 							</c:if>
 							</c:forEach>
@@ -276,23 +275,31 @@
 			</div>
 
 			<div id="artist-desc">
-				<p><i class="fas fa-microphone"></i><span>  ${memberdto.member_nickname }</span></p>
+				<p><i class="fas fa-microphone"></i>
+				<span>  ${memberdto.member_nickname }</span>
+				</p>
 				<c:choose>
-				<c:when test="${empty logindto }">
-					<button class="followBtn" onclick="alert('로그인 해주세요')">FOLLOW</button>
-				</c:when>
-				<c:otherwise>
-					<c:if test="${logindto.member_id == memberdto.member_id }">
+					<%-- 로그인 했을 때--%>
+					<c:when test="${empty logindto }"> 
+						<button class="followBtn" onclick="alert('로그인 해주세요')">FOLLOW</button>
+					</c:when>
+					<%-- 아티스트 일때 --%>
+					<c:when test="${logindto.member_id == memberdto.member_id }">아티스트면
 						<button id="artistBtn" onclick="updateProfile();">프로필변경</button>
 						<button id="followerBtn">팔로워보기</button>
-					</c:if>
-					<c:if test="${logindto.member_id != memberdto.member_id }">
+					</c:when>
+					<%-- 팔로우 안했을 때--%>
+					<c:when test="${empty followerdto }">
 						<button class="followBtn" onclick="follow(this);">FOLLOW</button>
-						<button id="unfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
-					</c:if>
-				</c:otherwise>
+						<button class="unfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+					</c:when>
+					<%-- 팔로우 했을 때--%>
+					<c:otherwise>
+						<button class="YfollowBtn" onclick="follow(this);">FOLLOW</button>
+						<button class="YunfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+					</c:otherwise>
 				</c:choose>
-			</div>
+				</div>
 		</div>
 		<input type="hidden" value="${memberdto.member_id }" id="artistId">
 		<!--  아티스트 아이디 -->

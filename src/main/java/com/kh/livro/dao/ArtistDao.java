@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.kh.livro.dto.BroadcastDto;
 import com.kh.livro.dto.CalendarDto;
+import com.kh.livro.dto.FollowDto;
+import com.kh.livro.dto.FollowerDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
 import com.kh.livro.dto.ProfileDto;
@@ -61,4 +63,19 @@ public interface ArtistDao {
 	
 	// 방송기록
 	public List<BroadcastDto> broadList(String member_id);
+	
+	// 팔로우
+	public int follow(FollowDto dto);
+	
+	// 팔로우->팔로워
+	public int follwer(FollowerDto dto);
+	
+	// 팔로우 여부
+	public List<FollowerDto> followFlag(String member_id);
+	
+	// 언팔로우
+	public int unfollow(FollowDto dto);
+	
+	// 언팔로우->팔로워
+	public int unfollower(FollowerDto dto);
 }
