@@ -284,7 +284,7 @@
 						<button class="followBtn" onclick="alert('로그인 해주세요')">FOLLOW</button>
 					</c:when>
 					<%-- 아티스트 일때 --%>
-					<c:when test="${logindto.member_id == memberdto.member_id }">아티스트면
+					<c:when test="${logindto.member_id == memberdto.member_id }">
 						<button id="artistBtn" onclick="updateProfile();">프로필변경</button>
 						<button id="followerBtn">팔로워보기</button>
 					</c:when>

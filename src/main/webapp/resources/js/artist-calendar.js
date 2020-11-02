@@ -6,7 +6,7 @@ var artist_nickname = document.getElementById('artistNickname').value;
 var login_id = document.getElementById('loginId').value;
 // 로그인한 유저의 닉네임
 var login_nickname = document.getElementById('loginNickname').value;
-// 일정 리스트 
+// 일정 리스트
 var getCalNo = document.getElementsByClassName('cal_no');
 var getMemberId = document.getElementsByClassName('cal_member_id');
 var getCalTitle = document.getElementsByClassName('cal_title');
@@ -17,7 +17,7 @@ var today = document.getElementById('today');
 var prevBtn = document.getElementById('prevBtn');
 var nextBtn = document.getElementById('nextBtn');
 
-//현재 달
+// 현재 달
 var date = new Date();
 var month = date.getMonth();
 var printMonth = document.getElementById('printMonth');
@@ -40,7 +40,7 @@ tab3.addEventListener('click', () => {
 	calendar.changeView('month', true);
 })
 
-//오늘 날짜로 이동
+// 오늘 날짜로 이동
 today.addEventListener('click', () => {
 	calendar.today();
 	printMonth.innerHTML = month+1;
@@ -85,13 +85,6 @@ calendar.setCalendars([
 // 일정생성
 calendar.on('beforeCreateSchedule', scheduleData => {
 	
-	console.log('일정생성클릭하면');
-	console.log(scheduleData.title);
-	console.log(scheduleData.calendarId);
-	console.log(scheduleData.start.toDate());
-	console.log(scheduleData.end.toDate());
-	console.log('ajax로 이동');
-	
 	$.ajax({
 		type : "post",
 		url : "calInsert.do" ,
@@ -121,11 +114,10 @@ calendar.on('beforeCreateSchedule', scheduleData => {
 	});
 });
 
-//----------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------
 // 일정수정
 calendar.on('beforeUpdateSchedule', event => {
 	const { schedule, changes } = event;
-	
 	
 	var member_id = schedule.calendarId; // 아티스트 아이디
 	var cal_no = schedule.id;
@@ -145,15 +137,6 @@ calendar.on('beforeUpdateSchedule', event => {
 	if(changes.end != null){
 		cal_end = changes.end.toDate();
 	}
-	
-	
-	console.log('일정수정하면');
-	console.log(cal_no);
-	console.log(cal_title);
-	console.log(member_id);
-	console.log(cal_start);
-	console.log(cal_end);
-	console.log('ajax로 이동');
 	
 	$.ajax({
 		type : "post",
@@ -195,8 +178,7 @@ calendar.on('beforeDeleteSchedule', scheduleData => {
 	});
 });
 
-
-//팝업 디테일 - 리스트 출력 완료
+// 팝업 디테일 - 리스트 출력 완료
 for (var i = 0; getCalNo.length; i++){
 	calendar.createSchedules([
 		{
@@ -208,7 +190,4 @@ for (var i = 0; getCalNo.length; i++){
 			end: getCalEnd[i].value  // 끝나는 시간
 		}
 	]);
-	
 }
-
-

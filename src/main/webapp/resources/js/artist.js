@@ -29,11 +29,6 @@ var member_id = document.getElementById('loginId').value;
 // 로그인한 유저의 닉네임
 var member_nickname = document.getElementById('loginNickname').value;
 
-console.log("아티스트 아이디 " + artist_id);
-console.log("아티스트 닉네임 " + artist_nickname);
-console.log("로그인 아이디 " + member_id);
-console.log("로그인 닉네임 = " + member_nickname);
-
 // ------팔로우
 function follow(e){
 	var target = e.nextSibling.nextSibling;
