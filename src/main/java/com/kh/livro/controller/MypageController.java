@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.livro.biz.ArtistBiz;
+import com.kh.livro.biz.DonationBiz;
 import com.kh.livro.biz.MypageBIz;
 
 @Controller
@@ -16,6 +17,9 @@ public class MypageController {
 	@Autowired
 	private MypageBIz mypageBiz;
 
+	@Autowired
+	private DonationBiz donationBiz;
+	
 	private Logger logger = LoggerFactory.getLogger(MypageController.class);
 
 	// 마이페이지 인덱스 : 관리자로 갈건지 일반유저로 갈건지
@@ -29,6 +33,7 @@ public class MypageController {
 	public String userPage(Model model, String member_id) {
 		model.addAttribute("profiledto", mypageBiz.selectProfile(member_id));
 		model.addAttribute("followdto", mypageBiz.showFollow(member_id));
+		model.addAttribute("donationdto", donationBiz.selectAmountById(member_id));
 		return "mypage/userPage";
 	}
 
