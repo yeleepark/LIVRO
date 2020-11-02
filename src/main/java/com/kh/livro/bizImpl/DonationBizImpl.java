@@ -26,6 +26,11 @@ public class DonationBizImpl implements DonationBiz {
 	}
 
 	@Override
+	public List<DonationDto> selectAmountById(String member_id) {
+		return donationDao.selectAmountById(member_id);
+	}
+	
+	@Override
 	public int insert(DonationDto dto) {
 		return donationDao.insert(dto);
 	}
@@ -34,5 +39,6 @@ public class DonationBizImpl implements DonationBiz {
 	public int delete(int dona_no) {
 		return donationDao.delete(dona_no);
 	}
+
 
 }

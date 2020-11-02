@@ -48,6 +48,20 @@ public class DonationDaoImpl implements DonationDao {
 	}
 
 	@Override
+	public List<DonationDto> selectAmountById(String member_id) {
+		List<DonationDto> list = new ArrayList<>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "selectAmountById", member_id);
+		} catch (Exception e) {
+			logger.info("[ERROR] Donation selectAmountById");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	@Override
 	public int insert(DonationDto dto) {
 		int res = 0;
 		
@@ -72,5 +86,6 @@ public class DonationDaoImpl implements DonationDao {
 		}
 		return res;
 	}
+
 
 }

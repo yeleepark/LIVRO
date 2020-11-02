@@ -9,6 +9,7 @@
 <script type="text/javascript"src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- fontawesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
 <!-- google font -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <title>Insert title here</title>
@@ -90,6 +91,30 @@
 			<!-- 후원 내역 조회 탭 -->
 			<div class="tab-content" id="tab-4">
 				<h2><i class="fas fa-hand-holding-usd"></i> 후원 내역 조회</h2>
+				<div class="tab-4-container">
+					<div class="tab-4-left">
+						<div class="tab-4-1">
+							<div>
+								<span>총후원금액</span>
+							</div>
+							<div id="donaAll">dddd</div>
+						</div>
+						<div class="tap-4-2">
+							<c:forEach items="${donaUserList }" var="donaDto">
+								<input type="hidden" value="${donaDto.dona_no }">
+							</c:forEach>
+							<input type="button" onclick="myCharts();" value="수평바">
+							<input type="button" onclick="myCharts_1();" value="수직바">
+							<input type="button" onclick="myCharts_2();" value="파이">
+							<input type="hidden" name="member_nickname" value="${logindto.member_nickname}">
+							<div class="myCharts">
+							<canvas id="myChart" class="chartjs">
+								This text is displayed if your browser does not support HTML5 Canvas.
+							</canvas>
+							</div>
+						</div>
+						</div>
+					</div>
 			</div>
 			
 			
