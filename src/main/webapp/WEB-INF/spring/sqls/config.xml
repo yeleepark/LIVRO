@@ -16,6 +16,7 @@
 		<typeAlias type="com.kh.livro.dto.DonationDto" alias="DonationDto"/>
 		<typeAlias type="com.kh.livro.dto.FollowDto" alias="FollowDto"/>
 		<typeAlias type="com.kh.livro.dto.FollowerDto" alias="FollowerDto"/>
+		<typeAlias type="com.kh.livro.dto.ReportDto" alias="ReportDto"/>
 	</typeAliases>
 
 	<mappers>
@@ -31,5 +32,6 @@
 		<mapper resource="mybatis/qnare-mapper.xml" />
 		<mapper resource="mybatis/qnare-mapper.xml" />
 		<mapper resource="mybatis/donation-mapper.xml"/>
+		<mapper resource="mybatis/report-mapper.xml"/>
 	</mappers>
 </configuration>
