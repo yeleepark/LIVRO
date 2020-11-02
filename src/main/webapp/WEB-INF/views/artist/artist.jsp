@@ -39,7 +39,9 @@
 
 			<!-- 음원 -->
 			<div id="tab-1" class="tab-content tabCurrent">
-				<h2><i class="fas fa-volume-down"></i> 음원</h2>
+				<h2>
+					<i class="fas fa-volume-down"></i> 음원
+				</h2>
 				<!-- 음원 업로드 공간 -->
 				<c:if test="${logindto.member_nickname eq memberdto.member_nickname}">
 					<div class="insertMusic">
@@ -107,7 +109,9 @@
 			<!-- 응원 -->
 			<div id="tab-2" class="tab-content">
 				<div class="supportTable">
-					<h2><i class="fas fa-heart"></i> ${memberdto.member_nickname }님께 응원글을 남겨주세요!</h2>
+					<h2>
+						<i class="fas fa-heart"></i> ${memberdto.member_nickname }님께 응원글을 남겨주세요!
+					</h2>
 
 					<c:choose>
 						<c:when test="${empty logindto }">
@@ -133,11 +137,10 @@
 					</c:choose>
 
 					<div class="supportDetail">
-					<div class="support-index">
-						<span>작성자</span>
-						<span>내용</span>
-					</div>
-					<c:choose>
+						<div class="support-index">
+							<span>작성자</span> <span>내용</span>
+						</div>
+						<c:choose>
 							<c:when test="${empty supportdto }">
 								<div class="rows">
 									<span>작성된 글이 없습니다</span>
@@ -167,13 +170,10 @@
 										<!-- 두번째줄 -->
 										<div class="rows-middle">
 											<div>
-												<input type="button" value="&#xf06b" class="showReply">
-												<input type="button" value="&#xf00d" class="closeReply">
-												<input type="hidden" value="${support.support_no }" class="supportNo">
+												<input type="button" value="&#xf06b" class="showReply"> <input type="button" value="&#xf00d" class="closeReply"> <input type="hidden" value="${support.support_no }" class="supportNo">
 											</div>
 											<!--  반복 부분 -->
-											<div class="replyArea">
-											</div>
+											<div class="replyArea"></div>
 											<!-- 반복 끝 -->
 										</div>
 									</div>
@@ -188,7 +188,9 @@
 			<!-- 일정 게시판 탭-->
 			<div id="tab-3" class="tab-content">
 				<div>
-					<h2><i class="far fa-calendar-alt"></i> ${memberdto.member_nickname }님의 공연일정</h2>
+					<h2>
+						<i class="far fa-calendar-alt"></i> ${memberdto.member_nickname }님의 공연일정
+					</h2>
 				</div>
 				<div class="Calendar-container">
 					<!-- 메뉴 -->
@@ -201,9 +203,7 @@
 							<button type="button" id="nextBtn" data-action="move-next">
 								<i class="fas fa-caret-square-right"></i>
 							</button>
-						</span>
-						<span id="menu-navi-right">
-							<span id="printMonth"></span><span>월</span>
+						</span> <span id="menu-navi-right"> <span id="printMonth"></span><span>월</span>
 						</span>
 					</div>
 					<!-- 캘린더 -->
@@ -214,13 +214,15 @@
 						<input type="hidden" value="${cal.cal_title }" class="cal_title">
 						<input type="hidden" value="${cal.cal_start }" class="cal_start">
 						<input type="hidden" value="${cal.cal_end }" class="cal_end">
-					</c:forEach> 
+					</c:forEach>
 				</div>
 			</div>
 
 			<!-- 방송기록 -->
 			<div id="tab-4" class="tab-content">
-				<h2><i class="fas fa-record-vinyl"></i> 방송기록</h2>
+				<h2>
+					<i class="fas fa-record-vinyl"></i> 방송기록
+				</h2>
 				<div class="broadTable">
 					<c:choose>
 						<c:when test="${empty broaddto }">
@@ -229,42 +231,49 @@
 							</div>
 						</c:when>
 						<c:otherwise>
-								<c:forEach items="${broaddto }" var="broad">
+							<c:forEach items="${broaddto }" var="broad">
 								<c:if test="${broad.broadcast_flag == 'Y' }">
-								<div class="live-row">
-									<div >
-									<img src="resources/img/red.png" alt="생방송">
-									<span><a href="broadDetail.do?broadcast_no=${broad.broadcast_no }">${broad.broadcast_title }</a></span>
-									<span><i class="fas fa-mouse-pointer"></i></span>
+									<div class="live-row">
+										<div>
+											<img src="resources/img/red.png" alt="생방송"> <span><a href="broadDetail.do?broadcast_no=${broad.broadcast_no }">${broad.broadcast_title }</a></span> <span><i class="fas fa-mouse-pointer"></i></span>
+										</div>
+										<p>
+											<span>[ ${broad.broadcast_category } ]</span> ${broad.broadcast_content }
+										</p>
+										<p>
+											<fmt:formatDate value="${broad.broadcast_startdate }" pattern="yyyy-MM-dd-HH:mm:ss" />
+											<span>~ 방송중</span>
+										</p>
 									</div>
-									<p><span>[ ${broad.broadcast_category } ]</span> ${broad.broadcast_content }</p>
-									<p><fmt:formatDate value="${broad.broadcast_startdate }" pattern="yyyy-MM-dd-HH:mm:ss"/><span>~ 방송중</span></p>
-								</div>
 								</c:if>
 							</c:forEach>
 							<c:forEach items="${broaddto }" var="broad">
-							<c:if test="${broad.broadcast_flag == 'N' }">
-								<div class="live-row">
-									<img src="resources/img/black.png" alt="지난방송">
-									<span>${broad.broadcast_title }</span>
-									<p><span>[ ${broad.broadcast_category } ]</span> ${broad.broadcast_content }</p>
-									<p><fmt:formatDate value="${broad.broadcast_startdate }" pattern="yyyy-MM-dd-HH:mm:ss"/>
-										~ <span><fmt:formatDate value="${broad.broadcast_enddate }" pattern="yyyy-MM-dd-HH:mm:ss"/></span>
-									</p>
-								</div>
-							</c:if>
+								<c:if test="${broad.broadcast_flag == 'N' }">
+									<div class="live-row">
+										<img src="resources/img/black.png" alt="지난방송"> <span>${broad.broadcast_title }</span>
+										<p>
+											<span>[ ${broad.broadcast_category } ]</span> ${broad.broadcast_content }
+										</p>
+										<p>
+											<fmt:formatDate value="${broad.broadcast_startdate }" pattern="yyyy-MM-dd-HH:mm:ss" />
+											~ <span><fmt:formatDate value="${broad.broadcast_enddate }" pattern="yyyy-MM-dd-HH:mm:ss" /></span>
+										</p>
+									</div>
+								</c:if>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
 				</div>
 			</div>
-			
+
 			<!-- 지도 : 유정 작업 여기서부터 -->
 			<div id="tab-5" class="tab-content">
-			<h2> <i class="fas fa-map-marker-alt"></i> 팬레터 보내는 곳 ?</h2>
-			<div class="map-container">
-				<div id="map" style="width:100%;height:400px;"></div>
-			</div>
+				<h2>
+					<i class="fas fa-map-marker-alt"></i> 팬레터 보내는 곳 ?
+				</h2>
+				<div class="map-container">
+					<div id="map" style="width: 100%; height: 400px;"></div>
+				</div>
 			</div>
 
 		</div>
@@ -276,33 +285,58 @@
 				<img src="resources/img/BG.jpg">
 				<%-- <img src="${profiledto.profile_savedname }"> --%>
 			</div>
-
+		
 			<div id="artist-desc">
-				<p><i class="fas fa-microphone"></i>
-				<span>  ${memberdto.member_nickname }</span>
+				<p>
+					<i class="fas fa-microphone"></i> <span> ${memberdto.member_nickname }</span>
 				</p>
+				<div class="button-container">
 				<c:choose>
-					<%-- 로그인 했을 때--%>
-					<c:when test="${empty logindto }"> 
+					<%--로그인 안했을때 --%>
+					<c:when test="${empty logindto }">
+					<div class="btnOn">
 						<button class="followBtn" onclick="alert('로그인 해주세요')">FOLLOW</button>
+					</div>
 					</c:when>
-					<%-- 아티스트 일때 --%>
+					<%-- 내 아티스트 페이지 --%>
 					<c:when test="${logindto.member_id == memberdto.member_id }">
+					<div class="btnOn">
 						<button id="artistBtn" onclick="updateProfile();">프로필변경</button>
 						<button id="followerBtn">팔로워보기</button>
+					</div>
 					</c:when>
-					<%-- 팔로우 안했을 때--%>
-					<c:when test="${empty followerdto }">
-						<button class="followBtn" onclick="follow(this);">FOLLOW</button>
-						<button class="unfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
-					</c:when>
-					<%-- 팔로우 했을 때--%>
+					<%-- 로그인 했을 때--%>
 					<c:otherwise>
-						<button class="YfollowBtn" onclick="follow(this);">FOLLOW</button>
-						<button class="YunfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+						<div class="btnDefault">
+							<%-- <p>디폴트 해당 아티스트의 팔로워가 있고 내가 팔로우 안함</p>--%>
+							<button class="followBtn" onclick="follow(this);">FOLLOW</button>
+							<button class="unfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+						</div>
+						<c:choose>
+							<c:when test="${empty dto }">
+								<%--팔로워 없음 --%>
+								<div class="btnOn">
+									<button class="followBtn" onclick="follow(this);">FOLLOW</button>
+									<button class="unfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+								</div>
+							</c:when>
+							<c:when test="${not empty dto }">
+								<%--팔로워 있음 --%>
+								<c:forEach items="${dto }" var="dto">
+									<c:if test="${dto.follower_id == logindto.member_id }">
+										<div class="btnOn">
+											<%--<p>해당 아티스트의 팔로워가 있고 내가 팔로우 함${dto.follower_id }</p>--%>
+											<button class="YfollowBtn" onclick="follow(this);">FOLLOW</button>
+											<button class="YunfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+										</div>
+									</c:if>
+								</c:forEach>
+							</c:when>
+						</c:choose>
 					</c:otherwise>
 				</c:choose>
 				</div>
+			</div>
 		</div>
 		<input type="hidden" value="${memberdto.member_id }" id="artistId">
 		<!--  아티스트 아이디 -->
@@ -313,7 +347,7 @@
 		<input type="hidden" value="${logindto.member_nickname}" id="loginNickname">
 		<!-- 로그인 아이디 -->
 	</section>
-	
+
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b922a72fda74bfd05bf5b30f2ab2056d&libraries=services"></script>
 	<script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
 	<script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>

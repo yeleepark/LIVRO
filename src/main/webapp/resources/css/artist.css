@@ -48,6 +48,9 @@ ul.tabs li.tabCurrent {
 	color: #222;
 }
 
+.none{
+	display :none;
+}
 /* 컨텐츠 출력 */
 .left-wrapper {
 	width: 80%;
@@ -532,4 +535,32 @@ ul.tabs li.tabCurrent {
 .map-container{
 	width : 100%;
 	padding : 20px;
+}
+
+
+/* 버튼 */
+.button-container{
+	width : 100%;
+	position: relative;
+}
+
+.btnDefault{
+	width: 100%;
+	z-index: -1;
+	float : left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btnOn{
+	width : 100%;
+	float: right;
+	z-index : 1;
+	position: absolute;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }

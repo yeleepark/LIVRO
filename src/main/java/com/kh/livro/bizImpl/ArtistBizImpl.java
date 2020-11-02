@@ -114,11 +114,6 @@ public class ArtistBizImpl implements ArtistBiz {
 	}
 
 	@Override
-	public List<FollowerDto> followFlag(String member_id) {
-		return artistDao.followFlag(member_id);
-	}
-
-	@Override
 	public int unfollow(FollowDto dto) {
 		return artistDao.unfollow(dto);
 	}
@@ -126,6 +121,11 @@ public class ArtistBizImpl implements ArtistBiz {
 	@Override
 	public int unfollower(FollowerDto dto) {
 		return artistDao.unfollower(dto);
+	}
+
+	@Override
+	public List<FollowerDto> followerList(String member_id) {
+		return artistDao.followerList(member_id);
 	}
 
 }

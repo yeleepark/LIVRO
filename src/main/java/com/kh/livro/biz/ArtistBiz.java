@@ -68,12 +68,13 @@ public interface ArtistBiz {
 	// 팔로우 -> 팔로워
 	public int follwer(FollowerDto dto);
 
-	// 팔로우 여부
-	public List<FollowerDto> followFlag(String member_id);
-
 	// 언팔로우
 	public int unfollow(FollowDto dto);
 
 	// 언팔로우->팔로워
 	public int unfollower(FollowerDto dto);
+
+	//팔로워 목록
+	public List<FollowerDto> followerList(String member_id);
+
 }
