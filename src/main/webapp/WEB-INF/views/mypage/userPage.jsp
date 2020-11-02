@@ -71,12 +71,24 @@
 			</div>
 			
 			<!-- 팔로우 목록 탭 -->
-			<div class="tab-content" id="tab-2">
+			<div class="tab-content" id="tab-3">
 				<h2><i class="fas fa-users"></i> 팔로우 목록</h2>
+				<c:choose>
+					<c:when test="${empty followdto }">
+						<p>팔로우한 아티스트가 없습니다</p>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${followdto }" var="follow">
+							<p><a href="artist.do?member_id=${follow.artist_id }">
+							<c:out value="${follow.artist_nickname }"/></a></p>
+							<p><c:out value="${follow.following_date }"/></p>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>				
 			</div>
 			
 			<!-- 후원 내역 조회 탭 -->
-			<div class="tab-content" id="tab-3">
+			<div class="tab-content" id="tab-4">
 				<h2><i class="fas fa-hand-holding-usd"></i> 후원 내역 조회</h2>
 			</div>
 			

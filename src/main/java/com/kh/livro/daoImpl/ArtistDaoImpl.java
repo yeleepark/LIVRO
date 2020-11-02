@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 import com.kh.livro.dao.ArtistDao;
 import com.kh.livro.dto.BroadcastDto;
 import com.kh.livro.dto.CalendarDto;
+import com.kh.livro.dto.FollowDto;
+import com.kh.livro.dto.FollowerDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
 import com.kh.livro.dto.ProfileDto;
@@ -217,5 +219,65 @@ public class ArtistDaoImpl implements ArtistDao {
 		return res;
 	}
 
+	@Override
+	public int follow(FollowDto dto) {
+		int res = 0;
+
+		try {
+			res = sqlSession.update(NAMESPACE + "follow", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return res;
+	}
+
+	@Override
+	public int follwer(FollowerDto dto) {
+		int res = 0;
+
+		try {
+			res = sqlSession.update(NAMESPACE + "follower", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return res;
+	}
+
+	@Override
+	public List<FollowerDto> followFlag(String member_id) {
+		List<FollowerDto> list = new ArrayList<FollowerDto>();
+
+		try {
+			list = sqlSession.selectList(NAMESPACE + "followFlag", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int unfollow(FollowDto dto) {
+		int res = 0;
+
+		try {
+			res = sqlSession.delete(NAMESPACE + "unfollow", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int unfollower(FollowerDto dto) {
+		int res = 0;
+		try {
+			res = sqlSession.delete(NAMESPACE + "unfollower", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 
 }

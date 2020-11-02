@@ -42,7 +42,7 @@
 				<h2><i class="fas fa-volume-down"></i> 음원</h2>
 				<!-- 음원 업로드 공간 -->
 				<c:if test="${logindto.member_nickname eq memberdto.member_nickname}">
-					<div>
+					<div class="insertMusic">
 						<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
 							<input type="hidden" name="member_id" value="${logindto.member_id }">
 							<input type="hidden" name="member_nickname" value="${logindto.member_nickname }">
@@ -251,7 +251,6 @@
 									<p><fmt:formatDate value="${broad.broadcast_startdate }" pattern="yyyy-MM-dd-HH:mm:ss"/>
 										~ <span><fmt:formatDate value="${broad.broadcast_enddate }" pattern="yyyy-MM-dd-HH:mm:ss"/></span>
 									</p>
-									
 								</div>
 							</c:if>
 							</c:forEach>
@@ -263,6 +262,9 @@
 			<!-- 지도 : 유정 작업 여기서부터 -->
 			<div id="tab-5" class="tab-content">
 			<h2> <i class="fas fa-map-marker-alt"></i> 팬레터 보내는 곳 ?</h2>
+			<div class="map-container">
+				<div id="map" style="width:100%;height:400px;"></div>
+			</div>
 			</div>
 
 		</div>
@@ -276,23 +278,31 @@
 			</div>
 
 			<div id="artist-desc">
-				<p><i class="fas fa-microphone"></i><span>  ${memberdto.member_nickname }</span></p>
+				<p><i class="fas fa-microphone"></i>
+				<span>  ${memberdto.member_nickname }</span>
+				</p>
 				<c:choose>
-				<c:when test="${empty logindto }">
-					<button class="followBtn" onclick="alert('로그인 해주세요')">FOLLOW</button>
-				</c:when>
-				<c:otherwise>
-					<c:if test="${logindto.member_id == memberdto.member_id }">
+					<%-- 로그인 했을 때--%>
+					<c:when test="${empty logindto }"> 
+						<button class="followBtn" onclick="alert('로그인 해주세요')">FOLLOW</button>
+					</c:when>
+					<%-- 아티스트 일때 --%>
+					<c:when test="${logindto.member_id == memberdto.member_id }">
 						<button id="artistBtn" onclick="updateProfile();">프로필변경</button>
 						<button id="followerBtn">팔로워보기</button>
-					</c:if>
-					<c:if test="${logindto.member_id != memberdto.member_id }">
+					</c:when>
+					<%-- 팔로우 안했을 때--%>
+					<c:when test="${empty followerdto }">
 						<button class="followBtn" onclick="follow(this);">FOLLOW</button>
-						<button id="unfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
-					</c:if>
-				</c:otherwise>
+						<button class="unfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+					</c:when>
+					<%-- 팔로우 했을 때--%>
+					<c:otherwise>
+						<button class="YfollowBtn" onclick="follow(this);">FOLLOW</button>
+						<button class="YunfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+					</c:otherwise>
 				</c:choose>
-			</div>
+				</div>
 		</div>
 		<input type="hidden" value="${memberdto.member_id }" id="artistId">
 		<!--  아티스트 아이디 -->
@@ -303,7 +313,8 @@
 		<input type="hidden" value="${logindto.member_nickname}" id="loginNickname">
 		<!-- 로그인 아이디 -->
 	</section>
-
+	
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b922a72fda74bfd05bf5b30f2ab2056d&libraries=services"></script>
 	<script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
 	<script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>
 	<script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
@@ -311,6 +322,7 @@
 	<script type="text/javascript" src="resources/js/artist.js"></script>
 	<script type="text/javascript" src="resources/js/artist-support.js"></script>
 	<script type="text/javascript" src="resources/js/artist-calendar.js"></script>
+	<script type="text/javascript" src="resources/js/artist-map.js"></script>
 
 </body>
 </html>

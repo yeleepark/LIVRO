@@ -9,6 +9,8 @@ import com.kh.livro.biz.ArtistBiz;
 import com.kh.livro.dao.ArtistDao;
 import com.kh.livro.dto.BroadcastDto;
 import com.kh.livro.dto.CalendarDto;
+import com.kh.livro.dto.FollowDto;
+import com.kh.livro.dto.FollowerDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.MusicDto;
 import com.kh.livro.dto.ProfileDto;
@@ -101,5 +103,29 @@ public class ArtistBizImpl implements ArtistBiz {
 		return artistDao.commUpdate(dto);
 	}
 
+	@Override
+	public int follow(FollowDto dto) {
+		return artistDao.follow(dto);
+	}
+
+	@Override
+	public int follwer(FollowerDto dto) {
+		return artistDao.follwer(dto);
+	}
+
+	@Override
+	public List<FollowerDto> followFlag(String member_id) {
+		return artistDao.followFlag(member_id);
+	}
+
+	@Override
+	public int unfollow(FollowDto dto) {
+		return artistDao.unfollow(dto);
+	}
+
+	@Override
+	public int unfollower(FollowerDto dto) {
+		return artistDao.unfollower(dto);
+	}
 
 }

@@ -500,7 +500,12 @@ ul.tabs li.tabCurrent {
 	margin-left: 5px;
 }
 
-.followBtn, #followerBtn, #artistBtn, #unfollowBtn {
+.followBtn, 
+.unfollowBtn,
+.YfollowBtn, 
+.YunfollowBtn,
+#followerBtn, 
+#artistBtn {
 	color: #3399FF;
 	font-family: "Helvetica";
 	font-size: 10pt;
@@ -513,6 +518,18 @@ ul.tabs li.tabCurrent {
 	cursor: pointer;
 }
 
-#unfollowBtn{
+.YfollowBtn{
 	display: none;
+}
+
+.unfollowBtn{
+	display: none;
+}
+
+
+/* 지도 */
+
+.map-container{
+	width : 100%;
+	padding : 20px;
 }

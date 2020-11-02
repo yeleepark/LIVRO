@@ -1,5 +1,7 @@
 package com.kh.livro.dto;
 
+import java.util.Date;
+
 public class FollowerDto {
 
 	private int follower_no;
@@ -7,18 +9,20 @@ public class FollowerDto {
 	private String member_nickname;
 	private String follower_id;
 	private String follower_nickname;
+	private Date follower_date;
 
 	public FollowerDto() {
 		super();
 	}
 
-	public FollowerDto(int follower_no, String member_id, String member_nickname, String follower_id, String follower_nickname) {
+	public FollowerDto(int follower_no, String member_id, String member_nickname, String follower_id, String follower_nickname, Date follower_date) {
 		super();
 		this.follower_no = follower_no;
 		this.member_id = member_id;
 		this.member_nickname = member_nickname;
 		this.follower_id = follower_id;
 		this.follower_nickname = follower_nickname;
+		this.follower_date = follower_date;
 	}
 
 	public int getFollower_no() {
@@ -59,6 +63,14 @@ public class FollowerDto {
 
 	public void setFollower_nickname(String follower_nickname) {
 		this.follower_nickname = follower_nickname;
+	}
+
+	public Date getFollower_date() {
+		return follower_date;
+	}
+
+	public void setFollower_date(Date follower_date) {
+		this.follower_date = follower_date;
 	}
 
 }
