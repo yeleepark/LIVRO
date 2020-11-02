@@ -262,6 +262,9 @@
 			<!-- 지도 : 유정 작업 여기서부터 -->
 			<div id="tab-5" class="tab-content">
 			<h2> <i class="fas fa-map-marker-alt"></i> 팬레터 보내는 곳 ?</h2>
+			<div class="map-container">
+				<div id="map" style="width:100%;height:400px;"></div>
+			</div>
 			</div>
 
 		</div>
@@ -310,7 +313,8 @@
 		<input type="hidden" value="${logindto.member_nickname}" id="loginNickname">
 		<!-- 로그인 아이디 -->
 	</section>
-
+	
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b922a72fda74bfd05bf5b30f2ab2056d&libraries=services"></script>
 	<script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
 	<script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>
 	<script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
@@ -318,6 +322,7 @@
 	<script type="text/javascript" src="resources/js/artist.js"></script>
 	<script type="text/javascript" src="resources/js/artist-support.js"></script>
 	<script type="text/javascript" src="resources/js/artist-calendar.js"></script>
+	<script type="text/javascript" src="resources/js/artist-map.js"></script>
 
 </body>
 </html>

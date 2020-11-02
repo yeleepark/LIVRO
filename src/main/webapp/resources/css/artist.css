@@ -525,3 +525,11 @@ ul.tabs li.tabCurrent {
 .unfollowBtn{
 	display: none;
 }
+
+
+/* 지도 */
+
+.map-container{
+	width : 100%;
+	padding : 20px;
+}
