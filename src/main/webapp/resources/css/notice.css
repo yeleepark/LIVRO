@@ -8,6 +8,10 @@ a {
 	color: inherit;
 }
 
+.board_list {
+	padding-top: 40px;	
+}
+
 .board_list_wrap {
 	padding: 50px;
 }
