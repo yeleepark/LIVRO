@@ -66,6 +66,7 @@
                 	<button id="donation" onclick="donaDo();">후원하기</button>
                    <!--  <button id="close-broadcast">연결 종료</button> -->
                     <button id="disconnect-room">방송 나가기</button>
+                    <button id="report" onclick="report()">신고하기</button>
                 </div>
             </div>
         </div>           
@@ -98,5 +99,16 @@
      
      <script src="resources/js/broadcast_detail_rtc.js"></script>
      <script src="resources/js/broadcast_detail.js"></script>
+     <script type="text/javascript">
+     function report(broad_nickname){
+			var broad_nickname = "${broadDto.member_nickname}";
+			if(userId.value == ''){
+				alert("로그인 후 이용이 가능합니다");
+				$('#needLogin').fadeIn();			
+			}else{
+				open("report.do?broad_nickname=${broadDto.member_nickname}&broad_id=${broadDto.member_id}", "","width=700, height=550");
+			}
+		}
+     </script>
 </body>
 </html>
