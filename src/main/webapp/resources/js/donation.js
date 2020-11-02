@@ -1,6 +1,6 @@
 function pay(){
 					let price = $('#price').val();			// 선택한 금액
-					let member_id = $('#member_id').val();	// 멤버 아이디
+					let member_id = $('#member_Id').val();	// 멤버 아이디
 					let username = $('#member_name').val(); // 멤버 이름
 					let email = $('#member_email').val();	// 멤버 이메일
 					let dona_id =  $('#artist_id').text();  // 후원받는 아이디
