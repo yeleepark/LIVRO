@@ -22,8 +22,9 @@
 			<ul class="tabs">
 				<li class="tab-link current" data-tab="tab-1">회원정보수정</li>
 				<li class="tab-link" data-tab="tab-2">팔로우목록</li>
-				<li class="tab-link" data-tab="tab-3">후원내역조회</li>
-				<li class="tab-link" data-tab="tab-4">후원받은조회</li>
+				<li class="tab-link" data-tab="tab-3">팔로워목록</li>
+				<li class="tab-link" data-tab="tab-4">후원내역조회</li>
+				<li class="tab-link" data-tab="tab-5">후원받은조회</li>
 			</ul>
 			
 			<!-- 회원 정보 수정 탭 -->
@@ -58,14 +59,42 @@
 			<!-- 팔로우 목록 탭 -->
 			<div class="tab-content" id="tab-2">
 				<h2><i class="fas fa-users"></i> 팔로우 목록</h2>
+				<c:choose>
+					<c:when test="${empty followdto }">
+						<p>팔로우한 아티스트가 없습니다</p>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${followdto }" var="follow">
+							<p><a href="artist.do?member_id=${follow.artist_id }">
+							<c:out value="${follow.artist_nickname }"/></a></p>
+							<p><c:out value="${follow.following_date }"/></p>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>		
 			</div>
 			
-			<!-- 후원 내역 조회 탭 -->
+			<!-- 팔로워 목록 탭 -->
 			<div class="tab-content" id="tab-3">
+				<h2><i class="fas fa-users"></i> 팔로워 목록</h2>
+				<c:choose>
+					<c:when test="${empty followerdto }">
+						<p>나를 팔로우한 사용자가 없습니다</p>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${followerdto }" var="follower">
+							<p><c:out value="${follower.follower_nickname }"/></p>
+							<p><c:out value="${follower.follower_date }"/></p>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>		
+			</div>
+			
+			<!-- 후원내역조회 -->
+			<div class="tab-content" id="tab-4">
 				<h2><i class="fas fa-hand-holding-usd"></i> 후원 내역 조회</h2>
 			</div>
 			
-			<div class="tab-content" id="tab-4">
+			<div class="tab-content" id="tab-5">
 				<h2><i class="fas fa-hand-holding-usd"></i> 후원 받은 조회</h2>
 			</div>
 			

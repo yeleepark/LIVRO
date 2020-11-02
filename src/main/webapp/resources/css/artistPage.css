@@ -11,6 +11,10 @@
     padding: 30px;
 }
 
+section{
+	padding-top : 100px;	
+}
+
 /* 탭메뉴 */
 
 .mypage-container ul.tabs{

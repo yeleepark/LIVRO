@@ -72,7 +72,7 @@ response.setDateHeader("Expires", 1L);
 					<li><a href="notice.do">NOTICE</a></li>
 					<li><a href="qnalist.do">Q&A</a></li>
 					<li><a href="broadcast.do">LIVE</a></li>
-					<li><a href="follow.do">FOLLOWING</a></li>
+					<li><a href="showFollow.do">FOLLOWING</a></li>
 					<li><a href="rank.do">RANKING</a></li>
 				</ul>
 			</nav>

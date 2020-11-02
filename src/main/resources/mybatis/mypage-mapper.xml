@@ -7,4 +7,17 @@
 		FROM PROFILE
 		WHERE MEMBER_ID = #{member_id}
 	</select>
+	
+	<select id="showFollow" resultType="FollowDto">
+		SELECT *
+		FROM FOLLOW
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
+	<select id="showFollower" resultType="FollowerDto">
+		SELECT *
+		FROM FOLLOWER
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
 </mapper>

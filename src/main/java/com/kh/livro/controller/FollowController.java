@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class FollowController {
 	
-	@RequestMapping("/showfollow.do")
+	@RequestMapping("/showFollow.do")
 	public String follow() {
 		return "follow/follow";
 	}

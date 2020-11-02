@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kh.livro.biz.ArtistBiz;
 import com.kh.livro.biz.MypageBIz;
 
 @Controller
@@ -27,6 +28,7 @@ public class MypageController {
 	@RequestMapping("/userPage.do")
 	public String userPage(Model model, String member_id) {
 		model.addAttribute("profiledto", mypageBiz.selectProfile(member_id));
+		model.addAttribute("followdto", mypageBiz.showFollow(member_id));
 		return "mypage/userPage";
 	}
 
@@ -34,6 +36,8 @@ public class MypageController {
 	@RequestMapping("/artistPage.do")
 	public String artistPage(Model model, String member_id) {
 		model.addAttribute("profiledto", mypageBiz.selectProfile(member_id));
+		model.addAttribute("followdto", mypageBiz.showFollow(member_id));
+		model.addAttribute("followerdto", mypageBiz.showFollower(member_id));
 		return "mypage/artistPage";
 	}
 
