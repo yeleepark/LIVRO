@@ -33,5 +33,6 @@
 		<mapper resource="mybatis/qnare-mapper.xml" />
 		<mapper resource="mybatis/donation-mapper.xml"/>
 		<mapper resource="mybatis/report-mapper.xml"/>
+		<mapper resource="mybatis/rank-mapper.xml"/>
 	</mappers>
 </configuration>
