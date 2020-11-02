@@ -1,7 +1,7 @@
 // 이전 버튼 이벤트 
 
 function fn_prev(page, range, rangeSize) {
-	var noticeKeyword = document.getElementById("noticeKeyword");
+	var noticeKeyword = document.getElementById("noticeKeyword").value;
 	
 	var page = ((range - 2) * rangeSize) + 1;
 	var range = range - 1;
@@ -28,7 +28,7 @@ function fn_pagination(page, range, rangeSize, searchType, keyword) {
 
 //다음 번호 이벤트
 function fn_next(page, range, rangeSize) {
-	var noticeKeyword = document.getElementById("noticeKeyword");
+	var noticeKeyword = document.getElementById("noticeKeyword").value;
 	var page = parseInt((range * rangeSize)) + 1;
 	var range = parseInt(range) + 1;
 	

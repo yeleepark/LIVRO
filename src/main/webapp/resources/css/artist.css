@@ -65,6 +65,7 @@ ul.tabs li.tabCurrent {
 .tab-content h2 {
 	display: block;
 	padding: 10px;
+	height: 100px;
 }
 
 .tab-content.tabCurrent {
