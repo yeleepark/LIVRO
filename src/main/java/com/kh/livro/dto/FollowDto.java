@@ -2,21 +2,23 @@ package com.kh.livro.dto;
 
 import java.util.Date;
 
-public class FollowingDto {
+public class FollowDto {
 
 	private String member_id;
+	private String member_nickname;
 	private String artist_id;
 	private String artist_nickname;
 	private int following_no;
 	private Date following_date;
 
-	public FollowingDto() {
+	public FollowDto() {
 		super();
 	}
 
-	public FollowingDto(String member_id, String artist_id, String artist_nickname, int following_no, Date following_date) {
+	public FollowDto(String member_id, String member_nickname, String artist_id, String artist_nickname, int following_no, Date following_date) {
 		super();
 		this.member_id = member_id;
+		this.member_nickname = member_nickname;
 		this.artist_id = artist_id;
 		this.artist_nickname = artist_nickname;
 		this.following_no = following_no;
@@ -29,6 +31,14 @@ public class FollowingDto {
 
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
+	}
+
+	public String getMember_nickname() {
+		return member_nickname;
+	}
+
+	public void setMember_nickname(String member_nickname) {
+		this.member_nickname = member_nickname;
 	}
 
 	public String getArtist_id() {
