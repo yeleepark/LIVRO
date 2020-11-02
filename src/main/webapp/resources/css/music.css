@@ -34,7 +34,7 @@
 	display: block;
 }
 
-.no_music, audio {
+audio {
 	padding: 5px;
 	float: left;
 }
