@@ -19,7 +19,6 @@
 .qna_content_wrap {
 	clear: both;
 	border-top: 2px solid #ccc;
-	/* border-bottom: 1px solid #ccc; */
 	height: 400px;
 
 }
@@ -33,6 +32,14 @@
 }
 .qna_reply_content{
 	font-size: 14px;
+}
+.qna_reply_content > textarea{
+	background: transparent;
+	border: none;
+	resize: none;
+	height : 100%;
+	width: 90%;
+
 }
 
 .qna_reply_wrap {
@@ -53,6 +60,19 @@
 
 .qna_btn {
 	text-align: right;
+	
+}
+.qnare_update_res_btn{
+	display: none;
 }
 
+.qnare_btns{
+	padding: 3px 5px;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    cursor: pointer;
+}
 

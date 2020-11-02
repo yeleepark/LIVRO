@@ -83,6 +83,15 @@ a {
 .board_list_search {
 	text-align: center;
 }
+.qna_list_btn{
+	padding: 3px 5px;
+    font-size: 0.8rem;
+    background-color: transparent;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    cursor: pointer;
+}
 
 #paginationBox {
    display: flex;

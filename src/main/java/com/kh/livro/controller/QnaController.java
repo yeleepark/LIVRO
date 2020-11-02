@@ -59,10 +59,6 @@ public class QnaController {
 		
 		model.addAttribute("pagination", search);
 		
-		//페이징 객체생성
-		//Pagination pagination = new Pagination();
-		//pagination.pageInfo(page, range, listCnt);
-		
 		
 		model.addAttribute("pagination", search);
 		model.addAttribute("qnalist", qnaBiz.selectList(search));

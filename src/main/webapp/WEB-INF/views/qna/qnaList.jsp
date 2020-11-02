@@ -26,7 +26,6 @@
 </script>
 
 <body>
-
 	<div class="board_list_wrap">
 		<div class="board_list">
 			<span>Q&A</span>
@@ -122,20 +121,20 @@
 						<option value="writer">작성자</option>
 					</select> 
 					<input type="text" placeholder="검색" name="keyword" id="keyword" />
-					<input type="submit" value="검색" id="btnSearch" />
+					<input type="submit" value="검색" id="btnSearch" class="qna_list_btn"/>
 				</form>
 			</div>
 
 			<!-- 버튼 -->
 			<div class="board_list_footer">
-				<input type="button" value="내가 쓴 글" onclick="#">
+				<input type="button" value="내가 쓴 글" onclick="#" class="qna_list_btn">
 				<c:choose>
 					<c:when test="${empty logindto }">
-						<input type="button" value="글쓰기" onclick="chkRole();">
+						<input type="button" value="글쓰기" onclick="chkRole();" class="qna_list_btn">
 					</c:when>
 					<c:otherwise>
 						<input type="button" value="글쓰기"
-							onclick="location.href='qnainsertform.do'">
+							onclick="location.href='qnainsertform.do'" class="qna_list_btn">
 					</c:otherwise>
 				</c:choose>
 
