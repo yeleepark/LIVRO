@@ -15,6 +15,13 @@
 		ORDER BY MEMBER_NO
 	</select>
 	
+	<select id="artistlist" resultType="MemberDto">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ROLE = 'A'
+		ORDER BY MEMBER_NO
+	</select>
+	
 	
 	
 </mapper>

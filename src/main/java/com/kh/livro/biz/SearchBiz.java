@@ -11,5 +11,5 @@ public interface SearchBiz {
 	public List<BroadcastDto> BroadcastList(String keyword);
 	public List<MemberDto> MemberList(String keyword);
 	
-	
+	public List<MemberDto> ArtistList();
 }

@@ -13,5 +13,8 @@ public interface SearchDao {
 	public List<BroadcastDto> BroadcastList(String keyword);
 	public List<MemberDto> MemberList(String keyword);
 	
+	//아티스트 전체 리스트 출력
+	public List<MemberDto> ArtistList();
+	
 
 }

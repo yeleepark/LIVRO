@@ -27,10 +27,13 @@ public class SearchController {
 	public String SearchList(Model model, String keyword) {
 		List<BroadcastDto> broadlist = searchbiz.BroadcastList(keyword);
 		List<MemberDto> memberlist = searchbiz.MemberList(keyword);
+		List<MemberDto> artistlist = searchbiz.ArtistList();
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("broadlist", broadlist);
 		map.put("memberlist", memberlist);
+		map.put("artistlist", artistlist);
+		
 		
 		
 		model.addAttribute("map", map);

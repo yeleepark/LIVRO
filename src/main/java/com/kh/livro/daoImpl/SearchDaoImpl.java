@@ -55,6 +55,19 @@ public class SearchDaoImpl implements SearchDao {
 		}
 		return memberlist;
 	}
+
+	@Override
+	public List<MemberDto> ArtistList() {
+		List<MemberDto> artistlist = new ArrayList<MemberDto>();
+		
+		try {
+			artistlist = sqlSession.selectList(NAMESPACE+"artistlist");
+		} catch (Exception e) {
+			logger.info("[ArtistList ERROR]");
+			e.printStackTrace();
+		}
+		return artistlist;
+	}
 	
 	
 
