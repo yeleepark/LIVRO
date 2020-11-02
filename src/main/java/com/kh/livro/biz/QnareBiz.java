@@ -14,4 +14,6 @@ public interface QnareBiz {
 
 	// 댓글 삭제
 	public int delete(int qnare_no);
+	//댓글수정
+	public int update(QnareDto dto);
 }

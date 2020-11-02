@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,7 @@ public class QnareController {
 
 	private Logger logger = LoggerFactory.getLogger(QnareController.class);
 
+	//댓글리스트
 	@RequestMapping("/qnareinsert.do")
 	public String qnareInsert(Model model, @RequestParam("qna_no") int qna_no, QnareDto dto) {
 
@@ -45,6 +47,7 @@ public class QnareController {
 		return "redirect";
 	}
 
+	//댓글삭제
 	@RequestMapping(value = "/qnaredelete.do", method = RequestMethod.GET)
 	@ResponseBody
 	public int qnareDelete(int qna_no, int qnare_no, Model model) {
@@ -65,4 +68,30 @@ public class QnareController {
 		return res;
 	}
 
+	
+	//댓글수정
+	@RequestMapping("/qnareupdate.do")
+	@ResponseBody
+	 public int qnareUpdate(QnareDto dto) {
+		logger.info("[qnareupdate.do]");
+		logger.info(dto.getQnare_no()+dto.getQnare_content());
+		int res = qnareBiz.update(dto);
+		/*
+		 * if(res>0) { return res; }else { res = res-1; }
+		 */
+		
+		return res;
+	 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

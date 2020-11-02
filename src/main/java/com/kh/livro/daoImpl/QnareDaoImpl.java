@@ -20,6 +20,7 @@ public class QnareDaoImpl implements QnareDao {
 
 	private Logger logger = LoggerFactory.getLogger(QnareDaoImpl.class);
 
+	//댓글등록
 	@Override
 	public int insert(QnareDto dto) {
 		int res = 0;
@@ -33,6 +34,7 @@ public class QnareDaoImpl implements QnareDao {
 		return res;
 	}
 
+	//댓글삭제 
 	@Override
 	public int delete(int qnare_no) {
 		int res = 0;
@@ -46,6 +48,7 @@ public class QnareDaoImpl implements QnareDao {
 		return res;
 	}
 
+	//댓글 리스트
 	@Override
 	public List<QnareDto> selectList(int qna_no) {
 		List<QnareDto> list = new ArrayList<QnareDto>();
@@ -59,5 +62,19 @@ public class QnareDaoImpl implements QnareDao {
 
 		return list;
 
+	}
+
+	//댓글수정 =
+	@Override
+	public int update(QnareDto dto) {
+		int res =0;
+		logger.info("dao도착");
+		try {
+			res = sqlSession.update(NAMESPACE + "qnareupdate", dto);
+		} catch (Exception e) {
+			logger.info("[error] : qnareDaoImpl update");
+			e.printStackTrace();
+		}
+		return res;
 	}
 }
