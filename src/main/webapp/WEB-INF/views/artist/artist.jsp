@@ -42,7 +42,7 @@
 				<h2><i class="fas fa-volume-down"></i> 음원</h2>
 				<!-- 음원 업로드 공간 -->
 				<c:if test="${logindto.member_nickname eq memberdto.member_nickname}">
-					<div>
+					<div class="insertMusic">
 						<form:form method="post" enctype="multipart/form-data" modelAttribute="MusicDto" action="upload.do">
 							<input type="hidden" name="member_id" value="${logindto.member_id }">
 							<input type="hidden" name="member_nickname" value="${logindto.member_nickname }">

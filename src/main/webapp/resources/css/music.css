@@ -1,3 +1,12 @@
+.music-table {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.no_music {
+	text-align: center;
+}
+
 .file_upload_block {
 	border-bottom: 1px solid white;
 	display: flex;
@@ -7,20 +16,21 @@
 
 .file_up {
 	display: flex;
-	padding-right: 50px;	
+	padding-right: 50px;
 }
 
 .file_upload_wrap1 {
 	display: flex;
 	flex: 1;
 	align-items: center;
-	
 }
-.file_upload_wrap2{
+
+.file_upload_wrap2 {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 }
+
 .file_upload_btn {
 	flex: 1;
 	display: flex;
@@ -28,9 +38,7 @@
 	justify-content: flex-end;
 }
 
-.file_upload_wrap2 input,
-.file_upload_wrap2 span {
-	
+.file_upload_wrap2 input, .file_upload_wrap2 span {
 	display: block;
 }
 
@@ -39,14 +47,13 @@ audio {
 	float: left;
 }
 
-
-
 .music_tags {
 	padding-left: 20px;
 	padding-top: 20px;
 }
+
 .music_iconbox {
-	float:left;
+	float: left;
 }
 
 .livro_icon {
@@ -73,13 +80,11 @@ audio {
 }
 
 .music_nextindex {
-	padding-bottom: 20px;	
-}	
-.music_nextindex::after {
-	display : block;
-	content : '';
-	clear : both;
+	padding-bottom: 20px;
 }
 
-
-
+.music_nextindex::after {
+	display: block;
+	content: '';
+	clear: both;
+}
