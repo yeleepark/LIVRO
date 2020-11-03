@@ -27,10 +27,14 @@ import com.kh.livro.biz.MemberBiz;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.utils.LoginGoogleBO;
 import com.kh.livro.utils.LoginNaverBO;
+import com.kh.livro.utils.MailService;
 import com.kh.livro.utils.PwSHA256;
+import com.kh.livro.utils.RandomCode;
 
 @Controller
 public class MemberController {
+
+	private static final LoginGoogleBO loginNaverBO = null;
 
 	private Logger logger = LoggerFactory.getLogger(MemberController.class);
 
@@ -42,6 +46,9 @@ public class MemberController {
 	@Autowired
 	private LoginGoogleBO logingoogleBO;
 	private String apiResult = null;
+
+	@Autowired
+	private MailService mailService;
 
 	@Autowired
 	private void setLoginNaverBO(LoginNaverBO loginNaverBO) {
@@ -101,15 +108,16 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/success.do")
-	public String success(HttpServletRequest request, RedirectAttributes redirectAttributes, HttpSession session, Model model) {
+	public String success(HttpServletRequest request, RedirectAttributes redirectAttributes, HttpSession session,
+			Model model) {
 		logger.info("[success.do]");
-		
+
 		String referer = request.getHeader("Referer");
-		
+
 		logger.info(referer);
-		
-		if(referer.contains("broadDetail.do")) {
-			return "redirect:"+ referer;			
+
+		if (referer.contains("broadDetail.do")) {
+			return "redirect:" + referer;
 		}
 		return "main/main";
 	}
@@ -188,28 +196,260 @@ public class MemberController {
 			throws IOException, InterruptedException, ExecutionException {
 
 		// 로그인 사용자 정보를 읽어온다.
-		OAuth2AccessToken oauthToken = loginnaverBO.getAccessToken(session, code, state);
-		apiResult = loginnaverBO.getUserProfile(oauthToken);
+		OAuth2AccessToken oauthToken = loginNaverBO.getAccessToken(session, code, state);
+		String apiResult = loginNaverBO.getUserProfile(oauthToken);
 
 		logger.info(" apiResult : " + apiResult);
 
 		JsonObject object = JsonParser.parseString(apiResult).getAsJsonObject().get("response").getAsJsonObject();
 
-		return "main/main";
+		MemberDto naverdto = new MemberDto();
 
+		naverdto.setMember_id(object.get("email").toString().split("\"")[1]);
+		naverdto.setMember_pw(object.get("id").toString().split("\"")[1]);
+		naverdto.setMember_email(object.get("email").toString().split("\"")[1]);
+		naverdto.setMember_name(object.get("name").toString().split("\"")[1]);
+
+		logger.info(">>>naverdto :" + naverdto);
+
+		MemberDto res = memberBiz.selectOne(naverdto);
+		if (res == null) {
+			session.setAttribute("snsinfo", naverdto);
+
+			return "regist/snsregist";
+		} else {
+
+			session.setAttribute("logindto", res);
+
+			return "main/main";
+		}
 	}
 
-	@RequestMapping(value = "/gcallback.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/gcallback.do", method = RequestMethod.GET)
 	public String googlecallback(@RequestParam String code, @RequestParam String state, HttpSession session)
 			throws IOException, InterruptedException, ExecutionException {
 
 		logger.info(">> [CONTROLLER-USERINFO] GOOGLE callback");
-
+		// 사용자 정보 받아옴.
 		OAuth2AccessToken oauthToken = logingoogleBO.getAccessToken(session, code, state);
-		apiResult = logingoogleBO.getUserProfile(oauthToken);
-		logger.info("* api result : " + apiResult);
+		logger.info("@@@@ session : " + session + "  code : " + code + "   state : " + state);
 
-		return "main/main";
+		String google = logingoogleBO.getUserProfile(oauthToken);
+		logger.info("@@@ apiResult : " + google);
+
+		MemberDto googledto = new MemberDto();
+
+		JsonObject object = JsonParser.parseString(google).getAsJsonObject();
+
+		googledto.setMember_id(object.get("email").toString().split("\"")[1]);
+		googledto.setMember_pw(object.get("email").toString().split("\"")[1]);
+		googledto.setMember_email(object.get("email").toString().split("\"")[1]);
+		googledto.setMember_name(object.get("name").toString().split("\"")[1]);
+
+		MemberDto result = memberBiz.selectOne(googledto);
+
+		if (result == null) {
+			session.setAttribute("snsinfo", googledto);
+
+			return "regist/snsregist";
+		} else {
+			session.setAttribute("logindto", result);
+			return "main/main";
+		}
+	}
+
+	// 아이디 비밀번호 찾기 창으로
+	@RequestMapping(value = "/findForm.do")
+	public String Find() {
+
+		return "find/find";
+	}
+
+	// 아이디 찾는 창
+	@RequestMapping(value = "/idchk.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> id(@RequestBody MemberDto dto, HttpSession session, Model model) {
+		logger.info(">>>>>>>>[id.chk.do]");
+
+		logger.info("NAME" + dto.getMember_name());
+		logger.info("PHONE" + dto.getMember_phone());
+
+		MemberDto res = memberBiz.idfind(dto);
+		logger.info("[res]>>>>>" + res);
+
+		boolean check = false;
+		// 입력받은 값이 있다면
+		Map<String, Object> map = new HashMap<String, Object>();
+		if (res != null) {
+
+			map.put("member_id", res.getMember_id());
+			check = true;
+
+		}
+
+		map.put("check", check);
+
+		return map;
+
+	}
+	   //아이디 찾기 후 리턴 
+	   @RequestMapping(value = "/goid.do")
+	   public String goid(MemberDto dto, HttpSession session, Model model) {
+	      logger.info(">>>>>goid.do");
+	      
+	      
+	      return "find/find";
+	   }
+
+	// sns 로그인
+	@RequestMapping(value = "/snsjoin.do", method = { RequestMethod.POST, RequestMethod.GET })
+	public String snsjoin(MemberDto dto, Model model, String member_addr1, String member_addr2, String member_addr3) {
+		logger.info(">>>[SNS sign up]");
+
+		String member_addr = member_addr1 + " " + member_addr2 + " " + member_addr3;
+		dto.setMember_addr(member_addr);
+
+		int res = memberBiz.snsjoin(dto);
+
+		if (res > 0) {
+
+			model.addAttribute("msg", "회원가입을 축하드립니다. 로그인해주세요!");
+			model.addAttribute("url", "/loginForm.do");
+
+			return "redirect";
+		} else {
+			model.addAttribute("msg", "회원가입에 실패하셨습니다.");
+
+			return "login/login";
+		}
+	}
+	// 비밀번호 찾기
+
+	@RequestMapping(value = "/pwchk.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> pw(@RequestBody MemberDto dto, HttpSession session, Model model) {
+		logger.info(">>>>>>>>[pw.chk.do]");
+
+		logger.info("ID    " + dto.getMember_id());
+		logger.info("EMAIL   " + dto.getMember_email());
+
+		String member_email = dto.getMember_email();
+
+		MemberDto res = memberBiz.pwfind(dto);
+		logger.info("[res]>>>>>" + res);
+
+		boolean check = false;
+		// 입력받은 값이 있다면
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		if (res != null) {
+
+			map.put("member_id", res.getMember_id());
+			map.put("member_email", res.getMember_email());
+			check = true;
+
+		}
+
+		RandomCode randomcode = new RandomCode();
+		// 랜덤코드를 생성해주는 메소드 호출
+		String ran = randomcode.excuteGenerate();
+		logger.info("1." + ran);
+		session.setAttribute("pw", ran);
+		String subject = "비밀번호 찾기 인증 코드 발급 안내입니다.";
+		StringBuilder sb = new StringBuilder();
+		sb.append("귀하의 인증 코드는 " + ran + " 입니다.");
+		// 이메일 전송
+		mailService.send(subject, sb.toString(), "dywjdal1995@naver.com", member_email, null, ran);
+		System.out.println(ran);
+		// 발송된 랜덤코드 리턴
+
+		map.put("check", check);
+		map.put("ran", ran);
+
+		return map;
+
+	}
+
+	// 비밀번호 변경창으로
+	@RequestMapping(value = "/pwupdate.do")
+	public String pwupdate(Model model, String member_id, HttpSession session) {
+
+		logger.info("member_id :" + member_id);
+
+		session.getAttribute(member_id);
+		model.addAttribute("member_id", member_id);
+
+		logger.info(">>>>> Controller PWupdate");
+
+		return "find/pwupdate";
+
+	}
+
+	// 비밀번호 변경 팝업창
+	@RequestMapping(value = "/pwupdateres.do", method = { RequestMethod.POST, RequestMethod.GET })
+	public String pwupdateres(@RequestParam(value = "member_id") String member_id,
+			@RequestParam(value = "member_pw") String member_pw, Model model, HttpSession session) {
+
+		MemberDto member = new MemberDto();
+
+		member.setMember_id(member_id);
+		member.setMember_pw(member_pw);
+
+		logger.info(">>>ID : " + member.getMember_id());
+		logger.info(">>>PW : " + member.getMember_pw());
+
+		int res = memberBiz.pwupdate(member);
+
+		if (res > 0) {
+			model.addAttribute("msg", "변경완료!");
+			model.addAttribute("url", "/loginForm.do");
+			return "redirect";
+
+		} else {
+			model.addAttribute("msg", "변경실패..");
+
+			return "find/pwupdate";
+		}
+
+	}
+
+	// USER 회원정보수정
+	@RequestMapping(value = "/userupdate.do", method = { RequestMethod.POST, RequestMethod.GET })
+	@ResponseBody
+	public Map<String, Boolean> userupdate(@RequestBody MemberDto dto, Model model, HttpSession session) {
+
+		logger.info("!!!!DTO : " + dto);
+
+		int res = memberBiz.userupdate(dto);
+
+		logger.info(">>>> updateDto : " + dto);
+
+		logger.info(">>>USER RES : " + res);
+
+		MemberDto rdto = new MemberDto();
+
+		rdto.setMember_id(dto.getMember_id());
+		rdto.setMember_pw(dto.getMember_pw());
+		rdto.setMember_email(dto.getMember_email());
+		rdto.setMember_nickname(dto.getMember_nickname());
+		rdto.setMember_addr(dto.getMember_addr());
+		rdto.setMember_phone(dto.getMember_phone());
+		rdto.setMember_role(dto.getMember_role());
+
+		System.out.println(rdto.getMember_role() + "확");
+
+		boolean check = false;
+		// 입력받은 값이 있다면
+		if (res > 0) {
+			session.setAttribute("logindto", rdto);
+
+			check = true;
+		}
+
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		map.put("check", check);
+
+		return map;
 	}
 
 }

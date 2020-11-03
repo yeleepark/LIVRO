@@ -42,5 +42,38 @@ public class MemberBizImpl implements MemberBiz {
 	public MemberDto encryptchk(String member_id) {
 		return memberDao.encryptchk(member_id);
 	}
+	
+	 
+    // 아이디 찾기
+    @Override
+    public MemberDto idfind(MemberDto dto) {
+       return memberDao.idfind(dto);
+    }
+    
+    //비밀번호 찾기
+   @Override
+   public MemberDto pwfind(MemberDto dto) {
+      return memberDao.pwfind(dto);
+   }
+
+   //sns 회원가입
+   @Override
+   public int snsjoin(MemberDto dto) {
+      return memberDao.snsjoin(dto);
+   }
+
+   //USER 정보 수정
+   @Override
+   public int userupdate(MemberDto dto) {
+   
+      return memberDao.userupdate(dto);
+   }
+
+   //PW update
+   @Override
+   public int pwupdate(MemberDto dto) {
+      
+      return memberDao.pwupdate(dto);
+   }
 
 }

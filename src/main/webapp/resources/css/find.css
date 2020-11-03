@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+*{
+    margin : 0px;
+    padding : 0px;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body{
+    max-width: 1920px;
+}
+
+/* 로그인 */
+section{
+   width: 100%;
+    height: 100vh;
+    background-image: url('../img/BG.jpg');
+    background-size : cover;
+}
+
+.id-wrapper{
+    padding : 60px;
+    width : 320px;
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top : 50%;
+    left : 35%;
+    transform : translate(-50%, -50%);
+}
+
+.pw-wrapper{
+    padding : 60px;
+    width : 320px;
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top : 50%;
+    left : 60%;
+    transform : translate(-50%, -50%);
+}
+
+
+
+.id-wrapper h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.pw-wrapper h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+
+.id-wrapper input[type="text"],
+input[type="password"]{
+    width : 200px;
+    padding : 5px 10px;
+    margin-bottom: 10px;
+}
+
+.pw-wrapper input[type="text"],
+input[type="password"]{
+    width : 200px;
+    padding : 5px 10px;
+    margin-bottom: 10px;
+}
+
+.id-wrapper input[type="text"]::placeholder,
+input[type="password"]::placeholder{
+    font-family: "Font Awesome 5 Free";
+}
+
+.pw-wrapper input[type="text"]::placeholder,
+input[type="password"]::placeholder{
+    font-family: "Font Awesome 5 Free";
+}
+
+.pw2-wrapper input[type="password"]::placeholder,
+input[type="password"]::placeholder{
+    font-family: "Font Awesome 5 Free";
+}
+
+.id-wrapper input[type="text"]:focus::placeholder,
+input[type="password"]:focus::placeholder{
+    color : white;
+}
+
+.pw-wrapper input[type="text"]:focus::placeholder,
+input[type="password"]:focus::placeholder{
+    color : white;
+}
+
+.pw2-wrapper input[type="text"]:focus::placeholder,
+input[type="password"]:focus::placeholder{
+    color : white;
+}
+#idBtn{
+    background-color: transparent;
+    border: 1px solid black;
+    padding : 5px 20px;
+    width : 200px;
+    padding : 5px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#pwBtn{
+    background-color: transparent;
+    border: 1px solid black;
+    padding : 5px 20px;
+    width : 200px;
+    padding : 5px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#idBtn + span{
+    display: flex;
+    justify-content: space-between;
+}
+
+#pwBtn + span{
+    display: flex;
+    justify-content: space-between;
+}
+
+#idBtn + span a{
+    font-size: 0.5rem;
+    color : black;
+}
+
+#pwBtn + span a{
+    font-size: 0.5rem;
+    color : black;
+}
+
+.chkBtn {
+   background-color: transparent;
+   border: 1px solid black;
+   padding: 5px 20px;
+   margin-bottom: 10px;
+   cursor: pointer;
+   text-align: center;
+}
+
+
+
+
+
+
+.pw {
+    padding : 60px;
+    width : 320px;
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%, -50%);
+}
+
+
+
+
+
+.pw h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+.pw input[type="text"], input[type="password"] {
+    width : 200px;
+    padding : 5px 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.pw input[type="text"]::placeholder, 
+input[type="password"]::placeholder{
+    font-family: "Font Awesome 5 Free";
+}
+
+
+
+.pw input[type="text"]:focus::placeholder,
+input[type="password"]:focus::placeholder{
+    color : white;
+}
+
+
