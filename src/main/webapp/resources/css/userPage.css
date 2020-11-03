@@ -120,6 +120,9 @@ section{
 #tab-2 label{
 	display: block;
 }
+.mypage-container{
+	padding-top: 80px;
+}
 
 /* 팔로우 목록 */
 

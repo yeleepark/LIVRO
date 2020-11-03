@@ -9,9 +9,10 @@
 		SELECT *
 		FROM MEMBER
 		WHERE MEMBER_ID = #{member_id}
-		AND MEMBER_PW = #{member_pw}
+		AND
+		MEMBER_PW = #{member_pw}
 	</select>
-	
+
 	<!--암호화 여부 확인 -->
 	<select id="encryptchk" resultType="MemberDto">
 		SELECT MEMBER_ID, MEMBER_PW
@@ -36,7 +37,8 @@
 	<select id="idChk" resultType="int">
 		SELECT COUNT(*)
 		FROM MEMBER
-		WHERE MEMBER_ID = #{member_id}
+		WHERE
+		MEMBER_ID = #{member_id}
 	</select>
 
 
@@ -47,6 +49,55 @@
 		WHERE
 		MEMBER_NICKNAME = #{member_nickname}
 	</select>
+	<!-- 아이디 찾기 -->
+	<select id="idfind" parameterType="MemberDto"
+		resultType="MemberDto">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_NAME = #{member_name}
+		AND MEMBER_PHONE = #{member_phone}
+	</select>
+
+	<!-- 비밀번호 찾기 -->
+	<select id="pwfind" parameterType="MemberDto"
+		resultType="MemberDto">
+		SELECT MEMBER_ID, MEMBER_EMAIL
+		FROM MEMBER
+		WHERE MEMBER_ID = #{member_id}
+		AND MEMBER_EMAIL = #{member_email}
+	</select>
+
+	<!-- SNS 회원가입 -->
+	<insert id="snsjoin" parameterType="MemberDto">
+		INSERT INTO MEMBER(member_id,member_pw,member_no, member_name,
+		member_nickname,
+		member_addr, member_email, member_phone, member_regdate)
+		VALUES(
+		#{member_id}, #{member_pw},MEMBER_NO_SEQ.NEXTVAL,
+		#{member_name}, #{member_nickname},
+		#{member_addr}, #{member_email},
+		#{member_phone}, SYSDATE
+		)
+	</insert>
+
+	<!--info update -->
+	<update id="userupdate" parameterType="MemberDto">
+		UPDATE MEMBER
+		SET MEMBER_PW = #{member_pw},
+		MEMBER_NICKNAME = #{member_nickname},
+		MEMBER_ADDR = #{member_addr},
+		MEMBER_EMAIL = #{member_email},
+		MEMBER_PHONE = #{member_phone}
+		WHERE MEMBER_ID = #{member_id}
+
+	</update>
+
+	<!--pw update -->
+	<update id="pwupdate" parameterType="MemberDto">
+		UPDATE MEMBER
+		SET MEMBER_PW = #{member_pw}
+		WHERE MEMBER_ID = #{member_id}
+	</update>
 
 
 </mapper>
