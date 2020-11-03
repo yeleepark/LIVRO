@@ -1,5 +1,6 @@
 package com.kh.livro.bizImpl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class DonationBizImpl implements DonationBiz {
 	}
 
 	@Override
-	public List<DonationDto> selectAmountById(String member_id) {
+	public List<HashMap<String, Object>> selectAmountById(String member_id) {
 		return donationDao.selectAmountById(member_id);
 	}
 	
