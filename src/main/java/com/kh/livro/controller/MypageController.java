@@ -1,5 +1,7 @@
 package com.kh.livro.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.kh.livro.biz.ArtistBiz;
 import com.kh.livro.biz.DonationBiz;
 import com.kh.livro.biz.MypageBIz;
+import com.kh.livro.dto.DonationDto;
 
 @Controller
 public class MypageController {
@@ -33,7 +36,6 @@ public class MypageController {
 	public String userPage(Model model, String member_id) {
 		model.addAttribute("profiledto", mypageBiz.selectProfile(member_id));
 		model.addAttribute("followdto", mypageBiz.showFollow(member_id));
-		model.addAttribute("donationdto", donationBiz.selectAmountById(member_id));
 		return "mypage/userPage";
 	}
 

@@ -22,10 +22,11 @@
 		WHERE DONA_ID = #{dona_no}
 	</delete>
 	
-	<select id="selectAmountById" parameterType="String" resultType="DonationDto">
-		SELECT DONA_ID,SUM(DONA_PRICE) DONA_PRICE
+	
+	<select id="selectAmountById" parameterType="String" resultType="HashMap">
+		SELECT DONA_ID, SUM(DONA_PRICE) AS DONA_PRICE
 		FROM DONATION
 		WHERE MEMBER_ID = #{member_id}
-		GROUP BY DONA_ID;
+		GROUP BY DONA_ID
 	</select>
 </mapper>

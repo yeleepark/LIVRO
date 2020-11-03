@@ -1,6 +1,7 @@
 package com.kh.livro.daoImpl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -48,8 +49,8 @@ public class DonationDaoImpl implements DonationDao {
 	}
 
 	@Override
-	public List<DonationDto> selectAmountById(String member_id) {
-		List<DonationDto> list = new ArrayList<>();
+	public List<HashMap<String, Object>> selectAmountById(String member_id) {
+		List<HashMap<String, Object>> list = new ArrayList<>();
 		
 		try {
 			list = sqlSession.selectList(NAMESPACE + "selectAmountById", member_id);
@@ -57,7 +58,7 @@ public class DonationDaoImpl implements DonationDao {
 			logger.info("[ERROR] Donation selectAmountById");
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 	

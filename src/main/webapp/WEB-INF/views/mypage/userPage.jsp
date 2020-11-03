@@ -13,6 +13,7 @@
 <!-- google font -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <title>Insert title here</title>
+<script src="resources/js/userPageChartAjax.js"></script>
 </head>
 <body>
 
@@ -94,18 +95,15 @@
 				<div class="tab-4-container">
 					<div class="tab-4-left">
 						<div class="tab-4-1">
-							<div>
-								<span>총후원금액</span>
+							<div class="tab-4-1-1">
+								<span id="totalPrice">총후원금액</span>
 							</div>
-							<div id="donaAll">dddd</div>
+							<div id="donaAll" class="tab-4-1-2"></div>
 						</div>
 						<div class="tap-4-2">
-							<c:forEach items="${donaUserList }" var="donaDto">
-								<input type="hidden" value="${donaDto.dona_no }">
-							</c:forEach>
-							<input type="button" onclick="myCharts();" value="수평바">
-							<input type="button" onclick="myCharts_1();" value="수직바">
-							<input type="button" onclick="myCharts_2();" value="파이">
+							<input type="button" onclick="horizonBar(chartData)" value="수직바">
+							<input type="button" onclick="bar(chartData);" value="수평바">
+							<input type="button" onclick="pie(chartData);" value="파이">
 							<input type="hidden" name="member_nickname" value="${logindto.member_nickname}">
 							<div class="myCharts">
 							<canvas id="myChart" class="chartjs">
@@ -120,6 +118,7 @@
 			
 		</div>
 	</section>
+	<script src="resources/js/userPageChart.js"></script>
 	<script>
 		$(document).ready(function() {
 
@@ -154,8 +153,6 @@
             window.open("profileForm.do", "insert",
                     "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
         	}
-		
-
 	</script>
 </body>
 </html>
