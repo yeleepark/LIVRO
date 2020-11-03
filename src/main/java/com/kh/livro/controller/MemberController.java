@@ -45,7 +45,6 @@ public class MemberController {
 
 	@Autowired
 	private LoginGoogleBO logingoogleBO;
-	private String apiResult = null;
 
 	@Autowired
 	private MailService mailService;
@@ -196,8 +195,8 @@ public class MemberController {
 			throws IOException, InterruptedException, ExecutionException {
 
 		// 로그인 사용자 정보를 읽어온다.
-		OAuth2AccessToken oauthToken = loginNaverBO.getAccessToken(session, code, state);
-		String apiResult = loginNaverBO.getUserProfile(oauthToken);
+		OAuth2AccessToken oauthToken = loginnaverBO.getAccessToken(session, code, state);
+		String apiResult = loginnaverBO.getUserProfile(oauthToken);
 
 		logger.info(" apiResult : " + apiResult);
 
