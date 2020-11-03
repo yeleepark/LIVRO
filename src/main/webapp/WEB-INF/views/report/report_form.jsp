@@ -15,12 +15,12 @@
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
 	<div id="bigdiv">
-	<h1>${broad_nickname } 님 신고하기</h1>
+	<h1>${receive_nickname} 님 신고하기</h1>
 		<form action="reportinsert.do" method="post">
 			<input type="hidden" name="send_id" value="${logindto.member_id }">
 			<input type="hidden" name="send_nickname" value="${logindto.member_nickname }">
-			<input type="hidden" name="receive_id" value="${broad_id }">
-			<input type="hidden" name="receive_nickname" value="${broad_nickname }">
+			<input type="hidden" name="receive_id" value="${receive_id }">
+			<input type="hidden" name="receive_nickname" value="${receive_nickname }">
 				<div>
 					<label for="report_title"></label>
 					<select name="report_title">

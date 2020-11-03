@@ -66,8 +66,6 @@ nextBtn.addEventListener('click', () => {
 	printMonth.innerHTML = currentMonth;
 });
 
-
-
 // 캘린더 아이디 - 아티스트 별로 캘린더 생성
 calendar.setCalendars([
 	{
@@ -79,8 +77,6 @@ calendar.setCalendars([
 		borderColor: '#ff5583'
 	}
 ]);
-
-
 
 // 일정생성
 calendar.on('beforeCreateSchedule', scheduleData => {
@@ -180,14 +176,23 @@ calendar.on('beforeDeleteSchedule', scheduleData => {
 
 // 팝업 디테일 - 리스트 출력 완료
 for (var i = 0; getCalNo.length; i++){
+	
+	var startDate = parseDate(getCalStart[i].value);
+	var endDate = parseDate(getCalEnd[i].value);
+	
 	calendar.createSchedules([
 		{
 			id: getCalNo[i].value, // 스케쥴 번호 (시퀀스)
 			calendarId: getMemberId[i].value, // 테이블 번호 (즉 아티스트 아이디)
 			title: getCalTitle[i].value, // 일정 타이틀
 			category: 'time', // 일반 일정 디폴트 값 time
-			start: getCalStart[i].value, // 시작 시간
-			end: getCalEnd[i].value  // 끝나는 시간
+			start: startDate, // 시작 시간
+			end: endDate  // 끝나는 시간
 		}
 	]);
+}
+
+function parseDate(str){
+	var date = new Date (str.replace("KST", "GMT+0900"));
+	return date;
 }

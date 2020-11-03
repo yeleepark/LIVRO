@@ -450,6 +450,7 @@ ul.tabs li.tabCurrent {
 
 .live-row{
 	margin-bottom: 10px;
+	border : 1px solid black;
 }
 
 .live-row a{
@@ -531,7 +532,6 @@ ul.tabs li.tabCurrent {
 
 
 /* 지도 */
-
 .map-container{
 	width : 100%;
 	padding : 20px;

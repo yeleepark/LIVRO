@@ -151,7 +151,8 @@
 									<div class="rows">
 										<!-- 첫줄 -->
 										<div class="rows-left">
-											<p>${support.member_nickname }</p>
+											<p class="writerNick">${support.member_nickname }</p>
+											<input type="hidden" value="${support.member_id }" class="writerId">
 										</div>
 										<div class="rows-center">
 											<textarea class="change" readonly="readonly">${support.support_content }</textarea>
@@ -165,6 +166,9 @@
 												<input type="button" value="완료" class="updateRes">
 												<input type="button" value="삭제" class="deleteBtn">
 												<input type="hidden" value="${support.support_no }" class="supportNo">
+											</c:if>
+											<c:if test="${logindto.member_id == support.member_id }">
+												<input type="button" value="신고" class="reportBtn" onclick="report(this);">
 											</c:if>
 										</div>
 										<!-- 두번째줄 -->

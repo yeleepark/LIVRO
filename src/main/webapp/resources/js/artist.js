@@ -85,3 +85,6 @@ function updateProfile(){
     window.open("updateForm.do", "insert",
                 "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
 }
+
+
+
