@@ -245,17 +245,7 @@ public class ArtistDaoImpl implements ArtistDao {
 		return res;
 	}
 
-	@Override
-	public List<FollowerDto> followFlag(String member_id) {
-		List<FollowerDto> list = new ArrayList<FollowerDto>();
-
-		try {
-			list = sqlSession.selectList(NAMESPACE + "followFlag", member_id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
+	
 
 	@Override
 	public int unfollow(FollowDto dto) {
@@ -278,6 +268,19 @@ public class ArtistDaoImpl implements ArtistDao {
 			e.printStackTrace();
 		}
 		return res;
+	}
+
+	@Override
+	public List<FollowerDto> followerList(String member_id) {
+		List<FollowerDto> list = new ArrayList<FollowerDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"followerList", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 }

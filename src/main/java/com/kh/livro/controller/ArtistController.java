@@ -41,7 +41,7 @@ public class ArtistController {
 		model.addAttribute("profiledto", artistBiz.selectProfile(member_id));
 		model.addAttribute("broaddto", artistBiz.broadList(member_id));
 		model.addAttribute("caldto", artistBiz.calList(member_id));
-		model.addAttribute("followerdto", artistBiz.followFlag(member_id));
+		model.addAttribute("dto", artistBiz.followerList(member_id));
 		return "artist/artist";
 	}
 

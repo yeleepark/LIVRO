@@ -23,7 +23,7 @@
 		WHERE FOLLOWER_ID = #{follower_id} AND MEMBER_ID = #{member_id}
 	</delete>
 	
-	<select id="followFlag" resultType="FollowerDto">
+	<select id="followerList" resultType="FollowerDto">
 		SELECT *
 		FROM FOLLOWER
 		WHERE MEMBER_ID = #{member_id}

@@ -10,6 +10,24 @@ public class FollowerDto {
 	private String follower_id;
 	private String follower_nickname;
 	private Date follower_date;
+	private int rank;
+	private int count;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
 
 	public FollowerDto() {
 		super();
