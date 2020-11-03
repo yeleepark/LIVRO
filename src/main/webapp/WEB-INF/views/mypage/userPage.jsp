@@ -52,25 +52,34 @@
 				</div>
 			</div>
 			
-			<!-- 회원 정보 수정 탭 -->
-			<div class="tab-content " id="tab-2">
-				<h2><i class="fas fa-lock"></i> 정보수정</h2>
-				<div class="tab-2-container">
-					<div class="tab-2-left">
-						<label for ="member_id">아이디</label>
-						<input type="text" name="member_id" value="${logindto.member_id }" readonly="readonly">
-						<label for ="member_nickname">닉네임</label>
-						<input type="text" name="member_nickname" value="${logindto.member_id }">
-						<label for ="member_email">이메일</label>
-						<input type="text" name="member_email" value="${logindto.member_email }">
-						<label for ="member_addr">주소</label>
-						<input type="text" name="member_addr" value="${logindto.member_addr }">
-						<label for ="member_phone">전화번호</label>
-						<input type="text" name="member_phone" value="${logindto.member_phone }">
-						<input type="button" value="수정">
-					</div>
-				</div>
-			</div>
+<!-- 회원 정보 수정 탭 -->
+         <div class="tab-content " id="tab-2">
+            <h2><i class="fas fa-lock"></i> 정보수정</h2>
+            <div class="tab-2-container">
+               <div class="tab-2-left">
+                  <label for ="member_id">아이디</label>
+                  <input type="text" name="member_id" id="member_id" value="${logindto.member_id }" readonly="readonly"/>
+                  
+                  <label for ="member_pw">비밀번호</label>
+                  <input type="password" name="member_pw" id="member_pw" value="${logindto.member_pw }" />
+                  
+                  <label for ="member_nickname">닉네임</label>
+                  <input type="text" name="member_nickname" id="member_nickname" value="${logindto.member_nickname }"/>
+                  
+                  <label for ="member_email">이메일</label>
+                  <input type="text" name="member_email" id="member_email" value="${logindto.member_email }"/>
+                  
+                  <label for ="member_addr">주소</label>
+                  <input type="text" name="member_addr" id="member_addr" value="${logindto.member_addr }"/>
+                  <input type="hidden" name="memebr_role" id="member_role" value="${logindto.member_role }">
+                  <label for ="member_phone">전화번호</label>
+                  <input type="text" name="member_phone" id="member_phone" value="${logindto.member_phone } "/>
+                  <div id="upcheck"></div>
+                  <input type="button" value="수정" onclick="userup()"/>
+               </div>
+            </div>
+         </div>
+
 			
 			<!-- 팔로우 목록 탭 -->
 			<div class="tab-content" id="tab-3">
@@ -120,7 +129,12 @@
 	</section>
 	<script src="resources/js/Chart.js"></script>
 	<script>
+	   $(function(){
+	         $("#upcheck").hide();
+	      });
+
 		$(document).ready(function() {
+		 
 
 			$('ul.tabs li').click(function() {
 				var tab_id = $(this).attr('data-tab');
@@ -153,6 +167,45 @@
             window.open("profileForm.do", "insert",
                     "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
         	}
+		   function userup(){
+	            
+	           var userVal = {
+	                  "member_id" : $("#member_id").val().trim(),
+	                  "member_pw" : $("#member_pw").val(),
+	                  "member_nickname" : $("#member_nickname").val(),
+	                  "member_email" : $("#member_email").val(),
+	                  "member_addr" : $("#member_addr").val(),
+	                  "member_phone" : $("#member_phone").val(),
+	                  "member_role" : $("#member_role").val()
+	            };
+	           console.log(userVal);
+	            
+	               $.ajax({
+	                   type : "post",
+	                   url : "userupdate.do",
+	                   data : JSON.stringify(userVal),
+	                   contentType : "application/json",
+	                   dataType : "json",
+	                   success : function(msg){
+	                     if(msg.check == true){
+	                         console.log(msg.check);
+	                         alert("정보 수정 완료!");
+	                         location.href = 'mypageIndex.do'
+	                      
+	                      }else{ 
+	                         $("#upchk").show();
+	                         $("#upchk").html("정보수정 실패").css({
+	                           'color' : 'red',
+	                           'font-size' : '13px'
+	                         });
+	                      }
+	                   },
+	                   
+	                   
+	                  });
+	         
+	            
+	       }
 	</script>
 </body>
 </html>
