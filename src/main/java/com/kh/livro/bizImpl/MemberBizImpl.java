@@ -75,5 +75,12 @@ public class MemberBizImpl implements MemberBiz {
       
       return memberDao.pwupdate(dto);
    }
+   
+   //USER 정보 수정
+   @Override
+   public int arupdate(MemberDto dto) {
+   
+      return memberDao.arupdate(dto);
+   }
 
 }

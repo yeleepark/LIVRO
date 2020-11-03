@@ -29,22 +29,24 @@
 				<li class="tab-link" data-tab="tab-5">후원받은조회</li>
 			</ul>
 			
-			<!-- 회원 정보 수정 탭 -->
+		<!-- 회원 정보 수정 탭 -->
 			<div class="tab-content current" id="tab-1">
 				<h2><i class="fas fa-lock"></i> 정보수정</h2>
 				<div class="tab-1-container">
 					<div class="tab-1-left">
 						<label for ="member_id">아이디</label>
-						<input type="text" name="member_id" value="${logindto.member_id }" readonly="readonly">
+						<input type="text" name="member_id" id="member_id" value="${logindto.member_id }" readonly="readonly">
 						<label for ="member_nickname">닉네임</label>
-						<input type="text" name="member_nickname" value="${logindto.member_id }">
+						<input type="text" name="member_nickname" id="member_nickname" value="${logindto.member_id }">
 						<label for ="member_email">이메일</label>
-						<input type="text" name="member_email" value="${logindto.member_email }">
+						<input type="text" name="member_email" id="member_email" value="${logindto.member_email }">
 						<label for ="member_addr">주소</label>
-						<input type="text" name="member_addr" value="${logindto.member_addr }">
+						<input type="text" name="member_addr" id="member_addr" value="${logindto.member_addr }">
 						<label for ="member_phone">전화번호</label>
-						<input type="text" name="member_phone" value="${logindto.member_phone }">
-						<input type="button" value="수정">
+						<input type="text" name="member_phone" id="member_phone" value="${logindto.member_phone }">
+						 <div id="archeck"></div>
+						<input type="hidden" name="memebr_role" id="member_role" value="${logindto.member_role }">
+						<input type="button" value="수정" onclick="arup()"/>
 					</div>
 					<div class="tab-1-right">
 						<p>프로필 사진</p>
@@ -124,6 +126,10 @@
 	</section>
 	<script src="resources/js/Chart.js"></script>
 	<script>
+		$(function(){
+			$("#archeck").hide();
+		});
+	
 		$(document).ready(function() {
 
 			$('ul.tabs li').click(function() {
@@ -143,6 +149,45 @@
 	           window.open("updateForm.do", "insert",
 	                       "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
 		}
+		
+		 function arup(){
+	            
+	           var arVal = {
+	                  "member_id" : $("#member_id").val(),
+	                  "member_nickname" : $("#member_nickname").val(),
+	                  "member_email" : $("#member_email").val(),
+	                  "member_addr" : $("#member_addr").val(),
+	                  "member_phone" : $("#member_phone").val(),
+	                  "member_role" : $("#member_role").val()
+	            };
+	           console.log(arVal);
+	            
+	               $.ajax({
+	                   type : "post",
+	                   url : "arupdate.do",
+	                   data : JSON.stringify(arVal),
+	                   contentType : "application/json",
+	                   dataType : "json",
+	                   success : function(msg){
+	                     if(msg.check == true){
+	                         console.log(msg.check);
+	                         alert("정보 수정 완료!");
+	                         location.href = 'mypageIndex.do'
+	                      
+	                      }else{ 
+	                         $("#archeck").show();
+	                         $("#upcheck").html("정보수정 실패").css({
+	                           'color' : 'red',
+	                           'font-size' : '13px'
+	                         });
+	                      }
+	                   },
+	                   
+	                   
+	                  });
+	         
+	            
+	       }
 
 	</script>
 </body>

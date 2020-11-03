@@ -35,4 +35,7 @@ public interface MemberBiz {
 
 	// USER 정보수정
 	public int userupdate(MemberDto dto);
+	
+	// Artist 정보수정
+	public int arupdate(MemberDto dto);
 }
