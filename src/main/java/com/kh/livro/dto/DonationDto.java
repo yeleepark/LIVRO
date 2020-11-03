@@ -8,18 +8,18 @@ public class DonationDto {
 	private String member_id;
 	private String dona_price;
 	private Date dona_date;
-	private String dona_id;
+	private String dona_nickname;
 	
 	public DonationDto() {
 		
 	}
-	
-	public DonationDto(int dona_no, String member_id, String dona_price, Date dona_date, String dona_id) {
+
+	public DonationDto(int dona_no, String member_id, String dona_price, Date dona_date, String dona_nickname) {
 		this.dona_no = dona_no;
 		this.member_id = member_id;
 		this.dona_price = dona_price;
 		this.dona_date = dona_date;
-		this.dona_id = dona_id;
+		this.dona_nickname = dona_nickname;
 	}
 
 	public int getDona_no() {
@@ -54,13 +54,14 @@ public class DonationDto {
 		this.dona_date = dona_date;
 	}
 
-	public String getDona_id() {
-		return dona_id;
+	public String getDona_nickname() {
+		return dona_nickname;
 	}
 
-	public void setDona_id(String dona_id) {
-		this.dona_id = dona_id;
+	public void setDona_nickname(String dona_nickname) {
+		this.dona_nickname = dona_nickname;
 	}
-
+	
+	
 	
 }

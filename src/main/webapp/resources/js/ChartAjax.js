@@ -13,7 +13,7 @@ window.addEventListener('load', () =>{
 			var donaAll = document.getElementById('donaAll');
 			var a = 0;
 			for(var key in list){
-				chartData.data.labels.push(list[key].DONA_ID);
+				chartData.data.labels.push(list[key].DONA_NICKNAME);
 				chartData.data.datasets[0].data.push(list[key].DONA_PRICE);
 				a += list[key].DONA_PRICE;
 			}
