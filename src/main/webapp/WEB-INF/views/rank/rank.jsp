@@ -18,6 +18,7 @@
 		<c:forEach items="${rankdto }" var="rank">
 		<div>
 			아이디 : <input type="text" value="${rank.member_id }" class="top3id">
+			아이디 : <input type="text" value="${rank.member_nickname }" class="top3nickname">
 			순위 : <input type="text" value="${rank.rank }">
 			팔로워 수 : <input type="text" value="${rank.count }" class="top3count">
 		</div>

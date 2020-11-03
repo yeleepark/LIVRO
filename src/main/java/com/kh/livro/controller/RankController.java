@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.kh.livro.biz.RankBiz;
 
 @Controller
-public class FollowController {
+public class RankController {
 
 	@Autowired
 	private RankBiz followBiz;

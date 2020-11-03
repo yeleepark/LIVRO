@@ -3,12 +3,18 @@
 <mapper namespace="rank">
 
 	<select id="rank" resultType="FollowerDto">
-		SELECT MEMBER_ID, count, RANK() OVER(ORDER BY count DESC) AS rank
-		FROM(
-				SELECT MEMBER_ID, COUNT(*) AS count
-				FROM FOLLOWER
-				GROUP BY MEMBER_ID
-				)
+	<![CDATA[ 
+		SELECT B.MEMBER_ID, B.MEMBER_NICKNAME, B.count, B.rank
+		FROM (
+					SELECT A.MEMBER_ID, A.MEMBER_NICKNAME, A.count, DENSE_RANK() OVER(ORDER BY count DESC) AS rank
+					FROM(
+							SELECT MEMBER_ID, MEMBER_NICKNAME, COUNT(*) AS count
+							FROM FOLLOWER
+							GROUP BY MEMBER_ID,MEMBER_NICKNAME 
+							)A
+			)B
+		WHERE B.rank < 4
+	]]> 
 	</select>
 	
 </mapper>
