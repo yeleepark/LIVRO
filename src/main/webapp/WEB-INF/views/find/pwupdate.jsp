@@ -11,7 +11,10 @@
 <script src="https://kit.fontawesome.com/d28db34e8b.js"
    crossorigin="anonymous" defer></script>
 <script type="text/javascript">
-   
+
+//비밀번호 정규식 (영문, 숫자, 특문 반드시 포함 / 공백 x / 8~20자리)
+var pwR = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+
 var member_id = $("#member_id").val();
 
 window.onload=function(){
@@ -22,6 +25,26 @@ window.onload=function(){
       self.close(); //창 닫기 
      }
 }
+
+
+
+	function chang_btn(){
+		
+		var memberpw = $("#member_pw").val().trim();
+		
+		if(memberpw != null || memberpw != ""){
+			$("#pwchk_check").text("비밀번호를 입력해주세요.");
+			$("#pwchk_check").css({"color" : "red", "font-size" : "11px" });	
+		}else if(pwR.test("")){
+			
+		}
+		
+		
+		
+	}
+
+
+
 
 
 </script>
@@ -36,7 +59,8 @@ window.onload=function(){
          <input type="hidden" id="member_id" name="member_id" value="${member_id }"> 
          <label for=member_pw>비밀번호</label>
          <input type="password" id="member_pw" autocomplete="off" name="member_pw" placeholder="새 비밀번호 입력" />
-         <input type="submit" value="변경" id="chang_btn">
+         <div id="pwchk_check"></div>
+         <input type="submit" value="변경" id="chang_btn()">
 
 
       </form>

@@ -472,7 +472,7 @@ public class MemberController {
 			rdto.setMember_phone(dto.getMember_phone());
 			rdto.setMember_role(dto.getMember_role());
 
-			System.out.println(rdto.getMember_role() + "확");
+			System.out.println(rdto.getMember_nickname() + "확");
 
 			boolean check = false;
 			// 입력받은 값이 있다면

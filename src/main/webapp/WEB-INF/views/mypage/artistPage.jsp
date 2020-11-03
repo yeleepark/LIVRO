@@ -37,7 +37,7 @@
 						<label for ="member_id">아이디</label>
 						<input type="text" name="member_id" id="member_id" value="${logindto.member_id }" readonly="readonly">
 						<label for ="member_nickname">닉네임</label>
-						<input type="text" name="member_nickname" id="member_nickname" value="${logindto.member_id }">
+						<input type="text" name="member_nickname" id="member_nickname" value="${logindto.member_nickname }">
 						<label for ="member_email">이메일</label>
 						<input type="text" name="member_email" id="member_email" value="${logindto.member_email }">
 						<label for ="member_addr">주소</label>
