@@ -3,9 +3,7 @@ package com.kh.livro.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.kh.livro.biz.DonationBiz;
 import com.kh.livro.dto.DonationDto;
 
@@ -45,17 +42,29 @@ public class DonationController {
 			return "fail";
 	}
 	
-	@RequestMapping(value = "/selectMap.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectByMember.do", method = RequestMethod.GET)
 	@ResponseBody
-	public String selectMap(String member_id) {
-		logger.info("member_id >>>> : " + member_id);
+	public String selectByMember(String member_id) {
 		List<HashMap<String, Object>> list = new ArrayList<>();
 		
-		Map<String, Object> map = new HashMap<>();
-
 		list = donationBiz.selectAmountById(member_id);
+		
 		String gson = new Gson().toJson(list);
-		logger.info(gson);
+		logger.info("selectByMember list : " + gson);
+		
+		return gson;
+	}
+	
+	@RequestMapping(value = "/selectDaily.do", method = RequestMethod.GET)
+	@ResponseBody
+	public String selectDaily(String dona_nickname) {
+		List<HashMap<String, Object>> list = new ArrayList<>();
+		
+		list = donationBiz.selectDaily(dona_nickname);
+		
+		String gson = new Gson().toJson(list);
+		logger.info("selectDaily list : " + gson);
+		
 		return gson;
 	}
 }

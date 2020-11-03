@@ -100,7 +100,7 @@
 					<div class="tab-4-left">
 						<div class="tab-4-1">
 							<div class="tab-4-1-1">
-								<span id="totalPrice">총후원금액</span>
+								<span class="totalPrice">총후원금액</span>
 							</div>
 							<div id="donaAll" class="tab-4-1-2"></div>
 						</div>
@@ -120,6 +120,26 @@
 			
 			<div class="tab-content" id="tab-5">
 				<h2><i class="fas fa-hand-holding-usd"></i> 후원 받은 조회</h2>
+				<div class="tab-5-container">
+					<div class="tab-5-left">
+						<div class="tab-5-1">
+							<div class="tab-5-1-1">
+								<span class="totalPrice">총후원금액</span>
+							</div>
+							<div id="donaAll_1" class="tab-5-1-2"></div>
+						</div>
+						<div class="tap-5-2">
+							<input type="button" onclick="horizonBar(chartData_1)" value="수직바">
+							<input type="button" onclick="pie(chartData_1);" value="파이">
+							<input type="hidden" name="member_nickname" value="${logindto.member_nickname}">
+							<div class="myCharts">
+							<canvas id="myChart-1" class="chartjs">
+								This text is displayed if your browser does not support HTML5 Canvas.
+							</canvas>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			
 		</div>
