@@ -452,4 +452,40 @@ public class MemberController {
 		return map;
 	}
 
+	
+	// USER 회원정보수정
+		@RequestMapping(value = "/arupdate.do", method = { RequestMethod.POST, RequestMethod.GET })
+		@ResponseBody
+		public Map<String, Boolean> arupdate(@RequestBody MemberDto dto, Model model, HttpSession session) {
+
+
+			int res = memberBiz.arupdate(dto);
+
+			logger.info(">>>Artist : " + res);
+
+			MemberDto rdto = new MemberDto();
+
+			rdto.setMember_id(dto.getMember_id());
+			rdto.setMember_email(dto.getMember_email());
+			rdto.setMember_nickname(dto.getMember_nickname());
+			rdto.setMember_addr(dto.getMember_addr());
+			rdto.setMember_phone(dto.getMember_phone());
+			rdto.setMember_role(dto.getMember_role());
+
+			System.out.println(rdto.getMember_role() + "확");
+
+			boolean check = false;
+			// 입력받은 값이 있다면
+			if (res > 0) {
+				session.setAttribute("logindto", rdto);
+
+				check = true;
+			}
+
+			Map<String, Boolean> map = new HashMap<String, Boolean>();
+			map.put("check", check);
+
+			return map;
+		}
+
 }

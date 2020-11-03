@@ -162,5 +162,21 @@ public class MemberDaoImpl implements MemberDao {
 
 		return res;
 	}
+	
+	// Artist정보수정
+	@Override
+	public int arupdate(MemberDto dto) {
 
+		int res = 0;
+
+		try {
+			res = sqlSession.update(NAMESPACE + "arupdate", dto);
+		} catch (Exception e) {
+			logger.info(">>> DAOIMPL ARTISTUPDATE!!");
+			e.printStackTrace();
+		}
+
+		return res;
+	}
+	
 }

@@ -89,7 +89,6 @@
 		MEMBER_EMAIL = #{member_email},
 		MEMBER_PHONE = #{member_phone}
 		WHERE MEMBER_ID = #{member_id}
-
 	</update>
 
 	<!--pw update -->
@@ -99,5 +98,16 @@
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 
+	<!--info update -->
+	<update id="arupdate" parameterType="MemberDto">
+		UPDATE MEMBER
+		SET MEMBER_NICKNAME = #{member_nickname},
+		MEMBER_ADDR = #{member_addr},
+		MEMBER_EMAIL = #{member_email},
+		MEMBER_PHONE = #{member_phone},
+		MEMBER_ROLE = #{member_role}
+		WHERE MEMBER_ID = #{member_id}
+
+	</update>
 
 </mapper>
