@@ -3,13 +3,12 @@ function pay(){
 					let member_id = $('#member_Id').val();	// 멤버 아이디
 					let username = $('#member_name').val(); // 멤버 이름
 					let email = $('#member_email').val();	// 멤버 이메일
-					let dona_id =  $('#artist_id').text();  // 후원받는 아이디
-					let artist_nickname = $('#artist_nickname').text()
+					let dona_nickname = $('#artist_nickname').text() // 후원받는 아이디
 					
                     BootPay.request({
                     price,								    //실제 결제되는 가격
                     application_id: "5f8d191a4f74b4001d74141d",
-                    name: artist_nickname + '님에게 후원',		//결제창에서 보여질 이름
+                    name: dona_nickname + '님에게 후원',		//결제창에서 보여질 이름
                     pg: 'inicis',
                     method: 'card', //결제수단, 입력하지 않으면 결제수단 선택부터 화면이 시작합니다.
                     show_agree_window: 0,                   // 부트페이 정보 동의 창 보이기 여부
@@ -26,7 +25,7 @@ function pay(){
                         email,								//결제내역 전송을 위한 멤버 이메일
                     }, 
                     order_id: '고유order_id_1234', 			//고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
-                    params: { member_id, dona_id },
+                    params: { member_id, dona_nickname },
                     account_expire_at: '2020-10-25', 		// 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
                 }).error(function (data) {
                     console.log(data);
@@ -51,7 +50,7 @@ function pay(){
                               		 member_id,
                                      dona_price: price,
 								   /*dona_date: data.purchased_at,*/
-                               		 dona_id};
+                               		 dona_nickname};
 
                     $.ajax({								//DB에 데이터 전송
                         url: 'donation.do',

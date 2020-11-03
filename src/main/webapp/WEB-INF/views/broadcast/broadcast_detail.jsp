@@ -30,7 +30,6 @@
        <jsp:include page="/WEB-INF/views/header/header.jsp"/>
    </header>
    <input type="hidden" value="${broadDto.broadcast_title }" id="broadcast_title">
-   <input type="hidden" value="${broadDto.member_id }" id="artist_id">
    <input type="hidden" value="${logindto.member_id }" id="member_Id">
    <input type="hidden" value="${logindto.member_nickname }" id="member_nickname">
    <input type="hidden" value="${logindto.member_email }" id="member_email">
