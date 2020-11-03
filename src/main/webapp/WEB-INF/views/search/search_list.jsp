@@ -21,7 +21,7 @@
 			<c:choose>
 				<c:when test="${empty map.memberlist }">
 					<div>
-						<p class="noSearch"><i class="fas fa-times"></i> 검색값이 없습니다</p>
+						<p class="noSearch"><i class="fas fa-times"></i> 검색내역이 없습니다</p>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -38,7 +38,7 @@
 			<c:choose>
 				<c:when test="${empty map.broadlist }">
 					<div>
-						<p class="noSearch"><i class="fas fa-times"></i> 검색값이 없습니다</p>
+						<p class="noSearch"><i class="fas fa-times"></i> 검색내역이 없습니다</p>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -54,7 +54,7 @@
 		</div>
 	</div>
 	<div class="all-list">
-		<h2>전체 아티스트 리스트</h2>
+		<h2><i class="fas fa-list-ul"></i> 전체 아티스트 리스트</h2>
 		<c:choose>
 			<c:when test="${empty map.artistlist }">
 				<div>
@@ -64,7 +64,9 @@
 			<c:otherwise>
 				<c:forEach items="${map.artistlist }" var="artistdto">
 					<div>
-						<p>${artistdto.member_nickname }</p>
+						<p><i class="fas fa-chevron-right"></i>
+						<a href="artist.do?member_id=${memberdto.member_id }">
+						${artistdto.member_nickname }</a></p>
 					</div>
 				</c:forEach>
 			</c:otherwise>
