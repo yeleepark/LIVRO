@@ -1,7 +1,9 @@
-//탑3 아이디
+// 탑3 아이디
 var top3Id = document.getElementsByClassName('top3id');
 // 탑3 팔로워 수
 var top3count = document.getElementsByClassName('top3count');
+// 탑3 닉네임
+var top3Nickname = document.getElementsByClassName('top3nickname');
 
 const dataFile = []; // 사용할 데이터를 배열로
 for (var i =0 ; i < top3Id.length + 1; i++){
@@ -23,7 +25,6 @@ for (var i =0 ; i < top3Id.length + 1; i++){
 		   .attr('x', (d, i) => { return 50*i } ) // x 축
 		   .attr('y', (d, i) => { return 100-dataFile[i] } ) // y축
 		   console.log(dataFile);
-		
 }
 
 
