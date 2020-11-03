@@ -65,7 +65,7 @@
 				<c:forEach items="${map.artistlist }" var="artistdto">
 					<div>
 						<p><i class="fas fa-chevron-right"></i>
-						<a href="artist.do?member_id=${memberdto.member_id }">
+						<a href="artist.do?member_id=${artistdto.member_id }">
 						${artistdto.member_nickname }</a></p>
 					</div>
 				</c:forEach>
