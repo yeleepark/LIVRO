@@ -17,6 +17,8 @@
 		<typeAlias type="com.kh.livro.dto.FollowDto" alias="FollowDto"/>
 		<typeAlias type="com.kh.livro.dto.FollowerDto" alias="FollowerDto"/>
 		<typeAlias type="com.kh.livro.dto.ReportDto" alias="ReportDto"/>
+		<typeAlias type="com.kh.livro.dto.ArtistMapDto" alias="ArtistMapDto"/>
+		
 	</typeAliases>
 
 	<mappers>
@@ -34,5 +36,6 @@
 		<mapper resource="mybatis/donation-mapper.xml"/>
 		<mapper resource="mybatis/report-mapper.xml"/>
 		<mapper resource="mybatis/rank-mapper.xml"/>
+		<mapper resource="mybatis/artistmap-mapper.xml"/>
 	</mappers>
 </configuration>
