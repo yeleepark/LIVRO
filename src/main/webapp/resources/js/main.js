@@ -65,10 +65,8 @@ function clock() {
     var timeIs = (`${year}-${month}-${clockDate < 10 ? `0${clockDate}` : clockDate} ${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }`);
     // 시간 분 초는 한자리수이면 시계가 어색해보일까봐 10보다 작으면 앞에0을 붙혀주는 작업을 3항연산으로 처리. 
 
-    console.log(timeIs);
     
     for(var i = 0; i < calDate.length; i++) {
-    	console.log(calNickname[i])
         var calYear = calDate[i].value.substr(24, 4);
         var calMonth = calDate[i].value.substr(4, 3);
         switch (calMonth) {
@@ -114,7 +112,6 @@ function clock() {
         var calMinutes = calDate[i].value.substr(14, 2);
         
         var showTimeIs = (calYear+"-"+calMonth+"-"+calClockDate+" "+calHours+":"+calMinutes);
-        console.log(showTimeIs);
         if (timeIs == showTimeIs) {
         	var notification = new Notification(calNickname[i].value, {
                 icon: 'resources/img/livro_icon.png',
