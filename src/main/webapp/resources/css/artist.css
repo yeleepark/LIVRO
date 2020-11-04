@@ -5,8 +5,7 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-button:focus,
-input:focus{
+button:focus, input:focus {
 	outline: none;
 }
 
@@ -48,8 +47,8 @@ ul.tabs li.tabCurrent {
 	color: #222;
 }
 
-.none{
-	display :none;
+.none {
+	display: none;
 }
 /* 컨텐츠 출력 */
 .left-wrapper {
@@ -63,6 +62,7 @@ ul.tabs li.tabCurrent {
 	display: none;
 	background: #ededed;
 	padding: 15px;
+	margin-bottom: 20px;
 }
 
 .tab-content h2 {
@@ -74,6 +74,16 @@ ul.tabs li.tabCurrent {
 	display: inherit;
 }
 
+.music_del_btn, .uploadBtn {
+	padding: 3px 5px;
+	font-size: 0.7rem;
+	background-color: transparent;
+	border: 0.5px solid gray;
+	border-radius: 5px;
+	margin-bottom: 3px;
+	cursor: pointer;
+}
+
 /* 응원 게시판 */
 .supportTable {
 	width: 100%;
@@ -82,8 +92,12 @@ ul.tabs li.tabCurrent {
 .support-login {
 	width: 100%;
 	padding: 10px;
-	margin-bottom : 20px;
+	margin-bottom: 20px;
 	text-align: right;
+}
+
+.support-login a {
+	color: dodgerblue;
 }
 
 /* 작성공간 */
@@ -97,7 +111,7 @@ ul.tabs li.tabCurrent {
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-.supportInsert div:nth-child(1){
+.supportInsert div:nth-child(1) {
 	width: 20%;
 	/* border: 1px solid pink; */
 	display: flex;
@@ -127,28 +141,26 @@ ul.tabs li.tabCurrent {
 	resize: none;
 }
 
-
 /* --------------게시판 리스트-------------- */
-
-.support-index{
-	width : 100%;
+.support-index {
+	width: 100%;
 	display: flex;
 	margin-bottom: 10px;
-	padding-top : 10px;
-	padding-bottom : 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	border-top: 1px dotted black;
 	border-bottom: 1px dotted black;
 }
 
-.support-index span:nth-child(1){
-	width : 20%;
+.support-index span:nth-child(1) {
+	width: 20%;
 	display: inline-block;
 	text-align: center;
 	font-weight: bold;
 }
 
-.support-index span:nth-child(2){
-	width : 80%;
+.support-index span:nth-child(2) {
+	width: 80%;
 	display: inline-block;
 	text-align: center;
 	font-weight: bold;
@@ -159,9 +171,6 @@ ul.tabs li.tabCurrent {
 	height: 100%;
 	box-sizing: border-box;
 }
-
-
-
 
 .supportTable .rows {
 	display: flex;
@@ -183,21 +192,21 @@ ul.tabs li.tabCurrent {
 	display: none;
 }
 
-.rows-right input{
-	padding : 3px 5px;
+.rows-right input {
+	padding: 3px 5px;
 	font-size: 0.7rem;
 	background-color: transparent;
-	border : 0.5px solid gray;
+	border: 0.5px solid gray;
 	border-radius: 5px;
 	margin-bottom: 3px;
 	cursor: pointer;
 }
 
-.rows-right input:hover{
-	background: rgba(255,255,255,0.4)
+.rows-right input:hover {
+	background: rgba(255, 255, 255, 0.4)
 }
 
-.rows span{
+.rows span {
 	text-align: center;
 	display: inline-block;
 	width: 100%;
@@ -219,7 +228,6 @@ ul.tabs li.tabCurrent {
 	background: transparent;
 	border: none;
 }
-
 
 .changeActive {
 	background: white;
@@ -282,9 +290,6 @@ ul.tabs li.tabCurrent {
 	width: 100%;
 }
 
-
-
-
 .replySection {
 	padding: 0;
 	display: flex;
@@ -294,7 +299,7 @@ ul.tabs li.tabCurrent {
 	display: flex;
 }
 
-.replySection span{
+.replySection span {
 	text-align: center;
 	display: inline-block;
 	width: 100%;
@@ -306,21 +311,21 @@ ul.tabs li.tabCurrent {
 	align-items: center;
 }
 
-.supportInsert input{
-	padding : 3px 5px;
+.supportInsert input {
+	padding: 3px 5px;
 	font-size: 0.7rem;
 	background-color: transparent;
 	border-radius: 5px;
 	margin-bottom: 3px;
 	cursor: pointer;
-	border : 0.3px solid gray;
+	border: 0.3px solid gray;
 }
 
-.supportInsert input:hover{
-	background-color: rgba(255,255,255,0.6);
+.supportInsert input:hover {
+	background-color: rgba(255, 255, 255, 0.6);
 }
 
-.rows-left{
+.rows-left {
 	width: 20%;
 	height: 100%;
 	display: flex;
@@ -328,8 +333,8 @@ ul.tabs li.tabCurrent {
 	flex-direction: column;
 }
 
-.rows-right{
-	width : 10%;
+.rows-right {
+	width: 10%;
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -361,24 +366,23 @@ ul.tabs li.tabCurrent {
 	font-size: 0.7rem;
 }
 
-.updateDone{
+.updateDone {
 	display: none;
 }
 
-.comm_content{
+.comm_content {
 	width: 100%;
 	resize: none;
 	background: transparent;
 	border: none;
 }
 
-.commActive{
+.commActive {
 	background: white;
-	border : 1px solid black;
+	border: 1px solid black;
 }
 
 /* 일정게시판 */
-
 .Calendar-container {
 	width: 100%;
 	height: 100%;
@@ -390,34 +394,34 @@ ul.tabs li.tabCurrent {
 	justify-content: space-between;
 }
 
-#menu-navi-left, #menu-navi-right{
+#menu-navi-left, #menu-navi-right {
 	margin-bottom: 10px;
 }
 
-#menu-navi-left{
+#menu-navi-left {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-#menu-navi-left button{
-	padding : 3px 5px;
+#menu-navi-left button {
+	padding: 3px 5px;
 }
 
-#today{
-	border : none;
+#today {
+	border: none;
 	border-bottom: 1px dotted black;
-	cursor : pointer;
+	cursor: pointer;
 }
 
-#prevBtn, #nextBtn{
-	border : none;
+#prevBtn, #nextBtn {
+	border: none;
 	background-color: none;
-	cursor : pointer;
+	cursor: pointer;
 	font-size: 1.5rem;
 }
 
-#printMonth{
+#printMonth {
 	font-size: 2rem;
 }
 
@@ -425,8 +429,7 @@ ul.tabs li.tabCurrent {
 	display: none;
 }
 
-.tui-full-calendar-popup-section:nth-child(3), 
-.tui-full-calendar-popup-section:nth-child(5) {
+.tui-full-calendar-popup-section:nth-child(3), .tui-full-calendar-popup-section:nth-child(5) {
 	display: none;
 }
 
@@ -439,26 +442,31 @@ ul.tabs li.tabCurrent {
 }
 
 /* 방송기록 */
-.broadTable{
-	width : 100%;
-	padding : 20px;
+.broadTable {
+	width: 100%;
+	padding: 20px;
 }
 
-.broadTable img{
-	width : 40px;
+.broadTable img {
+	width: 40px;
 }
 
-.live-row{
+.live-row {
+	display: none;
+}
+
+.active {
+	display: block !important;
 	margin-bottom: 10px;
-	border : 1px solid black;
+	border: 1px solid black;
 }
 
-.live-row a{
+.live-row a {
 	text-decoration: none;
-	color : black;
-	background-color: rgba(255,255,255,0.6);
+	color: black;
+	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 10px;
-	padding : 0 10px;
+	padding: 0 10px;
 	margin-left: 5px;
 	margin-right: 5px;
 }
@@ -468,17 +476,17 @@ ul.tabs li.tabCurrent {
 	width: 20%;
 	float: right;
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	flex-direction: column;
-	padding-top: 50px;
 }
 
 #artist-profile {
 	width: 150px;
 	height: 150px;
 	border-radius: 50%;
-	border: 1px solid black;
-	margin: 0 auto;
 	overflow: hidden;
+	margin-top: 50px;
 }
 
 #artist-profile img {
@@ -487,11 +495,11 @@ ul.tabs li.tabCurrent {
 }
 
 #artist-desc {
-	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-top: 20px;
 }
 
 #artist-desc p {
@@ -504,12 +512,7 @@ ul.tabs li.tabCurrent {
 	margin-left: 5px;
 }
 
-.followBtn, 
-.unfollowBtn,
-.YfollowBtn, 
-.YunfollowBtn,
-#followerBtn, 
-#artistBtn {
+.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
 	color: #3399FF;
 	font-family: "Helvetica";
 	font-size: 10pt;
@@ -522,41 +525,39 @@ ul.tabs li.tabCurrent {
 	cursor: pointer;
 }
 
-.YfollowBtn{
+.YfollowBtn {
 	display: none;
 }
 
-.unfollowBtn{
+.unfollowBtn {
 	display: none;
 }
-
 
 /* 지도 */
-.map-container{
-	width : 100%;
-	padding : 20px;
+.map-container {
+	width: 100%;
+	padding: 20px;
 }
 
-
 /* 버튼 */
-.button-container{
-	width : 100%;
+.button-container {
+	width: 100%;
 	position: relative;
 }
 
-.btnDefault{
+.btnDefault {
 	width: 100%;
 	z-index: -1;
-	float : left;
+	float: left;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.btnOn{
-	width : 100%;
+.btnOn {
+	width: 100%;
 	float: right;
-	z-index : 1;
+	z-index: 1;
 	position: absolute;
 	background-color: white;
 	display: flex;
@@ -564,3 +565,70 @@ ul.tabs li.tabCurrent {
 	align-items: center;
 	flex-direction: column;
 }
+
+@media screen and (max-width:768px) {
+	section {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: center;
+		align-items: center;
+	}
+	ul.tabs {
+		margin: 0px;
+		padding: 0px;
+		list-style: none;
+	}
+	ul.tabs li {
+		background: none;
+		color: #222;
+		display: inline-block;
+		padding: 5px 10px;
+		cursor: pointer;
+		font-size: 0.8rem;
+	}
+	.file_upload_block {
+		display: flex;
+		flex-direction: column;
+	}
+	.file_upload_block input {
+		margin-bottom: 5px;
+	}
+	.tab-content h2 {
+		font-size: 1.3em;
+	}
+	.left-wrapper {
+		width: 100%;
+	}
+	.right-wrapper {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		padding: 0px;
+		margin-bottom: 30px;
+	}
+	#artist-profile {
+		width: 150px;
+		height: 150px;
+		margin: 0;
+	}
+	#artist-desc {
+		width: 60%;
+		padding: 0px;
+		margin: 0;
+	}
+	#artist-desc p {
+		font-size: 1.5rem;
+	}
+	.file_upload_block {
+		display: flex;
+		flex-direction: column;
+	}
+	.file_upload_block input {
+		margin-bottom: 5px;
+	}
+	.btnOn {
+		display: flex;
+		flex-direction: row;
+	}
+}
+
