@@ -19,3 +19,14 @@ menuIcon.addEventListener('click', function() {
 	}
 
 });
+
+
+
+var Notification = window.Notification || window.mozNotification || window.webkitNotification;
+
+window.onload = function() {
+	Notification.requestPermission();
+	if (Notification.permission === "granted") {
+      
+      }
+}
