@@ -97,7 +97,6 @@ public class MemberController {
 		String member_id = dto.getMember_id();
 		
 		List<CalendarDto> calList = memberBiz.showNoti(member_id);
-		System.out.println("맴버 아이디는? : "+member_id);
 		session.setAttribute("calList", calList);
 		
 		boolean check = false;

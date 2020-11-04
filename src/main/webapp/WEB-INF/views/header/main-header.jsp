@@ -80,6 +80,7 @@ response.setDateHeader("Expires", 1L);
 
 	<c:forEach items="${calList }" var="list">
 		<input type="hidden" class="calId" value="${list.member_id }">		
+		<input type="hidden" class="calNickname" value="${list.member_nickname }">		
 		<input type="hidden" class="calDate" value="${list.cal_start }">
 	</c:forEach>
 
