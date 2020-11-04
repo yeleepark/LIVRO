@@ -27,9 +27,6 @@ var Notification = window.Notification || window.mozNotification || window.webki
 window.onload = function() {
 	Notification.requestPermission();
 	if (Notification.permission === "granted") {
-        new Notification("Hi, Notification");
-        console.log("실패")
-      } else {
-        alert('Notification denied');
+      
       }
 }
