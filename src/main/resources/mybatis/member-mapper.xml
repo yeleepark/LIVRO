@@ -57,6 +57,14 @@
 		WHERE MEMBER_NAME = #{member_name}
 		AND MEMBER_PHONE = #{member_phone}
 	</select>
+	
+	<!--이메일 중복체크  -->
+	<select id="mailChk" resultType="int">
+		SELECT COUNT(*) 
+		FROM MEMBER
+		WHERE 
+		MEMBER_EMAIL = #{member_email}
+	</select>
 
 	<!-- 비밀번호 찾기 -->
 	<select id="pwfind" parameterType="MemberDto"

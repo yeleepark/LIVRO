@@ -321,9 +321,10 @@
 		   		type: "post",
 		   		dataType: "json",
 		   		data: {
-		   			"member_email": $("#member_email").val()
+		   			"member_email" : $("#member_email").val().trim()
 		   		},
 		   		success: function(data) {
+		   			console.log(data);
 		   			if (data == 1) {
 		   				$('#email_check').text('이미 존재하는 이메일 입니다.');
 		   				$('#email_check').css({'color': 'red','font-size': '12px'});
