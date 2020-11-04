@@ -1,7 +1,8 @@
 package com.kh.livro.biz;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.MemberDto;
 
 public interface MemberBiz {
@@ -38,4 +39,8 @@ public interface MemberBiz {
 	
 	// Artist 정보수정
 	public int arupdate(MemberDto dto);
+	
+	
+	// 공연 notification
+	public List<CalendarDto> showNoti(String member_id);
 }

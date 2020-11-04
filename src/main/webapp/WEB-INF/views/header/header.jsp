@@ -76,6 +76,10 @@ response.setDateHeader("Expires",1L);
 			</nav>
 		</div>
 	</header>
+	<c:forEach items="${calList }" var="list">
+		<input type="text" value="${list.member_id }">		
+		<input type="text" value="${list.cal_start }">
+	</c:forEach>
 <script src="resources/js/main.js"></script>
 </body>
 </html>

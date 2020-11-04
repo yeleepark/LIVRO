@@ -2,6 +2,7 @@ package com.kh.livro.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -24,6 +25,7 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kh.livro.biz.MemberBiz;
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.utils.LoginGoogleBO;
 import com.kh.livro.utils.LoginNaverBO;
@@ -91,6 +93,13 @@ public class MemberController {
 		}
 
 		MemberDto login = memberBiz.selectOne(dto);
+		
+		String member_id = dto.getMember_id();
+		
+		List<CalendarDto> calList = memberBiz.showNoti(member_id);
+		System.out.println("맴버 아이디는? : "+member_id);
+		session.setAttribute("calList", calList);
+		
 		boolean check = false;
 		if (login != null) {
 			session.setAttribute("logindto", login);
@@ -114,7 +123,7 @@ public class MemberController {
 		String referer = request.getHeader("Referer");
 
 		logger.info(referer);
-
+		
 		if (referer.contains("broadDetail.do")) {
 			return "redirect:" + referer;
 		}
