@@ -155,7 +155,7 @@
 									<textarea name="support_content" id="support_content"></textarea>
 								</div>
 								<div>
-									<input type="button" value="작성" class="insertBtn">
+									<input type="button" value="작성" class="insertBtn" onclick="insertSupport(this);">
 								</div>
 							</div>
 						</c:otherwise>
@@ -177,8 +177,7 @@
 										<!-- 첫줄 -->
 										<div class="rows-left">
 											<p class="writerNick">${support.member_nickname }</p>
-											<input type="hidden" value="${support.member_id }"
-												class="writerId">
+											<input type="hidden" value="${support.member_id }" class="writerId">
 										</div>
 										<div class="rows-center">
 											<textarea class="change" readonly="readonly">${support.support_content }</textarea>
@@ -187,26 +186,22 @@
 										</div>
 										<div class="rows-right">
 											<input type="hidden" value="${support.support_no }">
-											<c:if
-												test="${logindto.member_nickname == support.member_nickname }">
-												<input type="button" value="수정" class="updateBtn">
-												<input type="button" value="완료" class="updateRes">
-												<input type="button" value="삭제" class="deleteBtn">
-												<input type="hidden" value="${support.support_no }"
-													class="supportNo">
+											<c:if test="${logindto.member_nickname == support.member_nickname }">
+												<input type="button" value="수정" class="updateBtn" onclick="updateSupport(this);">
+												<input type="button" value="완료" class="updateRes" onclick="updateRes(this);">
+												<input type="button" value="삭제" class="deleteBtn" onclick="deleteSupport(this);">
+												<input type="hidden" value="${support.support_no }" class="supportNo">
 											</c:if>
-											<c:if test="${logindto.member_id == support.member_id }">
-												<input type="button" value="신고" class="reportBtn"
-													onclick="report(this);">
+											<c:if test="${logindto.member_id == support.member_id || logindto.member_id != support_member_id}">
+												<input type="button" value="신고" class="reportBtn"onclick="report(this);">
 											</c:if>
 										</div>
 										<!-- 두번째줄 -->
 										<div class="rows-middle">
 											<div>
-												<input type="button" value="&#xf06b" class="showReply">
-												<input type="button" value="&#xf00d" class="closeReply">
-												<input type="hidden" value="${support.support_no }"
-													class="supportNo">
+												<input type="button" value="&#xf06b" class="showReply" onclick="showReply(this);">
+												<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);">
+												<input type="hidden" value="${support.support_no }" class="supportNo">
 											</div>
 											<!--  반복 부분 -->
 											<div class="replyArea"></div>
