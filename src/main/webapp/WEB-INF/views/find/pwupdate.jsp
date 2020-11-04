@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>새 비밀번호변경</title>
 <link rel="stylesheet" href="resources/css/find.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://kit.fontawesome.com/d28db34e8b.js"
 	crossorigin="anonymous" defer></script>
 
@@ -18,23 +19,26 @@
 </head>
 <body>
 	<section>
-	<div class="pw">
-		<h2>비밀번호 변경</h2>
-		<form action="pwupdateres.do" method="POST"  name="myForm" onsubmit="return frmsubmit();">
-			<input type="hidden" id="member_id" name="member_id" value="${member_id }"> 
-			<label for=member_pw>비밀번호</label>
-			<input type="password" id="member_pw" autocomplete="off" name="member_pw" placeholder="새 비밀번호 입력" />
-			<label for=member_pw>비밀번호 재입력</label>
-			<input type="password" id="member_pwchk" autocomplete="off" name="member_pwchk" placeholder="새 비밀번호 재 입력"/>
-			<div id="pwchk_check"></div>
-			<input type="submit" value="변경" id="chang_btn" style="display: none;">
-			<input type="hidden" id="pwform"/>
+		<div class="pw">
+			<h2>비밀번호 변경</h2>
+			<form action="pwupdateres.do" method="POST" id="pwForm" name="myForm"
+				onsubmit="return enterKey(event)">
+				<input type="hidden" id="member_id" name="member_id"
+					value="${member_id }"> <label for=member_pw>비밀번호</label> <input
+					type="password" id="member_pw" autocomplete="off"
+					required="required" name="member_pw" placeholder="새 비밀번호 입력" /> <label
+					for=member_pw>비밀번호 재입력</label> <input type="password"
+					id="member_pwchk" autocomplete="off" required="required"
+					name="member_pwchk" placeholder="새 비밀번호 재 입력" />
+				<div id="pwchk_check"></div>
+				<input type="submit" value="변경" id="chang_btn"
+					style="display: none;"> <input type="hidden" id="pwform" />
 
 
-		</form>
-	</div>
+			</form>
+		</div>
 	</section>
-<script type="text/javascript">
+	<script type="text/javascript">
 
 
 var member_id = $("#member_id").val();
@@ -50,7 +54,7 @@ $(document)
 .ready(
 	function(e) {
 		$("#member_pw" && "#member_pwchk").keyup(function(e) {
-				arr[0] = true;
+				arr[0] = false;
 				//if문에 사용할 비밀번호값을 변수에 저장해줌
 				
 				var member_pw = $("#member_pw").val().trim();
@@ -62,8 +66,6 @@ $(document)
 			if ((pwR.test(member_pw)&& pwR.test(member_pwchk) && (member_pw == member_pwchk))) {
 			$('#pwchk_check').text('비밀번호를 사용할 수 있습니다.');
 				$('#pwchk_check').css({'color': 'blue','font-size': '12px'});
-				
-	
 				$("#chang_btn").css('display','block');
 				
 				arr[0] = true;
@@ -79,37 +81,55 @@ $(document)
 				
 				$("#chang_btn").css('display','none');
 				
+				return false;
 			
 				
 			} else {
 				//입력된 비밀번호가 일치하지 않을 때
 				$('#pwchk_check').text('비밀번호가 일치하지 않습니다.');
 				$('#pwchk_check').css({'color': 'red','font-size': '12px'});
-				
 				$("#chang_btn").css('display','none');
-			
-				
-			
+	
+				return false;
 				}
 			}
 
 		}
 	)
 	
+});
+$("#member_pwchk").blur(
+		function() {
+			if ($("#member_pw").val() != $("#member_pwchk").val()) {
+				if ($("#member_pwchk").val() != '') {
+					$('#pwchk_check').text(
+						'비밀번호를 다시 입력해주세요.');
+					$('#pwchk_check').css({
+						'color': 'red',
+						'font-size': '11px'
+					});
+					$("#member_pwchk").val('');
+					$("#member_pw").focus();
+				}
+			}
+		})
+		
+		
 
-	});
-	
-function frmsubmit(){
+	/* function enterKey(e){
+		if(e.keyCode == 13 && e.srcElement.type != 'textarea')
+			return false;
+	}	 */
+/* function frmsubmit(){
 	console.log(arr);
 	if(arr==true){
 		return true;
 	}else{
 		return false;
 	}
-	
-	
 }
- 
+	 */
+
  
 /* $(document).keypress(function(e){
 	if(e.keyCode == 13){
@@ -117,7 +137,8 @@ function frmsubmit(){
 		
 		return focus;
 	}
-}) */
+}) 
+*/
 
 /*  var chang_btn = document.getElementById('chang_btn');
  chang_btn.addEventListener('click',function(){
@@ -139,7 +160,7 @@ window.onload=function(){
 
 
 </script>
-	
+
 </body>
 </html>
 

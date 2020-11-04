@@ -197,6 +197,15 @@ public class MemberController {
 		res = memberBiz.nickChk(dto);
 		return res;
 	}
+	
+	//유저정보 이메일중복체크
+	@ResponseBody
+	@RequestMapping(value = "/emailChk.do", method = RequestMethod.POST)
+	public int mailChk(MemberDto dto) {
+		int res = 0;
+		res = memberBiz.mailChk(dto);
+		return res;
+	}
 
 	// 네이버 로그인 성공시 callback호출 메소드
 	@RequestMapping(value = "/callback.do", method = { RequestMethod.GET, RequestMethod.POST })
