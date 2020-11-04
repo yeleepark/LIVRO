@@ -1,10 +1,13 @@
 package com.kh.livro.bizImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.livro.biz.MemberBiz;
 import com.kh.livro.dao.MemberDao;
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.MemberDto;
 
 @Service
@@ -82,5 +85,10 @@ public class MemberBizImpl implements MemberBiz {
    
       return memberDao.arupdate(dto);
    }
+
+	@Override
+	public List<CalendarDto> showNoti(String member_id) {
+		return memberDao.showNoti(member_id);
+	}
 
 }

@@ -1,5 +1,8 @@
 package com.kh.livro.dao;
 
+import java.util.List;
+
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.MemberDto;
 
 public interface MemberDao {
@@ -38,5 +41,9 @@ public interface MemberDao {
 	
 	//Artist 정보수정
 	public int arupdate(MemberDto dto);
+	
+	
+	//공연 노티피케이션
+	public List<CalendarDto> showNoti(String member_id);
 
 }

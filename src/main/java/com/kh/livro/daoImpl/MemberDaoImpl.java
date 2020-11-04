@@ -1,5 +1,8 @@
 package com.kh.livro.daoImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.livro.dao.MemberDao;
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.MemberDto;
 
 @Repository
@@ -177,6 +181,19 @@ public class MemberDaoImpl implements MemberDao {
 		}
 
 		return res;
+	}
+
+	@Override
+	public List<CalendarDto> showNoti(String member_id) {
+		List<CalendarDto> list = new ArrayList<CalendarDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"showNoti",member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 	
 }
