@@ -1,6 +1,6 @@
 var myChart = document.getElementById('myChart');
 var chartData = {
-                "type": "horizontalBar",
+                "type": "bar",
                 "data": {
                     "labels": [],
                     "datasets": [{
@@ -68,8 +68,8 @@ var chart_1 = new Chart(myChart_1, chartData_1);
 
 function horizonBar(c){
 	c.type = 'bar';
-	chart.update();
 	chart_1.update();
+	chart.update();
 }
 
 function pie(c){
