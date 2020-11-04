@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 		<div class="mypage-container">
 			<ul class="tabs">
 				<li class="tab-link current" data-tab="tab-1">회원정보수정</li>
-				<li class="tab-link" data-tab="tab-2">팔로우목록</li>
+				<li class="tab-link" data-tab="tab-2">팔로잉목록</li>
 				<li class="tab-link" data-tab="tab-3">팔로워목록</li>
 				<li class="tab-link" data-tab="tab-4">후원내역조회</li>
 				<li class="tab-link" data-tab="tab-5">후원받은조회</li>
@@ -62,16 +63,20 @@
 			
 			<!-- 팔로우 목록 탭 -->
 			<div class="tab-content" id="tab-2">
-				<h2><i class="fas fa-users"></i> 팔로우 목록</h2>
+				<h2><i class="fas fa-users"></i> 팔로잉 목록</h2>
 				<c:choose>
 					<c:when test="${empty followdto }">
 						<p>팔로우한 아티스트가 없습니다</p>
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${followdto }" var="follow">
+							<div class="follow-row">
 							<p><a href="artist.do?member_id=${follow.artist_id }">
-							<c:out value="${follow.artist_nickname }"/></a></p>
-							<p><c:out value="${follow.following_date }"/></p>
+							<i class="far fa-thumbs-up"></i> <c:out value="${follow.artist_nickname }"/></a></p>
+							<span>
+							<fmt:formatDate value="${follow.following_date }" pattern="yyyy-MM-dd HH:mm:ss"/>
+							</span>
+							</div>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>		
@@ -86,8 +91,12 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${followerdto }" var="follower">
-							<p><c:out value="${follower.follower_nickname }"/></p>
-							<p><c:out value="${follower.follower_date }"/></p>
+							<div class="follow-row">
+							<p>
+							<i class="far fa-user-circle"></i>
+							<c:out value="${follower.follower_nickname }"/></p>
+							<span><fmt:formatDate value="${follower.follower_date }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+							</div>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>		

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,7 @@
 					</div>
 					<div class="tab-1-right">
 						<div class="selectImg"><img src=""></div>
-						<label for="profile">프로필 사진을 등록해주세요</label> 
+						<label for="profile"><i class="fas fa-camera"></i> 프로필 사진을 등록해주세요</label> 
 						<input type="file" name="profile" required="required" id="profileImg"> 
 					</div>
 					</form>
@@ -90,9 +91,13 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${followdto }" var="follow">
+							<div class="follow-row">
 							<p><a href="artist.do?member_id=${follow.artist_id }">
-							<c:out value="${follow.artist_nickname }"/></a></p>
-							<p><c:out value="${follow.following_date }"/></p>
+							<i class="far fa-thumbs-up"></i> <c:out value="${follow.artist_nickname }"/></a></p>
+							<span>
+							<fmt:formatDate value="${follow.following_date }" pattern="yyyy-MM-dd HH:mm:ss"/>
+							</span>
+							</div>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>				
