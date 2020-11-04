@@ -76,13 +76,6 @@ function pie(c){
 	c.type = 'pie';
 	chart.update();
 	chart_1.update();
-}
-
-
-
-
-
-
-
+ }
 
 
