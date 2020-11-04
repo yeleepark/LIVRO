@@ -14,5 +14,8 @@ public interface ArtistMapDao {
 	
 	//아티스트 주소 delete
 	public int artistmapdelete(String member_id);
+	
+	//아티스트 주소 불러오기
+	public ArtistMapDto artistmapselectOne(String member_id);
 
 }

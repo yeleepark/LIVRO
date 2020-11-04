@@ -23,6 +23,7 @@
 <script type="text/javascript" src="resources/js/regist.js">
 </script>
 
+
 </head>
 <body>
 	<section>

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.livro.biz.ArtistBiz;
+import com.kh.livro.biz.ArtistMapBiz;
 import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.FollowDto;
 import com.kh.livro.dto.FollowerDto;
@@ -30,6 +31,9 @@ public class ArtistController {
 
 	@Autowired
 	private ArtistBiz artistBiz;
+	
+	@Autowired
+	private ArtistMapBiz artistmapBiz;
 
 	private Logger logger = LoggerFactory.getLogger(ArtistController.class);
 
@@ -42,6 +46,8 @@ public class ArtistController {
 		model.addAttribute("broaddto", artistBiz.broadList(member_id));
 		model.addAttribute("caldto", artistBiz.calList(member_id));
 		model.addAttribute("dto", artistBiz.followerList(member_id));
+		model.addAttribute("mapdto", artistmapBiz.artistmapselectOne(member_id));
+		
 		return "artist/artist";
 	}
 
