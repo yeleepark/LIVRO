@@ -37,14 +37,25 @@
 					<div class="tab-1-left">
 						<label for ="member_id">아이디</label>
 						<input type="text" name="member_id" id="member_id" value="${logindto.member_id }" readonly="readonly">
+						
 						<label for ="member_nickname">닉네임</label>
 						<input type="text" name="member_nickname" id="member_nickname" value="${logindto.member_nickname }">
+						<input type="button" id="nick_chk" onclick="nick_Chk();" value="중복체크"/>
+						<div class="msg_check" id="nickname_check"></div>
+                  		
+						
 						<label for ="member_email">이메일</label>
 						<input type="text" name="member_email" id="member_email" value="${logindto.member_email }">
+						<input type="button" id="email_chk" onclick="email_Chk();" value="중복체크"/>
+                 		<div class="msg_check" id="email_check"></div>
+						
 						<label for ="member_addr">주소</label>
 						<input type="text" name="member_addr" id="member_addr" value="${logindto.member_addr }">
+						
 						<label for ="member_phone">전화번호</label>
 						<input type="text" name="member_phone" id="member_phone" value="${logindto.member_phone }">
+						 <div class="msg_check" id="phone_check"></div>
+                 		 <div id="upcheck"></div>
 						 <div id="archeck"></div>
 						<input type="hidden" name="memebr_role" id="member_role" value="${logindto.member_role }">
 						<input type="button" value="수정" onclick="arup()"/>
@@ -178,6 +189,108 @@
 	           window.open("updateForm.do", "insert",
 	                       "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
 		}
+		
+			//닉네임 정규식(한글, 소문자, 대문자 사용가능 )
+		   var nickR = /^[가-힣a-zA-Z]{3,16}$/;
+		   //이메일 검사 정규식
+		   var mailR = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		   // 휴대폰번호 정규식
+		   var phoneR = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+		   var arr = new Array(4);
+		   arr.fill(false);
+
+		   
+		   function nick_Chk() {
+		   	$.ajax({
+		   		url: "nickChk.do",
+		   		type: "post",
+		   		dataType: "json",
+		   		data: {
+		   			"member_nickname": $("#member_nickname").val().trim()
+		   		},
+		   		success: function(data) {
+		   			if (data == 1) {
+		   				$('#nickname_check').text('이미 존재하는 닉네임 입니다.');
+		   				$('#nickname_check').css({'color': 'red','font-size': '12px'});
+
+		   			} else {
+		   				if (nickR.test($("#member_nickname").val()) && $("#member_nickname").val().length < 11) {
+
+		   					$('#nickname_check').text('사용가능한 닉네임입니다.');
+		   					$('#nickname_check').css({'color': 'blue','font-size': '12px'});
+
+		   					arr[1] = true;
+
+		   				} else if ($("#member_nickname").val().length > 10) {
+
+		   					$('#nickname_check').text('닉네임은 10자 이내로 만들어주세요.');
+		   					$('#nickname_check').css({'color': 'red','font-size': '11px'
+		   					});
+
+		   				} else {
+		   					$('#nickname_check').text(
+		   						'닉네임은 3~10자 이내 한글,영문,숫자만 사용가능합니다.(공백사용불가)');
+		   					$('#nickname_check').css({'color': 'red','font-size': '11px'});
+		   				}
+
+		   			}
+		   		}
+		   	})
+		  }
+		
+		   
+		 //이메일 유효성 검사
+			  function email_Chk() {
+				arr[2] = false;
+				
+			    $.ajax({
+		   		url: "emailChk.do",
+		   		type: "post",
+		   		dataType: "json",
+		   		data: {
+		   			"member_email" : $("#member_email").val().trim()
+		   		},
+		   		success: function(data) {
+		   			console.log(data);
+		   			if (data == 1) {
+		   				$('#email_check').text('이미 존재하는 이메일 입니다.');
+		   				$('#email_check').css({'color': 'red','font-size': '12px'});
+
+		   			} else {
+		   				if(data == 0 && mailR.test($("#member_email").val())){
+		   					$('#email_check').text('사용가능한 이메일 입니다.');
+		   					$('#email_check').css({'color': 'blue','font-size': '12px'});
+					
+		   					arr[2] = true;
+		   				} else{
+							
+		   					$('#email_check').text('이메일 형식을 지켜주세요.');
+		   					$('#email_check').css({'color': 'red','font-size': '12px'});
+		   					
+		   			} 
+		   				
+		   			}
+		   		}
+		   	})
+		   }
+		
+				//휴대폰번호 정규식 확인
+				$("#member_phone").keydown(function() {
+					arr[5] = false;
+					var member_phone = $("#member_phone").val().trim();
+					if (phoneR.test(member_phone) == false) {
+						$("#phone_check").text('휴대폰번호를 다시 입력해주세요.');
+						$('#phone_check').css({'color': 'red','font-size': '11px'});
+					}else {
+						$("#phone_check").text('');
+						arr[5] = true;
+					}
+				})
+		
+		
+		
+		
+		
 		
 		 function arup(){
 	            

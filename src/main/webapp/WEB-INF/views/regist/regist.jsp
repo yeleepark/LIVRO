@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +14,7 @@
 	rel="stylesheet">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script
-	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
 <title>LIVRO-회원가입</title>
@@ -61,8 +59,8 @@
 						<label for=member_nickname>닉네임</label> <input type="text"
 							id="member_nickname" name="member_nickname"
 							title="닉네임은 3~10자 이내 한글,영문,숫자만 사용가능합니다.(공백사용불가)
-							" placeholder="닉네임" /> <input
-							type="button" class="joinChkBtn" value="중복확인"
+							" placeholder="닉네임" />
+							 <input type="button" class="joinChkBtn" value="중복확인"
 							onclick="nick_Chk();">
 						<div class="msg_check" id="nickname_check"></div>
 					</div>
@@ -113,8 +111,7 @@
 					<!-- <input value="Agree" type="checkbox" id="" name="Agree" /> Agree
 					to terms and conditions ( 회원가입 동의 ) <span> <br> -->
 					<input type="submit" value="Sign Up" id="confirm" class="goJoinBtn">
-					<input type="button" value="홈으로" class="goJoinBtn"
-						onclick="history.back();">
+					<input type="button" value="홈으로" class="goJoinBtn" onclick="history.back();">
 					<!-- <span>	<a href="main.do">홈으로</a></span> -->
 					<!-- </span> -->
 

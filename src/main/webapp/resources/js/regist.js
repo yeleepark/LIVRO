@@ -35,43 +35,22 @@ $(document)
 						var memberpwchk = $("#member_pwchk")
 							.val().trim();
 
-						if (memberpw != null
-							|| memberpw != ""
-							|| memberpwchk != ""
-							|| memberpwchk != null) {
+						if (memberpw != null|| memberpw != ""|| memberpwchk != ""|| memberpwchk != null) {
 							//일치여부 확인 , 정규식 검사 후 비밀번호를 사용가능한 문구출력
-							if ((pwR.test(memberpw)
-								&& pwR
-									.test(memberpwchk) && (memberpw == memberpwchk))) {
-								$('#pwchk_check')
-									.text(
-										'비밀번호를 사용할 수 있습니다.');
-								$('#pwchk_check').css({
-									'color': 'blue',
-									'font-size': '11px'
-								});
+							if ((pwR.test(memberpw)&& pwR.test(memberpwchk) && (memberpw == memberpwchk))) {
+								$('#pwchk_check').text('비밀번호를 사용할 수 있습니다.');
+								$('#pwchk_check').css({'color': 'blue','font-size': '11px'});
 								arr[1] = true;
 
-							} else if (pwR.test(memberpw) == false
-								&& pwR
-									.test(memberpwchk) == false) {
+							} else if (pwR.test(memberpw) == false&& pwR.test(memberpwchk) == false) {
 								//정규식을 만족하지 못했을 경우
-								$('#pwchk_check')
-									.text(
-										'비밀번호는 8~15자 이내 문자, 특수문자, 숫자를 반드시 포함해야합니다.');
-								$('#pwchk_check').css({
-									'color': 'red',
-									'font-size': '11px'
-								});
+								$('#pwchk_check').text('비밀번호는 8~15자 이내 문자, 특수문자, 숫자를 반드시 포함해야합니다.');
+								$('#pwchk_check').css({'color': 'red','font-size': '11px'});
 
 							} else {
 								//입력된 비밀번호가 일치하지 않을 때
-								$('#pwchk_check').text(
-									'비밀번호가 일치하지 않습니다.');
-								$('#pwchk_check').css({
-									'color': 'red',
-									'font-size': '11px'
-								});
+								$('#pwchk_check').text('비밀번호가 일치하지 않습니다.');
+								$('#pwchk_check').css({'color': 'red','font-size': '11px'});
 							}
 
 						}
@@ -81,15 +60,10 @@ $(document)
 			//blur : 입력하고 다른 곳을 클릭했을 때 실행되는 함수
 			$("#member_pwchk").blur(
 				function() {
-					if ($("#member_pw").val() != $(
-						"#member_pwchk").val()) {
+					if ($("#member_pw").val() != $("#member_pwchk").val()) {
 						if ($("#member_pwchk").val() != '') {
-							$('#pwchk_check').text(
-								'비밀번호를 다시 입력해주세요.');
-							$('#pwchk_check').css({
-								'color': 'red',
-								'font-size': '11px'
-							});
+							$('#pwchk_check').text('비밀번호를 다시 입력해주세요.');
+							$('#pwchk_check').css({'color': 'red','font-size': '11px'});
 							$("#member_pwchk").val('');
 							$("#member_pw").focus();
 						}

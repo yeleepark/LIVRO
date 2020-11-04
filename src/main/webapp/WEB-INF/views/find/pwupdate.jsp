@@ -21,8 +21,7 @@
 	<section>
 		<div class="pw">
 			<h2>비밀번호 변경</h2>
-			<form action="pwupdateres.do" method="POST" id="pwForm" name="myForm"
-				onsubmit="return enterKey(event)">
+			<form action="pwupdateres.do" method="POST" id="pwForm" name="myForm" onsubmit="return false">
 				<input type="hidden" id="member_id" name="member_id"
 					value="${member_id }"> <label for=member_pw>비밀번호</label> <input
 					type="password" id="member_pw" autocomplete="off"
@@ -31,15 +30,14 @@
 					id="member_pwchk" autocomplete="off" required="required"
 					name="member_pwchk" placeholder="새 비밀번호 재 입력" />
 				<div id="pwchk_check"></div>
-				<input type="submit" value="변경" id="chang_btn"
-					style="display: none;"> <input type="hidden" id="pwform" />
+				<input type="submit" value="변경" id="chang_btn" style="display: none;"> 
 
 
 			</form>
 		</div>
 	</section>
-	<script type="text/javascript">
 
+<script type="text/javascript">
 
 var member_id = $("#member_id").val();
 //비밀번호 정규식 (영문, 숫자, 특문 반드시 포함 / 공백 x / 8~20자리)
@@ -50,9 +48,7 @@ var arr = new Array(pwR);
 arr.fill(false);
 
 console.log(arr[0]);
-$(document)
-.ready(
-	function(e) {
+$(document).ready(function(e) {
 		$("#member_pw" && "#member_pwchk").keyup(function(e) {
 				arr[0] = false;
 				//if문에 사용할 비밀번호값을 변수에 저장해줌
@@ -68,7 +64,6 @@ $(document)
 				$('#pwchk_check').css({'color': 'blue','font-size': '12px'});
 				$("#chang_btn").css('display','block');
 				
-				arr[0] = true;
 				arr[1] = true;
 				
 				return true;
@@ -81,71 +76,33 @@ $(document)
 				
 				$("#chang_btn").css('display','none');
 				
-				return false;
-			
-				
+				$('#chang_btn').keydown(function(e){
+					console.log(e.keycode)
+					if(e.keyCode === 13){
+						e.preventDefault();
+					}
+				})
 			} else {
 				//입력된 비밀번호가 일치하지 않을 때
 				$('#pwchk_check').text('비밀번호가 일치하지 않습니다.');
 				$('#pwchk_check').css({'color': 'red','font-size': '12px'});
 				$("#chang_btn").css('display','none');
 	
-				return false;
-				}
+				
+				$('#chang_btn').keydown(function(e){
+					console.log(e.keycode)
+					if(e.keyCode === 13){
+						e.preventDefault();
+					}
+				})
+				
 			}
 
+		
+		
 		}
-	)
-	
-});
-$("#member_pwchk").blur(
-		function() {
-			if ($("#member_pw").val() != $("#member_pwchk").val()) {
-				if ($("#member_pwchk").val() != '') {
-					$('#pwchk_check').text(
-						'비밀번호를 다시 입력해주세요.');
-					$('#pwchk_check').css({
-						'color': 'red',
-						'font-size': '11px'
-					});
-					$("#member_pwchk").val('');
-					$("#member_pw").focus();
-				}
-			}
 		})
-		
-		
-
-	/* function enterKey(e){
-		if(e.keyCode == 13 && e.srcElement.type != 'textarea')
-			return false;
-	}	 */
-/* function frmsubmit(){
-	console.log(arr);
-	if(arr==true){
-		return true;
-	}else{
-		return false;
-	}
-}
-	 */
-
- 
-/* $(document).keypress(function(e){
-	if(e.keyCode == 13){
-		console.log(e.keycode)
-		
-		return focus;
-	}
-}) 
-*/
-
-/*  var chang_btn = document.getElementById('chang_btn');
- chang_btn.addEventListener('click',function(){
-	 document.myForm.target= opener.name; //호출하고자하는 부모창의 이름
-	   document.myForm.submit(); // 폼 전송
-	   self.close(); //창 닫기 
- }) */
+})
 
 
 window.onload=function(){
@@ -156,7 +113,9 @@ window.onload=function(){
 	   self.close(); //창 닫기 
 	  }
 }
+		
 
+	
 
 
 </script>
