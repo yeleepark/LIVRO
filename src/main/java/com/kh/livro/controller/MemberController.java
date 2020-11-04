@@ -2,6 +2,7 @@ package com.kh.livro.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -24,6 +25,7 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kh.livro.biz.MemberBiz;
+import com.kh.livro.dto.CalendarDto;
 import com.kh.livro.dto.MemberDto;
 import com.kh.livro.utils.LoginGoogleBO;
 import com.kh.livro.utils.LoginNaverBO;
@@ -91,6 +93,13 @@ public class MemberController {
 		}
 
 		MemberDto login = memberBiz.selectOne(dto);
+		
+		String member_id = dto.getMember_id();
+		
+		List<CalendarDto> calList = memberBiz.showNoti(member_id);
+		System.out.println("맴버 아이디는? : "+member_id);
+		session.setAttribute("calList", calList);
+		
 		boolean check = false;
 		if (login != null) {
 			session.setAttribute("logindto", login);
@@ -114,7 +123,7 @@ public class MemberController {
 		String referer = request.getHeader("Referer");
 
 		logger.info(referer);
-
+		
 		if (referer.contains("broadDetail.do")) {
 			return "redirect:" + referer;
 		}
@@ -387,12 +396,13 @@ public class MemberController {
 	// 비밀번호 변경 팝업창
 	@RequestMapping(value = "/pwupdateres.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String pwupdateres(@RequestParam(value = "member_id") String member_id,
-			@RequestParam(value = "member_pw") String member_pw, Model model, HttpSession session) {
+			@RequestParam(value = "member_pw") String member_pw, @RequestParam(value = "member_pwchk") String member_pwchk, Model model, HttpSession session) {
 
 		MemberDto member = new MemberDto();
 
 		member.setMember_id(member_id);
 		member.setMember_pw(member_pw);
+		member.setMember_pwchk(member_pwchk);
 
 		logger.info(">>>ID : " + member.getMember_id());
 		logger.info(">>>PW : " + member.getMember_pw());

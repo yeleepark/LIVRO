@@ -109,5 +109,16 @@
 		WHERE MEMBER_ID = #{member_id}
 
 	</update>
+	
+	<!-- notification -->
+	<select id="showNoti" parameterType="CalendarDto" resultType="CalendarDto">
+		SELECT C.MEMBER_ID, C.CAL_START
+		FROM CALENDAR C
+		JOIN MEMBER M
+		ON C.MEMBER_ID = M.MEMBER_ID
+		JOIN FOLLOW F
+		ON F.ARTIST_ID = M.MEMBER_ID
+		WHERE F.MEMBER_ID = #{member_id}
+	</select>
 
 </mapper>

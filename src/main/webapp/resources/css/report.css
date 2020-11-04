@@ -1,0 +1,45 @@
+#bigdiv {
+	padding: 20px;
+}
+
+header {
+	display: none;
+}
+
+.reportForm {
+	width: 270px;
+	padding: 10px;
+}
+
+.reportForm input {
+	margin-bottom: 10px;
+}
+
+.category {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.reportArea {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.reportForm label {
+	display: inline-block;
+	vertical-align: center;
+	margin-right: 10px;
+}
+
+.btnArea {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.btnArea input {
+	margin-right: 10px;
+	padding: 3px 5px;
+}

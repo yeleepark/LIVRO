@@ -11,7 +11,7 @@
 }
 
 section {
-	padding-top: 100px;
+	padding-top: 40px;
 }
 
 /* 탭메뉴 */
@@ -50,7 +50,7 @@ section {
 	margin-bottom: 30px;
 }
 
-/* 회원정보수정 */
+/* 아티스트 채널 개설 */
 .tab-1-container {
 	width: 100%;
 	display: flex;
@@ -60,6 +60,7 @@ section {
 	width: 400px;
 	height: 100%;
 	float: left;
+	font-size: 0.8rem;
 }
 
 #tab-1 input {
@@ -70,7 +71,7 @@ section {
 	border: 1px solid #999;
 	border-radius: 0;
 	outline-style: none;
-	padding : 3px 5px;
+	padding: 3px 5px;
 }
 
 #tab-1 input[type="submit"] {
@@ -85,24 +86,31 @@ section {
 
 #tab-1 .tab-1-right {
 	float: right;
-	display: flex;
-	flex-direction: column;
-	font-size: 0.8rem;
 }
 
-#tab-1 .tab-1-right p{
-	margin-bottom: 5px;	
+.tab-1-right label{
+	display : block;
+	width : 200px;
+	text-align: center;
 }
-#tab-1 .profileImg {
+
+#profileImg{
+	text-align: center;
+	height: auto;
+	line-height: normal;
+	font-family: inherit;
+	border: 1px solid #999;
+	border-radius: 0;
+	outline-style: none;
+	padding: 3px 5px;
+	width : 200px;
+}
+
+#tab-1 .selectImg {
 	width: 200px;
 	height: 200px;
+	background-color : rgba(0,0,0,0.1);
 	box-sizing: content-box;
-	overflow: hidden;
-}
-
-.tab-1-right input{
-	margin-left : 100px; 
-	width : 100px;
 }
 
 #submitBtn {
@@ -112,25 +120,46 @@ section {
 	cursor: pointer;
 }
 
-#profile {
-	width: 200px;
-	height: 200px;
+/* 회원정보수정*/
+.tab-2-container {
+	display: flex;
+	width: 100%;
+}
+
+.tab-2-container input {
+	display: block;
+}
+
+.tab-2-left {
+	flex: 1;
+}
+
+.tab-2-right {
+	flex: 1;
+}
+
+#tab-2 label {
+	display: block;
+}
+
+.mypage-container {
+	padding-top: 80px;
 }
 
 /* 팔로우 목록 */
-#tab-2 a{
+#tab-3 a{
 	color : black;
 	text-decoration: none;
 	font-weight: 500;
 }
 
-#tab-2 a:hover{
+#tab-3 a:hover{
 	background-color: rgba(0,0,0,0.2);
 	padding : 3px 8px;
 	border-radius: 5px;
 }
 
-#tab-2 span{
+#tab-3 span{
 	font-size: 0.8rem;
 }
 
@@ -142,7 +171,7 @@ section {
 	font-size : 0.8rem;
 }
 
-/* 후원 내역 조회 */
+/* 후원내역조회 */
 .tab-4-container {
 	display: flex;
 	width: 100%;
@@ -181,51 +210,6 @@ section {
 }
 
 .tab-4-1-2 {
-	width: 50%;
-	text-align: center;
-	align-content: center;
-	font-size: 20px;
-}
-
-/* 후원 받은 조회 */
-.tab-5-container {
-	display: flex;
-	width: 100%;
-}
-
-.tab-5-container input {
-	display: block;
-}
-
-.tab-5-left {
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-}
-
-.tab-5-1 {
-	display: flex;
-	flex: 1;
-	width: 600px;
-	margin-bottom: 30px;
-	border: 1px solid dodgerblue;
-	border-radius: 10px;
-	justify-content: center;
-}
-
-.tab-5-1-1 {
-	width: 50%;
-	height: 50px;
-}
-
-.tab-5-1-1>span {
-	display: block;
-	font-size: 20px;
-	text-align: center;
-	align-content: center;
-}
-
-.tab-5-1-2 {
 	width: 50%;
 	text-align: center;
 	align-content: center;
