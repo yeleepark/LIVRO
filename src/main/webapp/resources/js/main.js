@@ -33,6 +33,7 @@ window.onload = function() {
 }
 
 var calId = document.getElementsByClassName('calId');
+var calNickname = document.getElementsByClassName('calNickname');
 var calDate = document.getElementsByClassName('calDate');
 
 function dateToYear(date) {
@@ -67,6 +68,7 @@ function clock() {
     console.log(timeIs);
     
     for(var i = 0; i < calDate.length; i++) {
+    	console.log(calNickname[i])
         var calYear = calDate[i].value.substr(24, 4);
         var calMonth = calDate[i].value.substr(4, 3);
         switch (calMonth) {
@@ -114,14 +116,10 @@ function clock() {
         var showTimeIs = (calYear+"-"+calMonth+"-"+calClockDate+" "+calHours+":"+calMinutes);
         console.log(showTimeIs);
         if (timeIs == showTimeIs) {
-        	var notification = new Notification('Notification title', {
+        	var notification = new Notification(calNickname[i].value, {
                 icon: 'resources/img/livro_icon.png',
-                body: 'Notification text',
+                body: '라이브를 즐기세요!',
             });
-
-            notification.onclick = function () {
-                window.open('http://google.com');
-            };
         	
         }
     }
@@ -131,7 +129,7 @@ function clock() {
 function init() {
 
 	clock(); // 최초에 clock함수를 한번 실행 
-	setInterval(clock, 5000);
+	setInterval(clock, 45000);
 	// setInterval이라는 함수로 매초마다 실행.
 	// setInterval은 첫번째 파라메터는 함수이고 두번째는 시간인데 밀리초단위. 1000 = 1초 
 

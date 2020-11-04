@@ -120,7 +120,7 @@
 	
 	<!-- notification -->
 	<select id="showNoti" parameterType="CalendarDto" resultType="CalendarDto">
-		SELECT C.MEMBER_ID, C.CAL_START
+		SELECT C.MEMBER_ID, M.MEMBER_NICKNAME, C.CAL_START
 		FROM CALENDAR C
 		JOIN MEMBER M
 		ON C.MEMBER_ID = M.MEMBER_ID

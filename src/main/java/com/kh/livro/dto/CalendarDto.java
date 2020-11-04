@@ -6,6 +6,7 @@ public class CalendarDto {
 
 	private int cal_no;
 	private String member_id;
+	private String member_nickname;
 	private String cal_title;
 	private Date cal_start;
 	private Date cal_end;
@@ -15,10 +16,11 @@ public class CalendarDto {
 		super();
 	}
 
-	public CalendarDto(int cal_no, String member_id, String cal_title, Date cal_start, Date cal_end, String cal_category) {
+	public CalendarDto(int cal_no, String member_id, String member_nickname, String cal_title, Date cal_start, Date cal_end, String cal_category) {
 		super();
 		this.cal_no = cal_no;
 		this.member_id = member_id;
+		this.member_nickname = member_nickname;
 		this.cal_title = cal_title;
 		this.cal_start = cal_start;
 		this.cal_end = cal_end;
@@ -39,6 +41,13 @@ public class CalendarDto {
 
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
+	}
+	public String getMember_nickname() {
+		return member_nickname;
+	}
+	
+	public void setMember_nickname(String member_nickname) {
+		this.member_nickname = member_nickname;
 	}
 
 	public String getCal_title() {
