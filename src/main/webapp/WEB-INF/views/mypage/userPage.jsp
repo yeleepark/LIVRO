@@ -9,7 +9,7 @@
 <script type="text/javascript"src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- fontawesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4" crossorigin="anonymous"></script>
 <!-- google font -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <title>Insert title here</title>
