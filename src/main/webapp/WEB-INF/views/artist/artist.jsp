@@ -46,7 +46,7 @@
 				<li class="tab-link" data-tab="tab-2">Support</li>
 				<li class="tab-link" data-tab="tab-3" id="tab3">Calendar</li>
 				<li class="tab-link" data-tab="tab-4">Livro</li>
-				<li class="tab-link" data-tab="tab-5">Map</li>
+				<li class="tab-link" data-tab="tab-5" id="tab5">Map</li>
 			</ul>
 
 
@@ -155,7 +155,8 @@
 									<textarea name="support_content" id="support_content"></textarea>
 								</div>
 								<div>
-									<input type="button" value="작성" class="insertBtn" onclick="insertSupport(this);">
+									<input type="button" value="작성" class="insertBtn"
+										onclick="insertSupport(this);">
 								</div>
 							</div>
 						</c:otherwise>
@@ -177,7 +178,8 @@
 										<!-- 첫줄 -->
 										<div class="rows-left">
 											<p class="writerNick">${support.member_nickname }</p>
-											<input type="hidden" value="${support.member_id }" class="writerId">
+											<input type="hidden" value="${support.member_id }"
+												class="writerId">
 										</div>
 										<div class="rows-center">
 											<textarea class="change" readonly="readonly">${support.support_content }</textarea>
@@ -186,22 +188,31 @@
 										</div>
 										<div class="rows-right">
 											<input type="hidden" value="${support.support_no }">
-											<c:if test="${logindto.member_nickname == support.member_nickname }">
-												<input type="button" value="수정" class="updateBtn" onclick="updateSupport(this);">
-												<input type="button" value="완료" class="updateRes" onclick="updateRes(this);">
-												<input type="button" value="삭제" class="deleteBtn" onclick="deleteSupport(this);">
-												<input type="hidden" value="${support.support_no }" class="supportNo">
+											<c:if
+												test="${logindto.member_nickname == support.member_nickname }">
+												<input type="button" value="수정" class="updateBtn"
+													onclick="updateSupport(this);">
+												<input type="button" value="완료" class="updateRes"
+													onclick="updateRes(this);">
+												<input type="button" value="삭제" class="deleteBtn"
+													onclick="deleteSupport(this);">
+												<input type="hidden" value="${support.support_no }"
+													class="supportNo">
 											</c:if>
-											<c:if test="${logindto.member_id == support.member_id || logindto.member_id != support_member_id}">
-												<input type="button" value="신고" class="reportBtn"onclick="report(this);">
+											<c:if
+												test="${logindto.member_id == support.member_id || logindto.member_id != support_member_id}">
+												<input type="button" value="신고" class="reportBtn"
+													onclick="report(this);">
 											</c:if>
 										</div>
 										<!-- 두번째줄 -->
 										<div class="rows-middle">
 											<div>
-												<input type="button" value="&#xf06b" class="showReply" onclick="showReply(this);">
-												<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);">
-												<input type="hidden" value="${support.support_no }" class="supportNo">
+												<input type="button" value="&#xf06b" class="showReply"
+													onclick="showReply(this);"> <input type="button"
+													value="&#xf00d" class="closeReply"
+													onclick="closeReply(this);"> <input type="hidden"
+													value="${support.support_no }" class="supportNo">
 											</div>
 											<!--  반복 부분 -->
 											<div class="replyArea"></div>
@@ -312,30 +323,55 @@
 				<h2>
 					<i class="fas fa-map-marker-alt"></i> 팬레터 보내는 곳 ?
 				</h2>
-				<c:if test ="${logindto.member_id eq  memberdto.member_id && logindto.member_role == 'A'}">
-				<form action="artistmap.do" method="post">
-					<input type="text" value="${logindto.member_id }" name="member_id">
-					<div class="artist_loc_wrap">
-						<label for="artist_addr1">주소</label> <input placeholder="우편번호"
-							vtype="text" readonly="readonly" name="artist_addr1"
-							id="artist_addr1">
-						<button type="button" class="joinChkBtn"
-							vonclick="execPostCode();">
-							<i class="fa fa-search"></i> 우편번호 찾기
-						</button>
-						<input placeholder="도로명 주소" type="text" readonly="readonly"
-							name="artist_addr2" id="artist_addr2" /> <input
-							placeholder="상세주소" type="text" name="artist_addr3"
-							id="artist_addr3" /> <input type="text" placeholder="아티스트주소"
-							value="" class="addr" /> <input type="submit" value="입력">
-						<input type="button" value="삭제" onclick="artistmapdel.do">
+
+				<!-- 메세지 띄울 div공간 -->
+				<div id="textarea"></div>
+				
+				<!-- 아티스트 자기 자신의 채널이고 , 지도가 띄워져있다면 삭제버튼 보이기 -->
+				<c:if
+					test="${logindto.member_nickname eq memberdto.member_nickname && !empty mapdto}">
+					<div class="addr_btn_wrap">
+						<input type="button" value="삭제" onclick="delChk()"
+							class="artist_addr_btn">
 					</div>
-				</form>
 				</c:if>
+				<!-- 아티스트 자기 자신의 채널일 때 주소입력지  -->
+				<c:if
+					test="${logindto.member_nickname eq memberdto.member_nickname }">
+					<form action="artistmap.do" method="post" id="addrForm">
+						<input type="hidden" value="${logindto.member_id }"
+							name="member_id">
+						<div class="artist_loc_wrap">
+							<label for="artist_addr1">주소</label> <input placeholder="우편번호"
+								type="text" name="artist_postcode" id="artist_addr1"
+								required="required">
+							<button type="button" class="artist_addr_btn"
+								onclick="execPostCode();">
+								<i class="fa fa-search"></i> 우편번호 찾기
+							</button>
+							<input placeholder="도로명 주소" type="text" name="artist_loc"
+								id="artist_addr2" required="required" /> <input
+								placeholder="상세주소" type="text" name="artist_detail_loc"
+								id="artist_addr3" />
+							<c:choose>
+								<c:when test="${empty mapdto }">
+									<input type="submit" value="등록" id="addAddr"
+										class="artist_addr_btn">
+								</c:when>
+								<c:otherwise>
+									<input type="button" value="주소변경" onclick="locConfirm()"
+										class="artist_addr_btn">
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</form>
+				</c:if>
+				<!--지도에 마커 찍어줄 값 불러와서 클래스 부여 -->
+				<input type="hidden" value="${mapdto.artist_loc}" class="addr"
+					id="addr_info">
 
 				<div class="map-container">
-					<div id="map" style="width: 100%; height: 400px;"></div>
-					<input type="hidden">
+					<div id="map" style="width: 100%; height: 350px;"></div>
 				</div>
 			</div>
 
@@ -412,6 +448,12 @@
 		<input type="hidden" value="${logindto.member_nickname}"
 			id="loginNickname">
 		<!-- 로그인 아이디 -->
+		<input type="hidden" value="${logindto.member_role }" id="memberRole">
+		<!-- 아티스트 롤 -->
+		<input type="hidden" value="${mapdto.artist_postcode }" id="artistPostcode">
+		<input type="hidden" value="${mapdto.artist_loc}" id="artistLoc">
+		<input type="hidden" value="${mapdto.artist_detail_loc}" id="artistDetailLoc">
+		<!-- 아티스트 주소 3개 -->
 	</section>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b922a72fda74bfd05bf5b30f2ab2056d&libraries=services"></script>
@@ -426,104 +468,7 @@
 	<script type="text/javascript" src="resources/js/artist.js"></script>
 	<script type="text/javascript" src="resources/js/artist-support.js"></script>
 	<script type="text/javascript" src="resources/js/artist-calendar.js"></script>
-	<!-- <script type="text/javascript" src="resources/js/artist-map.js"></script> -->
-	<script type="text/javascript">
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			level : 3
-		// 지도의 확대 레벨
-		};
-
-		var addr = document.getElementsByClassName('addr')[0];
-
-		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-		//주소-좌표 변환 객체를 생성합니다
-		var geocoder = new kakao.maps.services.Geocoder();
-
-		// 주소로 좌표를 검색합니다
-		geocoder
-				.addressSearch(
-						'addr',
-						function(result, status) {
-
-							// 정상적으로 검색이 완료됐으면 
-							if (status === kakao.maps.services.Status.OK) {
-
-								var coords = new kakao.maps.LatLng(result[0].y,
-										result[0].x);
-
-								// 결과값으로 받은 위치를 마커로 표시합니다
-								var marker = new kakao.maps.Marker({
-									map : map,
-									position : coords
-								});
-
-								// 인포윈도우로 장소에 대한 설명을 표시합니다
-								var infowindow = new kakao.maps.InfoWindow(
-										{
-											content : '<div style="width:150px;text-align:center;padding:6px 0;">팬레터</div>'
-										});
-								infowindow.open(map, marker);
-
-								// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-								map.setCenter(coords);
-							}
-						});
-		//우편번호찾기
-		function execPostCode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-							var addr = ''; // 주소 변수
-							var extraAddr = ''; // 참고항목 변수
-
-							//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-							if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-								addr = data.roadAddress;
-							} else { // 사용자가 지번 주소를 선택했을 경우(J)
-								addr = data.jibunAddress;
-							}
-
-							// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-							if (data.userSelectedType === 'R') {
-								// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-								// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-								if (data.bname !== ''
-										&& /[동|로|가]$/g.test(data.bname)) {
-									extraAddr += data.bname;
-								}
-								// 건물명이 있고, 공동주택일 경우 추가한다.
-								if (data.buildingName !== ''
-										&& data.apartment === 'Y') {
-									extraAddr += (extraAddr !== '' ? ', '
-											+ data.buildingName
-											: data.buildingName);
-								}
-								// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-								if (extraAddr !== '') {
-									extraAddr = ' (' + extraAddr + ')';
-								}
-								// 조합된 참고항목을 해당 필드에 넣는다.
-								//document.getElementById("member_addr").value = extraAddr;
-
-							}
-
-							// 우편번호와 주소 정보를 해당 필드에 넣는다.
-							document.getElementById('artist_addr1').value = data.zonecode;
-							document.getElementById('artist_addr2').value = addr;
-							// 커서를 상세주소 필드로 이동한다.
-							document.getElementById('artist_addr3').focus();
-
-						}
-					}).open();
-		}
-	</script>
+	<script type="text/javascript" src="resources/js/artist-map.js"></script>
 
 </body>
 </html>

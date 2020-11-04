@@ -8,7 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.livro.biz.ArtistMapBiz;
 import com.kh.livro.dto.ArtistMapDto;
@@ -24,20 +26,18 @@ public class ArtistMapController {
 	
 	//아티스트 주소입력
 	@RequestMapping("/artistmap.do")
-	public String insertLoc(ArtistMapDto dto, String artist_addr1,String artist_addr2,String artist_addr3, Model model) {
+	public String insertLoc(ArtistMapDto dto, Model model) {
 		logger.info("[artistmap.do]");
-		String artist_loc = artist_addr1 + artist_addr2 + artist_addr3;
-
-		dto.setArtist_loc(artist_loc);
+		
 		int res  = artistmapBiz.artistmapinsert(dto);
 		
 		if(res>0) {
 			model.addAttribute("msg", "팬레터 주소지가 등록되었습니다.");
-			model.addAttribute("url", "/artist.do");
+			model.addAttribute("url", "/artist.do?member_id=" + dto.getMember_id());
 			
 		}else {
 			model.addAttribute("msg", "주소등록을 실패했습니다.");
-			model.addAttribute("url", "/artist.do");
+			model.addAttribute("url", "/artist.do?member_id="+ dto.getMember_id());
 		}
 		
 		
@@ -54,7 +54,7 @@ public class ArtistMapController {
 		
 		if(res>0) {
 			model.addAttribute("msg", "팬레터 주소지가 삭제되었습니다.");
-			model.addAttribute("url", "/artist.do");
+			model.addAttribute("url", "/artist.do?member_id=" + dto.getMember_id());
 			
 		}else {
 			model.addAttribute("msg", "주소삭제 실패했습니다.");
@@ -65,10 +65,15 @@ public class ArtistMapController {
 	}
 	
 	@RequestMapping("/artistmapupdate.do")
-	public String updateLoc() {
+	@ResponseBody
+	public int updateLoc(ArtistMapDto dto) {
+		logger.info("[artistmapupdate.do]");
 		
-		
-		return "";
+		int res = artistmapBiz.artistmapupdate(dto);
+	
+		return res;
 	}
+	
+
 	
 }

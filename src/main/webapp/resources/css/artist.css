@@ -637,4 +637,45 @@ ul.tabs li.tabCurrent {
 	}
 }
 
+/* 지도 */
+
+#textarea{
+	display: inline-block;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.addr_btn_wrap{
+	display: inline-block;
+}
+
+.artist_loc_wrap{
+	margin-left: 10px;
+}
+
+/* 버튼css */
+.artist_addr_btn{
+	padding: 3px 5px;
+    font-size: 0.8rem;
+    background-color: transparent;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    cursor: pointer;
+}
+
+/* 주소 표시되는 곳 */
+.mappointer{
+	width:150px;
+	text-align:center;
+	padding:6px 0;
+}
+
+
+
+
+
+
+
+
 

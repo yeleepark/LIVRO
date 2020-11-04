@@ -31,6 +31,14 @@ public class ArtistMapBizImpl implements ArtistMapBiz {
 		// TODO Auto-generated method stub
 		return artistmapDao.artistmapdelete(member_id);
 	}
+
+	@Override
+	public ArtistMapDto artistmapselectOne(String member_id) {
+		
+		return artistmapDao.artistmapselectOne(member_id);
+	}
+	
+	
 	
 	
 	

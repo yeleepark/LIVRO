@@ -3,22 +3,31 @@
 <mapper namespace="artistmap">
 
 <insert id="artistmapinsert" parameterType="ArtistMapDto">
-INSERT INTO ARTIST_MAP(MEMBER_ID, ARTIST_LOC)
+INSERT INTO ARTIST_MAP(MEMBER_ID, ARTIST_LOC, ARTIST_DETAIL_LOC, ARTIST_POSTCODE)
 VALUES(
-#{member_id},
-#{artist_loc}
+	#{member_id},
+	#{artist_loc},
+	#{artist_detail_loc},
+	#{artist_postcode}
 )
 </insert>
 <update id="artistmapupdate" parameterType="ArtistMapDto">
 UPDATE ARTIST_MAP
-SET ARTIST_LOC = #{artist_loc}
+SET ARTIST_LOC = #{artist_loc},
+ARTIST_DETAIL_LOC = #{artist_detail_loc},
+ARTIST_POSTCODE = #{artist_postcode}
 WHERE MEMBER_ID = #{member_id}
 </update>
 
 <delete id="artistmapdelete" parameterType="String">
 DELETE 
-FROM ARTIST_LOC
+FROM ARTIST_MAP
 WHERE MEMBER_ID = #{member_id}
 </delete>
 
+<select id="artistmapselectOne" resultType="ArtistMapDto" parameterType="String">
+SELECT MEMBER_ID, ARTIST_POSTCODE, ARTIST_LOC, ARTIST_DETAIL_LOC
+FROM ARTIST_MAP
+WHERE MEMBER_ID = #{member_id}
+</select>
 </mapper>

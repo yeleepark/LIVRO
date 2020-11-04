@@ -57,4 +57,19 @@ public class ArtistMapDaoImpl implements ArtistMapDao {
 		return res;
 	}
 
+	@Override
+	public ArtistMapDto artistmapselectOne(String member_id) {
+		ArtistMapDto res = null;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "artistmapselectOne" , member_id);
+		} catch (Exception e) {
+			logger.info("[artistmap selectone 오류]");
+			e.printStackTrace();
+		}
+		
+		
+		return res;
+	}
+
 }
