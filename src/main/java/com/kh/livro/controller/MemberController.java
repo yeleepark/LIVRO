@@ -396,12 +396,13 @@ public class MemberController {
 	// 비밀번호 변경 팝업창
 	@RequestMapping(value = "/pwupdateres.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String pwupdateres(@RequestParam(value = "member_id") String member_id,
-			@RequestParam(value = "member_pw") String member_pw, Model model, HttpSession session) {
+			@RequestParam(value = "member_pw") String member_pw, @RequestParam(value = "member_pwchk") String member_pwchk, Model model, HttpSession session) {
 
 		MemberDto member = new MemberDto();
 
 		member.setMember_id(member_id);
 		member.setMember_pw(member_pw);
+		member.setMember_pwchk(member_pwchk);
 
 		logger.info(">>>ID : " + member.getMember_id());
 		logger.info(">>>PW : " + member.getMember_pw());
