@@ -57,7 +57,7 @@
 	<div id="paginationBox">
 		<ul class="pagination">
 			<c:if test="${pagination.prev}">
-				<li class="page-items"><a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">&lt;</a></li>
+				<li class="page-items"><a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
 			</c:if>
 				
 
@@ -69,7 +69,7 @@
 				
 
 			<c:if test="${pagination.next}">
-				<li class="page-items"><a class="page-link" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')" >&gt;</a></li>
+				<li class="page-items"><a class="page-link" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')" >Next</a></li>
 			</c:if>
 		</ul>
 	</div>
