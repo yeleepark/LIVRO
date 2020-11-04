@@ -191,7 +191,7 @@
 			<div id="idalert"></div>
 			<input type="button" id="idBtn" value="Go to Find" onclick="idChk()" />
 			<span> <a href="registForm.do">Don't have an Account?</a> <a
-				href="login.do">LOGIN</a> <a href="main.do">홈으로</a>
+				href="loginForm.do">LOGIN</a> <a href="main.do">홈으로</a>
 			</span>
 
 		</div>
@@ -205,8 +205,9 @@
 			<input type="text"	name="member_email" autocomplete="off" id="member_email" placeholder="&#xf2bd; Email" />
 			<div id="pwalert"></div>
 			<input type="button" id="pwBtn" value="Go to Find" onclick="pwChk()">
-			<span> <a href="registForm.do">Don't have an Account?</a> <a
-				href="login.do">LOGIN</a> <a href="main.do">홈으로</a>
+			<span> <a href="registForm.do">Don't have an Account?</a>
+			 <a href="loginForm.do">LOGIN</a> 
+				<a href="main.do">홈으로</a>
 			</span>
 			<div id="keyalert">
 				<input type="text" id="input_email_code" placeholder="&#xf2bd; 인증번호입력" /> 
