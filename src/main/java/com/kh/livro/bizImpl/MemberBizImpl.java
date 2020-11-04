@@ -90,5 +90,12 @@ public class MemberBizImpl implements MemberBiz {
 	public List<CalendarDto> showNoti(String member_id) {
 		return memberDao.showNoti(member_id);
 	}
+	
+	//유저 이메일 중복 체크
+	@Override
+	public int mailChk(MemberDto dto) {
+
+		return memberDao.mailChk(dto);
+	}
 
 }

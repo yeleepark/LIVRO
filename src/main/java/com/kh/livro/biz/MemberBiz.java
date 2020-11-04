@@ -43,4 +43,8 @@ public interface MemberBiz {
 	
 	// 공연 notification
 	public List<CalendarDto> showNoti(String member_id);
+	
+	//유저정보 메일 중복체크 
+	public int mailChk(MemberDto dto);
+	
 }

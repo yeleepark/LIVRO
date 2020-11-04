@@ -196,4 +196,17 @@ public class MemberDaoImpl implements MemberDao {
 		return list;
 	}
 	
+	//정보수정에서 이메일 중복체크
+	@Override
+	public int mailChk(MemberDto dto) {
+		int res = 0;
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "mailChk", dto);
+		} catch (Exception e) {
+			logger.info("[Error] mailChk");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
 }

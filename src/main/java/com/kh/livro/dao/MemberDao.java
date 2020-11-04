@@ -45,5 +45,9 @@ public interface MemberDao {
 	
 	//공연 노티피케이션
 	public List<CalendarDto> showNoti(String member_id);
+	
+	//정보수정에서 이메일 중복체크 
+	public int mailChk(MemberDto dto);
+	
 
 }
