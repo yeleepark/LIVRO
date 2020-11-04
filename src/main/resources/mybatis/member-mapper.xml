@@ -119,6 +119,7 @@
 		JOIN FOLLOW F
 		ON F.ARTIST_ID = M.MEMBER_ID
 		WHERE F.MEMBER_ID = #{member_id}
+		ORDER BY C.CAL_START 
 	</select>
 
 </mapper>

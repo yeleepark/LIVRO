@@ -79,8 +79,8 @@ response.setDateHeader("Expires", 1L);
 	</header>
 
 	<c:forEach items="${calList }" var="list">
-		<input type="hidden" value="${list.member_id }">		
-		<input type="hidden" value="${list.cal_start }">
+		<input type="hidden" class="calId" value="${list.member_id }">		
+		<input type="hidden" class="calDate" value="${list.cal_start }">
 	</c:forEach>
 
 	<script src="resources/js/main.js"></script>
