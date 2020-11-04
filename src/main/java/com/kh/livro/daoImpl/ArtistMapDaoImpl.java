@@ -30,4 +30,31 @@ public class ArtistMapDaoImpl implements ArtistMapDao {
 		return res;
 	}
 
+	@Override
+	public int artistmapupdate(ArtistMapDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "artistmapupdate" , dto);
+		} catch (Exception e) {
+			logger.info("[artistmapimpl update 오류]");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int artistmapdelete(String member_id) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "artistmapdelete" , member_id);
+		} catch (Exception e) {
+			logger.info("[artistmap delete 오류]");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 }

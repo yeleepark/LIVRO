@@ -566,6 +566,11 @@ ul.tabs li.tabCurrent {
 	flex-direction: column;
 }
 
+
+/* 아티스트 맵  */
+.artist_loc{
+	display: inline-block;
+}
 @media screen and (max-width:768px) {
 	section {
 		display: flex;
@@ -631,4 +636,5 @@ ul.tabs li.tabCurrent {
 		flex-direction: row;
 	}
 }
+
 

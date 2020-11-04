@@ -4,6 +4,7 @@ public class ArtistMapDto {
 
 	private String member_id;
 	private String artist_loc;
+	
 	public ArtistMapDto() {
 		
 		super();
