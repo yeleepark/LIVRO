@@ -453,7 +453,6 @@ public class MemberController {
 		MemberDto rdto = new MemberDto();
 
 		rdto.setMember_id(dto.getMember_id());
-		rdto.setMember_pw(dto.getMember_pw());
 		rdto.setMember_email(dto.getMember_email());
 		rdto.setMember_nickname(dto.getMember_nickname());
 		rdto.setMember_addr(dto.getMember_addr());
