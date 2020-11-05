@@ -414,6 +414,13 @@ public class MemberController {
 
 		logger.info(">>>ID : " + member.getMember_id());
 		logger.info(">>>PW : " + member.getMember_pw());
+		logger.info(">>>pwChk" + member.getMember_pwchk());
+		
+		String encryPassword = PwSHA256.encrypt(member.getMember_pw());
+		String encryPassword_chk = PwSHA256.encrypt(member.getMember_pwchk());
+
+		member.setMember_pw(encryPassword);
+		member.setMember_pwchk(encryPassword_chk);
 
 		int res = memberBiz.pwupdate(member);
 
