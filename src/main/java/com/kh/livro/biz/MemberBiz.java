@@ -47,4 +47,7 @@ public interface MemberBiz {
 	//유저정보 메일 중복체크 
 	public int mailChk(MemberDto dto);
 	
+	//userPw 변경
+	public int userPw(MemberDto dto);
+	
 }

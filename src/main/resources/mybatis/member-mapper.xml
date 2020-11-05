@@ -128,5 +128,14 @@
 		WHERE F.MEMBER_ID = #{member_id}
 		ORDER BY C.CAL_START 
 	</select>
+	
+	<update id="userPw" parameterType="MemberDto">
+		UPDATE MEMBER
+		SET MEMBER_PW = #{member_pw}
+		MEMBER_PWCHK = #{member_pwchk}
+		WHERE 
+		MEMBER_ID = #{member_id}
+	
+	</update>
 
 </mapper>
