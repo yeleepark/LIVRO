@@ -41,13 +41,12 @@ public class ArtistController {
 	public String artist(Model model, String member_id) {
 		model.addAttribute("musicdto", artistBiz.selectList(member_id));
 		model.addAttribute("memberdto", artistBiz.selectOne(member_id));
-		model.addAttribute("supportdto", artistBiz.supportList(member_id));
 		model.addAttribute("profiledto", artistBiz.selectProfile(member_id));
 		model.addAttribute("broaddto", artistBiz.broadList(member_id));
 		model.addAttribute("caldto", artistBiz.calList(member_id));
 		model.addAttribute("dto", artistBiz.followerList(member_id));
 		model.addAttribute("mapdto", artistmapBiz.artistmapselectOne(member_id));
-		
+		model.addAttribute("countdto", artistBiz.followerCount(member_id));
 		return "artist/artist";
 	}
 
@@ -66,7 +65,7 @@ public class ArtistController {
 		follower.setFollower_nickname(dto.getMember_nickname());
 
 		int res2 = artistBiz.follwer(follower);
-
+		
 		return res + res2;
 	}
 
@@ -82,6 +81,26 @@ public class ArtistController {
 		int res2 = artistBiz.unfollower(follower);
 
 		return res + res2;
+	}
+	
+	// 글 리스트 
+	@RequestMapping(value="/supportList.do")
+	public String supportList(Model model, String member_id) {
+		logger.info("글 리스트 컨트롤러");
+		
+		model.addAttribute("supportdto", artistBiz.supportList(member_id));
+		
+		return "artist/artistSupport";
+	}
+	
+	// 내가 쓴 글 리스트 
+	@RequestMapping(value="/mylist.do", method = RequestMethod.POST)
+	public String myList(Model model, @RequestBody SupportDto dto) {
+		logger.info("내가 쓴 글 리스트 컨트롤러");
+		
+		model.addAttribute("supportdto", artistBiz.myList(dto));
+		return "artist/artistSupport";
+		
 	}
 
 	// 글 입력 (@RestController방식으로 json전달하여 댓글입력)

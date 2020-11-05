@@ -13,6 +13,8 @@ section {
 	width: 80%;
 	margin: 0 auto;
 	padding-top: 100px;
+	display: flex;
+	justify-content: center;
 }
 
 /* 탭메뉴 */
@@ -160,10 +162,14 @@ ul.tabs li.tabCurrent {
 }
 
 .support-index span:nth-child(2) {
-	width: 80%;
+	width: 70%;
 	display: inline-block;
 	text-align: center;
 	font-weight: bold;
+}
+.mineBtn{
+	padding : 2px 5px;
+	font-size: 0.8rem;
 }
 
 .supportDetail {
@@ -451,16 +457,6 @@ ul.tabs li.tabCurrent {
 	width: 40px;
 }
 
-.live-row {
-	display: none;
-}
-
-.active {
-	display: block !important;
-	margin-bottom: 10px;
-	border: 1px solid black;
-}
-
 .live-row a {
 	text-decoration: none;
 	color: black;
@@ -474,9 +470,8 @@ ul.tabs li.tabCurrent {
 /* 아티스트 프로필 출력 */
 .right-wrapper {
 	width: 20%;
-	float: right;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	flex-direction: column;
 }
@@ -486,7 +481,7 @@ ul.tabs li.tabCurrent {
 	height: 150px;
 	border-radius: 50%;
 	overflow: hidden;
-	margin-top: 50px;
+	margin-top: 10px;
 }
 
 #artist-profile img {
@@ -502,9 +497,12 @@ ul.tabs li.tabCurrent {
 	margin-top: 20px;
 }
 
-#artist-desc p {
+.nick p {
 	margin-bottom: 10px;
 	text-align: center;
+	padding : 5px 20px;
+	border-radius: 10px;
+	background-color: #ededed;
 }
 
 #artist-desc button {
@@ -512,36 +510,10 @@ ul.tabs li.tabCurrent {
 	margin-left: 5px;
 }
 
-.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
-	color: #3399FF;
-	font-family: "Helvetica";
-	font-size: 10pt;
-	background-color: #ffffff;
-	border: 1px solid;
-	border-color: #3399FF;
-	border-radius: 3px;
-	width: 85px;
-	height: 30px;
-	cursor: pointer;
-}
-
-.YfollowBtn {
-	display: none;
-}
-
-.unfollowBtn {
-	display: none;
-}
-
-/* 지도 */
-.map-container {
-	width: 100%;
-	padding: 20px;
-}
-
 /* 버튼 */
 .button-container {
 	width: 100%;
+	height: 40%;
 	position: relative;
 }
 
@@ -566,12 +538,88 @@ ul.tabs li.tabCurrent {
 	flex-direction: column;
 }
 
+.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
+	color: #3399FF;
+	font-family: "Helvetica";
+	font-size: 10pt;
+	background-color: #ffffff;
+	border: 1px solid;
+	border-color: #3399FF;
+	border-radius: 3px;
+	width: 85px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.YfollowBtn {
+	display: none;
+}
+
+.unfollowBtn {
+	display: none;
+}
+
+.follower p{
+	padding: 10px;
+	color : #D4AF37;
+	font-size: 2rem;
+}
+
+.followCount p {
+	font-size: 0.8rem;
+	margin-bottom: 10px;
+
+}
+
+.followCount span {
+	font-weight: 600;
+}
+
+/* 지도 */
+.map-container {
+	width: 100%;
+	padding: 20px;
+}
 
 /* 아티스트 맵  */
-.artist_loc{
+.artist_loc {
 	display: inline-block;
 }
-@media screen and (max-width:768px) {
+
+#textarea {
+	display: inline-block;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.addr_btn_wrap {
+	display: inline-block;
+}
+
+.artist_loc_wrap {
+	margin-left: 10px;
+}
+
+/* 버튼css */
+.artist_addr_btn {
+	padding: 3px 5px;
+	font-size: 0.8rem;
+	background-color: transparent;
+	border: 0.5px solid gray;
+	border-radius: 5px;
+	margin-bottom: 3px;
+	cursor: pointer;
+}
+
+/* 주소 표시되는 곳 */
+.mappointer {
+	width: 150px;
+	text-align: center;
+	padding: 6px 0;
+}
+
+@media screen and (max-width:1024px) {
 	section {
 		display: flex;
 		flex-direction: column-reverse;
@@ -587,9 +635,7 @@ ul.tabs li.tabCurrent {
 		background: none;
 		color: #222;
 		display: inline-block;
-		padding: 5px 10px;
 		cursor: pointer;
-		font-size: 0.8rem;
 	}
 	.file_upload_block {
 		display: flex;
@@ -598,18 +644,18 @@ ul.tabs li.tabCurrent {
 	.file_upload_block input {
 		margin-bottom: 5px;
 	}
-	.tab-content h2 {
-		font-size: 1.3em;
-	}
 	.left-wrapper {
 		width: 100%;
 	}
 	.right-wrapper {
 		display: flex;
 		flex-direction: row;
-		width: 100%;
 		padding: 0px;
+		width: 100%;
+		padding: 0;
 		margin-bottom: 30px;
+		justify-content: space-between;
+		align-items: flex-start;
 	}
 	#artist-profile {
 		width: 150px;
@@ -617,9 +663,31 @@ ul.tabs li.tabCurrent {
 		margin: 0;
 	}
 	#artist-desc {
-		width: 60%;
 		padding: 0px;
-		margin: 0;
+		margin-top : 20px;
+		margin-left: 50px;
+	}
+	.btnOn {
+		display: flex;
+		flex-direction: row;
+	}
+	#artist-desc + p {
+		font-size: 1rem;
+	}
+	
+	.follower{
+		order: 3;
+		float: right;
+	}
+	
+	.followCount p{
+	font-size: 0.8rem !important;
+	}
+	
+	.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
+		width: 65px;
+		font-size: 0.5rem;
+		padding: 3px;
 	}
 	#artist-desc p {
 		font-size: 1.5rem;
@@ -631,51 +699,26 @@ ul.tabs li.tabCurrent {
 	.file_upload_block input {
 		margin-bottom: 5px;
 	}
-	.btnOn {
-		display: flex;
-		flex-direction: row;
+}
+
+@media screen and (max-width:600px) {
+	ul.tabs li {
+		font-size: 0.8rem;
+		padding: 10px;
+	}
+	#artist-desc p {
+		font-size: 1rem;
+	}
+	.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
+		width: 60px;
+		font-size: 0.4rem;
+		padding: 3px;
+	}
+	#artist-profile, #artist-profile img {
+		width: 130px;
+		height: 130px;
+	}
+	.tab-content h2 {
+		font-size: 1.3rem;
 	}
 }
-
-/* 지도 */
-
-#textarea{
-	display: inline-block;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	margin-top: 10px;
-}
-.addr_btn_wrap{
-	display: inline-block;
-}
-
-.artist_loc_wrap{
-	margin-left: 10px;
-}
-
-/* 버튼css */
-.artist_addr_btn{
-	padding: 3px 5px;
-    font-size: 0.8rem;
-    background-color: transparent;
-    border: 0.5px solid gray;
-    border-radius: 5px;
-    margin-bottom: 3px;
-    cursor: pointer;
-}
-
-/* 주소 표시되는 곳 */
-.mappointer{
-	width:150px;
-	text-align:center;
-	padding:6px 0;
-}
-
-
-
-
-
-
-
-
-

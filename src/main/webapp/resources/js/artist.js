@@ -28,6 +28,10 @@ var artist_nickname = document.getElementById('artistNickname').value;
 var member_id = document.getElementById('loginId').value;
 // 로그인한 유저의 닉네임
 var member_nickname = document.getElementById('loginNickname').value;
+// 팔로워 카운트
+var countArea = document.getElementsByClassName('count')[0];
+var count = countArea.innerHTML;
+
 
 // ------팔로우
 function follow(e){
@@ -49,6 +53,8 @@ function follow(e){
         	if(result > 1){
         		e.style.display = "none";
         		target.style.display = "block";
+        		count ++;
+        		countArea.innerHTML = count;
         	}
         }
     });
@@ -57,6 +63,7 @@ function follow(e){
 // ------언팔로우
 function unfollow(e){
 	var target = e.previousSibling.previousSibling;
+	console.log(target);
 	var ask = confirm('언팔로우 하시겠습니까?');
 	if(ask){
 		$.ajax({
@@ -73,6 +80,8 @@ function unfollow(e){
 	        	if(result > 1){
 	        		e.style.display = "none";
 	        		target.style.display = "block";
+	        		count --;
+	        		countArea.innerHTML = count;
 	        	}
 	        }
 	    });

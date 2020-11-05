@@ -49,7 +49,7 @@ public class ArtistBizImpl implements ArtistBiz {
 	}
 
 	@Override
-	public MusicDto selectOne(String member_id) {
+	public MemberDto selectOne(String member_id) {
 		return artistDao.selectOne(member_id);
 	}
 
@@ -126,6 +126,16 @@ public class ArtistBizImpl implements ArtistBiz {
 	@Override
 	public List<FollowerDto> followerList(String member_id) {
 		return artistDao.followerList(member_id);
+	}
+
+	@Override
+	public List<FollowerDto> followerCount(String member_id) {
+		return artistDao.followerCount(member_id);
+	}
+
+	@Override
+	public List<SupportDto> myList(SupportDto dto) {
+		return artistDao.myList(dto);
 	}
 
 }

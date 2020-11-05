@@ -29,6 +29,19 @@
 		WHERE MEMBER_ID = #{member_id}
 	</select>
 	
+	<select id="followerCount" resultType="FollowerDto">
+		SELECT B.MEMBER_ID, B.MEMBER_NICKNAME, B.count AS count, B.RANK AS rank
+		FROM (
+					SELECT A.MEMBER_ID, A.MEMBER_NICKNAME, A.count, DENSE_RANK() OVER(ORDER BY count DESC) AS rank
+					FROM(
+							SELECT MEMBER_ID, MEMBER_NICKNAME, COUNT(*) AS count
+							FROM FOLLOWER
+							GROUP BY MEMBER_ID,MEMBER_NICKNAME 
+							)A
+			)B
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
 	<!-- 응원게시판 -->
 	<select id="supportList" resultType="SupportDto">
 		SELECT *
@@ -39,7 +52,8 @@
 	
 	<insert id="supportInsert" parameterType="SupportDto">
 		INSERT INTO SUPPORT_BOARD
-		VALUES (SUPPORT_NO_SEQ.NEXTVAL, #{member_id}, #{member_nickname}, #{support_content}, SYSDATE)
+		VALUES (SUPPORT_NO_SEQ.NEXTVAL, #{member_id}, #{member_nickname}, 
+		#{writer_nickname}, #{writer_nickname}, #{support_content}, SYSDATE)
 	</insert>
 	
 	<update id="supportUpdate">
@@ -53,29 +67,20 @@
 		WHERE SUPPORT_NO = #{support_no}
 	</delete>
 	
-	<select id="myList" resultType="SupportDto">
+	<select id="myList" resultType="SupportDto" parameterType="SupportDto">
 		SELECT *
-		FROM SUPPORT_BOARD
-		WHERE MEMBER_ID = #{member_id} 
+		FROM (
+		SELECT *
+				FROM SUPPORT_BOARD
+				WHERE WRITER_ID = #{writer_id}
+				)
+		WHERE MEMBER_ID = #{member_id}
 	</select>
 	
 	<!-- 프로필 사진 -->
 	<select id="selectProfile" resultType="ProfileDto">
 		SELECT *
 		FROM PROFILE
-		WHERE MEMBER_ID = #{member_id}
-	</select>
-	
-	<select id="followerCount" resultType="FollowerDto">
-		SELECT B.MEMBER_ID, B.MEMBER_NICKNAME, B.count AS count, B.RANK AS rank
-		FROM (
-					SELECT A.MEMBER_ID, A.MEMBER_NICKNAME, A.count, DENSE_RANK() OVER(ORDER BY count DESC) AS rank
-					FROM(
-							SELECT MEMBER_ID, MEMBER_NICKNAME, COUNT(*) AS count
-							FROM FOLLOWER
-							GROUP BY MEMBER_ID,MEMBER_NICKNAME 
-							)A
-			)B
 		WHERE MEMBER_ID = #{member_id}
 	</select>
 	
@@ -113,7 +118,7 @@
 		WHERE MU.MEMBER_ID = #{member_id} 
 	</select>
 	
-	<select id="selectOne" resultType="MusicDto">
+	<select id="selectOne" resultType="MemberDto">
 		SELECT *
 		FROM MEMBER ME
 		WHERE MEMBER_ID = #{member_id} 

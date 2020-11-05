@@ -7,6 +7,8 @@ public class SupportDto {
 	private int support_no;
 	private String member_id;
 	private String member_nickname;
+	private String writer_id;
+	private String writer_nickname;
 	private String support_content;
 	private Date support_regdate;
 
@@ -14,12 +16,13 @@ public class SupportDto {
 		super();
 	}
 
-	public SupportDto(int support_no, String member_id, String member_nickname, String support_content,
-			Date support_regdate) {
+	public SupportDto(int support_no, String member_id, String member_nickname, String writer_id, String writer_nickname, String support_content, Date support_regdate) {
 		super();
 		this.support_no = support_no;
 		this.member_id = member_id;
 		this.member_nickname = member_nickname;
+		this.writer_id = writer_id;
+		this.writer_nickname = writer_nickname;
 		this.support_content = support_content;
 		this.support_regdate = support_regdate;
 	}
@@ -46,6 +49,22 @@ public class SupportDto {
 
 	public void setMember_nickname(String member_nickname) {
 		this.member_nickname = member_nickname;
+	}
+
+	public String getWriter_id() {
+		return writer_id;
+	}
+
+	public void setWriter_id(String writer_id) {
+		this.writer_id = writer_id;
+	}
+
+	public String getWriter_nickname() {
+		return writer_nickname;
+	}
+
+	public void setWriter_nickname(String writer_nickname) {
+		this.writer_nickname = writer_nickname;
 	}
 
 	public String getSupport_content() {

@@ -80,7 +80,6 @@ calendar.setCalendars([
 
 // 일정생성
 calendar.on('beforeCreateSchedule', scheduleData => {
-	
 	$.ajax({
 		type : "post",
 		url : "calInsert.do" ,

@@ -18,6 +18,9 @@ public interface ArtistDao {
 
 	// 응원글 리스트
 	public List<SupportDto> supportList(String member_id);
+	
+	// 내가 쓴 응원글
+	public List<SupportDto> myList(SupportDto dto);
 
 	// 응원글 작성
 	public int supportInsert(SupportDto dto);
@@ -32,7 +35,7 @@ public interface ArtistDao {
 	public List<MusicDto> selectList(String memeber_id);
 
 	// 멤버 정보
-	public MusicDto selectOne(String member_id);
+	public MemberDto selectOne(String member_id);
 	
 	// 응원 댓글 리스트 
 	public List<SupportCommDto> commList(int support_no);
@@ -78,5 +81,8 @@ public interface ArtistDao {
 	
 	//팔로워 목록
 	public List<FollowerDto> followerList(String member_id);
+	
+	//팔로워 카운트
+	public List<FollowerDto> followerCount(String member_id);
 	
 }

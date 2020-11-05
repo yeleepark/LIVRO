@@ -1,5 +1,4 @@
 // --------------------Support board
-
 // 해당 아티스트의 아이디
 var artist_id = document.getElementById('artistId').value;
 // 해당 아티스트의 닉네임
@@ -8,45 +7,53 @@ var artist_nickname = document.getElementById('artistNickname').value;
 var login_id = document.getElementById('loginId').value;
 // 로그인한 유저의 닉네임
 var login_nickname = document.getElementById('loginNickname').value;
+// support_content
+var supportContent = document.getElementsByClassName('support-content')[0];
+
+function list(){
+	$.ajax({
+        type : "post",
+        url : "supportList.do?member_id="+artist_id,
+        success : function(result) {
+        	supportContent.innerHTML = result;
+        }
+    });
+}
+
+// 글 작성 - 완료
+function insertSupport(e){
+	var target = e.parentNode.previousSibling.previousSibling;
+	var member_id = artist_id;
+	var member_nickname = artist_nickname;
+	var support_content = target.querySelector('#support_content').value;
+	
+	$.ajax({
+	        type : "post",
+	        url : "supportInsert.do",
+	        headers : {
+	            "Content-Type" : "application/json"
+	        },
+	        data : JSON.stringify({
+	            member_id : member_id,
+	            member_nickname : member_nickname,
+	            support_content : support_content,
+	            writer_id : login_id,
+	            writer_nickname : login_nickname
+	        }),
+	        success : function(result) {
+	        	listRest(artist_id);
+	        }
+	    });
+}
 
 
-//글 작성 - 완료
-var insertBtn = document.querySelectorAll('.insertBtn');
-insertBtn.forEach(insert =>{
-	insert.addEventListener('click', ()=>{
-		 var member_id = artist_id; // 아티스트 아이디
-		 var member_nickname = login_nickname; // 글 작성자 닉네임
-		 var support_content = document.getElementById('support_content').value;// 컨텐츠
-
-		    $.ajax({
-		        type : "post",
-		        url : "supportInsert.do",
-		        headers : {
-		            "Content-Type" : "application/json"
-		        },
-		        data : JSON.stringify({
-		            member_id : member_id,
-		            member_nickname : member_nickname,
-		            support_content : support_content
-		        }),
-		        success : function(result) {
-		        	console.log(result);
-		        	listRest();
-		        }
-		    });
-	})
-});
-
-
-//글 삭제 - 완료
-var deleteBtn = document.getElementsByClassName('deleteBtn');
-for (var i= 0; i< deleteBtn.length; i++){
- deleteBtn[i].addEventListener('click', (e)=>{
+// 글 삭제 - 완료
+function deleteSupport(e){
+	var target = e.nextSibling.nextSibling;
+	var support_no = target.value;
+	
  	var res = confirm('삭제하시겠습니까?');
  	if(res){
- 		var target = e.target.parentNode;
- 		var support_no = target.getElementsByClassName('supportNo')[0].value;
- 		console.log(support_no + " 삭제할번호");
  		$.ajax({
  			type : "post",
  			url : "supportDelete.do?" + support_no,
@@ -58,47 +65,35 @@ for (var i= 0; i< deleteBtn.length; i++){
  				support_no : support_no
  			}),
  			success : function(res) {
- 				console.log(res);
- 				
  				if(res>0){
- 					listRest();
+ 					listRest(artist_id);
  				}else{
  					alert('댓글이 있는 게시물은 삭제할 수 없습니다');
  				}
- 				
  			}
  		});
  	}
- })
 }
 
 
-//글 수정 - 완료
-var updateBtn = document.getElementsByClassName('updateBtn');
-for (var i= 0; i< updateBtn.length; i++){
- updateBtn[i].addEventListener('click', (e)=>{ 
- 	
- 	
- 	var target = e.target.parentNode.parentNode;
- 	var res = target.getElementsByClassName('change')[0];
- 	res.removeAttribute("readonly"); 
+// 글 수정
+function updateSupport(e){
+	var target = e.parentNode.parentNode;
+	var res = target.getElementsByClassName('change')[0];
+	res.removeAttribute("readonly"); 
  	res.classList.add("changeActive");
- 	e.target.style.display = "none";
+ 	e.style.display = "none";
  	target.getElementsByClassName('updateRes')[0].style.display = "block";
- 	
- })
 }
 
-var updateRes = document.getElementsByClassName('updateRes'); 
-for (var i= 0; i< updateRes.length; i++){
-updateRes[i].addEventListener('click', (e)=>{
-	
-	var target = e.target.parentNode.parentNode;
+function updateRes(e){
+	var target = e.parentNode.parentNode;
 	var res = target.getElementsByClassName('change')[0];
 	var support_content = target.getElementsByClassName('change')[0].value;
 	var support_no = target.getElementsByClassName('supportNo')[0].value;
 	
 	var done = confirm('수정하시겠습니까?');
+	
 	if(done){
 	$.ajax({
 		type : "post",
@@ -115,84 +110,88 @@ updateRes[i].addEventListener('click', (e)=>{
 			support_content = result.support_content;
 			res.classList.remove("changeActive"); 
 			res.readOnly = true; 
-			e.target.style.display = "none";
+			e.style.display = "none";
 			target.getElementsByClassName('updateBtn')[0].style.display = "block";
 		}
 	})
 	}
-})
 }
 
-//게시글 리스트 출력
-function listRest() {
-	console.log("출력확인");
+
+// 내가 작성한 글
+function mine(){
+	$.ajax({
+		type : "post",
+		url : "mylist.do",
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		dateType : "text",
+		data : JSON.stringify({
+			member_id : artist_id,
+			writer_id : login_id
+		}),
+		success : function(result) {
+			supportContent.innerHTML = result;
+		}
+	})
+}
+
+// 게시글 리스트 출력
+function listRest(artist_id) {
 	$.ajax({
 		type : "get",
-		url : "artist.do?member_id="+artist_id,
+		url : "supportList.do?member_id="+artist_id,
 		success : function(result) {
-			// 시간날 때 효율적으로 다시 짜기
-			var htmlObj = $(result);
-			/*
-			 * var res = htmlObj.find('.supportTable');
-			 * $('.supportTable').replaceWith(res);
-			 */
-			$(htmlObj).find('ul.tabs li').removeClass('tabCurrent');
-			$(htmlObj).find('#tab-1').removeClass('tabCurrent');
-			$(htmlObj).find('ul.tabs li:nth-child(2)').addClass('tabCurrent');
-			$(htmlObj).find('#tab-2').addClass('tabCurrent');
-			console.log(htmlObj)
-			$('body').html(htmlObj);
+
+			supportContent.innerHTML = result;
 		}
 	});
 }
 
+// 댓글 보기
+function showReply(e){
+	var target = e.parentNode.parentNode;
 
-//댓글 보기
-var showReply = document.querySelectorAll('.showReply');
-showReply.forEach(show =>{
-show.addEventListener('click', (e)=>{
-		var target = e.target.parentNode.parentNode;
-		
-		var res = target.getElementsByClassName('replyArea')[0];
-		res.classList.add('replyActive');
-		
-		e.target.style.display = "none";
-		target.getElementsByClassName('closeReply')[0].style.display ="inherit";
-		
-		var support_no = target.getElementsByClassName('supportNo')[0].value;
-		
-		$.ajax({
-			type : "post",
-			url : "showList.do?support_no=" + support_no,
-			headers : {
-				"Content-Type" : "application/json"
-			},
-			data : JSON.stringify({
-				support_no : support_no,
-				member_id : artist_id
-			}),
-			success : function(result) {
-				res.innerHTML = result;
-			}
-		});
-	})
-})
+	var res = target.getElementsByClassName('replyArea')[0];
+	res.classList.add('replyActive');
+	
+	e.style.display = "none";
+	target.getElementsByClassName('closeReply')[0].style.display ="inherit";
+	
+	var support_no = target.getElementsByClassName('supportNo')[0].value;
+	
+	$.ajax({
+		type : "post",
+		url : "showList.do?support_no=" + support_no,
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		data : JSON.stringify({
+			support_no : support_no,
+			member_id : artist_id
+		}),
+		success : function(result) {
+			res.innerHTML = result;
+		}
+	});
+	
+}
 
 //댓글 닫기
-var closeReply = document.querySelectorAll('.closeReply');
-closeReply.forEach(close =>{
-close.addEventListener('click', (e)=>{
-	var target = e.target.parentNode.parentNode;
+function closeReply(e){
+var target = e.parentNode.parentNode;
 	
 	var res = target.getElementsByClassName('replyArea')[0];
 	res.classList.remove('replyActive');
 	
-	e.target.style.display = "none";
+	e.style.display = "none";
 	target.getElementsByClassName('showReply')[0].style.display ="block";
-	})
-})
+}
 
-//댓글입력
+
+
+// 댓글입력
 function replyInsert(e){
 	var target = e.parentNode.parentNode.querySelector('.replyContent');
 	var comm_content = target.value;
@@ -200,7 +199,6 @@ function replyInsert(e){
 	var member_nickname = login_nickname;
 	var supportTarget =e.parentNode.parentNode.parentNode.parentNode;
 	var support_no = supportTarget.parentNode.querySelector('.supportNo').value;
-	console.log(member_nickname);
 	$.ajax({
      type : "post",
      url : "commInsert.do",
@@ -215,13 +213,12 @@ function replyInsert(e){
 			member_nickname : member_nickname
 		}),
 		success: function(result){
-			console.log(result)
 			replyRest(support_no, supportTarget, member_id);
 		}
  })
 }
 
-//댓글수정
+// 댓글수정
 function replyUpdate(e){
 	e.style.display = "none";
 	var doneBtn = e.parentNode.getElementsByClassName('updateDone')[0];
@@ -251,7 +248,6 @@ function updateDone(e){
 			comm_content : comm_content
 		}),
 		success: function(result){
-			console.log(result)
 		}
  }).done(function(){
  	e.style.display ="none";
@@ -263,7 +259,7 @@ function updateDone(e){
 	}
 };
 
-//댓글삭제
+// 댓글삭제
 function replyDelete(e){
 	var res = confirm('삭제하시겠습니까?');
 	var supportTarget =e.parentNode.parentNode.parentNode.parentNode;
@@ -275,14 +271,13 @@ function replyDelete(e){
 		        type : "post",
 		        url : "commDelete.do?comm_no="+comm_no,
 		        success : function(result) {
-		        	console.log(result);
 		        	replyRest(support_no, supportTarget, artist_id);
 		        }
 		    });
 	}
 }
 
-//댓글 rest 출력
+// 댓글 rest 출력
 function replyRest(support_no, supportTarget, member_id){
 	$.ajax({
 		type : "post",
@@ -300,7 +295,7 @@ function replyRest(support_no, supportTarget, member_id){
 	});
 }
 
-// 신고하기 -- 
+// 신고하기 --
 function report(e){
 	var target = e.parentNode.parentNode;
 	var receive_id = target.getElementsByClassName('writerId')[0].value;

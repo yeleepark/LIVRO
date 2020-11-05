@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div>
+	<c:choose>
+		<c:when test="${empty supportdto }">
+			<div class="rows">
+				<span>작성된 글이 없습니다</span>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${supportdto }" var="support">
+				<div class="rows">
+					<!-- 첫줄 -->
+					<div class="rows-left">
+						<p class="writerNick">${support.writer_nickname}</p>
+						<input type="hidden" value="${support.writer_id }" class="writerId">
+					</div>
+					<div class="rows-center">
+						<textarea class="change" readonly="readonly">${support.support_content }</textarea>
+						<p>${support.support_regdate }</p>
+						<input type="hidden" value="${support.support_no }">
+					</div>
+					<div class="rows-right">
+						<input type="hidden" value="${support.support_no }">
+						<c:if test="${logindto.member_nickname == support.writer_nickname }">
+							<input type="button" value="수정" class="updateBtn" onclick="updateSupport(this);">
+							<input type="button" value="완료" class="updateRes" onclick="updateRes(this);">
+							<input type="button" value="삭제" class="deleteBtn" onclick="deleteSupport(this);">
+							<input type="hidden" value="${support.support_no }" class="supportNo">
+						</c:if>
+						<c:choose>
+						<c:when test="${empty logindto }"></c:when>
+						<c:otherwise>
+							<c:if test="${logindto.member_id == support.member_id || logindto.member_id != support.writer_id}">
+								<input type="button" value="신고" class="reportBtn" onclick="report(this);">
+							</c:if>
+						</c:otherwise>
+						</c:choose>
+					</div>
+					<!-- 두번째줄 -->
+					<div class="rows-middle">
+						<div>
+							<input type="button" value="&#xf06b" class="showReply" onclick="showReply(this);"> <input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> <input type="hidden" value="${support.support_no }" class="supportNo">
+						</div>
+						<!--  반복 부분 -->
+						<div class="replyArea"></div>
+						<!-- 반복 끝 -->
+					</div>
+				</div>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
+	</div>
+	
+</body>
+</html>
