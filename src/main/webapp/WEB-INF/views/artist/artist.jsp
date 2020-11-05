@@ -149,7 +149,8 @@
 						<div class="support-index">
 							<span>작성자</span> <span>내용</span> 
 							<c:if test="${not empty logindto }">
-							<input type="button" value="내가 작성한 글" class="mineBtn" onclick="mine();">
+							<input type="button" value="내가 작성한 글" class="mineBtn" onclick="mine(this);">
+							<input type="button" value="전체 게시글 보기" class="allBtn" onclick="allBtn(this);">
 							</c:if>
 						</div>
 						<div class="support-content">

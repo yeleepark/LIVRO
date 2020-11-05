@@ -41,7 +41,7 @@ function insertSupport(e){
 	            writer_nickname : login_nickname
 	        }),
 	        success : function(result) {
-	        	listRest(artist_id);
+	        	listRest();
 	        }
 	    });
 }
@@ -66,7 +66,7 @@ function deleteSupport(e){
  			}),
  			success : function(res) {
  				if(res>0){
- 					listRest(artist_id);
+ 					listRest();
  				}else{
  					alert('댓글이 있는 게시물은 삭제할 수 없습니다');
  				}
@@ -119,7 +119,7 @@ function updateRes(e){
 
 
 // 내가 작성한 글
-function mine(){
+function mine(e){
 	$.ajax({
 		type : "post",
 		url : "mylist.do",
@@ -133,12 +133,20 @@ function mine(){
 		}),
 		success : function(result) {
 			supportContent.innerHTML = result;
-		}
+			e.style.display = "none";
+			e.nextSibling.nextSibling.style.display = "block";
+ 		}
 	})
 }
 
+function allBtn(e){
+	e.style.display = "none";
+	e.previousSibling.previousSibling.style.display = "block";
+	listRest();
+}
+
 // 게시글 리스트 출력
-function listRest(artist_id) {
+function listRest() {
 	$.ajax({
 		type : "get",
 		url : "supportList.do?member_id="+artist_id,
