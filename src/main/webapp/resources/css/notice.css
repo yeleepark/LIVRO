@@ -103,3 +103,21 @@ a {
     margin-bottom: 10px;
     display: block;
 }
+
+button:focus, input:focus {
+	outline: none;
+}
+
+.noticeBtn {
+	padding: 3px 5px;
+    font-size: 0.7rem;
+    background-color: transparent;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.noticeSearch {
+	border: 0.5px solid gray;
+	border-radius: 5px;
+}
