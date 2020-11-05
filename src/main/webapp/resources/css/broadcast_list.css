@@ -24,3 +24,11 @@
     float: right;
     padding : 20px;
 }
+
+.bro_list{
+	display: none;
+}
+.active{
+	display: block !important;
+	
+}
