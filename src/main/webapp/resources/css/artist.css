@@ -618,9 +618,13 @@ ul.tabs li.tabCurrent {
 
 /* 주소 표시되는 곳 */
 .mappointer {
-	width: 150px;
+	width:150px;
 	text-align: center;
 	padding: 6px 0;
+	font-weight: 500;
+	border: 1px solid #D8D8D8;
+	background : #FFFFFF;
+	border-radius: 50px;
 }
 
 @media screen and (max-width:1024px) {
