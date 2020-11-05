@@ -209,4 +209,19 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 	
+	//userPage Pw변경
+	@Override
+	public int userPw(MemberDto dto) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+ "userPw", dto);
+		} catch (Exception e) {
+			logger.info("[ERROR] userPw");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
 }

@@ -97,5 +97,13 @@ public class MemberBizImpl implements MemberBiz {
 
 		return memberDao.mailChk(dto);
 	}
+	
+	//userpage PW변경
+	@Override
+	public int userPw(MemberDto dto) {
+		
+		return memberDao.userPw(dto);
+	}
+	
 
 }

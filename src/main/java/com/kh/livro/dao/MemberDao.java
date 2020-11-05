@@ -49,5 +49,8 @@ public interface MemberDao {
 	//정보수정에서 이메일 중복체크 
 	public int mailChk(MemberDto dto);
 	
+	//userPage에서 pw 변경
+	public int userPw(MemberDto dto);
+	
 
 }

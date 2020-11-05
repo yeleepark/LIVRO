@@ -79,6 +79,9 @@
                   <div class="msg_check" id="phone_check"></div>
                   <div id="upcheck"></div>
                   <input type="button" value="수정" onclick="userup()"/>
+                  <input type="button" value="비밀번호 수정" onclick="location.href='userPw.do'">
+                  
+                  
                </div>
             </div>
          </div>

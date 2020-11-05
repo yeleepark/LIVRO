@@ -474,6 +474,47 @@ public class MemberController {
 
 		return map;
 	}
+	
+	//UserPage에서 비밀번호 변경창으로 
+	@RequestMapping(value = "/userPw.do")
+	public String userPw() {
+		
+		return "find/infopw";
+		
+	}
+	
+	//UserPage에서 변경 성공 시 
+	@RequestMapping(value = "/userPwres.do", method = RequestMethod.POST)
+	public String userPwres(MemberDto dto, Model model, HttpSession session) {
+		
+		dto.setMember_id(dto.getMember_id());
+		dto.setMember_pw(dto.getMember_pw());
+		dto.setMember_pwchk(dto.getMember_pwchk());
+		
+
+		String encryPassword = PwSHA256.encrypt(dto.getMember_pw());
+		String encryPassword_chk = PwSHA256.encrypt(dto.getMember_pwchk());
+		
+		dto.setMember_pw(encryPassword);
+		dto.setMember_pwchk(encryPassword_chk);
+		
+		int res = memberBiz.userPw(dto);
+		
+		if (res > 0) {
+			model.addAttribute("msg", "비밀번호 변경 성공!");
+			model.addAttribute("url", "main/main");
+			
+			return "redirect";
+		}else {
+			model.addAttribute("msg", "변경 실패..");
+			model.addAttribute("url", "userPw.do");
+		
+			return "redirect";
+		}
+		
+	}
+	
+	
 
 	
 	// USER 회원정보수정
