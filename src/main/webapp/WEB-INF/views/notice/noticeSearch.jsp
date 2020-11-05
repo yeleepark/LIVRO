@@ -78,8 +78,8 @@
 		<form action="noticeSearch.do" method="get">
 			<input type="hidden" name="page" value="1">
 			<input type="hidden" name="range" value="1">
-			<input type="text" name="noticeKeyword" placeholder="글 + 제목 검색">
-			<input type="submit" value="검색하기">
+			<input type="text" class="noticeSearch" name="noticeKeyword" placeholder="글 + 제목 검색">
+			<input type="submit" class="noticeBtn" value="검색하기">
 		</form>
 	</div>
 	<input type="hidden" id="noticeKeyword" value="${searchpagination.noticeKeyword }">
@@ -87,7 +87,7 @@
 	<!-- pagination{e} -->
 	<div class="board_list_footer" align="right">
 		<c:if test="${logindto.member_role eq 'M' }">
-			<input type="button" value="글작성" onclick="location.href='insert.do'">
+			<input type="button" class="noticeBtn" value="글작성" onclick="location.href='insert.do'">
 		</c:if>
 	</div>
 	</div>
