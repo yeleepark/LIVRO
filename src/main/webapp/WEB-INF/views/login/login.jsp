@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="resources/css/login.css">
 <!-- font awesome -->
-<script src="https://kit.fontawesome.com/d28db34e8b.js"
-	crossorigin="anonymous" defer></script>
+<script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous" defer></script>
 <!-- google font -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"

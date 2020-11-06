@@ -59,6 +59,7 @@
 						 <div id="archeck"></div>
 						<input type="hidden" name="memebr_role" id="member_role" value="${logindto.member_role }">
 						<input type="button" value="수정" onclick="arup()"/>
+						<input type="button" value="비밀번호 수정" onclick="location.href='userPw.do'">
 					</div>
 					<div class="tab-1-right">
 						<p>프로필 사진</p>
