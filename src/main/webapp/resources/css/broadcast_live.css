@@ -68,15 +68,15 @@
 	padding-left: 15%;
 }
 
-.artist_nickname {
+#artist_nickname {
 	font-size: 15pt;
 }	
 
-.broad_title {
+#broad_title {
 	padding-bottom: 0.6%;
 }
 
-.broad_category {
+#broad_category {
 	text-align: center;
 	display: block;
 	width: 50px;

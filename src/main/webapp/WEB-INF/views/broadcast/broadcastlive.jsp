@@ -83,34 +83,31 @@
             -->
               
           <div id="profileSection">
-          	
+          	<%-- <input type="hidden" id="hidden_no" value="${livedto.broadcast_no }"> --%>
+          	<div>
           	<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
-          	<img alt="프로필 이미지" class="broad_profile" src="resources/img/livro_icon.png">
-          	<%-- ${profile_dto.member_profile } --%>
-          
-            <div class="profileSection_data">
-				<p class="artist_nickname">${logindto.member_nickname }</p>
-				<p class="broad_title" id="title_res"></p>
-            	<p class="broad_category" id="category_res"></p>
+          	<p>${profile_dto.member_profile }</p>
+          	</div>            
+            <p>ARTIST : ${logindto.member_nickname }</p>
+            <div>
+	            방 제목 : <span id="title_res"></span>
+            </div>
+            <div>
+            방 카테고리 : <span id="category_res"></span>
             </div>
           </div>
-          <img alt="라이브로" class="redLivro" src="resources/img/red.png">
        </div>
-       
-       
 
        <div id="section2_right">
            <div id="chat-output"></div>
 
             <div id="chat-input">
-            <div class="chat_btn_block">
+                <div id="input-chat">
+                    <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요">
+                </div>
                 <div>
                    <!--  <button id="close-broadcast">연결 종료</button> -->
                     <button id="disconnect-room">방송 종료</button>
-                </div>
-            </div>
-                <div id="input-chat">
-                    <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요">
                 </div>
             </div>
         </div>           

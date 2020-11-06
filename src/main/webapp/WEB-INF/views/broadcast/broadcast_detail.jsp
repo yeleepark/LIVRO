@@ -44,9 +44,9 @@
           		<img alt="프로필 이미지" class="broad_profile" src="resources/img/livro_icon.png">
           		<!-- ${broadDto.member_profile} -->
             <div class="profileSection_data">
-				<p class="artist_nickname">${broadDto.member_nickname }</p>
-				<p class="broad_title">${broadDto.broadcast_title }</p>
-            	<p class="broad_category">${broadDto.broadcast_category }</p>
+				<p id="artist_nickname">${broadDto.member_nickname }</p>
+				<p id="broad_title">${broadDto.broadcast_title }</p>
+            	<p id="broad_category">${broadDto.broadcast_category }</p>
             </div>
           </div>
           <img alt="라이브로" class="redLivro" src="resources/img/red.png">
