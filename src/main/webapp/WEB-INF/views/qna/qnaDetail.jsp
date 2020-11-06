@@ -19,8 +19,7 @@
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <title>Q&A-글상세</title>
 </head>
-<body>
-	<script type="text/javascript">
+<script>
 $(document).ready(function(){
 	//관리자만 댓글 달 수있고 답변 내용이 없으면 return false 해서 submit 이벤트 막음
 	$("#reform").submit(function(e){
@@ -98,8 +97,12 @@ function qnareUpdateDone(qnare_no){
 	})
 }
 </script>
+<body>
+
+<!-- 본문내용  -->
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
 	<div class="qna_detail_wrap">
+	<p>Q&A게시판</p>
 		<div class="qna_title_wrap">${qnadetaildto.qna_title }</div>
 		<div class="qna_nick_wrap">${qnadetaildto.member_nickname }
 			<fmt:formatDate value="${qnadetaildto.qna_regdate }"
@@ -196,6 +199,7 @@ function qnareUpdateDone(qnare_no){
 			initialValue : `${qnadetaildto.qna_content }`
 		});
 	</script>
+	<!-- <script type="text/javascript" src="resources/js/qnaDetail.js"></script> -->
 
 </body>
 </html>

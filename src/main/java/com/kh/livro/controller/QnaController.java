@@ -2,6 +2,8 @@ package com.kh.livro.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.livro.biz.QnaBiz;
 import com.kh.livro.biz.QnareBiz;
+import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.QnaDto;
 import com.kh.livro.dto.QnareDto;
-import com.kh.livro.utils.Pagination;
 import com.kh.livro.utils.QnaSearch;
 
 @Controller
@@ -37,17 +39,16 @@ public class QnaController {
 			@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			 @RequestParam(required = false, defaultValue = "title") String searchType
-			, @RequestParam(required = false) String keyword
-			) throws Exception {
+			, @RequestParam(required = false) String keyword , @RequestParam(required = false) String member_nickname
+			,HttpSession session) throws Exception {
 		logger.info("[qnalist.do]");
 		
 		
+		//MemberDto dto = (MemberDto)session.getAttribute("logindto");
 		//페이징 상속받는 qna검색 클래스 객체 생성
 		QnaSearch search = new QnaSearch();
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
-
-		
 		
 		//전체 게시글 개수
 		int listCnt = qnaBiz.getQnaListCnt(search);
@@ -57,9 +58,7 @@ public class QnaController {
 		//Pagination pagination = new Pagination();
 		//pagination.pageInfo(page, range, listCnt);
 		
-		model.addAttribute("pagination", search);
-		
-		
+		model.addAttribute("myqnalist", qnaBiz.myqnaList(search, member_nickname));
 		model.addAttribute("pagination", search);
 		model.addAttribute("qnalist", qnaBiz.selectList(search));
 		return "qna/qnaList";
@@ -130,13 +129,13 @@ public class QnaController {
 
 		return "redirect";
 	}
-
-	// 검색
 	/*
-	 * @RequestMapping("/qnasearch.do") public String qnaSearch(Model model, QnaDto
-	 * dto) { logger.info("[qnasearch.do]");
+	 * //내가 쓴 글 리스트
 	 * 
-	 * model.addAttribute("qnasearchdto", qnaBiz.searchList(dto));
+	 * @RequestMapping("/myqnalist.do") public String myQnaList(String member_id,
+	 * Model model) { logger.info("[myqnalist.do]"); //아이디 확인 완료
+	 * //System.out.println("member_id" + member_id );
+	 * model.addAttribute("myqnalist", qnaBiz.myqnaList(member_id));
 	 * 
 	 * return "qna/qnaList"; }
 	 */
