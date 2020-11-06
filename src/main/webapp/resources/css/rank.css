@@ -1,6 +1,15 @@
 @charset "UTF-8";
 
-
-#rank_title{
+section {
 	padding-top: 100px;
+}
+
+.print{
+	width : 400px;
+	border : 1px solid black;
+}
+
+.bar-chart{
+ display: inline-block;
+ margin-right: 20px;
 }
