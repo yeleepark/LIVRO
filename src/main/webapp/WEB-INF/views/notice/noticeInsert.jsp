@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% request.setCharacterEncoding("UTF-8");%>
 <% response.setContentType("text/html charset=UTF-8");%>
 
@@ -27,8 +27,10 @@
 		</div>
 		<div id="editor"></div>
 		<div class="notice_button_wrap">
-			<input type="submit" value="작성" onclick="formSubmit()">
-			<input type="button" value="취소" onclick="location.href='notice.do'">
+			<c:if test="${logindto.member_role eq 'M'}">
+				<input type="submit" class="noticeBtn" value="작성" onclick="formSubmit()">
+			</c:if>
+				<input type="button" class="noticeBtn" value="취소" onclick="location.href='notice.do'">
 		</div>
 	</div>
 	</form>
