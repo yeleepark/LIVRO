@@ -9,6 +9,12 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <link rel="stylesheet" href="resources/css/rank.css">
 <title>Insert title here</title>
+<style type="text/css">
+	#section{
+		display: flex;
+		width: 100%;
+	}
+</style>
 </head>
 <body>
 
@@ -16,10 +22,10 @@
 
 	<section>
 
+	<div id="section">
+	<div class="print" style="width: 50%"></div>
 
-	<div class="print"></div>
-
-
+		<div style="width: 50%">
 		<p>탑3</p>
 		<c:forEach items="${rankdto }" var="rank">
 			<div>
@@ -29,7 +35,9 @@
 				닉네임 : <input type="text" value="${rank.member_nickname }" class="top3nick">
 			</div>
 		</c:forEach>
+		</div>
 
+	</div>
 
 		<script src="https://d3js.org/d3.v6.min.js"></script>
 		<script type="text/javascript" src="resources/js/rank.js"></script>

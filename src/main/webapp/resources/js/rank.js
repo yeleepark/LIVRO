@@ -36,3 +36,15 @@ d3.select('.print').selectAll('span')
   .on('click',(d,i)=>{
 	  location.href='artist.do?member_id='+i.member_id;
 });
+	
+	var text = d3.select('.print')
+				.selectAll('.myText')
+				.data(dataSet)
+				.enter()
+				.append('text');
+				
+		text.style("width", function(){return (50) + "px"})
+			.style("height", function(d,i) {return (d.count*100)+ "px"})
+			.text(function(d){return d.count});
+			
+
