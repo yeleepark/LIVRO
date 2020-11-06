@@ -31,14 +31,17 @@
 
 							$(window).scroll(
 									function() {
-										if ($(window).scrollTop()+ $(window).height() == $(document).height()) {
-												getList();
+										if ($(window).scrollTop()
+												+ $(window).height() == $(
+												document).height()) {
+											getList();
 										}
 									});
 
 							function getList() {
 								//ajax 실행 데이터 가져오기
-								$.ajax({
+								$
+										.ajax({
 											url : 'infinitescroll.do',
 											data : {
 												"lastnum" : lastnum
@@ -47,9 +50,12 @@
 											success : function(data) {
 												var str = "";
 												console.log("데이터 가져옴");
-												$.each(data,function(i) {
+												$
+														.each(
+																data,
+																function(i) {
 																	str += "<div class='brolist_wrapper'>"
-																			+"<div class='broadcast-thumnail'>"
+																			+ "<div class='broadcast-thumnail'>"
 																			+ "<a><img src='/resources/profileimg/"+data[i].member_profile+"'></a>"
 																			+ "</div>"
 																			+ "<div class='broadcast-name'>"
@@ -76,17 +82,23 @@
 																			+ "</div>"
 																			+ "<div>"
 																			+ "<p>방송 카테고리 : "
-																			+ data[i].broadcast_category+data[i].broadcast_no
+																			+ data[i].broadcast_category
+																			+ data[i].broadcast_no
 																			+ "</p>"
 																			+ "</div>"
 																			+ "</div>"
 																			+ "</div>"
 																})
-																console.log("10개중에"+data.length+"개 가져옴");
-																
-												var ele = document.createElement('div');
+												console
+														.log("10개중에"
+																+ data.length
+																+ "개 가져옴");
+
+												var ele = document
+														.createElement('div');
 												ele.innerHTML = str;
-												$(".broadcast-table>div").last().after(ele);
+												$(".broadcast-table>div")
+														.last().after(ele);
 												lastnum += 10;
 											},
 											error : function(error) {
@@ -95,6 +107,8 @@
 										});
 							}
 						});
+
+
 	</script>
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
 
@@ -111,8 +125,7 @@
 				<c:if test="${dto.broadcast_flag eq 'Y' }">
 					<div value="${status.count}" class="brolist_wrapper">
 						<div class="broadcast-thumnail">
-							<a><img
-								src="/resources/profileimg/${profiledto.profile_savedname }"></a>
+							<a><img src="/resources/profileimg/${dto.member_profile }"></a>
 						</div>
 						<div class="broadcast-name">
 							<div>
@@ -138,5 +151,18 @@
 			</c:forEach>
 		</div>
 	</section>
+	<script>
+	let ele = document.getElementsByClassName(('broadcast-table'))[0];
+	let h1 = document.createElement('h1');
+
+	if (ele.childElementCount < 1) {
+
+		// 방송이 하나도 없을 때 출력되는 메시지
+		h1.innerHTML = '진행중인 방송이 없습니다 헤헤';
+
+		ele.appendChild(h1);
+
+	}
+	</script>
 </body>
 </html>
