@@ -57,7 +57,6 @@ ul.tabs li.tabCurrent {
 	width: 80%;
 	float: left;
 	padding: 50 30;
-	overflow-y: scroll;
 }
 
 .tab-content {
@@ -167,12 +166,13 @@ ul.tabs li.tabCurrent {
 	text-align: center;
 	font-weight: bold;
 }
-.mineBtn{
-	padding : 2px 5px;
+
+.mineBtn {
+	padding: 2px 5px;
 	font-size: 0.8rem;
 }
 
-.allBtn{
+.allBtn {
 	display: none;
 }
 
@@ -180,6 +180,16 @@ ul.tabs li.tabCurrent {
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
+}
+
+.countArea {
+	margin-bottom: 10px;
+	text-align: right;
+}
+
+.countArea p {
+	font-size: 0.8rem;
+	text-align: right;
 }
 
 .supportTable .rows {
@@ -392,6 +402,24 @@ ul.tabs li.tabCurrent {
 	border: 1px solid black;
 }
 
+.showClose {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.showMore {
+	background-color: none;
+	cursor: pointer;
+	padding : 3px 5px;
+}
+
+.closeMore {
+	text-align: right;
+	display: none;
+	padding : 3px 5px;
+}
+
 /* 일정게시판 */
 .Calendar-container {
 	width: 100%;
@@ -504,7 +532,7 @@ ul.tabs li.tabCurrent {
 .nick p {
 	margin-bottom: 10px;
 	text-align: center;
-	padding : 5px 20px;
+	padding: 5px 20px;
 	border-radius: 10px;
 	background-color: #ededed;
 }
@@ -563,16 +591,15 @@ ul.tabs li.tabCurrent {
 	display: none;
 }
 
-.follower p{
+.follower p {
 	padding: 10px;
-	color : #D4AF37;
+	color: #D4AF37;
 	font-size: 2rem;
 }
 
 .followCount p {
 	font-size: 0.8rem;
 	margin-bottom: 10px;
-
 }
 
 .followCount span {
@@ -618,12 +645,12 @@ ul.tabs li.tabCurrent {
 
 /* 주소 표시되는 곳 */
 .mappointer {
-	width:150px;
+	width: 150px;
 	text-align: center;
 	padding: 6px 0;
 	font-weight: 500;
 	border: 1px solid #D8D8D8;
-	background : #FFFFFF;
+	background: #FFFFFF;
 	border-radius: 50px;
 }
 
@@ -672,26 +699,23 @@ ul.tabs li.tabCurrent {
 	}
 	#artist-desc {
 		padding: 0px;
-		margin-top : 20px;
+		margin-top: 20px;
 		margin-left: 50px;
 	}
 	.btnOn {
 		display: flex;
 		flex-direction: row;
 	}
-	#artist-desc + p {
+	#artist-desc+p {
 		font-size: 1rem;
 	}
-	
-	.follower{
+	.follower {
 		order: 3;
 		float: right;
 	}
-	
-	.followCount p{
-	font-size: 0.8rem !important;
+	.followCount p {
+		font-size: 0.8rem !important;
 	}
-	
 	.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
 		width: 65px;
 		font-size: 0.5rem;

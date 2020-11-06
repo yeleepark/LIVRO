@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -24,7 +25,7 @@
 					</div>
 					<div class="rows-center">
 						<textarea class="change" readonly="readonly">${support.support_content }</textarea>
-						<p>${support.support_regdate }</p>
+						<p><fmt:formatDate value="${support.support_regdate }" pattern="yyyy-MM-dd-HH:mm:ss" /></p>
 						<input type="hidden" value="${support.support_no }">
 					</div>
 					<div class="rows-right">
@@ -47,7 +48,9 @@
 					<!-- 두번째줄 -->
 					<div class="rows-middle">
 						<div>
-							<input type="button" value="&#xf06b" class="showReply" onclick="showReply(this);"> <input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> <input type="hidden" value="${support.support_no }" class="supportNo">
+							<input type="button" value="&#xf06b" class="showReply" onclick="showReply(this);"> 
+							<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
+							<input type="hidden" value="${support.support_no }" class="supportNo">
 						</div>
 						<!--  반복 부분 -->
 						<div class="replyArea"></div>

@@ -31,7 +31,7 @@ public class ArtistController {
 
 	@Autowired
 	private ArtistBiz artistBiz;
-	
+
 	@Autowired
 	private ArtistMapBiz artistmapBiz;
 
@@ -47,6 +47,7 @@ public class ArtistController {
 		model.addAttribute("dto", artistBiz.followerList(member_id));
 		model.addAttribute("mapdto", artistmapBiz.artistmapselectOne(member_id));
 		model.addAttribute("countdto", artistBiz.followerCount(member_id));
+		model.addAttribute("listcountdto",artistBiz.listCount(member_id));
 		return "artist/artist";
 	}
 
@@ -65,7 +66,7 @@ public class ArtistController {
 		follower.setFollower_nickname(dto.getMember_nickname());
 
 		int res2 = artistBiz.follwer(follower);
-		
+
 		return res + res2;
 	}
 
@@ -82,31 +83,29 @@ public class ArtistController {
 
 		return res + res2;
 	}
-	
+
 	// 글 리스트 
-	@RequestMapping(value="/supportList.do")
-	public String supportList(Model model, String member_id) {
+	@RequestMapping(value = "/supportList.do")
+	public String supportList(Model model, SupportDto dto) {
 		logger.info("글 리스트 컨트롤러");
+
 		
-		model.addAttribute("supportdto", artistBiz.supportList(member_id));
-		
+		model.addAttribute("supportdto", artistBiz.supportList(dto));
+
 		return "artist/artistSupport";
-	}
-	
-	// 내가 쓴 글 리스트 
-	@RequestMapping(value="/mylist.do", method = RequestMethod.POST)
-	public String myList(Model model, @RequestBody SupportDto dto) {
-		logger.info("내가 쓴 글 리스트 컨트롤러");
-		
-		model.addAttribute("supportdto", artistBiz.myList(dto));
-		return "artist/artistSupport";
-		
 	}
 
-	// 글 입력 (@RestController방식으로 json전달하여 댓글입력)
-	// @ResponseEntity : 데이터 + http status code
-	// @ResponseBody : 객체를 json으로 (json - String)
-	// @RequestBody : json을 객체로
+	// 내가 쓴 글 리스트 
+	@RequestMapping(value = "/mylist.do", method = RequestMethod.POST)
+	public String myList(Model model, @RequestBody SupportDto dto) {
+		logger.info("내가 쓴 글 리스트 컨트롤러");
+
+		model.addAttribute("supportdto", artistBiz.myList(dto));
+		return "artist/artistSupport";
+
+	}
+
+	// 글 입력 
 	@RequestMapping(value = "/supportInsert.do", method = RequestMethod.POST)
 	public ResponseEntity<String> insertRest(@RequestBody SupportDto dto, HttpSession session) {
 
@@ -120,7 +119,6 @@ public class ArtistController {
 			e.printStackTrace();
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		// 입력 처리 HTTP 상태 메시지 리턴
 		return entity;
 	}
 

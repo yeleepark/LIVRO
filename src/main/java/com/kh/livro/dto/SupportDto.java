@@ -11,12 +11,23 @@ public class SupportDto {
 	private String writer_nickname;
 	private String support_content;
 	private Date support_regdate;
+	private int lastnum;
+	private int allCount;
+
+	public int getAllCount() {
+		return allCount;
+	}
+
+	public void setAllCount(int allCount) {
+		this.allCount = allCount;
+	}
 
 	public SupportDto() {
 		super();
 	}
 
-	public SupportDto(int support_no, String member_id, String member_nickname, String writer_id, String writer_nickname, String support_content, Date support_regdate) {
+	public SupportDto(int support_no, String member_id, String member_nickname, 
+			String writer_id, String writer_nickname, String support_content, Date support_regdate, int lastnum, int allCount) {
 		super();
 		this.support_no = support_no;
 		this.member_id = member_id;
@@ -25,6 +36,16 @@ public class SupportDto {
 		this.writer_nickname = writer_nickname;
 		this.support_content = support_content;
 		this.support_regdate = support_regdate;
+		this.lastnum = lastnum;
+		this.allCount = allCount;
+	}
+
+	public int getLastnum() {
+		return lastnum;
+	}
+
+	public void setLastnum(int lastnum) {
+		this.lastnum = lastnum;
 	}
 
 	public int getSupport_no() {

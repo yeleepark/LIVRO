@@ -15,10 +15,13 @@ import com.kh.livro.dto.SupportDto;
 public interface ArtistBiz {
 
 	// 응원글 리스트
-	public List<SupportDto> supportList(String member_id);
+	public List<SupportDto> supportList(SupportDto dto);
 
 	// 내가 쓴 응원글
 	public List<SupportDto> myList(SupportDto dto);
+
+	// 응원글 게시물 수
+	public SupportDto listCount(String member_id);
 
 	// 응원글 작성
 	public int supportInsert(SupportDto dto);

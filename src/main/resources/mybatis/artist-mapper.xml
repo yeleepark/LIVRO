@@ -43,11 +43,20 @@
 	</select>
 	
 	<!-- 응원게시판 -->
-	<select id="supportList" resultType="SupportDto">
+	<select id="supportList" resultType="SupportDto" parameterType="SupportDto">
+		<![CDATA[ 
 		SELECT *
-		FROM SUPPORT_BOARD
-		WHERE MEMBER_ID = #{member_id}
-		ORDER BY SUPPORT_NO DESC
+		FROM (
+					SELECT ROWNUM AS rnum, A.*
+					FROM(
+							SELECT *
+							FROM SUPPORT_BOARD
+							WHERE MEMBER_ID = #{member_id}
+							ORDER BY SUPPORT_NO DESC
+							)A
+					)B
+		WHERE rnum between 0 AND #{lastnum}+5
+		]]>
 	</select>
 	
 	<insert id="supportInsert" parameterType="SupportDto">
@@ -75,6 +84,13 @@
 				WHERE WRITER_ID = #{writer_id}
 				)
 		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
+	<select id="listCount" resultType="SupportDto">
+		SELECT MEMBER_ID, COUNT(*) as allCount
+		FROM SUPPORT_BOARD
+		WHERE MEMBER_ID = #{member_id}
+		GROUP BY MEMBER_ID 
 	</select>
 	
 	<!-- 프로필 사진 -->

@@ -51,11 +51,11 @@ public class ArtistDaoImpl implements ArtistDao {
 	}
 
 	@Override
-	public List<SupportDto> supportList(String member_id) {
+	public List<SupportDto> supportList(SupportDto dto) {
 		List<SupportDto> list = new ArrayList<SupportDto>();
 
 		try {
-			list = sqlSession.selectList(NAMESPACE + "supportList", member_id);
+			list = sqlSession.selectList(NAMESPACE + "supportList", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -302,6 +302,13 @@ public class ArtistDaoImpl implements ArtistDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public SupportDto listCount(String member_id) {
+		SupportDto dto = new SupportDto();
+		dto = sqlSession.selectOne(NAMESPACE+"listCount", member_id);
+		return dto;
 	}
 
 }

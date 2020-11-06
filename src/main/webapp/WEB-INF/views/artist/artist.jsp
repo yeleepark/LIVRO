@@ -144,8 +144,11 @@
 							</div>
 						</c:otherwise>
 					</c:choose>
-
+					
 					<div class="supportDetail">
+						<div class="countArea">
+							<p><span id="count">${listcountdto.allCount }</span>명이 ${memberdto.member_nickname }님을 응원합니다</p>
+						</div>
 						<div class="support-index">
 							<span>작성자</span> <span>내용</span> 
 							<c:if test="${not empty logindto }">
@@ -154,6 +157,10 @@
 							</c:if>
 						</div>
 						<div class="support-content">
+						</div>
+						<div class="showClose">				
+							<input type="button" value="Show More" onclick="showMore(this);" class="showMore">
+							<input type="button" value="Close" onclick="closeMore(this);" class="closeMore">
 						</div>
 					</div>
 				</div>

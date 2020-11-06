@@ -24,8 +24,8 @@ public class ArtistBizImpl implements ArtistBiz {
 	private ArtistDao artistDao;
 
 	@Override
-	public List<SupportDto> supportList(String member_id) {
-		return artistDao.supportList(member_id);
+	public List<SupportDto> supportList(SupportDto dto) {
+		return artistDao.supportList(dto);
 	}
 
 	@Override
@@ -136,6 +136,11 @@ public class ArtistBizImpl implements ArtistBiz {
 	@Override
 	public List<SupportDto> myList(SupportDto dto) {
 		return artistDao.myList(dto);
+	}
+
+	@Override
+	public SupportDto listCount(String member_id) {
+		return artistDao.listCount(member_id);
 	}
 
 }
