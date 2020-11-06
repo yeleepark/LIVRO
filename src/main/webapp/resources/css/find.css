@@ -19,6 +19,41 @@ section{
     background-size : cover;
 }
 
+/* 비밀번호 재설정  */
+.find-wrapper{
+	padding : 60px;
+    width : 320px;
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%, -50%);
+	
+}
+
+.find-wrapper h2{
+	text-align: center;
+    margin-bottom: 10px;
+}
+
+.find-wrapper input[type="text"]:focus::placeholder,
+input[type="password"]:focus::placeholder{
+    color : white;
+}
+
+.pw input[type="text"]::placeholder, 
+input[type="password"]::placeholder{
+    font-family: "Font Awesome 5 Free";
+}
+
+
+.pw input[type="text"], input[type="password"] {
+    width : 200px;
+    padding : 5px 10px;
+    margin-bottom: 10px;
+}
+
+
 .id-wrapper{
     padding : 60px;
     width : 320px;
@@ -38,6 +73,7 @@ section{
     left : 60%;
     transform : translate(-50%, -50%);
 }
+
 
 
 

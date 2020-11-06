@@ -490,6 +490,7 @@ public class MemberController {
 		dto.setMember_id(dto.getMember_id());
 		dto.setMember_pw(dto.getMember_pw());
 		dto.setMember_pwchk(dto.getMember_pwchk());
+		dto.setMember_role(dto.getMember_role());
 		
 
 		String encryPassword = PwSHA256.encrypt(dto.getMember_pw());
@@ -502,13 +503,12 @@ public class MemberController {
 		
 		if (res > 0) {
 			model.addAttribute("msg", "비밀번호 변경 성공!");
-			model.addAttribute("url", "main/main");
+			model.addAttribute("url", "/mypageIndex.do");
 			
 			return "redirect";
 		}else {
 			model.addAttribute("msg", "변경 실패..");
-			model.addAttribute("url", "userPw.do");
-		
+			model.addAttribute("url", "/mypageIndex.do");
 			return "redirect";
 		}
 		
@@ -518,7 +518,7 @@ public class MemberController {
 
 	
 	// USER 회원정보수정
-		@RequestMapping(value = "/arupdate.do", method = { RequestMethod.POST, RequestMethod.GET })
+		@RequestMapping(value = "/arupdate.do", method = { RequestMethod.GET,RequestMethod.POST, RequestMethod.GET })
 		@ResponseBody
 		public Map<String, Boolean> arupdate(@RequestBody MemberDto dto, Model model, HttpSession session) {
 

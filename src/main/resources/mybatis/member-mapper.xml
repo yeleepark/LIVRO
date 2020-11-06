@@ -131,8 +131,9 @@
 	
 	<update id="userPw" parameterType="MemberDto">
 		UPDATE MEMBER
-		SET MEMBER_PW = #{member_pw}
-		MEMBER_PWCHK = #{member_pwchk}
+		SET MEMBER_PW = #{member_pw},
+		MEMBER_PWCHK = #{member_pwchk},
+		MEMBER_ROLE = #{member_role}
 		WHERE 
 		MEMBER_ID = #{member_id}
 	
