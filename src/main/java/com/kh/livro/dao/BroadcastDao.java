@@ -2,9 +2,6 @@ package com.kh.livro.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
-
 import com.kh.livro.dto.BroadcastDto;
 
 public interface BroadcastDao {
@@ -21,5 +18,8 @@ public interface BroadcastDao {
 	public BroadcastDto profile(String member_id);
 	//방송 종료하기
 	public int broadCastClose(BroadcastDto dto);
+	
+	//스크롤페이징
+	public List<BroadcastDto> nextList(int lastnum);
 
 }

@@ -57,4 +57,11 @@ public class BroadcastBizImpl implements BroadcastBiz {
 		return broadcastDao.broadCastClose(dto);
 	}
 
+	@Override
+	public List<BroadcastDto> nextList(int lastnum) {
+		logger.info("스크롤페이징 비즈 임플 체크");
+		return broadcastDao.nextList(lastnum);
+	}
+	
+	
 }

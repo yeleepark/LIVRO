@@ -19,4 +19,7 @@ public interface BroadcastBiz {
 	//방송 종료하기
 	public int broadCastClose(BroadcastDto dto);
 	
+	
+	//스크롤페이징
+	public List<BroadcastDto> nextList(int lastnum);
 }

@@ -15,59 +15,59 @@ import com.kh.livro.dto.BroadcastDto;
 
 @Repository
 public class BroadcastDaoImpl implements BroadcastDao {
-	
+
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+
 	private Logger logger = LoggerFactory.getLogger(BroadcastDao.class);
 
 	@Override
 	public List<BroadcastDto> selectList() {
 		List<BroadcastDto> list = new ArrayList<BroadcastDto>();
-		
+
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList");
+			list = sqlSession.selectList(NAMESPACE + "selectList");
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.info("[ERROR] 방송 목록 Dao 에러");
 		}
-		
+
 		return list;
 	}
 
 	@Override
 	public BroadcastDto selectOne(int broadcast_no) {
 		BroadcastDto dto = new BroadcastDto();
-		
+
 		try {
 			dto = sqlSession.selectOne(NAMESPACE + "selectOne", broadcast_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.info("[ERROR] 방송 목록 Dao 에러");
 		}
-		
+
 		return dto;
 	}
 
-		//방송하기 눌러서 방제 , 내용 등 입력하면 인서트 한다.
-		@Override
-		public int broadInsert(BroadcastDto dto) {
-			logger.info("[InsertDao check]");
-			int res = 0;
-			
-			try {
-				res = sqlSession.insert(NAMESPACE + "insert", dto);
-			} catch (Exception e) {
-				e.printStackTrace();
-				logger.info("[ERROR]");
-			}
-			return res;
+	// 방송하기 눌러서 방제 , 내용 등 입력하면 인서트 한다.
+	@Override
+	public int broadInsert(BroadcastDto dto) {
+		logger.info("[InsertDao check]");
+		int res = 0;
+
+		try {
+			res = sqlSession.insert(NAMESPACE + "insert", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.info("[ERROR]");
 		}
+		return res;
+	}
 
 	@Override
 	public int broadUpdate(BroadcastDto dto) {
 		int res = 0;
-		
+
 		try {
 			res = sqlSession.insert(NAMESPACE + "update", dto);
 		} catch (Exception e) {
@@ -80,7 +80,7 @@ public class BroadcastDaoImpl implements BroadcastDao {
 	@Override
 	public int broadDelete(int broadcast_no) {
 		int res = 0;
-		
+
 		try {
 			res = sqlSession.insert(NAMESPACE + "delete", broadcast_no);
 		} catch (Exception e) {
@@ -93,24 +93,24 @@ public class BroadcastDaoImpl implements BroadcastDao {
 	@Override
 	public BroadcastDto profile(String member_id) {
 		BroadcastDto dto = new BroadcastDto();
-		
+
 		try {
 			dto = sqlSession.selectOne(NAMESPACE + "select_profile", member_id);
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 			logger.info("[ERROR profile]");
-		} 
-		
+		}
+
 		return dto;
 	}
 
 	@Override
 	public int broadCastClose(BroadcastDto dto) {
 		int res = 0;
-		
+
 		try {
-			res = sqlSession.update(NAMESPACE+"update", dto);
+			res = sqlSession.update(NAMESPACE + "update", dto);
 		} catch (Exception e) {
 			logger.info("[ERROR close]");
 			e.printStackTrace();
@@ -118,5 +118,20 @@ public class BroadcastDaoImpl implements BroadcastDao {
 		return res;
 	}
 
+	// 스크롤페이징
+	@Override
+	public List<BroadcastDto> nextList(int lastnum) {
+		List<BroadcastDto> list = new ArrayList<BroadcastDto>();
+
+		try {
+			list = sqlSession.selectList(NAMESPACE + "infiniteScrollDown", lastnum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.info("[ERROR] 방송 목록 Dao 에러");
+		}
+
+		return list;
+
+	}
 
 }
