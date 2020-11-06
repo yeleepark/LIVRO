@@ -1,34 +1,26 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+
 }
 
-.broadcast-table{
-    width : 1200px;
-    margin: 0 auto;
-    padding : 50px;
-}
+/* .broadcast-table{
+    width : 80%;
+    height : 80%;
+
+} */
 
 .broadcast-thumnail{
-    width : 200px;
-    height: 200px;
+/*     width : 200px;
+    height: 200px; */
     border : 1px solid red;
-    float: left;
+/*     float: left; */
 }
 
 .broadcast-name{
-    width : 900px;
-    height: 200px;
+  /*   width : 900px;
+    height: 200px; */
     border : 1px solid red;
-    float: right;
-    padding : 20px;
-}
-
-.bro_list{
-	display: none;
-}
-.active{
-	display: block !important;
-	
+  /*   float: right;
+    padding : 20px; */
 }
