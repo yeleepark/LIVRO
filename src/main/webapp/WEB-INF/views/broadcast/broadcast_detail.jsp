@@ -40,34 +40,38 @@
           <div id="local-videos-container"></div>
       
           <div id="profileSection">
-            <div>
           	<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
-          		<p>${broadDto.member_profile}</p>
-          	</div>            
-           		 ARTIST : <p id="artist_nickname">${broadDto.member_nickname }</p>
-            <div>
-	            방 제목 : <span>${broadDto.broadcast_title }</span>
-            </div>
-            <div>
-            방 카테고리 : <span>${broadDto.broadcast_category }</span>
+          		<img alt="프로필 이미지" class="broad_profile" src="resources/img/livro_icon.png">
+          		<!-- ${broadDto.member_profile} -->
+            <div class="profileSection_data">
+				<p id="artist_nickname">${broadDto.member_nickname }</p>
+				<p id="broad_title">${broadDto.broadcast_title }</p>
+            	<p id="broad_category">${broadDto.broadcast_category }</p>
             </div>
           </div>
+          <img alt="라이브로" class="redLivro" src="resources/img/red.png">
        </div>
 
        <div id="section2_right">
            <div id="chat-output"></div>
 
-            <div id="chat-input">
+           <div id="chat-input">
+                <div class="chat_btn_block">
+	                <div>
+	                	<button id="donation" onclick="donaDo();">후원하기</button>
+	                </div>
+	                <div>
+	                   <!--  <button id="close-broadcast">연결 종료</button> -->
+	                    <button id="disconnect-room">방송 나가기</button>
+	                </div>
+	                <div>
+	                    <button id="report" onclick="report()">신고하기</button>
+	                </div>
+                </div>
                 <div id="input-chat">
                     <input type="text" id="input-text-chat" placeholder="로그인이 필요합니다" onclick="needLogin();">
                 </div>
-                <div>
-                	<button id="donation" onclick="donaDo();">후원하기</button>
-                   <!--  <button id="close-broadcast">연결 종료</button> -->
-                    <button id="disconnect-room">방송 나가기</button>
-                    <button id="report" onclick="report()">신고하기</button>
-                </div>
-            </div>
+           </div>
         </div>           
     </div>
     
