@@ -14,14 +14,13 @@
 <meta charset="UTF-8">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" href="resources/css/qna_list.css">
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js"
 	crossorigin="anonymous" defer></script>
 <title>LIVRO-Q&A</title>
 </head>
 <!-- 번호 제목 작성자 작성일  -->
-<jsp:include page="/WEB-INF/views/header/header.jsp" />
+<link rel="stylesheet" href="resources/css/qna_list.css">
 <script type="text/javascript" src="resources/js/qnaList.js">
 </script>
 <script>
@@ -42,6 +41,7 @@ function myQna(){
 </script>
 
 <body>
+<jsp:include page="/WEB-INF/views/header/header.jsp" />
 	<div class="board_list_wrap">
 		<div class="board_list">
 			<span>Q&A</span>
