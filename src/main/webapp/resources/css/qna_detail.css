@@ -4,7 +4,12 @@
 }
 
 .qna_detail_wrap {
-	padding: 150px;
+	padding: 90px 150px;
+}
+.qna_detail_wrap > p {
+	font-size: 30px;
+	font-weight: 500;
+	margin-bottom: 10px;
 }
 
 .qna_title_wrap {

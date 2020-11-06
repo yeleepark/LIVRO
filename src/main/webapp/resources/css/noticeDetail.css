@@ -7,7 +7,15 @@
 	padding: 100px 150px;
 
 }
-
+.notice_detail_wrap > p{
+	font-size: 30px;
+	font-weight: 500;
+	margin-left: 18px;
+}
+.notice_detail_wrap > p > i{
+	color: #debb5f;
+	margin-right: 5px;
+}
 
 .notice_title_wrap {
 	float: left;
@@ -38,7 +46,15 @@
 .notice_btn{
 	text-align: right;
 }
-
+.notice_btns{
+	padding: 3px 5px;
+    font-size: 0.8rem;
+    background-color: transparent;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    cursor: pointer;
+}
 .notice_title_wrap, .notice_id_wrap, .notice_content_wrap, .notice_date_wrap, .notice_btn {
 	padding: 20px;
 }

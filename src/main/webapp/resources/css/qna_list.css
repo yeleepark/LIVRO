@@ -16,7 +16,7 @@ a {
 	font-size: 30px;
     margin-left: 20px;
     margin-bottom: 10px;
-    display: block;
+    display: inline-block;
 }
 
 .board_list_head, .board_list_body .item {
@@ -26,6 +26,7 @@ a {
 
 .board_list_body>div {
 	text-align: center;
+	
 }
 
 .board_list_head {
@@ -75,9 +76,11 @@ a {
 	width: 20%;
 }
 
-.board_list_footer  {
+.board_list_btns  {
 	text-align: right;
-
+	display: inline-block;
+	padding: 13px;
+	float:right;
 }
 
 .board_list_search {

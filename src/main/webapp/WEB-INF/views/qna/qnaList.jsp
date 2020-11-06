@@ -23,12 +23,44 @@
 <link rel="stylesheet" href="resources/css/qna_list.css">
 <script type="text/javascript" src="resources/js/qnaList.js">
 </script>
+<script>
+
+
+function myQna(){
+	var logininfo = document.getElementById('myqna_chk_info').value;
+	console.log(logininfo);
+	if(logininfo == null || logininfo == ''){
+		alert("로그인 후 이용해주세요!");
+		location.href='loginForm.do';
+	}else{
+		location.href="myqnalist.do?member_nickname="+ logininfo;
+	}
+}
+
+
+</script>
 
 <body>
 <jsp:include page="/WEB-INF/views/header/header.jsp" />
 	<div class="board_list_wrap">
 		<div class="board_list">
 			<span>Q&A</span>
+			<!-- 버튼 -->
+			<div class="board_list_btns">
+				<input type="button" value="내가 쓴 글" onclick="myQna();" class="qna_list_btn">
+				<input type="hidden" value="${logindto.member_nickname }" name="member_nickname" id="myqna_chk_info">
+				<c:choose>
+					<c:when test="${empty logindto }">
+						<input type="button" value="글쓰기" onclick="chkRole();"
+							class="qna_list_btn">
+					</c:when>
+					<c:otherwise>
+						<input type="button" value="글쓰기"
+							onclick="location.href='qnainsertform.do'" class="qna_list_btn">
+
+					</c:otherwise>
+				</c:choose>
+			</div>
 			<div class="board_list_head">
 				<div class="qna_no">번호</div>
 				<div class="qna_flag">답변여부</div>
@@ -92,7 +124,7 @@
 				<ul class="pagination">
 					<c:if test="${pagination.prev}">
 						<li class="page-items"><a class="page-link" href="#"
-							onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a>
+							onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')"><i class="fas fa-caret-left"></i></a>
 						</li>
 					</c:if>
 					<c:forEach begin="${pagination.startPage}"
@@ -107,7 +139,7 @@
 					</c:forEach>
 					<c:if test="${pagination.next}">
 						<li class="page-items"><a class="page-link" href="#"
-							onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a>
+							onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')"><i class="fas fa-caret-right"></i></a>
 						</li>
 					</c:if>
 				</ul>
@@ -119,28 +151,12 @@
 					<select name="searchType" id="searchType">
 						<option value="title">제목</option>
 						<option value="writer">작성자</option>
-					</select> 
-					<input type="text" placeholder="검색" name="keyword" id="keyword" />
-					<input type="submit" value="검색" id="btnSearch" class="qna_list_btn"/>
+					</select> <input type="text" placeholder="검색" name="keyword" id="keyword" />
+					<input type="submit" value="검색" id="btnSearch" class="qna_list_btn" />
 				</form>
 			</div>
 
-			<!-- 버튼 -->
-			<div class="board_list_footer">
-				<!-- <input type="button" value="내가 쓴 글" onclick="#" class="qna_list_btn"> -->
-				<c:choose>
-					<c:when test="${empty logindto }">
-						<input type="button" value="글쓰기" onclick="chkRole();" class="qna_list_btn">
-					</c:when>
-					<c:otherwise>
-						<input type="button" value="글쓰기"
-							onclick="location.href='qnainsertform.do'" class="qna_list_btn">
-								
-					</c:otherwise>
-				</c:choose>
 
-			</div>
-		
 
 		</div>
 	</div>

@@ -63,6 +63,11 @@ public class QnaBizImpl implements QnaBiz{
 		return qnaDao.flagdowndate(qna_no);
 	}
 
+	@Override
+	public List<QnaDto> myqnaList(QnaSearch search , String member_nickname) {
+		return qnaDao.myqnaList(search, member_nickname);
+	}
+
 
 
 	

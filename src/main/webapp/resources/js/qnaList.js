@@ -31,3 +31,20 @@ function chkRole(){
 			url = url + "&range=" + range;
 			location.href = url;
 		}
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

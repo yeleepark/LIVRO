@@ -69,9 +69,12 @@ a {
 	width: 15%;
 }
 
-.board_list_footer  {
+.board_list_btn  {
 	text-align: right;
-
+	display: inline-block;
+	float: right;
+	padding-top: 10px;
+	padding-right: 10px;
 }
 
 .board_list_search {
@@ -101,7 +104,7 @@ a {
    font-size: 30px;
     margin-left: 20px;
     margin-bottom: 10px;
-    display: block;
+    display: inline-block;
 }
 
 button:focus, input:focus {
@@ -110,7 +113,7 @@ button:focus, input:focus {
 
 .noticeBtn {
 	padding: 3px 5px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     background-color: transparent;
     border: 0.5px solid gray;
     border-radius: 5px;
