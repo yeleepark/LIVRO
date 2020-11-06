@@ -46,7 +46,7 @@
 #local-videos-container {
 	width: 100%;
 	height : 80%;
-	background-color : pink;
+	background-color : #c0c0c0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -58,7 +58,9 @@
 }
 #profileSection {
 	width: 100%;
-	border: 3px dotted black;
+	height: 20%;
+	background-color: black;
+	color: white;
 }
 
 .broad span, .broad input, .broad textarea, .broad select {
