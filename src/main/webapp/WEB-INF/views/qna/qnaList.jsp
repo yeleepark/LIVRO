@@ -44,7 +44,7 @@ function myQna(){
 <jsp:include page="/WEB-INF/views/header/header.jsp" />
 	<div class="board_list_wrap">
 		<div class="board_list">
-			<span>Q&A</span>
+			<span><i class="far fa-comment-dots"></i>Q&A</span>
 			<!-- 버튼 -->
 			<div class="board_list_btns">
 				<input type="button" value="내가 쓴 글" onclick="myQna();" class="qna_list_btn">

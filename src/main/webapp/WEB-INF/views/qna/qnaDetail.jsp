@@ -102,7 +102,7 @@ function qnareUpdateDone(qnare_no){
 <!-- 본문내용  -->
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
 	<div class="qna_detail_wrap">
-	<p>Q&A게시판</p>
+	<p><i class="far fa-comment-dots"></i>Q&A게시판</p>
 		<div class="qna_title_wrap">${qnadetaildto.qna_title }</div>
 		<div class="qna_nick_wrap">${qnadetaildto.member_nickname }
 			<fmt:formatDate value="${qnadetaildto.qna_regdate }"
