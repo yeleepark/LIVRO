@@ -13,30 +13,33 @@ import org.springframework.stereotype.Repository;
 import com.kh.livro.dao.BroadcastDao;
 import com.kh.livro.dao.RankDao;
 import com.kh.livro.dto.FollowerDto;
+import com.kh.livro.dto.SupportDto;
 
 @Repository
 public class RankDaoImpl implements RankDao {
-	
+
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+
 	private Logger logger = LoggerFactory.getLogger(BroadcastDao.class);
 
 	@Override
 	public List<FollowerDto> rank() {
 		List<FollowerDto> list = new ArrayList<FollowerDto>();
-		list = sqlSession.selectList(NAMESPACE+"rank");
+		try {
+			list = sqlSession.selectList(NAMESPACE + "rank");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return list;
 	}
-	
+
 	@Override
-	public List<HashMap<String, Object>> ranktest() {
-		List<HashMap<String, Object>> list = new ArrayList<HashMap<String,Object>>();
-		
+	public List<SupportDto> support() {
+		List<SupportDto> list = new ArrayList<SupportDto>();
 		try {
-			list = sqlSession.selectList(NAMESPACE+"ranktest");
+			list = sqlSession.selectList(NAMESPACE + "supportRank");
 		} catch (Exception e) {
-			logger.info("[ERROR ranktest]");
 			e.printStackTrace();
 		}
 		return list;

@@ -21,6 +21,7 @@ public class RankController {
 	public String rank(Model model) {
 
 		model.addAttribute("rankdto", rankBiz.rank());
+		model.addAttribute("supportdto", rankBiz.support());
 		
 		return "rank/rank";
 	}
