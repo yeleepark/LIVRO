@@ -13,6 +13,15 @@ public class SupportDto {
 	private Date support_regdate;
 	private int lastnum;
 	private int allCount;
+	private int rank;
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
 
 	public int getAllCount() {
 		return allCount;
