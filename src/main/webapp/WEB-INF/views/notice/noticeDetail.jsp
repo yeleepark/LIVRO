@@ -18,7 +18,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
 	<div class="notice_detail_wrap">
-	<p><i class="fas fa-bell"></i>공지사항</p>
+	<p><i class="far fa-bell"></i>공지사항</p>
 		<div>
 			<div class="notice_title_wrap">${dto.notice_title }</div>
 			<div class="notice_id_wrap">${dto.member_id }</div>

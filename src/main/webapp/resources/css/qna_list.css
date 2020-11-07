@@ -7,6 +7,10 @@ a {
 	text-decoration: none;
 	color: inherit;
 }
+.board_list > span > i{
+	margin-right: 5px;
+}
+
 
 .board_list_wrap {
 	padding: 90px;
@@ -14,7 +18,7 @@ a {
 
 .board_list > span{
 	font-size: 30px;
-    margin-left: 20px;
+    margin-left: 38px;
     margin-bottom: 10px;
     display: inline-block;
 }
@@ -64,8 +68,9 @@ a {
 	text-align: left;
 }
 
-.board_list_body div.qna_title a:hover {
-	text-decoration: underline;
+
+.board_list_body:hover{
+	background-color: #FFFAFA;
 }
 
 .board_list .qna_writer {

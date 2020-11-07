@@ -6,10 +6,14 @@
 .qna_detail_wrap {
 	padding: 90px 150px;
 }
+
 .qna_detail_wrap > p {
 	font-size: 30px;
 	font-weight: 500;
 	margin-bottom: 10px;
+}
+.qna_detail_wrap > p > i{
+	margin-right: 5px;
 }
 
 .qna_title_wrap {

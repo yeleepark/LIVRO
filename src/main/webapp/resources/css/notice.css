@@ -11,9 +11,13 @@ a {
 .board_list {
 	padding-top: 40px;	
 }
+.board_list > span > i{
+	margin-right: 5px;
+	
+}
 
 .board_list_wrap {
-	padding: 50px;
+	padding: 50px 90px;
 }
 
 
@@ -57,10 +61,9 @@ a {
 	text-align: left;
 }
 
-.board_list_body div.notice_title a:hover {
-	text-decoration: underline;
+.board_list_body:hover{
+	background-color: #FFFAFA;
 }
-
 .board_list .notice_writer {
 	width: 15%;
 }
@@ -102,9 +105,11 @@ a {
 
 .board_list > span{
    font-size: 30px;
-    margin-left: 20px;
+    margin-left: 44px;
     margin-bottom: 10px;
     display: inline-block;
+    font-weight: 500;
+    
 }
 
 button:focus, input:focus {
