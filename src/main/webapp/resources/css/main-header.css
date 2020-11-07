@@ -5,6 +5,7 @@
     padding: 0px;
     box-sizing : border-box;
     font-family: 'Noto Sans KR', sans-serif;
+    max-width: 1920px;
 }
 
 button:focus,
