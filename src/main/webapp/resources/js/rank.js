@@ -13,21 +13,24 @@ for(var i = 0; i < top5id.length; i ++){
 	});
 }
 
+var top5length = top5id.length;
+var top5total = 0;
+dataSet.forEach(key => {
+	top5total += parseInt(key.count);
+	});
+	
 d3.select('.top5print').selectAll('span')
   .data(dataSet)
   .enter()
   .append('span')
   .style('height', (d,i)=>{
-	  return (d.count)*50+ "px";
+	  return d.count/top5total*100 + "%";
   	})
   .style('width', (d,i)=>{
-	  return 10 + "%";
+	  return 95/top5length + "%";
 	})
-  .attr('x', (d,i)=>{
-	  return 50 * i
-  })
-  .attr('y', (d,i)=>{
-	  return 100 - (d.count);
+  .style('left', (d,i)=>{
+	  return (100/top5length)*i + "%";
   })
   .html((d,i)=>{
 	  return '<span class="chartText">'+d.member_nickname+'</span>';
@@ -65,24 +68,27 @@ for(var i = 0; i < artistId.length; i ++){
 	});
 }
 
+var supportLength = artistId.length;
+var supportTotal = 0;
+supportSet.forEach(key => {
+	supportTotal += key.count;
+	});
+
 d3.select('.supportPrint').selectAll('span')
   .data(supportSet)
   .enter()
   .append('span')
-  .style('height', function(d,i){
-	  return (d.count)+ "px";
+  .style('height', (d,i) => {
+	  return  parseInt(d.count)/parseInt(supportTotal)*100+"%";
   	})
-  .style('width', function(){
-	  return "50px";
+  .style('width', (d, i) => {
+	  return 95/supportLength + "%";
 	})
+  .style('left', (d,i)=>{
+	  return (100/supportLength)*i + "%";
+  })
   .html((d,i)=>{
 	  return '<span class="chartText">'+d.member_nickname+'</span>';
-  })
-  .attr('x', (d,i)=>{
-	  return 50 * i
-  })
-  .attr('y', (d,i)=>{
-	  return  (d.count);
   })
   .style('background-color', (d,i)=>{
 	  if(d.rank == 1){

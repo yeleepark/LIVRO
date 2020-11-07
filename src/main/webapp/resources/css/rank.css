@@ -54,13 +54,15 @@ section {
 	border: 1px solid black;
 	padding : 20px;
 	height: 300px;
+	position: relative;
 }
 
 .bar-chart, .support-chart {
 	display: inline-block;
 	cursor: pointer;
-	position: relative;
-	margin: 0 auto;
+	border-radius: 10px 10px 0px 0px;
+	position: absolute;
+	bottom: 0;
 }
 
 .chartText{
