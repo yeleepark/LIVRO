@@ -1,124 +1,4 @@
-<%@page import="com.kh.livro.dto.MemberDto"%>
-<%@page import="org.springframework.ui.Model"%>
-<%@page import="com.kh.livro.dto.BroadcastDto"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-    <link rel="stylesheet" href="resources/css/join.css">
-	
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
-    <script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
-    <script src="resources/js/getHTMLMediaElement.js"></script>
-    <script src="resources/js/adapter.js"></script>
-    <link rel="stylesheet" href="resources/css/broadcast_live.css" />
-   <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
-<!-- google font -->
-   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-</head>
-<body>
-
-<header>
-   <jsp:include page="/WEB-INF/views/header/header.jsp"/>
-</header>
-
-   <div id="section1">
-  
-      <div id="room_info">
-         <div id="main_title">
-         <h3>스트리밍 정보 입력</h3>
-         </div>
-         <div class="broad">
-            <label>방 제목</label>
-          <input type="text" id="broadcast_title" placeholder="Unique Room ID" required="required" />
-         </div>
-          
-          <div class="broad">
-             <label for="member_id">Creator</label>
-             <!-- 추후 hidden 변경  -->
-             <input type="hidden" id="member_id" name="member_id" value="${logindto.member_id }" required="required">
-             <input type="text" id="member_nickname" name="member_nickname" value="${logindto.member_nickname }" readonly="readonly">
-          </div>
-         
-          <div class="broad">
-                <label for="broadcast_content">내용</label>
-                <textarea rows="10" cols="25" style="resize: none;" id="broadcast_content" name="broadcast_content" placeholder="내용을 입력하세요" required="required"></textarea>                         
-          </div>
-          
-          <div class="broad">
-                <label for="broadcast_category">카테고리</label> 
-                <select name="category" id="broadcast_category" style="width:185px;" required="required">
-                   <option value="공연">공연</option>
-                   <option value="댄스">댄스</option>
-                   <option value="노래">노래</option>
-                   <option value="연주">연주</option>
-                </select>            
-          <div class="broad">
-             <label>※주의사항!</label>
-             <textarea rows="5" cols="25" readonly="readonly" style="resize: none;">주의사항 뭐 쓸지 생각해 봅시다 ㅎ</textarea>
-          </div>
-                             
-          <div class="broad">
-          <button id="btn-open-or-join-room" class="goJoinBtn">
-                 방송시작!!!
-          </button>
-          </div>
-          
-          
-          </div>
-      </div>
-   </div>
-  
-     
-     <div id="section2">
-       <div id="section2_left">
-          <div id="local-videos-container"></div>
-          <!--
-              <div id="remote-videos-container"></div>
-            -->
-              
-          <div id="profileSection">
-          	<%-- <input type="hidden" id="hidden_no" value="${livedto.broadcast_no }"> --%>
-          	<div>
-          	<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
-          	<p>${profile_dto.member_profile }</p>
-          	</div>            
-            <p>ARTIST : ${logindto.member_nickname }</p>
-            <div>
-	            방 제목 : <span id="title_res"></span>
-            </div>
-            <div>
-            방 카테고리 : <span id="category_res"></span>
-            </div>
-          </div>
-       </div>
-
-       <div id="section2_right">
-           <div id="chat-output"></div>
-
-            <div id="chat-input">
-                <div id="input-chat">
-                    <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요">
-                </div>
-                <div>
-                   <!--  <button id="close-broadcast">연결 종료</button> -->
-                    <button id="disconnect-room">방송 종료</button>
-                </div>
-            </div>
-        </div>           
-    </div>
-       
-   
-        
-        
-    <script>
-    
-        window.enableAdapter = true; // adapter.js 활성화
+ window.enableAdapter = true; // adapter.js 활성화
 
         //RTCMultiConnection Default Settings
         var connection = new RTCMultiConnection();
@@ -191,11 +71,11 @@
                     }
                 } else {
                     console.log('open했습니다');
-                    var member_id = $("#member_id").val();
-                    var member_nickname = $('#member_nickname').val();
-                    var broadcast_title = $("#broadcast_title").val();
-                    var broadcast_content = $("#broadcast_content").val();
-                    var broadcast_category = $("#broadcast_category").val();
+                    let member_id = $("#member_id").val();
+                    let member_nickname = $('#member_nickname').val();
+                    let broadcast_title = $("#broadcast_title").val();
+                    let broadcast_content = $("#broadcast_content").val();
+                    let broadcast_category = $("#broadcast_category").val();
                     console.log(member_id, broadcast_title, broadcast_content, broadcast_category);
                     $.ajax({
                        type : "POST",
@@ -321,7 +201,8 @@
 
         let disconnectRoom = document.getElementById("disconnect-room");
         disconnectRoom.onclick = function() {
-
+		
+		let member_id = document.getElementById('member_id');
             // 만약 방을 나가는 사람이 방을 만든 사람이면 전체 세션을 닫는다. //USERID가 없어서
             // 만든 사람인지 알 수 없는 것이 아닐까 싶다.. 들어온 사람은 나가짐..
             // 방송 나가기 버튼으로도 활용 가능할 듯
@@ -330,7 +211,7 @@
             console.log('방송종료');
             alert("방송을 종료 하였습니다.");
             this.disabled = true;
-            location.href='close.do?member_id=${logindto.member_id}'
+            location.href='close.do?member_id=' + member_id.value;
             } else {
             connection.closeEntireSession(function () {
             //document.querySelector('h1').innerHTML = 'Entire session has been closed.';
@@ -338,7 +219,3 @@
             }
         }
         
-    </script>
-    <script src="resources/js/broadcastlive.js"></script>
-</body>
-</html>

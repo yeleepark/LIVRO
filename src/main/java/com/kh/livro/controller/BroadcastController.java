@@ -47,10 +47,10 @@ public class BroadcastController {
 		BroadcastDto dto = broadcastBiz.profile(member_id);
 		model.addAttribute("profiledto", dto);
 
-		return "broadcast/broadcastlive";
+		return "broadcast/broadcast_live";
 	}
 
-	// broadcastlive.jsp에서 insert시킴!!
+	// broadcast_live.jsp에서 insert시킴!!
 	@RequestMapping("/liveinsert.do")
 	public String liveinsert(Model model, HttpServletRequest request, HttpServletResponse response, String member_id,
 			String broadcast_title, String broadcast_content, String broadcast_category, String member_nickname) {
@@ -59,7 +59,7 @@ public class BroadcastController {
 		BroadcastDto dto = new BroadcastDto(member_id, broadcast_title, broadcast_content, broadcast_category,
 				member_nickname);
 		model.addAttribute("livedto", broadcastBiz.broadInsert(dto));
-		return "broadcast/broadcastlive";
+		return "broadcast/broadcast_live";
 	}
 
 	// flag update -> 방종
