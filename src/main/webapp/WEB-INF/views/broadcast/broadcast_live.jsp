@@ -83,33 +83,42 @@
               
           <div id="profileSection">
           	<%-- <input type="hidden" id="hidden_no" value="${livedto.broadcast_no }"> --%>
-          	<div>
-          	<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
-          	<p>${profile_dto.member_profile }</p>
-          	</div>            
-            <p>ARTIST : ${logindto.member_nickname }</p>
-            <div>
-	            방 제목 : <span id="title_res"></span>
-            </div>
-            <div>
-            방 카테고리 : <span id="category_res"></span>
-            </div>
+          	<div class="profileSection-tab-img">
+          		<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
+          			<div class="profileImg">
+          				<%-- <img src="/resources/profileimg/${broadDto.member_profile }"> --%>
+          				<img src="resources/img/broadcast_back.png">
+          			</div>
+        	  	</div>
+        	  	<div class="profileSection-tab-text">            
+					<div>
+	   	      		   	<span id="title_res"></span>
+					</div>
+					<p>${logindto.member_nickname }</p>
+					<div>
+						<div id="category_res"></div>
+					</div>
+				</div>
           </div>
        </div>
 
        <div id="section2_right">
            <div id="chat-output"></div>
 
-            <div id="chat-input">
+           <div id="chat-input">
+                <div class="chat-btn-block">
+	                <div>
+	                   <!--  <button id="close-broadcast">연결 종료</button> -->
+	                    <button id="disconnect-room">
+	                    	<i class="fas fa-sign-out-alt"></i>
+	                    </button>
+	                </div>
+                </div>
                 <div id="input-chat">
-                    <input type="text" id="input-text-chat" placeholder="채팅을 입력해주세요">
+                    <input type="text" id="input-text-chat" placeholder="채팅을 입력하세요" onclick="needLogin();">
                 </div>
-                <div>
-                   <!--  <button id="close-broadcast">연결 종료</button> -->
-                    <button id="disconnect-room">방송 종료</button>
-                </div>
-            </div>
-        </div>           
+           </div>
+        </div>                   
     </div>
     
     <script src="resources/js/broadcast_live_rtc.js"></script>

@@ -30,42 +30,55 @@
        <jsp:include page="/WEB-INF/views/header/header.jsp"/>
    </header>
    <input type="hidden" value="${broadDto.broadcast_title }" id="broadcast_title">
+   <input type="hidden" value="${broadDto.broadcast_category }" id="broadcast_category">
    <input type="hidden" value="${logindto.member_id }" id="member_Id">
    <input type="hidden" value="${logindto.member_nickname }" id="member_nickname">
    <input type="hidden" value="${logindto.member_email }" id="member_email">
    <input type="hidden" value="${logindto.member_name}" id="member_name">
    
-      <div id="section2">
+	<div id="section2">
        <div id="section2_left">
-          <div id="local-videos-container"></div>
-      
-          <div id="profileSection">
-          	<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
-          		<img alt="프로필 이미지" class="broad_profile" src="resources/img/livro_icon.png">
-          		<!-- ${broadDto.member_profile} -->
-            <div class="profileSection_data">
-				<p id="artist_nickname">${broadDto.member_nickname }</p>
-				<p id="broad_title">${broadDto.broadcast_title }</p>
-            	<p id="broad_category">${broadDto.broadcast_category }</p>
-            </div>
-          </div>
-          <img alt="라이브로" class="redLivro" src="resources/img/red.png">
-       </div>
+			<div id="local-videos-container"></div>
+      		<div id="profileSection">
+          		<div class="profileSection-tab-img">
+          		<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
+          			<div class="profileImg">
+          				<%-- <img src="/resources/profileimg/${broadDto.member_profile }"> --%>
+          				<img src="resources/img/broadcast_back.png">
+          			</div>
+        	  	</div>
+        	  	<div class="profileSection-tab-text">            
+					<div>
+	   	      		   	<span id="title_res"></span>
+					</div>
+					<p>${broadDto.member_nickname }</p>
+					<div>
+						<div id="category_res"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 
        <div id="section2_right">
            <div id="chat-output"></div>
 
            <div id="chat-input">
-                <div class="chat_btn_block">
+                <div class="chat-btn-block">
 	                <div>
-	                	<button id="donation" onclick="donaDo();">후원하기</button>
+	                	<button id="donation" onclick="donaDo();">
+	                		<i class="fas fa-hand-holding-usd"></i>
+	                	</button>
 	                </div>
 	                <div>
 	                   <!--  <button id="close-broadcast">연결 종료</button> -->
-	                    <button id="disconnect-room">방송 나가기</button>
+	                    <button id="disconnect-room">
+	                    	<i class="fas fa-sign-out-alt"></i>
+	                    </button>
 	                </div>
 	                <div>
-	                    <button id="report" onclick="report()">신고하기</button>
+	                    <button id="report" onclick="report()">
+	                    	<i class="fas fa-exclamation-circle"></i>
+	                    </button>
 	                </div>
                 </div>
                 <div id="input-chat">
