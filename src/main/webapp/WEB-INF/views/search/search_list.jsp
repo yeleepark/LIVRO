@@ -34,20 +34,27 @@
 			</c:choose>
 		</div>
 		<div class="broad-section">
-		<h2><i class="fas fa-search"></i> 실시간 방송 리스트</h2>
+		<h2><i class="fas fa-search"></i> 실시간 방송 리스트</h2>			
 			<c:choose>
-				<c:when test="${empty map.broadlist }">
+				<c:when test="${empty broadlist }">
 					<div>
 						<p class="noSearch"><i class="fas fa-times"></i> 검색내역이 없습니다</p>
 					</div>
 				</c:when>
 				<c:otherwise>
-					<c:forEach items="${map.broadlist }" var="broadcastdto" >
+					<c:forEach items="${broadlist }" var="broadcastdto" begin="0" end="0">
+						<c:if test="${broadcastdto.broadcast_flag == 'N' }">
+							<p class="noSearch"><i class="fas fa-times"></i>진행중인 방송이 없습니다</p>
+						</c:if>
+					</c:forEach>
+					<c:forEach items="${broadlist}" var="broadcastdto">
+						<c:if test="${broadcastdto.broadcast_flag == 'Y'}">						
 						<div>
 						<p><img src="resources/img/red.png" alt="생방송"> 
 							<a href="broadDetail.do?broadcast_no=${broadcastdto.broadcast_no }">${broadcastdto.broadcast_title }</a>
 						</p>
 						</div>
+						</c:if>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
