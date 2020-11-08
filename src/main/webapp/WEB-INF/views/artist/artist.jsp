@@ -22,6 +22,8 @@
 <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css" />
 <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
 <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css" />
+<!-- moment -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <title>LIVRO-Artist</title>
 </head>
 <body>
@@ -212,6 +214,9 @@
 				<h2>
 					<i class="fas fa-record-vinyl"></i> 방송기록
 				</h2>
+				<c:if test="${!empty broaddto }">
+					<p id="momentWrapper">마지막 방송 시간 : <span id="moment"></span></p>
+				</c:if>
 				<div class="broadTable">
 					<c:choose>
 						<c:when test="${empty broaddto }">
@@ -220,6 +225,9 @@
 							</div>
 						</c:when>
 						<c:otherwise>
+							<c:forEach items="${broaddto }" var="broad" begin="0" end="1">
+								<input type="hidden" value="${broad.broadcast_startdate }" id="lastBroad">
+							</c:forEach>
 							<c:forEach items="${broaddto }" var="broad">
 								<c:if test="${broad.broadcast_flag == 'Y' }">
 									<div class="live-row">

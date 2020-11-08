@@ -485,6 +485,10 @@ ul.tabs li.tabCurrent {
 	padding: 20px;
 }
 
+#momentWrapper{
+	text-align: right;
+}
+
 .broadTable img {
 	width: 40px;
 }

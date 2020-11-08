@@ -20,6 +20,12 @@ tabsLi.forEach(tab =>{
 	})
 })
 
+let lastBroad = document.getElementById('lastBroad').value;
+var lastDate = new Date (lastBroad.replace("KST", "GMT+0900"));
+var moment = moment(lastDate , "yyyymmddhhmmss").fromNow()
+let momentPrint = document.getElementById('moment');
+momentPrint.innerHTML = moment;
+
 // 해당 아티스트의 아이디
 var artist_id = document.getElementById('artistId').value;
 // 해당 아티스트의 닉네임
@@ -30,7 +36,8 @@ var member_id = document.getElementById('loginId').value;
 var member_nickname = document.getElementById('loginNickname').value;
 // 팔로워 카운트
 var countArea = document.getElementsByClassName('count')[0];
-var count = countArea.innerHTML;
+var count = parseInt(countArea.innerHTML);
+console.log(count);
 
 
 // ------팔로우
@@ -53,8 +60,7 @@ function follow(e){
         	if(result > 1){
         		e.style.display = "none";
         		target.style.display = "block";
-        		count ++;
-        		countArea.innerHTML = count;
+        		console.log(count);
         	}
         }
     });
@@ -63,7 +69,6 @@ function follow(e){
 // ------언팔로우
 function unfollow(e){
 	var target = e.previousSibling.previousSibling;
-	console.log(target);
 	var ask = confirm('언팔로우 하시겠습니까?');
 	if(ask){
 		$.ajax({
@@ -80,8 +85,7 @@ function unfollow(e){
 	        	if(result > 1){
 	        		e.style.display = "none";
 	        		target.style.display = "block";
-	        		count --;
-	        		countArea.innerHTML = count;
+	        		console.log(count);
 	        	}
 	        }
 	    });
