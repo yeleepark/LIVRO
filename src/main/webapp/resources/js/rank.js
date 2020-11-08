@@ -2,7 +2,7 @@ function setTime(){
 	window.setTimeout('window.location.reload()', 600000);
 	let today = new Date();
 	let updateTime = document.getElementsByClassName('updateTime');
-	var res = moment(today).format('aa HH시mm분')
+	var res = moment(today).format('HH시mm분')
 
 	updateTime[0].innerHTML = res;
 	updateTime[1].innerHTML = res;
