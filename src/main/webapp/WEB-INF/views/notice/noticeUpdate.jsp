@@ -60,6 +60,7 @@
 		 * #editor에 생성한 input 태그를 추가한다
 		 */
 	</script>
+	 	<jsp:include page="/WEB-INF/views/footer/footer.jsp" /> 	
 	 
 
 </body>

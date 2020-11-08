@@ -59,6 +59,7 @@
 		 */
 	</script>
 	
+	 	<jsp:include page="/WEB-INF/views/footer/footer.jsp" /> 	
 	 
 
 </body>
