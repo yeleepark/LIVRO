@@ -49,11 +49,14 @@
         	  	</div>
         	  	<div class="profileSection-tab-text">            
 					<div>
-	   	      		   	<span id="title_res"></span>
+	   	      		   	<span id="title_res">${broadDto.broadcast_title }</span>
 					</div>
-					<p>${broadDto.member_nickname }</p>
+					<p id="nickname_res">${broadDto.member_nickname }</p>
 					<div>
-						<div id="category_res"></div>
+						<span id="category_res">${broadDto.broadcast_category }</span>
+					</div>
+					<div>
+						<span id="content_res">${broadDto.broadcast_content }</span>
 					</div>
 				</div>
 			</div>
@@ -64,20 +67,25 @@
 
            <div id="chat-input">
                 <div class="chat-btn-block">
+                	<c:choose>
+                		<c:when test="${empty logindto}">
+                		</c:when>
+                		<c:otherwise>
+	              		  <div>
+	                		<button id="donation" class="chat-btn" onclick="donaDo();">
+	                			<i class="fas fa-hand-holding-usd"></i>
+	                		</button>
+	               		 </div>                			
+                		</c:otherwise>
+                	</c:choose>
 	                <div>
-	                	<button id="donation" onclick="donaDo();">
-	                		<i class="fas fa-hand-holding-usd"></i>
-	                	</button>
-	                </div>
-	                <div>
-	                   <!--  <button id="close-broadcast">연결 종료</button> -->
-	                    <button id="disconnect-room">
-	                    	<i class="fas fa-sign-out-alt"></i>
+	                    <button id="report" class="chat-btn" onclick="report()">
+	                    	<i class="fas fa-exclamation-circle"></i>
 	                    </button>
 	                </div>
 	                <div>
-	                    <button id="report" onclick="report()">
-	                    	<i class="fas fa-exclamation-circle"></i>
+	                    <button id="disconnect-room" class="chat-btn">
+	                    	<i class="fas fa-sign-out-alt"></i>
 	                    </button>
 	                </div>
                 </div>
@@ -95,7 +103,10 @@
      
      <div id="donaProcess">
      	<div id="donaRound">
-     		<span>${broadDto.member_nickname }님에게 후원하기</span>
+     		<div id="donaId">
+     			<div>${broadDto.member_nickname }</div>
+          		<div>님에게 후원하기</div>
+          	</div>
      		<div id="donaFirst">
      			<input type="button" class="donaPrice" style="border: 1px solid blue" value="1000" />
      			<input type="button" class="donaPrice" style="border: 1px solid blue" value="5000"/>

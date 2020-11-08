@@ -40,9 +40,9 @@
 				<input type="hidden" id="member_id" name="member_id" value="${logindto.member_id }" required="required">
        	    </div>
           
-			<div class="broad">
+			<div class="broad" id="broad_title">
 				<label>방 제목</label>
-      	    	<input type="text" id="broadcast_title" placeholder="Unique Room ID" required="required" />
+      	    	<input type="text" id="broadcast_title" placeholder="방 제목을 입력하세요" required="required" />
 			</div>
           
 			<div class="broad">
@@ -60,13 +60,13 @@
                 </select>            
 			</div>
 			<div class="broad">
-				<label>주의사항</label>
-				<textarea rows="5" cols="25" readonly="readonly" style="resize: none;">주의사항 뭐 쓸지 생각해 봅시다 ㅎ</textarea>
+				<label>안내사항</label>
+				<textarea rows="5" cols="15" readonly="readonly" style="resize: none;" id="notice">LIVRO는 누구나 버스킹 할 수 있는 플랫폼입니다.&#10;깨끗한 운영을 위해 함께 노력해주세요!</textarea>
 			</div>
                              
 			<div class="broad">
 				<button id="btn-open-or-join-room" class="goJoinBtn">
-                	 방송시작!!!
+                	 방송 시작
 				</button>
 			</div>
     	  </div>
@@ -94,9 +94,12 @@
 					<div>
 	   	      		   	<span id="title_res"></span>
 					</div>
-					<p>${logindto.member_nickname }</p>
+					<p id="nickname_res">${logindto.member_nickname }</p>
 					<div>
-						<div id="category_res"></div>
+						<span id="category_res"></span>
+					</div>
+					<div>
+						<span id="content_res"></span>
 					</div>
 				</div>
           </div>
@@ -109,7 +112,7 @@
                 <div class="chat-btn-block">
 	                <div>
 	                   <!--  <button id="close-broadcast">연결 종료</button> -->
-	                    <button id="disconnect-room">
+	                    <button id="disconnect-room" class="chat-btn">
 	                    	<i class="fas fa-sign-out-alt"></i>
 	                    </button>
 	                </div>

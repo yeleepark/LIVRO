@@ -39,6 +39,17 @@
 	justify-content: space-between;
 }
 
+#donaId{
+	display:flex;
+	justify-content:center;
+}
+#donaId > span{
+	font-size: 1.3em;
+}
+
+#donaId > span:first-child{
+	font-weight: bold;
+}
 #donaFirst{
 	display: flex;
 }
