@@ -221,10 +221,10 @@
 					<c:choose>
 						<c:when test="${empty broaddto }">
 							<div>
-								<p>최근 일주일간 방송 내역이 없습니다</p>
+								<p>최근 일주일간 방송 내역이 없습니다<input type="hidden" id="lastBroad"></p>
 							</div>
 						</c:when>
-						<c:otherwise>
+						<c:otherwise>						
 							<c:forEach items="${broaddto }" var="broad" begin="0" end="1">
 								<input type="hidden" value="${broad.broadcast_startdate }" id="lastBroad">
 							</c:forEach>
@@ -360,7 +360,9 @@
 						<c:when test="${logindto.member_id == memberdto.member_id }">
 							<div class="btnOn">
 								<button id="artistBtn" onclick="updateProfile();">프로필변경</button>
-								<button id="followerBtn">팔로워보기</button>
+								<c:if test="${!empty dto }">
+									<button id="followerBtn">팔로워보기</button>
+								</c:if>
 							</div>
 						</c:when>
 						
@@ -394,6 +396,23 @@
 							</c:choose>
 						</c:otherwise>
 						
+					</c:choose>
+				</div>
+				<div id="modal">
+					<c:choose>
+						<c:when test="${empty dto }">
+							<div>
+								<p> 팔로워가 없습니다 </p>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div>
+								<p id="closeList"><i class="fas fa-times"></i><p>
+								<c:forEach items="${dto }" var="dto">
+									<p class="showList">${dto.follower_nickname }</p>
+								</c:forEach>
+							</div>
+						</c:otherwise>
 					</c:choose>
 				</div>
 			</div>

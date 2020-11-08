@@ -78,6 +78,7 @@ function insertSupport(e) {
 			writer_nickname : login_nickname
 		}),
 		success : function(result) {
+			target.querySelector('#support_content').value = '';
 			listRest();
 		}
 	});
@@ -130,26 +131,26 @@ function updateRes(e) {
 	var done = confirm('수정하시겠습니까?');
 
 	if (done) {
-		$
-				.ajax({
-					type : "post",
-					url : "supportUpdate.do?suppport_no=" + support_no,
-					headers : {
-						"Content-Type" : "application/json"
-					},
-					dateType : "text",
-					data : JSON.stringify({
-						support_no : support_no,
-						support_content : support_content
-					}),
-					success : function(result) {
-						support_content = result.support_content;
-						res.classList.remove("changeActive");
-						res.readOnly = true;
-						e.style.display = "none";
-						target.getElementsByClassName('updateBtn')[0].style.display = "block";
-					}
-				})
+		$.ajax({
+			type : "post",
+			url : "supportUpdate.do?suppport_no=" + support_no,
+			headers : {
+				"Content-Type" : "application/json"
+			},
+			dateType : "text",
+			data : JSON.stringify({
+				support_no : support_no,
+				support_content : support_content
+			}),
+			success : function(result) {
+				support_content = result.support_content;
+				res.classList.remove("changeActive");
+				res.readOnly = true;
+				e.style.display = "none";
+				target.getElementsByClassName('updateBtn')[0].style.display = "block";
+			}
+					
+		})
 	}
 }
 
@@ -254,6 +255,7 @@ function replyInsert(e) {
 			member_nickname : member_nickname
 		}),
 		success : function(result) {
+			target.value ='';
 			replyRest(support_no, supportTarget, member_id);
 		}
 	})

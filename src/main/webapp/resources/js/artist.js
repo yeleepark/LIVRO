@@ -20,11 +20,28 @@ tabsLi.forEach(tab =>{
 	})
 })
 
-let lastBroad = document.getElementById('lastBroad').value;
-var lastDate = new Date (lastBroad.replace("KST", "GMT+0900"));
-var moment = moment(lastDate , "yyyymmddhhmmss").fromNow()
-let momentPrint = document.getElementById('moment');
-momentPrint.innerHTML = moment;
+let followerBtn = document.getElementById('followerBtn');
+if(followerBtn!=null){
+	let modal = document.getElementById('modal');
+	followerBtn.addEventListener('click', ()=>{
+		modal.style.display ="block";
+	})
+	
+	let closeList = document.getElementById('closeList');
+	closeList.addEventListener('click', ()=>{
+		modal.style.display ="none";
+	})
+}
+
+let lastBroadTarget = document.getElementById('lastBroad')
+let lastBroad = lastBroadTarget.value;
+if(lastBroad!=''){
+	var lastDate = new Date (lastBroad.replace("KST", "GMT+0900"));
+	var moment = moment(lastDate , "yyyymmddhhmmss").fromNow()
+	let momentPrint = document.getElementById('moment');
+	momentPrint.innerHTML = moment;
+}
+
 
 // 해당 아티스트의 아이디
 var artist_id = document.getElementById('artistId').value;
@@ -36,8 +53,8 @@ var member_id = document.getElementById('loginId').value;
 var member_nickname = document.getElementById('loginNickname').value;
 // 팔로워 카운트
 var countArea = document.getElementsByClassName('count')[0];
-var count = parseInt(countArea.innerHTML);
-console.log(count);
+var followercount = parseInt(countArea.innerHTML);
+console.log(followercount);
 
 
 // ------팔로우
@@ -60,7 +77,8 @@ function follow(e){
         	if(result > 1){
         		e.style.display = "none";
         		target.style.display = "block";
-        		console.log(count);
+        		followercount++;
+        		countArea.innerHTML = followercount;
         	}
         }
     });
@@ -70,6 +88,7 @@ function follow(e){
 function unfollow(e){
 	var target = e.previousSibling.previousSibling;
 	var ask = confirm('언팔로우 하시겠습니까?');
+	
 	if(ask){
 		$.ajax({
 	        type : "post",
@@ -85,7 +104,8 @@ function unfollow(e){
 	        	if(result > 1){
 	        		e.style.display = "none";
 	        		target.style.display = "block";
-	        		console.log(count);
+	        		followercount--;
+	        		countArea.innerHTML = followercount;
 	        	}
 	        }
 	    });

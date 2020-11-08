@@ -574,11 +574,25 @@ ul.tabs li.tabCurrent {
 	flex-direction: column;
 }
 
-.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
+.unfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
 	color: #3399FF;
 	font-family: "Helvetica";
 	font-size: 10pt;
 	background-color: #ffffff;
+	border: 1px solid;
+	border-color: #3399FF;
+	border-radius: 3px;
+	width: 85px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.followBtn,
+.YfollowBtn{
+	color: white;
+	font-family: "Helvetica";
+	font-size: 10pt;
+	background-color: #3399FF;
 	border: 1px solid;
 	border-color: #3399FF;
 	border-radius: 3px;
@@ -656,6 +670,24 @@ ul.tabs li.tabCurrent {
 	border: 1px solid #D8D8D8;
 	background: #FFFFFF;
 	border-radius: 50px;
+}
+
+#closeList{
+	text-align: right;	
+}
+
+#modal{
+	display: none;
+	width : 200px;
+	height : 200px;
+	overflow-y :scroll;
+	padding : 20px;
+	background-color: #ededed;
+	z-index: 5;	
+}
+
+.showList{
+	text-align: center;
 }
 
 @media screen and (max-width:1024px) {

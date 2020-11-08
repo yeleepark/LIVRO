@@ -75,7 +75,7 @@ public class ArtistController {
 	public int unfollow(@RequestBody FollowDto dto) {
 		logger.info("언팔로우 컨트롤러");
 		int res = artistBiz.unfollow(dto);
-
+		
 		FollowerDto follower = new FollowerDto();
 		follower.setFollower_id(dto.getMember_id());
 		follower.setMember_id(dto.getArtist_id());
