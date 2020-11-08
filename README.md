@@ -6,7 +6,7 @@
 
 
 
-> 박서윤 [GitHub](https://github.com/pionari) ㄱ
+> 박서윤 [GitHub](https://github.com/pionari) 
 
 > 라현준 [GitHub](https://github.com/la-Hyun-Jun)
 
