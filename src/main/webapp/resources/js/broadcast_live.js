@@ -1,11 +1,7 @@
 var button = document.getElementById('btn-open-or-join-room');
-console.log(button);
-
 var title_res = document.getElementById("title_res");
-console.log(title_res);
-
 var category_res = document.getElementById("category_res");
-console.log(category_res);
+var content_res = document.getElementById('content_res');
 
 
 button.addEventListener("click", function(){
@@ -18,4 +14,7 @@ var category = document.getElementById("broadcast_category");
 	console.log(category);
 	category_res.innerHTML = category;
 	
+var content = document.getElementById('broadcast_content');
+	content_res.innerHTML = content.value;
 })
+
