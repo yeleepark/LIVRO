@@ -37,7 +37,7 @@ public class SearchController {
 		
 		
 		model.addAttribute("map", map);
-		
+		model.addAttribute("broadlist",broadlist);
 		
 		return "search/search_list";
 	}
