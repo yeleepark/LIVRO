@@ -55,61 +55,61 @@ label{
 	line-height: 40px;
 	border: 1px #3399dd solid;
 	text-align: center;
-	
 	color: white;
 	transition: all 0.9s, color 0.3;
-	/* width: 20vw;
-	height: 5vh;
-	color: black;
-	border-radius: 5px;
-	background-color: transparent; */
 }
 	
 
 
 .goJoinBtn:hover{
-	color:white;
-	box-shadow: 0 80px 0 0 rgba(0,0,0,0.25) inset,
-				0 -80px 0 0 rgba(0,0,0,0.25) inset;
+	color: black;
+	background-color: white;
+	transition: all 0.9s, color 0.1;
 }
 
-/* video {
-	width: 1200px;
-	height: 600px;
-	border-radius: 15px;
+video {
+	height: 100%;
 	margin: 0;
 	padding: 0;
-} */
+	object-fit: fill;
+}
 #section1 {
 	width: 100%;
 	height: 100vh;
 	border: 3px solid black;
-	background-color: rgba(0, 0, 0, .8);
+	background-image: url('../img/broadcast_back.png');
 }
 
 #section2 {
-	width: 100%;
+	width: 80%;
 	height: 100vh;
 	display: flex;
-	padding-top: 80px;
-	padding-bottom: 20px;
-	padding-right : 20px;
-	padding-left : 20px;
+	padding-top: 12vh;
 	display : none;
+	margin: 0 auto;
 }
 
 #section2_left {
-	width: 70%;
-	border: 3px solid yellow;
-	overflow-y: scroll;
+	width: 75%;
+	margin-right: 1vw;
+}
+
+#section2_right {
+	width: 25%;
+	height: 95%;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	background-color: #ecf0f1;
+	padding-bottom: 10px;
 }
 
 #local-videos-container {
 	width: 100%;
 	height : 80%;
-	background-color : pink;
+	background-color : #333;
+	margin-bottom: 2vh;
+	border-radius: 5px;
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	overflow: hidden;
 }
@@ -118,8 +118,28 @@ label{
 	width : 100%;
 }
 #profileSection {
+	display: flex;
 	width: 100%;
-	border: 3px dotted black;
+}
+
+.profileImg > img{
+	width: 100px;
+	height: 100px;
+	box-sizing: content-box;
+	overflow: hidden;
+	border-radius: 100px;
+}
+
+.profileSection-tab-img{
+	width: 10%;
+	height: auto;
+}
+.profileSection-tab-text{
+	width: 90%;
+}
+
+#title_res{
+	font-size: 2em;
 }
 
 #room_info {
@@ -134,32 +154,61 @@ label{
 	align-items: center;
 	flex-direction: column;
 	width: 500px;
-	padding: 20px;	
-	background-color:black;
 	border-radius: 5px;	
 }
 
-#section2_right {
-	width: 30%;
-	height: 100%;
-	border: 3px solid blueviolet;
-}
 
 #chat-output{
 	width : 100%;
-	height : 80%;
-	background-color: red;
+	height : 85%;
 	float: left;
 	overflow : scroll;
+	overflow-x:hidden;
+	margin-bottom: 5%;
 }
 
+/* .box {
+    -ms-overflow-style: none; IE and Edge
+    scrollbar-width: none; Firefox
+}
+.box::-webkit-scrollbar {
+    display: none; Chrome, Safari, Opera
+} */
 #chat-input{
 	width : 100%;
-	height : 20%;
-	background-color: yellow;
+	height : 12%;
 	float: right;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: row;
+	flex-direction: column;
+}
+
+.chat-btn-block{
+	display: flex;
+	margin-left: 3%;
+}
+
+.chat-btn-block > div > button{
+	border: none;
+	font-size:2em;
+	margin-right:0.5vw;
+}
+
+button > i{
+	border-radius:5px;
+	color:white;
+	background-color:gray;
+}
+
+#input-chat{
+	width:100%;
+	height:100%;
+}
+#input-text-chat{
+	display:block;
+	border: none;
+	border-radius: 5px;
+	width: 95%;
+	height:100%;
+	margin:0 auto;
+	padding: 0 3%;
 }
