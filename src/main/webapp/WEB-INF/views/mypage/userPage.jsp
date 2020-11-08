@@ -62,13 +62,14 @@
                   
                   <label for ="member_nickname">닉네임</label>
                   <input type="text" name="member_nickname" id="member_nickname" value="${logindto.member_nickname }" title="닉네임은 3~10자 이내 한글,영문,숫자만 사용가능합니다.(공백사용불가)"/>
-                  <input type="button" id="nick_chk" onclick="nick_Chk();" value="중복체크"/>
+                  <input type="button" class="nick" id="nick_chk" onclick="nick_Chk();" value="중복체크"/>
+                  
                   <div class="msg_check" id="nickname_check"></div>
                   
                   
                   <label for ="member_email">이메일</label>
-                  <input type="text" name="member_email" id="member_email" value="${logindto.member_email }"/>
-                  <input type="button" id="email_chk" onclick="email_Chk();" value="중복체크"/>
+                  <input type="text" name="member_email" id="member_email" value="${logindto.member_email }"/> 
+                  <input type="button" class="nick" id="email_chk" onclick="email_Chk();" value="중복체크"/>
                   <div class="msg_check" id="email_check"></div>
                  
                   <label for ="member_addr">주소</label>
@@ -78,9 +79,8 @@
                   <input type="text" name="member_phone" id="member_phone" value="${logindto.member_phone } "/>
                   <div class="msg_check" id="phone_check"></div>
                   <div id="upcheck"></div>
-                  <input type="button" value="수정" onclick="userup()"/>
-                  <input type="button" value="비밀번호 수정" onclick="location.href='userPw.do'">
-                  
+                  <input type="button" class="nick" value="수정" onclick="userup()"/>
+                  <input type="button" value="비밀번호 수정" onclick="location.href='userPw.do'" class="chang">
                   
                </div>
             </div>

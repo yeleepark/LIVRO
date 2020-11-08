@@ -15,7 +15,7 @@
 	<section>
 		<div class="find-wrapper">
 			<h2>비밀번호 변경</h2>
-			<form action="userPwres.do" method="POST" onsubmit="return true">
+			<form action="userPwres.do" method="POST" onsubmit="return frmsubmit()">
 				<input type="hidden" id="member_id" name="member_id" value="${logindto.member_id }"> 
 				<input type="hidden" id="member_role" name="member_role" value="${logindto.member_role }">
 				
@@ -39,7 +39,7 @@
 	
 	$(document).ready(function() {
 
-			$("#member_pw" && "#member_pwchk").keyup(function() {
+			$("#member_pw" && "#member_pwchk").keyup(frmsubmit() {
 						arr[0] = false;
 						//if문에 사용할 비밀번호값을 변수에 저장해줌
 						var member_pw = $("#member_pw").val().trim();
@@ -47,6 +47,9 @@
 
 						if (member_pw != null|| member_pw != ""|| member_pwchk != ""|| member_pwchk != null) {
 							//일치여부 확인 , 정규식 검사 후 비밀번호를 사용가능한 문구출력
+							
+							return false;
+							
 							if ((pwR.test(member_pw)&& pwR.test(member_pwchk) && (member_pw == member_pwchk))) {
 								$('#pwchk_check').text('비밀번호를 사용할 수 있습니다.');
 								$('#pwchk_check').css({'color': 'blue','font-size': '12px'});
@@ -74,6 +77,7 @@
 							
 							}
 
+							
 						}
 
 					
