@@ -31,5 +31,21 @@
 		WHERE B.rank < 6
 	]]> 
 	</select>
+	
+	<select id="newArtist" resultType="MemberDto" parameterType="MemberDto">
+	<![CDATA[ 
+		SELECT MEMBER_ID, MEMBER_NICKNAME, MEMBER_REGDATE as regdate
+		FROM (
+					SELECT ROWNUM AS rnum, A.* 
+					FROM (
+								SELECT * 
+								FROM MEMBER
+								WHERE MEMBER_ROLE = 'A'
+								ORDER BY MEMBER_REGDATE DESC
+								)A
+					)B
+		WHERE rnum < 2
+	]]>
+	</select>
 
 </mapper>

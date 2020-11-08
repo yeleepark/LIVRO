@@ -22,6 +22,7 @@ public class RankController {
 
 		model.addAttribute("rankdto", rankBiz.rank());
 		model.addAttribute("supportdto", rankBiz.support());
+		model.addAttribute("newdto", rankBiz.newArtist());
 		
 		return "rank/rank";
 	}

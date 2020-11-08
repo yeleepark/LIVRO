@@ -1,3 +1,21 @@
+function setTime(){
+	window.setTimeout('window.location.reload()', 600000);
+	let today = new Date();
+	let updateTime = document.getElementsByClassName('updateTime');
+	var res = moment(today).format('h시mm분')
+
+	updateTime[0].innerHTML = res;
+	updateTime[1].innerHTML = res;
+}
+
+setTime();
+
+let regdate = document.getElementById('newRegdate').value;
+var regRes = new Date(regdate);
+let regdateRes = moment(regRes, "YYYYMMDDHHMMSS").fromNow()
+let regdatePrint = document.getElementById('regdatePrint');
+regdatePrint.innerHTML = regdateRes;
+
 var top5id = document.getElementsByClassName('top5id');
 var top5nick = document.getElementsByClassName('top5nick');
 var top5count = document.getElementsByClassName('top5count');
@@ -27,23 +45,25 @@ d3.select('.top5print').selectAll('span')
 	  return d.count/top5total*100 + "%";
   	})
   .style('width', (d,i)=>{
-	  return 95/top5length + "%";
+	  return 80/top5length + "%";
 	})
   .style('left', (d,i)=>{
-	  return (100/top5length)*i + "%";
+	  return ((100/top5length)*i)+(10/top5length) + "%";
   })
   .html((d,i)=>{
 	  return '<span class="chartText">'+d.member_nickname+'</span>';
   })
   .style('background-color', (d,i)=>{
 	  if(d.rank == 1){
-		  return "gold";
+		  return "#b08f26";
 	  }else if(d.rank==2){
-		  return "silver";
+		  return "#a7a7a7";
 	  }else if(d.rank==3){
-		  return "brown";
+		  return "#a4672d";
+	  }else if(d.rank==4){
+		  return "#70d4a4";
 	  }else{
-		  return "black";
+	  	return "#7292b5";
 	  }
   })
   
@@ -71,7 +91,7 @@ for(var i = 0; i < artistId.length; i ++){
 var supportLength = artistId.length;
 var supportTotal = 0;
 supportSet.forEach(key => {
-	supportTotal += key.count;
+	supportTotal += parseInt(key.count);
 	});
 
 d3.select('.supportPrint').selectAll('span')
@@ -82,23 +102,25 @@ d3.select('.supportPrint').selectAll('span')
 	  return  parseInt(d.count)/parseInt(supportTotal)*100+"%";
   	})
   .style('width', (d, i) => {
-	  return 95/supportLength + "%";
+	  return 80/supportLength + "%";
 	})
   .style('left', (d,i)=>{
-	  return (100/supportLength)*i + "%";
+	  return ((100/supportLength)*i)+(10/supportLength) + "%";
   })
   .html((d,i)=>{
 	  return '<span class="chartText">'+d.member_nickname+'</span>';
   })
   .style('background-color', (d,i)=>{
 	  if(d.rank == 1){
-		  return "gold";
+		  return "#b08f26";
 	  }else if(d.rank==2){
-		  return "silver";
+		  return "#a7a7a7";
 	  }else if(d.rank==3){
-		  return "brown";
+		  return "#a4672d";
+	  }else if(d.rank==4){
+		  return "#70d4a4";
 	  }else{
-		  return "black";
+		  return "#7292b5";
 	  }
   })
   .attr("class", "support-chart")
