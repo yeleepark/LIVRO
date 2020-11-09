@@ -21,6 +21,7 @@
 
 </head>
 <body>
+
    <section>
       <div class="sns-wrapper">
          <h2>SNS 회원 가입</h2>
