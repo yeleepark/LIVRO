@@ -108,8 +108,6 @@ var member_id = $("#member_id").val();
 
 		}
 
-		console.log(member_id);
-		console.log(member_email);
 
 		if (member_id == null || member_id == "" || member_email == null
 				|| member_email == "") {
@@ -126,11 +124,8 @@ var member_id = $("#member_id").val();
 				contentType : "application/json",
 				dateType : "json",
 				success : function(msg) {
-					console.log('통신성공!');
-					console.log(msg.member_id);
 					if (msg.check == true) {
 						alert("인증번호를 확인 후 입력해주세요.")
-						console.log(msg.ran);
 						$("#keyalert").show();
 						$("#input_email_code").focus();
 						emailcode = msg.ran;
