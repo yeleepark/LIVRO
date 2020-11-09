@@ -32,8 +32,8 @@
         connection.onopen = (event) => {
            if(userId.value == ''){
               
-           }else{
-            connection.send('님이 들어 왔습니다.'); //연결하나당 들어왔을 때 모두에게 보이는 MESSAGE              
+           }else{	
+            	connection.send('님이 들어 왔습니다.'); //연결하나당 들어왔을 때 모두에게 보이는 MESSAGE              				
            }
         }
         connection.onclose = function() {
