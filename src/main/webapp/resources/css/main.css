@@ -18,24 +18,11 @@
 	align-items: center;
 }
 
-#liveBtn {
-	width: 300px;
-	height: 100px;
-	font-weight: bold;
-	letter-spacing: 0.5rem;
-	background-color: transparent;
-	color: white;
-	border: 5px solid #d22c2c;
-}
-
-
-
-
 
 .liveBtn {
     position: relative;
     display: inline-block;
-    padding: 30px 120px;
+    padding: 40px 150px;
     margin: 40px 0;
     color: 	#FAFAD2;
     text-decoration: none;
