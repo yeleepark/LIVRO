@@ -27,7 +27,7 @@
 <body>
 	<script type="text/javascript">
 		function secretChk() {
-			alert("비밀글 설정 ");
+			console.log("비밀글설정");
 			document.getElementById("qna_secret").value = "Y";
 
 		}

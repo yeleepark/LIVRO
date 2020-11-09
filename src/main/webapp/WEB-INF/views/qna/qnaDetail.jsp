@@ -17,6 +17,9 @@
 <link rel="stylesheet" href="resources/css/qna_detail.css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!-- font awesome -->
+<script src="https://kit.fontawesome.com/d28db34e8b.js"
+	crossorigin="anonymous" defer></script>
 <title>Q&A-글상세</title>
 </head>
 <script>
@@ -103,7 +106,13 @@ function qnareUpdateDone(qnare_no){
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
 	<div class="qna_detail_wrap">
 	<p><i class="far fa-comment-dots"></i>Q&A게시판</p>
-		<div class="qna_title_wrap">${qnadetaildto.qna_title }</div>
+		
+		<div class="qna_title_wrap">
+		<c:if test="${qnadetaildto.qna_secret =='Y' }">
+		<i class="fas fa-lock"></i>
+		</c:if>
+		${qnadetaildto.qna_title }</div>
+		
 		<div class="qna_nick_wrap">${qnadetaildto.member_nickname }
 			<fmt:formatDate value="${qnadetaildto.qna_regdate }"
 				pattern="yy-MM-dd HH:mm" />
