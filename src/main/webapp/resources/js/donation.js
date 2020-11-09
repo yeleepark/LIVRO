@@ -1,9 +1,9 @@
 function pay(){
-					let price = $('#price').val();			// 선택한 금액
+					let price = $('#donaSlidePrice').text();// 선택한 금액
 					let member_id = $('#member_Id').val();	// 멤버 아이디
 					let username = $('#member_name').val(); // 멤버 이름
 					let email = $('#member_email').val();	// 멤버 이메일
-					let dona_nickname = $('#artist_nickname').text() // 후원받는 아이디
+					let dona_nickname = $('#nickname_res').text() // 후원받는 아이디
 					
                     BootPay.request({
                     price,								    //실제 결제되는 가격
