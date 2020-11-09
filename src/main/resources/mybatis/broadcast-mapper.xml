@@ -12,7 +12,7 @@
 						ORDER BY BROADCAST_NO DESC
 					) b
 				) a
-			WHERE a.RNUM >= 1 AND RNUM <= 10
+			WHERE a.RNUM >= 1 AND RNUM <= 12
       ]]>
 	</select>
 	<select id="selectOne" parameterType="BroadcastDto" resultType="BroadcastDto">
@@ -50,7 +50,7 @@
 						ORDER BY BROADCAST_NO DESC
 					) b
 				) a
-			WHERE a.RNUM > #{lastnum} AND RNUM <= #{lastnum} +10
+			WHERE a.RNUM > #{lastnum} AND RNUM <= #{lastnum} +12
 	]]>
 	</select>
 
