@@ -26,10 +26,15 @@
 	
 	<main>
 		<div class="main-wrapper">
-			<button id="liveBtn" onclick="location.href='broadcast.do'">
-				<span><i class="fas fa-play"></i></span><span>LIVE</span>
-			</button>
+			<a href="broadcast.do" class="liveBtn">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			LIVE
+			</a>
 		</div>
+		
 	</main>
 	
 	<jsp:include page="/WEB-INF/views/footer/main_footer.jsp"/>

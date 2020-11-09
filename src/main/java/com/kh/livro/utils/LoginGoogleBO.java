@@ -65,7 +65,6 @@ public class LoginGoogleBO {
        
        String sessionState = getSession(session);
        
-
        logger.info("!!!!!!! sessionState : "+ sessionState);
         
             OAuth20Service oauthService = new ServiceBuilder(CLIENT_ID)
