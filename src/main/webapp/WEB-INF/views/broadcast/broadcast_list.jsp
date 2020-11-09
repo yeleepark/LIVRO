@@ -106,15 +106,20 @@
 		$(document)
 				.ready(
 						function() {
-							$(window).scroll(
-									function() {
-										if ($(window).scrollTop()
-												+ $(window).height() == $(
-												document).height()) {
-											console.log("getList시작!!!!");
-											getList();
-										}
-									});
+							$(window).scroll(function() {
+								console.log("후..");
+								console.log($(window).scrollTop())
+								console.log($(window).height())
+								console.log($(document).height())
+								var curHeight = $(window).scrollTop();
+								// 문서의 높이
+								var docHeight = $(document).height();
+								// 어느 정도 조건이 만족하면 내용 생성
+								if (curHeight > docHeight - 900) {
+									console.log("getList시작!!!!")
+									getList();
+								}
+							});
 
 							function getList() {
 								//ajax 실행 데이터 가져오기
@@ -129,7 +134,8 @@
 											success : function(data) {
 												var str = "";
 												console.log("데이터 가져옴");
-												$.each(
+												$
+														.each(
 																data,
 																function(i) {
 																	str += "<div class='brolist_wrapper'>"
@@ -183,10 +189,14 @@
 														.createElement('div');
 												ele.classList.add('wrapper');
 												ele.innerHTML = str;
-											/* 	$(".wrapper > div")
-														.last().after(ele); */
-												$(".broadcast-table").append(ele);
+												/* 	$(".wrapper > div")
+															.last().after(ele); */
+												$(".broadcast-table").append(
+														ele);
 												lastnum += 12;
+												/* if (!data) {
+													alert("마지막 데이터입니다!");
+												} */
 											},
 											error : function(error) {
 												alert("통신실패!");
