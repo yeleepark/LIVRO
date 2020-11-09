@@ -46,10 +46,17 @@
         }
         
         //alert으로 띄운거 나중에 지용이형님이 div로 이쁘게 꾸민다고 하심!!!!!!!!!!
-        connection.onleave = (event) => {
+		//여기가 수정부분!!!
+         connection.onleave = (event) => {
+			if(event.userid.onleave){
         	alert("호스트가 방송을 종료 하였습니다");
         	location.href='broadcast.do';
-           console.log(event.userid + '님의 상태 :' + event.status);
+			connection.close();
+				
+			}else{
+				
+           	console.log(event.userid + '님의 상태 :' + event.status);
+			}
         }
         
         var localVideosContainer = document.getElementById('local-videos-container');
