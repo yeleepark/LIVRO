@@ -58,4 +58,16 @@ public class MypageDaoImpl implements MypageDao {
 		return list;
 	}
 
+	@Override
+	public List<FollowerDto> countNrank(String member_id) {
+		List<FollowerDto> list = new ArrayList<FollowerDto>();
+
+		try {
+			list = sqlSession.selectList(NAMESPACE + "countNrank", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

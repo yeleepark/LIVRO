@@ -17,4 +17,7 @@ public interface MypageDao {
 	
 	//아티스트 - 팔로워 목록
 	public List<FollowerDto> showFollower(String member_id);
+	
+	// 총 팔로우 수 및 랭크
+	public List<FollowerDto> countNrank(String member_id);
 }

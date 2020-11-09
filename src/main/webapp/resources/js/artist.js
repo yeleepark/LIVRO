@@ -54,7 +54,6 @@ var member_nickname = document.getElementById('loginNickname').value;
 // 팔로워 카운트
 var countArea = document.getElementsByClassName('count')[0];
 var followercount = parseInt(countArea.innerHTML);
-console.log(followercount);
 
 
 // ------팔로우
@@ -118,5 +117,3 @@ function updateProfile(){
     window.open("updateForm.do", "insert",
                 "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
 }
-
-

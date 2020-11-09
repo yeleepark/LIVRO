@@ -11,22 +11,109 @@ var login_nickname = document.getElementById('loginNickname').value;
 var supportContent = document.getElementsByClassName('support-content')[0];
 // showMore
 var moreContent = document.getElementsByClassName('more-content')[0];
-// all count
-var count = document.getElementById('count').innerHTML;
 
 function list() {
+	
 	$.ajax({
 		type : "post",
 		url : "supportList.do?member_id=" + artist_id + "&lastnum=0",
+		success : function(result) {
+			supportContent.innerHTML = result;
+			var countArea = document.getElementById('listCount');
+			count = countArea.innerHTML;
+			
+			// 게시물이 5개 이상이면 쇼몰 블럭 출력
+			if (count > 5) {
+				var showMore = document.getElementsByClassName('showMoreBtn')[0];
+				showMore.style.display = "block";
+		    }
+		}
+	})
+}
+
+var lastnum = 0;
+function showMore(e) {
+	// 쇼몰 블럭 누를때마다 게시물 5개씩 늘어남
+	
+	lastnum += 5;
+	
+	// 마지막 인덱가 게시물 보다 많을때
+	if (lastnum > count) {
+		e.style.display = "none";
+		//취소버튼 나타남
+		e.nextSibling.nextSibling.style.display = "block";
+	}
+
+	// 안 많을때
+	$.ajax({
+		type : "post",
+		url : "supportList.do?member_id=" + artist_id + "&lastnum=" + lastnum,
 		success : function(result) {
 			supportContent.innerHTML = result;
 		}
 	});
 }
 
-var lastnum = 0;
+function closeMore(e) {
 
-function showMore(e) {
+	var res = confirm('닫으시겠습니까?');
+
+	if (res) { // 닫으면
+		lastnum = 0;
+		list();// 전체 리스트 다시 출력하고
+		e.style.display = "none"; // 클로즈 버튼 사라지고
+		document.documentElement.scrollTop = 0; // 상단으로 올라가고
+		console.log(lastnum +"확")
+	}
+}
+
+//------------------------------------------------------
+
+////내가 작성한 글
+function mine() {
+	
+	// 전체글 보기 나타남
+	var mineBtn = document.getElementsByClassName('mineBtn')[0];
+	mineBtn.style.display ="none";
+	var allBtn = document.getElementsByClassName('allBtn')[0];
+	allBtn.style.display ="block";
+
+	//showMore 버튼 사라짐
+	showMore = document.getElementsByClassName('showMoreBtn')[0];
+	closeMore =  document.getElementsByClassName('closeMoreBtn')[0];
+	showMore.style.display = "none";
+	closeMore.style.display = "none";
+	
+	lastnum = 0; 
+	
+	$.ajax({
+		type : "post",
+		url : "mylist.do",
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		dateType : "text",
+		data : JSON.stringify({
+			member_id : artist_id,
+			writer_id : login_id,
+			lastnum : lastnum
+		}),
+		success : function(result) {
+			// 글 다섯개만 나타나고
+			supportContent.innerHTML = result;
+			countArea = document.getElementById('listCount');
+			count = countArea.innerHTML;
+			
+			console.log('mine눌렀을때' + count);
+			if (count > 5){
+				var myShowMoreBtn = document.getElementsByClassName('myShowMoreBtn')[0];
+				myShowMoreBtn.style.display ="block";
+			}
+		}
+	})
+}
+
+function myShowMore(e){
 
 	lastnum += 5;
 
@@ -37,25 +124,46 @@ function showMore(e) {
 
 	$.ajax({
 		type : "post",
-		url : "supportList.do?member_id=" + artist_id + "&lastnum=" + lastnum,
+		url : "mylist.do",
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		dateType : "text",
+		data : JSON.stringify({
+			member_id : artist_id,
+			writer_id : login_id,
+			lastnum : lastnum
+		}),
 		success : function(result) {
 			supportContent.innerHTML = result;
 		}
-	});
-
+	})
 }
 
-function closeMore(e) {
+function myCloseMore(e) {
 
 	var res = confirm('닫으시겠습니까?');
 
 	if (res) {
-		list();
 		e.style.display = "none";
-		e.previousSibling.previousSibling.style.display = "block";
+		mine();
 		document.documentElement.scrollTop = 0;
 	}
 }
+
+function allBtn(e) {
+	
+	e.style.display = "none";
+	e.previousSibling.previousSibling.style.display = "block";
+	myShowMore = document.getElementsByClassName('myShowMoreBtn')[0];
+	myCloseMore = document.getElementsByClassName('myCloseMoreBtn')[0];
+	myShowMore.style.display ="none";
+	myCloseMore.style.display ="none";
+	
+	list();
+	
+}
+
 
 // 글 작성 - 완료
 function insertSupport(e) {
@@ -131,55 +239,33 @@ function updateRes(e) {
 	var done = confirm('수정하시겠습니까?');
 
 	if (done) {
-		$.ajax({
-			type : "post",
-			url : "supportUpdate.do?suppport_no=" + support_no,
-			headers : {
-				"Content-Type" : "application/json"
-			},
-			dateType : "text",
-			data : JSON.stringify({
-				support_no : support_no,
-				support_content : support_content
-			}),
-			success : function(result) {
-				support_content = result.support_content;
-				res.classList.remove("changeActive");
-				res.readOnly = true;
-				e.style.display = "none";
-				target.getElementsByClassName('updateBtn')[0].style.display = "block";
-			}
-					
-		})
+		$
+				.ajax({
+					type : "post",
+					url : "supportUpdate.do?suppport_no=" + support_no,
+					headers : {
+						"Content-Type" : "application/json"
+					},
+					dateType : "text",
+					data : JSON.stringify({
+						support_no : support_no,
+						support_content : support_content
+					}),
+					success : function(result) {
+						support_content = result.support_content;
+						res.classList.remove("changeActive");
+						res.readOnly = true;
+						e.style.display = "none";
+						target.getElementsByClassName('updateBtn')[0].style.display = "block";
+					}
+
+				})
 	}
 }
 
-// 내가 작성한 글
-function mine(e) {
-	$.ajax({
-		type : "post",
-		url : "mylist.do",
-		headers : {
-			"Content-Type" : "application/json"
-		},
-		dateType : "text",
-		data : JSON.stringify({
-			member_id : artist_id,
-			writer_id : login_id
-		}),
-		success : function(result) {
-			supportContent.innerHTML = result;
-			e.style.display = "none";
-			e.nextSibling.nextSibling.style.display = "block";
-		}
-	})
-}
 
-function allBtn(e) {
-	e.style.display = "none";
-	e.previousSibling.previousSibling.style.display = "block";
-	listRest();
-}
+
+
 
 // 게시글 리스트 출력
 function listRest() {
@@ -255,7 +341,7 @@ function replyInsert(e) {
 			member_nickname : member_nickname
 		}),
 		success : function(result) {
-			target.value ='';
+			target.value = '';
 			replyRest(support_no, supportTarget, member_id);
 		}
 	})

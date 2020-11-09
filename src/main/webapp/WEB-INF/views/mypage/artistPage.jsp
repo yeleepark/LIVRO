@@ -102,6 +102,12 @@
 						<p>나를 팔로우한 사용자가 없습니다</p>
 					</c:when>
 					<c:otherwise>
+						<div class="rankNcount">
+						<c:forEach items="${rankdto }" var="rank">
+							<p><i class="fas fa-thumbtack"></i> 나의 팔로워 순위는 <span>${rank.rank }</span>등입니다</p>
+							<p><i class="fas fa-thumbtack"></i> 총 <span>${rank.count }</span>명이 ${logindto.member_nickname}님을 팔로우 하고 있습니다 </p>
+						</c:forEach>
+						</div>
 						<c:forEach items="${followerdto }" var="follower">
 							<div class="follow-row">
 							<p>

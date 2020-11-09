@@ -148,14 +148,6 @@
 					</c:choose>
 					
 					<div class="supportDetail">
-						<div class="countArea">
-							<c:if test="${empty listcountdto }">
-								<p>${memberdto.member_nickname }님이 응원글을 기다리고 있어요</p>
-							</c:if>
-							<c:if test="${!empty listcountdto }">
-								<p><span id="count">${listcountdto.allCount }</span>명이 ${memberdto.member_nickname }님을 응원합니다</p>
-							</c:if>
-						</div>
 						<div class="support-index">
 							<span>작성자</span> <span>내용</span> 
 							<c:if test="${not empty logindto }">
@@ -165,12 +157,12 @@
 						</div>
 						<div class="support-content">
 						</div>
-						<c:if test="${!empty listcountdto }">
 						<div class="showClose">				
-							<input type="button" value="Show More" onclick="showMore(this);" class="showMore">
-							<input type="button" value="Close" onclick="closeMore(this);" class="closeMore">
+							<input type="button" value="Show More" onclick="showMore(this);" class="showMoreBtn">
+							<input type="button" value="Close" onclick="closeMore(this);" class="closeMoreBtn">
+							<input type="button" value="Show More" onclick="myShowMore(this);" class="myShowMoreBtn">
+							<input type="button" value="Close" onclick="myCloseMore(this);" class="myCloseMoreBtn">
 						</div>
-						</c:if>
 					</div>
 				</div>
 
@@ -409,7 +401,8 @@
 							<div>
 								<p id="closeList"><i class="fas fa-times"></i><p>
 								<c:forEach items="${dto }" var="dto">
-									<p class="showList">${dto.follower_nickname }</p>
+									<p class="showList">
+									<i class="far fa-user-circle"></i> ${dto.follower_nickname }</p>
 								</c:forEach>
 							</div>
 						</c:otherwise>

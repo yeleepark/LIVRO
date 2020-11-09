@@ -14,6 +14,16 @@ public class SupportDto {
 	private int lastnum;
 	private int allCount;
 	private int rank;
+	private int count;
+	
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 
 	public int getRank() {
 		return rank;

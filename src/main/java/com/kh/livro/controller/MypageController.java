@@ -45,6 +45,7 @@ public class MypageController {
 		model.addAttribute("profiledto", mypageBiz.selectProfile(member_id));
 		model.addAttribute("followdto", mypageBiz.showFollow(member_id));
 		model.addAttribute("followerdto", mypageBiz.showFollower(member_id));
+		model.addAttribute("rankdto", mypageBiz.countNrank(member_id));
 		return "mypage/artistPage";
 	}
 

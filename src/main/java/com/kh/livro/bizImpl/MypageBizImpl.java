@@ -32,4 +32,9 @@ public class MypageBizImpl implements MypageBIz {
 		return mypageDao.showFollower(member_id);
 	}
 
+	@Override
+	public List<FollowerDto> countNrank(String member_id) {
+		return mypageDao.countNrank(member_id);
+	}
+
 }

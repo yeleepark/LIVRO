@@ -16,6 +16,11 @@
 			</div>
 		</c:when>
 		<c:otherwise>
+			<div class="countArea">
+			<c:forEach items="${supportdto }" var="support" begin="0" end="0">
+				<p>총 <span id="listCount">${support.count }</span>개의 게시물이 있습니다</p>
+			</c:forEach>
+			</div>
 			<c:forEach items="${supportdto }" var="support">
 				<div class="rows">
 					<!-- 첫줄 -->

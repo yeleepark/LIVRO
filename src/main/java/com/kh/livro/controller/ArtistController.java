@@ -47,7 +47,6 @@ public class ArtistController {
 		model.addAttribute("dto", artistBiz.followerList(member_id));
 		model.addAttribute("mapdto", artistmapBiz.artistmapselectOne(member_id));
 		model.addAttribute("countdto", artistBiz.followerCount(member_id));
-		model.addAttribute("listcountdto",artistBiz.listCount(member_id));
 		return "artist/artist";
 	}
 
@@ -89,7 +88,6 @@ public class ArtistController {
 	public String supportList(Model model, SupportDto dto) {
 		logger.info("글 리스트 컨트롤러");
 
-		
 		model.addAttribute("supportdto", artistBiz.supportList(dto));
 
 		return "artist/artistSupport";
@@ -101,6 +99,7 @@ public class ArtistController {
 		logger.info("내가 쓴 글 리스트 컨트롤러");
 
 		model.addAttribute("supportdto", artistBiz.myList(dto));
+
 		return "artist/artistSupport";
 
 	}

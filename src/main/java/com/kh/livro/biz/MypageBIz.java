@@ -12,8 +12,11 @@ public interface MypageBIz {
 
 	//팔로우한 사람 출력
 	public List<FollowDto> showFollow(String member_id);
-	
+
 	//팔로워 출력
 	public List<FollowerDto> showFollower(String member_id);
+
+	// 총 팔로우 수 및 랭크
+	public List<FollowerDto> countNrank(String member_id);
 
 }

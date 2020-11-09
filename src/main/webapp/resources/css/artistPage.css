@@ -142,6 +142,13 @@ section {
 	font-size : 0.8rem;
 }
 
+.rankNcount{
+	margin-bottom: 20px;
+}
+.rankNcount span{
+	font-size : 1.2rem;
+}
+
 /* 후원 내역 조회 */
 .tab-4-container {
 	display: flex;
