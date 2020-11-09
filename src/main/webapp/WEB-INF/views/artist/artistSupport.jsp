@@ -44,7 +44,7 @@
 						<c:choose>
 						<c:when test="${empty logindto }"></c:when>
 						<c:otherwise>
-							<c:if test="${logindto.member_id == support.member_id || logindto.member_id != support.writer_id}">
+							<c:if test="${logindto.member_id == support.member_id || logindto.member_id != support.writer_id }">
 								<input type="button" value="신고" class="reportBtn" onclick="report(this);">
 							</c:if>
 						</c:otherwise>
