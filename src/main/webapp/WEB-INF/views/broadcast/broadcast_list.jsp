@@ -16,98 +16,6 @@
 </style>
 </head>
 <script>
-	var lastnum = 12;
-	console.log(lastnum);
-	$(document)
-			.ready(
-					function() {
-
-						/* var lastnum= ${fn:length(list)} */
-
-						$(window).scroll(
-								function() {
-									if ($(window).scrollTop()
-											+ $(window).height() == $(document)
-											.height()) {
-										getList();
-									}
-								});
-
-						function getList() {
-							//ajax 실행 데이터 가져오기
-							console.log("getList시작");
-							$
-									.ajax({
-										url : 'infinitescroll.do',
-										data : {
-											"lastnum" : lastnum
-										},
-										type : 'post',
-										success : function(data) {
-											var str = "";
-											console.log("데이터 가져옴");
-											$
-													.each(
-															data,
-															function(i) {
-																str += "<div class='brolist_wrapper'>"
-																		+ "<div class='broadcast-thumnail'>"
-																		+ "<img class='liveimg' src='resources/img/red.png'>"
-																		+ "<a href='broadDetail.do?broadcast_no="
-																		+ data[i].broadcast_no
-																		+ "'>"
-																		+ "<img class='broadcast-mainimg' src='/resources/profileimg/"+data[i].member_profile+"'></a>"
-																		+ "</div>"
-																		+ "<div class='broadcast-name'>"
-																		+ "<div class='broadcast-title-wrapper'>"
-																		+ "<p> <a href='broadDetail.do?broadcast_no="
-																		+ data[i].broadcast_no
-																		+ "'>"
-																		+ data[i].broadcast_title
-																		+ "</a>"
-																		+ "</p>"
-																		+ "</div>"
-																		+ "<div class='broadcast-nick-wrapper'>"
-																		+ "<p>"  
-																		+ "<i class='fas fa-user'></i>"
-																		+ "<a href='artist.do?member_id="
-																		+ data[i].member_id
-																		+ "'>"
-																		+ data[i].member_nickname
-																		+ "</a>"
-																		+ "</p>"
-																		+ "</div>"
-																		+ "<div class='broadcast-content-wrapper'>"
-																		+ "<p class='broadcast-content'> "
-																		+ data[i].broadcast_content
-																		+ "</p>"
-																		+ "</div>"
-																		+ "<div class='broadcast-category-wrapper'>"
-																		+ "<p>"
-																		+ [data[i].broadcast_category]
-																		/* + data[i].broadcast_no */
-																		+ "</p>"
-																		+ "</div>"
-																		+ "</div>"
-																		+ "</div>"
-															})
-											console.log("10개중에" + data.length
-													+ "개 가져옴");
-
-											var ele = document
-													.createElement('div');
-											ele.innerHTML = str;
-											$(".broadcast-table>div").last()
-													.after(ele);
-											lastnum += 12;
-										},
-										error : function(error) {
-											alert("통신실패!");
-										}
-									});
-						}
-					});
-
 	/* 버튼 유효성 검사 */
 	function chkRole() {
 		var memberrole = $("#memberRole").val().trim();
@@ -142,38 +50,41 @@
 		</div>
 		<div class="broadcast-table" id="broadcast-table-cnt">
 
-			<c:forEach items="${list }" var="dto" varStatus="status">
+			<div class="wrapper">
+				<c:forEach items="${list }" var="dto" varStatus="status">
 
-				<c:if test="${dto.broadcast_flag eq 'Y' }">
-					<div class="brolist_wrapper">
-						<div class="broadcast-thumnail">
-							<img class="liveimg" src="resources/img/red.png"> 
-							<a href="broadDetail.do?broadcast_no=${dto.broadcast_no }"> 
-								<img class="broadcast-mainimg" src="/resources/profileimg/${dto.member_profile }"></a>
-						</div>
-						<div class="broadcast-name">
-							<div class="broadcast-title-wrapper">
-								<p>
-									<a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a>
-								</p>
+					<c:if test="${dto.broadcast_flag eq 'Y' }">
+						<div class="brolist_wrapper">
+							<div class="broadcast-thumnail">
+								<img class="liveimg" src="resources/img/red.png"> <a
+									href="broadDetail.do?broadcast_no=${dto.broadcast_no }"> <img
+									class="broadcast-mainimg"
+									src="/resources/profileimg/${dto.member_profile }"></a>
 							</div>
-							<div class="broadcast-nick-wrapper">
-								<p>
-									<i class="fas fa-user"></i><a
-										href="artist.do?member_id=${dto.member_id }">${dto.member_nickname }</a>
-								</p>
-							</div>
+							<div class="broadcast-name">
+								<div class="broadcast-title-wrapper">
+									<p>
+										<a href="broadDetail.do?broadcast_no=${dto.broadcast_no }">${dto.broadcast_title }</a>
+									</p>
+								</div>
+								<div class="broadcast-nick-wrapper">
+									<p>
+										<i class="fas fa-user"></i><a
+											href="artist.do?member_id=${dto.member_id }">${dto.member_nickname }</a>
+									</p>
+								</div>
 
-							<div class="broadcast-content-wrapper">
-								<p class="broadcast-content">${dto.broadcast_content }</p>
-							</div>
-							<div class="broadcast-category-wrapper">
-								<p>[${dto.broadcast_category }]</p>
+								<div class="broadcast-content-wrapper">
+									<p class="broadcast-content">${dto.broadcast_content }</p>
+								</div>
+								<div class="broadcast-category-wrapper">
+									<p>[${dto.broadcast_category }]</p>
+								</div>
 							</div>
 						</div>
-					</div>
-				</c:if>
-			</c:forEach>
+					</c:if>
+				</c:forEach>
+			</div>
 		</div>
 	</section>
 	<script>
@@ -189,6 +100,100 @@
 
 			ele.appendChild(h1);
 		}
+
+		var lastnum = 12;
+		console.log(lastnum);
+		$(document)
+				.ready(
+						function() {
+							$(window).scroll(
+									function() {
+										if ($(window).scrollTop()
+												+ $(window).height() == $(
+												document).height()) {
+											console.log("getList시작!!!!");
+											getList();
+										}
+									});
+
+							function getList() {
+								//ajax 실행 데이터 가져오기
+								console.log("getList시작");
+								$
+										.ajax({
+											url : 'infinitescroll.do',
+											data : {
+												"lastnum" : lastnum
+											},
+											type : 'post',
+											success : function(data) {
+												var str = "";
+												console.log("데이터 가져옴");
+												$.each(
+																data,
+																function(i) {
+																	str += "<div class='brolist_wrapper'>"
+																			+ "<div class='broadcast-thumnail'>"
+																			+ "<img class='liveimg' src='resources/img/red.png'>"
+																			+ "<a href='broadDetail.do?broadcast_no="
+																			+ data[i].broadcast_no
+																			+ "'>"
+																			+ "<img class='broadcast-mainimg' src='/resources/profileimg/"+data[i].member_profile+"'></a>"
+																			+ "</div>"
+																			+ "<div class='broadcast-name'>"
+																			+ "<div class='broadcast-title-wrapper'>"
+																			+ "<p> <a href='broadDetail.do?broadcast_no="
+																			+ data[i].broadcast_no
+																			+ "'>"
+																			+ data[i].broadcast_title
+																			+ "</a>"
+																			+ "</p>"
+																			+ "</div>"
+																			+ "<div class='broadcast-nick-wrapper'>"
+																			+ "<p>"
+																			+ "<i class='fas fa-user'></i>"
+																			+ "<a href='artist.do?member_id="
+																			+ data[i].member_id
+																			+ "'>"
+																			+ data[i].member_nickname
+																			+ "</a>"
+																			+ "</p>"
+																			+ "</div>"
+																			+ "<div class='broadcast-content-wrapper'>"
+																			+ "<p class='broadcast-content'> "
+																			+ data[i].broadcast_content
+																			+ "</p>"
+																			+ "</div>"
+																			+ "<div class='broadcast-category-wrapper'>"
+																			+ "<p>"
+																			+ "["
+																			+ data[i].broadcast_category
+																			+ "]"
+																			/* + data[i].broadcast_no */
+																			+ "</p>"
+																			+ "</div>"
+																			+ "</div>"
+																			+ "</div>"
+																})
+												console
+														.log("12개중에"
+																+ data.length
+																+ "개 가져옴");
+												var ele = document
+														.createElement('div');
+												ele.classList.add('wrapper');
+												ele.innerHTML = str;
+											/* 	$(".wrapper > div")
+														.last().after(ele); */
+												$(".broadcast-table").append(ele);
+												lastnum += 12;
+											},
+											error : function(error) {
+												alert("통신실패!");
+											}
+										});
+							}
+						});
 	</script>
 </body>
 </html>

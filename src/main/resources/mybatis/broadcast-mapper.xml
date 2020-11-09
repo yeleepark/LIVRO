@@ -9,6 +9,7 @@
 				SELECT ROWNUM AS RNUM , b.* 
 				FROM (
 						SELECT * FROM BROADCAST 
+						WHERE BROADCAST_FLAG ='Y'
 						ORDER BY BROADCAST_NO DESC
 					) b
 				) a

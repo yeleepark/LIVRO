@@ -7,6 +7,15 @@
 	padding-top: 80px;
 	position: relative;
 }
+
+.wrapper {
+	border: 2px solid black;
+	width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 /* 방송알림문구 + 버튼 */
 .live_start {
 	text-align: left;
@@ -33,7 +42,7 @@
 
 /* 방송목록 전체 감싸고 있는 div */
 .broadcast-table {
-	width: 90%;
+	width: 1200px;
 	margin: 0 auto;
 	display: flex;
 	flex-wrap: wrap;
@@ -46,17 +55,16 @@
 }
 
 /* foreach 문 돌면서 생성되는 큰 div */
-.brolist_wrapper  {
-	width: 200px;
-	margin: 40px;
+.brolist_wrapper {
+	width: 200px; margin : 40px;
 	position: relative;
 	transition: transform 0.1s ease-in-out, box-shadow 0.1s;
-	box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.3);
+	box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.3);
+	margin: 40px;
 }
-.brolist_wrapper:hover{
-	transform: translateY(-0.5rem) scale(1.0125);
 
-	
+.brolist_wrapper:hover {
+	transform: translateY(-0.5rem) scale(1.0125);
 }
 /* 사진크기 */
 .broadcast-mainimg {
@@ -65,12 +73,12 @@
 }
 /* 사진 우측 라이브알림img */
 .liveimg {
-   height: 18px;
-   float: right;
-   margin: 5px;
-   position: absolute;
-   right: 1%;
-} 
+	height: 18px;
+	float: right;
+	margin: 5px;
+	position: absolute;
+	right: 1%;
+}
 /* 방송목록사진 */
 .broadcast-thumnail {
 	height: 170px;
@@ -87,13 +95,13 @@
 	font-size: 23px;
 	font-weight: 500;
 	color: #515151;
-	
 }
-.broadcast-nick-wrapper > p > i{
+
+.broadcast-nick-wrapper>p>i {
 	margin-right: 5px;
 }
 
-.broadcast-title-wrapper > p{
+.broadcast-title-wrapper>p {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
