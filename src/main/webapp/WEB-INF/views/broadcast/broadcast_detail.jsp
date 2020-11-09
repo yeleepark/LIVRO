@@ -137,7 +137,7 @@
 				alert("로그인 후 이용이 가능합니다");
 				$('#needLogin').fadeIn();			
 			}else{
-				open("report.do?receive_nickname=${broadDto.member_nickname}&receive_id=${broadDto.member_id}", "","width=700, height=550");
+				open("report.do?receive_nickname=${broadDto.member_nickname}&receive_id=${broadDto.member_id}", "","width=320, height=250");
 			}
 		}
      </script>
