@@ -95,7 +95,7 @@ function myQna(){
 											<c:choose>
 												<c:when
 													test="${logindto.member_nickname eq qnalist.member_nickname  || logindto.member_role eq 'M'}">
-													<a href="qnadetail.do?qna_no=${qnalist.qna_no }">${qnalist.qna_title }</a>
+													<i class="fas fa-lock"></i><a href="qnadetail.do?qna_no=${qnalist.qna_no }">${qnalist.qna_title }</a>
 												</c:when>
 												<c:otherwise>
 													<i class="fas fa-lock"></i>
