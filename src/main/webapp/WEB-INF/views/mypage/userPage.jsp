@@ -19,7 +19,7 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
-
+	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 	<section>
 		<div class="mypage-container">
 			<ul class="tabs">
@@ -255,7 +255,7 @@
 
 		   				} else {
 		   					$('#nickname_check').text(
-		   						'닉네임은 3~10자 이내 한글,영문,숫자만 사용가능합니다.(공백사용불가)');
+		   						'닉네임은 3~10자 이내 한글, 영문 사용가능합니다.(공백사용불가)');
 		   					$('#nickname_check').css({'color': 'red','font-size': '11px'});
 		   				}
 

@@ -108,14 +108,17 @@
           		<div>님에게 후원하기</div>
           	</div>
      		<div id="donaFirst">
-     			<input type="button" class="donaPrice" style="border: 1px solid blue" value="1000" />
-     			<input type="button" class="donaPrice" style="border: 1px solid blue" value="5000"/>
-     			<input type="button" class="donaPrice" style="border: 1px solid blue" value="10000"/>
+     			<input type="button" class="donaPrice" value="1000" />
+     			<input type="button" class="donaPrice" value="5000"/>
+     			<input type="button" class="donaPrice" value="10000"/>
      		</div>
      		<div id="donaSecond">
      			<input type="range" id="price" min=1000 max=10000 step=1000 value="1000">
      			<div id="donaSlide"></div>
-     			<input type="text" id="donaSlidePrice"></input>
+     			<div id="donaSlidePrice-tab">
+     				<div id="donaSlideText">금액</div>
+     				<div id="donaSlidePrice"></div>
+     			</div>
      		</div>
      		<div id="donaThird">
      			<button id="donaYes" onclick="pay();">후원하기</button>

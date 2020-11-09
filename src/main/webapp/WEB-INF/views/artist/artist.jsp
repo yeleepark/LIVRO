@@ -444,5 +444,7 @@
 	<script type="text/javascript" src="resources/js/artist-support.js"></script>
 	<script type="text/javascript" src="resources/js/artist-calendar.js"></script>
 	<script type="text/javascript" src="resources/js/artist-map.js"></script>
+		<jsp:include page="/WEB-INF/views/footer/footer.jsp" /> 	
+	
 </body>
 </html>
