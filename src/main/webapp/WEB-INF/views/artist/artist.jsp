@@ -132,6 +132,10 @@
 								</p>
 							</div>
 						</c:when>
+						<c:when test="${logindto.member_role == 'M' }">
+							<div class="support-login">
+							</div>
+						</c:when>
 						<c:otherwise>
 							<div class="supportInsert">
 								<div>
@@ -150,7 +154,7 @@
 					<div class="supportDetail">
 						<div class="support-index">
 							<span>작성자</span> <span>내용</span> 
-							<c:if test="${not empty logindto }">
+							<c:if test="${logindto.member_role == 'A' || logindto.member_role == 'U'}">
 							<input type="button" value="내가 작성한 글" class="mineBtn" onclick="mine(this);">
 							<input type="button" value="전체 게시글 보기" class="allBtn" onclick="allBtn(this);">
 							</c:if>

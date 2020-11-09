@@ -432,5 +432,5 @@ function report(e) {
 	var receive_id = target.getElementsByClassName('writerId')[0].value;
 	var receive_nickname = target.getElementsByClassName('writerNick')[0].innerText;
 	open("report.do?receive_id=" + receive_id + "&receive_nickname="
-			+ receive_nickname, "", "width=700, height=550");
+			+ receive_nickname, "", "width=320, height=250");
 }
