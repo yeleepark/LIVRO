@@ -31,6 +31,7 @@
    </header>
    <input type="hidden" value="${broadDto.broadcast_title }" id="broadcast_title">
    <input type="hidden" value="${broadDto.broadcast_category }" id="broadcast_category">
+   <input type="hidden" value="${broadDto.member_nickname }" id="broadcast_nickname">
    <input type="hidden" value="${logindto.member_id }" id="member_Id">
    <input type="hidden" value="${logindto.member_nickname }" id="member_nickname">
    <input type="hidden" value="${logindto.member_email }" id="member_email">

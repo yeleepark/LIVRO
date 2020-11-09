@@ -26,15 +26,15 @@
         
         
         /*
-        	비로그인 일 때, 접속해 있는 사람들에게 누가 들어 왔다라는 표현 없음,
-        	로그인 일 때, userid가 들어 왔다라고 표현 해줌.
+           비로그인 일 때, 접속해 있는 사람들에게 누가 들어 왔다라는 표현 없음,
+           로그인 일 때, userid가 들어 왔다라고 표현 해줌.
         */
         connection.onopen = (event) => {
-        	if(userId.value == ''){
-        		
-        	}else{
-            connection.send('님이 들어 왔습니다.'); //연결하나당 들어왔을 때 모두에게 보이는 MESSAGE        		
-        	}
+           if(userId.value == ''){
+              
+           }else{
+            connection.send('님이 들어 왔습니다.'); //연결하나당 들어왔을 때 모두에게 보이는 MESSAGE              
+           }
         }
         connection.onclose = function() {
            if (connection.getAllParticipants().length) {
@@ -46,17 +46,18 @@
         }
         
         //alert으로 띄운거 나중에 지용이형님이 div로 이쁘게 꾸민다고 하심!!!!!!!!!!
-		//여기가 수정부분!!!
+      //여기가 수정부분!!!
+      var broadcast_nickname = document.getElementById('broadcast_nickname');
          connection.onleave = (event) => {
-			if(event.userid.onleave){
-        	alert("호스트가 방송을 종료 하였습니다");
-        	location.href='broadcast.do';
-			connection.close();
-				
-			}else{
-				
-           	console.log(event.userid + '님의 상태 :' + event.status);
-			}
+         if(event.userid==broadcast_nickname.value){
+           alert("호스트가 방송을 종료 하였습니다");
+           location.href='broadcast.do';
+         connection.close();
+            
+         }else{
+            
+              console.log(event.userid + '님의 상태 :' + event.status);
+         }
         }
         
         var localVideosContainer = document.getElementById('local-videos-container');
@@ -65,9 +66,9 @@
         var userId = document.getElementById('member_nickname');
         console.log(userId);
         if(userId.value == ''){
-        	connection.userid = connection.token();
+           connection.userid = connection.token();
         }else{
-        	connection.userid = userId.value;
+           connection.userid = userId.value;
            let inputTextChat = document.getElementById('input-text-chat');
              inputTextChat.removeAttribute('onclick');
              inputTextChat.placeholder = '내용을 입력하세요';
@@ -113,7 +114,7 @@
         // 채팅 내용 담기는 부분
         function appendDIV(event) {
             let div = document.createElement('div');
-		      
+            
             if (event.userid == null) { // 보내는 사람이 undefined면.. 즉, 내가 보냈다면
                 div.innerHTML = (connection.userid) + ':' + (event.data || event);
             } else {
@@ -128,22 +129,22 @@
         }
   
         /*
-        	join이 된 사람이 방송을 나갔을 때,
-        	비로그인 일 때 alert + 리스트로 이동.
-        	로그인 일 때 alert + 접속자에게 userId 님이 나갔습니다 + 리스트로 이동
+           join이 된 사람이 방송을 나갔을 때,
+           비로그인 일 때 alert + 리스트로 이동.
+           로그인 일 때 alert + 접속자에게 userId 님이 나갔습니다 + 리스트로 이동
         */
         
         let disconnect_room = document.getElementById("disconnect-room");
         disconnect_room.onclick = function(){
-        	console.log("방송나가기");
-			if(userId.value == ''){
-            	alert("방송 리스트로 이동합니다.");
-            	location.href='broadcast.do'
-        	}else{
-            	alert("방송 리스트로 이동합니다.");
-            	connection.send('님이 나갔습니다.');
-            	location.href='broadcast.do'
-        	}
-        	
+           console.log("방송나가기");
+         if(userId.value == ''){
+               alert("방송 리스트로 이동합니다.");
+               location.href='broadcast.do'
+           }else{
+               alert("방송 리스트로 이동합니다.");
+               connection.send('님이 나갔습니다.');
+               location.href='broadcast.do'
+           }
+           
         }
         
