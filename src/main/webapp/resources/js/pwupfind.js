@@ -8,7 +8,7 @@ arr.fill(false);
 
 console.log(arr[0]);
 $(document).ready(function(e) {
-		$("#member_pw" && "#member_pwchk").keyup(function(e) {
+	$("#member_pw" && "#member_pwchk").keyup(function(e) {
 				arr[0] = false;
 				//if문에 사용할 비밀번호값을 변수에 저장해줌
 				
