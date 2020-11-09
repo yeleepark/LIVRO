@@ -36,6 +36,8 @@
 		</div>
 		
 	</main>
+	
+	<jsp:include page="/WEB-INF/views/footer/main_footer.jsp"/>
 
 </body>
 </html>

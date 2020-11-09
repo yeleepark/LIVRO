@@ -1,0 +1,62 @@
+
+	* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+	max-width: 1920px;
+	}
+	
+	.footer {
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    bottom : 0%;
+    z-index: 9999;
+	}
+	
+	.footer_form {
+		padding: 1%;
+		display: flex;
+	}
+	
+	.team_wrap {
+		flex: 1;
+		width: 30%;
+		text-align: center;
+	}
+	
+	.team {
+		color: gray;
+		font-size: 19pt;
+		font-weight: bold;
+	}
+	
+	.space {
+		width: 80%;
+	}
+	
+	.members {
+		flex:1;
+		width: 30%;
+		color: gray;
+		font-size: 10pt;
+		text-align: center;
+	}
+	
+	.team > a {
+		color: gray;
+		text-decoration: none;
+		
+	}
+	
+	.members > span > a {
+		color: gray;
+		text-decoration: none;
+		
+	}
+
+	.members > span > a:visited {
+		color: gray;
+		text-decoration: none;
+	}
