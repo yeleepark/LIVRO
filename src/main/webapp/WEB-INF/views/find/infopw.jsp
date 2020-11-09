@@ -25,7 +25,8 @@
 				<label for=member_pw>비밀번호 재입력</label> 
 				<input type="password" id="member_pwchk" autocomplete="off" required="required" name="member_pwchk" placeholder="새 비밀번호 재 입력" />
 				<div id="pwchk_check"></div>
-				<div class="container"><input type="submit" value="변경" class="btn" ></div>
+				<div class="container">
+				<input type="submit" value="변경" class="btn" ></div>
 			</form>
 		</div>
 	</section>
