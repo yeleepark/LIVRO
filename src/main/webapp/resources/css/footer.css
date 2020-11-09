@@ -10,7 +10,7 @@
 	.footer {
     width: 100%;
     height: 15%;
-    position: absolute;
+    position: relative;
     bottom : -15%;
     z-index: 9999;
 	}
