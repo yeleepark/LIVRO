@@ -40,13 +40,13 @@
 						
 						<label for ="member_nickname">닉네임</label>
 						<input type="text" name="member_nickname" id="member_nickname" value="${logindto.member_nickname }">
-						<input type="button" id="nick_chk" onclick="nick_Chk();" value="중복체크"/>
+						<input type="button" class="btn" id="nick_chk" onclick="nick_Chk();" value="중복체크"/>
 						<div class="msg_check" id="nickname_check"></div>
                   		
 						
 						<label for ="member_email">이메일</label>
 						<input type="text" name="member_email" id="member_email" value="${logindto.member_email }">
-						<input type="button" id="email_chk" onclick="email_Chk();" value="중복체크"/>
+						<input type="button" class="btn" id="email_chk" onclick="email_Chk();" value="중복체크"/>
                  		<div class="msg_check" id="email_check"></div>
 						
 						<label for ="member_addr">주소</label>
