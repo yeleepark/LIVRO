@@ -74,9 +74,7 @@ section {
 	padding: 3px 5px;
 }
 
-#tab-1 input[type="submit"] {
-	display: block;
-}
+
 
 #tab-1 label {
 	display: block;
@@ -126,9 +124,6 @@ section {
 	width: 100%;
 }
 
-.tab-2-container input {
-	display: block;
-}
 
 .tab-2-left {
 	flex: 1;
@@ -177,9 +172,7 @@ section {
 	width: 100%;
 }
 
-.tab-4-container input {
-	display: block;
-}
+
 
 .tab-4-left {
 	display: flex;
