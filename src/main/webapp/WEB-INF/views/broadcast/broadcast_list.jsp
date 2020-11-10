@@ -35,6 +35,118 @@
 		}
 
 	}
+
+	var lastnum = 12;
+	console.log(lastnum);
+	$(document)
+			.ready(
+					function() {
+						$(window).scroll(
+								function() {
+								/* 	console.log("윈도우스크롤탑 : " + $(window).scrollTop())
+									console.log("윈도우 높이 :" + $(window).height())
+									console.log("전체 문서 높이 :" + $(document) */
+											/* .height()) */
+									/* console.log$($(".wrapper")) */
+								
+									if ($(window).scrollTop()
+											+ $(window).height() == $(document)
+											.height()) {
+										getList();
+									}
+								});
+						function getList() {
+							//ajax 실행 데이터 가져오기
+							console.log("getList시작");
+							$
+									.ajax({
+										url : 'infinitescroll.do',
+										data : {
+											"lastnum" : lastnum
+										},
+										type : 'post',
+										success : function(data) {
+											var str = "";
+											var arr = "";
+											console.log("데이터 가져옴");
+											if (data == null
+													|| data.length < 12) {
+												alert("마지막 데이터입니다!");
+											} else {
+
+												$
+														.each(
+																data,
+																function(i) {
+																	arr += data[i].broadcast_no
+																			+ ","
+																	str += "<div class='brolist_wrapper'>"
+																			+ "<div class='broadcast-thumnail'>"
+																			+ "<img class='liveimg' src='resources/img/red.png'>"
+																			+ "<a href='broadDetail.do?broadcast_no="
+																			+ data[i].broadcast_no
+																			+ "'>"
+																			+ "<img class='broadcast-mainimg' src='/resources/profileimg/"+data[i].member_profile+"'></a>"
+																			+ "</div>"
+																			+ "<div class='broadcast-name'>"
+																			+ "<div class='broadcast-title-wrapper'>"
+																			+ "<p> <a href='broadDetail.do?broadcast_no="
+																			+ data[i].broadcast_no
+																			+ "'>"
+																			+ data[i].broadcast_title
+																			+ "</a>"
+																			+ "</p>"
+																			+ "</div>"
+																			+ "<div class='broadcast-nick-wrapper'>"
+																			+ "<p>"
+																			+ "<i class='fas fa-user'></i>"
+																			+ "<a href='artist.do?member_id="
+																			+ data[i].member_id
+																			+ "'>"
+																			+ data[i].member_nickname
+																			+ "</a>"
+																			+ "</p>"
+																			+ "</div>"
+																			+ "<div class='broadcast-content-wrapper'>"
+																			+ "<p class='broadcast-content'> "
+																			+ data[i].broadcast_content
+																			+ "</p>"
+																			+ "</div>"
+																			+ "<div class='broadcast-category-wrapper'>"
+																			+ "<p>"
+																			+ "["
+																			+ data[i].broadcast_category
+																			+ "]"
+																			+ data[i].broadcast_no
+																			+ "</p>"
+																			+ "</div>"
+																			+ "</div>"
+																			+ "</div>"
+																})
+												console
+														.log("12개중에"
+																+ data.length
+																+ "개 가져옴");
+												console.log("arr :" + arr);
+												var ele = document
+														.createElement('div');
+												ele.classList.add('wrapper');
+												ele.innerHTML = str;
+												/*  $(".wrapper > div").last()
+														.after(ele); */
+											 	$(".broadcast-table").append(
+														ele);
+												lastnum += 12;
+											}
+										},
+										error : function(error) {
+											alert("통신실패!");
+										}
+									});
+
+						}
+
+					});
 </script>
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
@@ -45,7 +157,8 @@
 				<i class="fas fa-bullhorn"></i>지금 방송을 시작해보세요!
 			</p>
 			<input class="startbtn" type="button" id="broadgo" value="방송하기"
-				onclick="chkRole()">
+				onclick="chkRole()"> <input type="button" value="test"
+				onclick="shm1113()">
 
 		</div>
 		<div class="broadcast-table" id="broadcast-table-cnt">
@@ -55,6 +168,7 @@
 
 					<c:if test="${dto.broadcast_flag eq 'Y' }">
 						<div class="brolist_wrapper">
+							<input type="text" value="${dto.broadcast_no }">
 							<div class="broadcast-thumnail">
 								<img class="liveimg" src="resources/img/red.png"> <a
 									href="broadDetail.do?broadcast_no=${dto.broadcast_no }"> <img
@@ -100,110 +214,6 @@
 
 			ele.appendChild(h1);
 		}
-
-		var lastnum = 12;
-		console.log(lastnum);
-		$(document)
-				.ready(
-						function() {
-							$(window).scroll(function() {
-								console.log("후..");
-								console.log($(window).scrollTop())
-								console.log($(window).height())
-								console.log($(document).height())
-								var curHeight = $(window).scrollTop();
-								// 문서의 높이
-								var docHeight = $(document).height();
-								// 어느 정도 조건이 만족하면 내용 생성
-								if (curHeight > docHeight - 900) {
-									console.log("getList시작!!!!")
-									getList();
-								}
-							});
-
-							function getList() {
-								//ajax 실행 데이터 가져오기
-								console.log("getList시작");
-								$
-										.ajax({
-											url : 'infinitescroll.do',
-											data : {
-												"lastnum" : lastnum
-											},
-											type : 'post',
-											success : function(data) {
-												var str = "";
-												console.log("데이터 가져옴");
-												$
-														.each(
-																data,
-																function(i) {
-																	str += "<div class='brolist_wrapper'>"
-																			+ "<div class='broadcast-thumnail'>"
-																			+ "<img class='liveimg' src='resources/img/red.png'>"
-																			+ "<a href='broadDetail.do?broadcast_no="
-																			+ data[i].broadcast_no
-																			+ "'>"
-																			+ "<img class='broadcast-mainimg' src='/resources/profileimg/"+data[i].member_profile+"'></a>"
-																			+ "</div>"
-																			+ "<div class='broadcast-name'>"
-																			+ "<div class='broadcast-title-wrapper'>"
-																			+ "<p> <a href='broadDetail.do?broadcast_no="
-																			+ data[i].broadcast_no
-																			+ "'>"
-																			+ data[i].broadcast_title
-																			+ "</a>"
-																			+ "</p>"
-																			+ "</div>"
-																			+ "<div class='broadcast-nick-wrapper'>"
-																			+ "<p>"
-																			+ "<i class='fas fa-user'></i>"
-																			+ "<a href='artist.do?member_id="
-																			+ data[i].member_id
-																			+ "'>"
-																			+ data[i].member_nickname
-																			+ "</a>"
-																			+ "</p>"
-																			+ "</div>"
-																			+ "<div class='broadcast-content-wrapper'>"
-																			+ "<p class='broadcast-content'> "
-																			+ data[i].broadcast_content
-																			+ "</p>"
-																			+ "</div>"
-																			+ "<div class='broadcast-category-wrapper'>"
-																			+ "<p>"
-																			+ "["
-																			+ data[i].broadcast_category
-																			+ "]"
-																			/* + data[i].broadcast_no */
-																			+ "</p>"
-																			+ "</div>"
-																			+ "</div>"
-																			+ "</div>"
-																})
-												console
-														.log("12개중에"
-																+ data.length
-																+ "개 가져옴");
-												var ele = document
-														.createElement('div');
-												ele.classList.add('wrapper');
-												ele.innerHTML = str;
-												/* 	$(".wrapper > div")
-															.last().after(ele); */
-												$(".broadcast-table").append(
-														ele);
-												lastnum += 12;
-												/* if (!data) {
-													alert("마지막 데이터입니다!");
-												} */
-											},
-											error : function(error) {
-												alert("통신실패!");
-											}
-										});
-							}
-						});
 	</script>
 </body>
 </html>
