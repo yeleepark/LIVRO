@@ -16,7 +16,7 @@
 	<jsp:include page="/WEB-INF/views/header/header.jsp"/>
 	<div class="wrapper">
 	<div class="search-list">
-		<div class="artist-section" style="height: 60vh; overflow-y: scroll;">
+		<div class="artist-section" style="height: 60vh; overflow-y: auto;">
 		<h2><i class="fas fa-search"></i> 아티스트 채널 리스트</h2>
 			<c:choose>
 				<c:when test="${empty map.memberlist }">
@@ -33,7 +33,7 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-		<div class="broad-section" style="height: 60vh; overflow-y: scroll;">
+		<div class="broad-section" style="height: 60vh; overflow-y: auto;">
 		<h2><i class="fas fa-search"></i> 실시간 방송 리스트</h2>			
 			<c:choose>
 				<c:when test="${empty broadlist }">
@@ -60,7 +60,7 @@
 			</c:choose>
 		</div>
 	</div>
-	<div class="all-list" style="height: 60vh; overflow-y: scroll;">
+	<div class="all-list" style="height: 60vh; overflow-y: auto;">
 		<h2><i class="fas fa-list-ul"></i> 전체 아티스트 리스트</h2>
 		<c:choose>
 			<c:when test="${empty map.artistlist }">

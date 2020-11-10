@@ -19,7 +19,7 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
-	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
+	
 	<section>
 		<div class="mypage-container">
 			<ul class="tabs">
@@ -170,7 +170,10 @@
 			</div>
 			
 		</div>
+		
+	
 	</section>
+	
 	<script src="resources/js/Chart.js"></script>
 	<script>
 		$(function(){

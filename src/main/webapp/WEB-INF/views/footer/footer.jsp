@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/footer.css">
 </head>
-<body>
+<body class="footerBody">
 
 	<div class="footer">
 		<div class="footer_form">
