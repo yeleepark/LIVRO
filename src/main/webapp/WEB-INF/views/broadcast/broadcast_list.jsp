@@ -43,14 +43,16 @@
 					function() {
 						$(window).scroll(
 								function() {
-								/* 	console.log("윈도우스크롤탑 : " + $(window).scrollTop())
-									console.log("윈도우 높이 :" + $(window).height())
-									console.log("전체 문서 높이 :" + $(document) */
-											/* .height()) */
-									/* console.log$($(".wrapper")) */
-								
+								 	/* console.log("윈도우스크롤탑 : "
+											+ $(window).scrollTop())
+									console
+											.log("윈도우 높이 :"
+													+ $(window).height())
+									console.log("전체 문서 높이 :"
+											+ $(document).height())  */
+
 									if ($(window).scrollTop()
-											+ $(window).height() == $(document)
+											+ $(window).height()  == $(document)
 											.height()) {
 										getList();
 									}
@@ -134,7 +136,7 @@
 												ele.innerHTML = str;
 												/*  $(".wrapper > div").last()
 														.after(ele); */
-											 	$(".broadcast-table").append(
+												$(".broadcast-table").append(
 														ele);
 												lastnum += 12;
 											}
