@@ -63,6 +63,7 @@
 					)C
 			ON b.MEMBER_ID = C.member_id
 			WHERE rnum between 0 AND #{lastnum}+5
+			ORDER BY RNUM
 		]]>
 	</select>
 	
@@ -103,6 +104,7 @@
 			)C
 		ON B.MEMBER_ID = C.MEMBER_ID
 		WHERE rnum between 0 AND #{lastnum}+5
+		ORDER BY RNUM
 	</select>
 	
 	<select id="listCount" resultType="SupportDto">

@@ -12,6 +12,7 @@ var supportContent = document.getElementsByClassName('support-content')[0];
 // showMore
 var moreContent = document.getElementsByClassName('more-content')[0];
 
+// 전체 게시글 출력
 function list() {
 	
 	$.ajax({
@@ -19,37 +20,41 @@ function list() {
 		url : "supportList.do?member_id=" + artist_id + "&lastnum=0",
 		success : function(result) {
 			supportContent.innerHTML = result;
-			var countArea = document.getElementById('listCount');
-			count = countArea.innerHTML;
-			
-			// 게시물이 5개 이상이면 쇼몰 블럭 출력
-			if (count > 5) {
-				var showMore = document.getElementsByClassName('showMoreBtn')[0];
-				showMore.style.display = "block";
-		    }
+			showNhide();
 		}
 	})
 }
 
-var lastnum = 0;
-function showMore(e) {
-	// 쇼몰 블럭 누를때마다 게시물 5개씩 늘어남
+
+function showNhide(){
 	
-	lastnum += 5;
+	var countArea = document.getElementById('listCount');
+	count = countArea.innerHTML;
 	
-	// 마지막 인덱가 게시물 보다 많을때
-	if (lastnum > count) {
-		e.style.display = "none";
-		//취소버튼 나타남
-		e.nextSibling.nextSibling.style.display = "block";
+	if (count > 5) {
+		var showMore = document.getElementsByClassName('showMoreBtn')[0];
+		showMore.style.display = "block";
+	}
+	
+	if (lastnum+5 >= count){
+		showMore.style.display = "none";
+		var closeMore = document.getElementsByClassName('closeMoreBtn')[0];
+		closeMore.style.display = "block";
 	}
 
-	// 안 많을때
+}
+
+var lastnum = 0;
+function showMore(e) {
+	
+	lastnum += 5;
+
 	$.ajax({
 		type : "post",
 		url : "supportList.do?member_id=" + artist_id + "&lastnum=" + lastnum,
 		success : function(result) {
 			supportContent.innerHTML = result;
+			showNhide();
 		}
 	});
 }
@@ -58,33 +63,23 @@ function closeMore(e) {
 
 	var res = confirm('닫으시겠습니까?');
 
-	if (res) { // 닫으면
+	if (res) {
 		lastnum = 0;
-		list();// 전체 리스트 다시 출력하고
-		e.style.display = "none"; // 클로즈 버튼 사라지고
-		document.documentElement.scrollTop = 0; // 상단으로 올라가고
-		console.log(lastnum +"확")
+		list();
+		e.style.display = "none";
+		document.documentElement.scrollTop = 0;
 	}
 }
 
-//------------------------------------------------------
-
-////내가 작성한 글
+// 내가 작성한 글 리스트
 function mine() {
 	
-	// 전체글 보기 나타남
 	var mineBtn = document.getElementsByClassName('mineBtn')[0];
 	mineBtn.style.display ="none";
 	var allBtn = document.getElementsByClassName('allBtn')[0];
 	allBtn.style.display ="block";
 
-	//showMore 버튼 사라짐
-	showMore = document.getElementsByClassName('showMoreBtn')[0];
-	closeMore =  document.getElementsByClassName('closeMoreBtn')[0];
-	showMore.style.display = "none";
-	closeMore.style.display = "none";
-	
-	lastnum = 0; 
+	lastnum = 0;
 	
 	$.ajax({
 		type : "post",
@@ -99,28 +94,37 @@ function mine() {
 			lastnum : lastnum
 		}),
 		success : function(result) {
-			// 글 다섯개만 나타나고
 			supportContent.innerHTML = result;
 			countArea = document.getElementById('listCount');
 			count = countArea.innerHTML;
 			
-			console.log('mine눌렀을때' + count);
-			if (count > 5){
-				var myShowMoreBtn = document.getElementsByClassName('myShowMoreBtn')[0];
-				myShowMoreBtn.style.display ="block";
-			}
+			myShowNhide();
 		}
 	})
+}
+
+
+function myShowNhide(){
+
+	var countArea = document.getElementById('listCount');
+	count = countArea.innerHTML;
+	
+	if (count > 5) {
+		var myShowMore = document.getElementsByClassName('myShowMoreBtn')[0];
+		myShowMore.style.display = "block";
+	}
+	
+	if (lastnum+5 >= count){
+		myShowMore.style.display = "none";
+		var myCloseMore = document.getElementsByClassName('myCloseMoreBtn')[0];
+		myCloseMore.style.display = "block";
+	}
+
 }
 
 function myShowMore(e){
-
+	
 	lastnum += 5;
-
-	if (lastnum > count) {
-		e.style.display = "none";
-		e.nextSibling.nextSibling.style.display = "block";
-	}
 
 	$.ajax({
 		type : "post",
@@ -136,29 +140,30 @@ function myShowMore(e){
 		}),
 		success : function(result) {
 			supportContent.innerHTML = result;
+			myShowNhide();
 		}
 	})
+	
 }
 
-function myCloseMore(e) {
-
+function myCloseMore(e){
+	
 	var res = confirm('닫으시겠습니까?');
 
-	if (res) {
-		e.style.display = "none";
+	if (res) { 
+		lastnum = 0;
 		mine();
-		document.documentElement.scrollTop = 0;
+		e.style.display = "none";
+		document.documentElement.scrollTop = 0; 
 	}
 }
 
+
+// 완료
 function allBtn(e) {
 	
 	e.style.display = "none";
 	e.previousSibling.previousSibling.style.display = "block";
-	myShowMore = document.getElementsByClassName('myShowMoreBtn')[0];
-	myCloseMore = document.getElementsByClassName('myCloseMoreBtn')[0];
-	myShowMore.style.display ="none";
-	myCloseMore.style.display ="none";
 	
 	list();
 	

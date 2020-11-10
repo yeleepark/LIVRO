@@ -66,6 +66,12 @@
 		</c:otherwise>
 	</c:choose>
 	</div>
+	<div class="showClose">				
+			<input type="button" value="Show More" onclick="showMore(this);" class="showMoreBtn">
+			<input type="button" value="Close" onclick="closeMore(this);" class="closeMoreBtn">
+			<input type="button" value="Show More" onclick="myShowMore(this);" class="myShowMoreBtn">
+			<input type="button" value="Close" onclick="myCloseMore(this);" class="myCloseMoreBtn">
+	</div>
 	
 </body>
 </html>
