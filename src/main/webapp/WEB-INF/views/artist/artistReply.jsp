@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
 					</div>
 					<div class="rows-center">
 						<textarea class="comm_content" readonly="readonly">${dto.comm_content }</textarea>
-						<p>${dto.comm_regdate }</p>
+						<p><fmt:formatDate value="${dto.comm_regdate }" pattern="yyyy-MM-dd-HH:mm:ss" /></p>
 					</div>
 					<div class="rows-right">
 						<c:if test="${logindto.member_id == dto.member_id }">
