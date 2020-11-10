@@ -5,22 +5,21 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-.mypage-container {
-	width: 1200px;
-	margin: 0 auto;
-}
-
 section {
-	padding-top: 100px;
+	width: 1200px;
+	margin : 0 auto;
+	display: flex;
+	padding-top : 100px;
+	margin-bottom: 20px;
 }
 
 /* 탭메뉴 */
-.mypage-container ul.tabs {
+
+ ul.tabs {
 	width: 20%;
-	float: left;
 }
 
-.mypage-container ul.tabs li {
+ ul.tabs li {
 	background: none;
 	color: #222;
 	padding: 10px 15px;
@@ -28,7 +27,7 @@ section {
 	list-style: none;
 }
 
-.mypage-container ul.tabs li.current {
+ ul.tabs li.current {
 	background: #ededed;
 	color: #222;
 }
@@ -37,11 +36,10 @@ section {
 	width: 80%;
 	display: none;
 	padding: 0px 60px;
-	float: right;
 }
 
 .tab-content.current {
-	display: inherit;
+	display: block;
 }
 
 .tab-content h2 {

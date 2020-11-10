@@ -19,9 +19,8 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
-	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
+	
 	<section>
-		<div class="mypage-container">
 			<ul class="tabs">
 				<li class="tab-link current" data-tab="tab-1">채널개설</li>
 				<li class="tab-link" data-tab="tab-2">회원정보수정</li>
@@ -132,11 +131,10 @@
 						</div>
 						</div>
 					</div>
-			</div>
-			
 			
 		</div>
 	</section>
+	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 	<script src="resources/js/Chart.js"></script>
 	<script>
 	   $(function(){

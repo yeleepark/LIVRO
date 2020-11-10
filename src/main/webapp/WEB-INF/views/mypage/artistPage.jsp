@@ -21,16 +21,15 @@
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
 	
 	<section>
-		<div class="mypage-container">
-			<ul class="tabs">
-				<li class="tab-link current" data-tab="tab-1">회원정보수정</li>
-				<li class="tab-link" data-tab="tab-2">팔로잉목록</li>
-				<li class="tab-link" data-tab="tab-3">팔로워목록</li>
-				<li class="tab-link" data-tab="tab-4">후원내역조회</li>
-				<li class="tab-link" data-tab="tab-5">후원받은조회</li>
-			</ul>
+				<ul class="tabs">
+					<li class="tab-link current" data-tab="tab-1">회원정보수정</li>
+					<li class="tab-link" data-tab="tab-2">팔로잉목록</li>
+					<li class="tab-link" data-tab="tab-3">팔로워목록</li>
+					<li class="tab-link" data-tab="tab-4">후원내역조회</li>
+					<li class="tab-link" data-tab="tab-5">후원받은조회</li>
+				</ul>
 			
-		<!-- 회원 정보 수정 탭 -->
+			<!-- 회원 정보 수정 탭 -->
 			<div class="tab-content current" id="tab-1">
 				<h2><i class="fas fa-lock"></i> 정보수정</h2>
 				<div class="tab-1-container">
@@ -168,12 +167,9 @@
 					</div>
 				</div>
 			</div>
-			
-		</div>
-		
-	
 	</section>
 	
+	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 	<script src="resources/js/Chart.js"></script>
 	<script>
 		$(function(){

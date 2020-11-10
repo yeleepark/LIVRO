@@ -5,22 +5,20 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-.mypage-container {
-	width: 1200px;
-	margin: 0 auto;
-}
-
 section {
-	padding-top: 40px;
+	width: 1200px;
+	margin : 0 auto;
+	display: flex;
+	padding-top : 100px;
+	margin-bottom: 20px;
 }
 
 /* 탭메뉴 */
-.mypage-container ul.tabs {
+ul.tabs {
 	width: 20%;
-	float: left;
 }
 
-.mypage-container ul.tabs li {
+ul.tabs li {
 	background: none;
 	color: #222;
 	padding: 10px 15px;
@@ -28,7 +26,7 @@ section {
 	list-style: none;
 }
 
-.mypage-container ul.tabs li.current {
+ul.tabs li.current {
 	background: #ededed;
 	color: #222;
 }
@@ -41,7 +39,7 @@ section {
 }
 
 .tab-content.current {
-	display: inherit;
+	display: block;
 }
 
 .tab-content h2 {
@@ -74,8 +72,6 @@ section {
 	padding: 3px 5px;
 }
 
-
-
 #tab-1 label {
 	display: block;
 	font-size: 0.8rem;
@@ -86,13 +82,13 @@ section {
 	float: right;
 }
 
-.tab-1-right label{
-	display : block;
-	width : 200px;
+.tab-1-right label {
+	display: block;
+	width: 200px;
 	text-align: center;
 }
 
-#profileImg{
+#profileImg {
 	text-align: center;
 	height: auto;
 	line-height: normal;
@@ -101,13 +97,13 @@ section {
 	border-radius: 0;
 	outline-style: none;
 	padding: 3px 5px;
-	width : 200px;
+	width: 200px;
 }
 
 #tab-1 .selectImg {
 	width: 200px;
 	height: 200px;
-	background-color : rgba(0,0,0,0.1);
+	background-color: rgba(0, 0, 0, 0.1);
 	box-sizing: content-box;
 }
 
@@ -123,7 +119,6 @@ section {
 	display: flex;
 	width: 100%;
 }
-
 
 .tab-2-left {
 	flex: 1;
@@ -142,28 +137,28 @@ section {
 }
 
 /* 팔로우 목록 */
-#tab-3 a{
-	color : black;
+#tab-3 a {
+	color: black;
 	text-decoration: none;
 	font-weight: 500;
 }
 
-#tab-3 a:hover{
-	background-color: rgba(0,0,0,0.2);
-	padding : 3px 8px;
+#tab-3 a:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+	padding: 3px 8px;
 	border-radius: 5px;
 }
 
-#tab-3 span{
+#tab-3 span {
 	font-size: 0.8rem;
 }
 
-.follow-row{
+.follow-row {
 	margin-bottom: 5px;
 }
 
-.follow-row span{
-	font-size : 0.8rem;
+.follow-row span {
+	font-size: 0.8rem;
 }
 
 /* 후원내역조회 */
@@ -171,8 +166,6 @@ section {
 	display: flex;
 	width: 100%;
 }
-
-
 
 .tab-4-left {
 	display: flex;
@@ -209,57 +202,52 @@ section {
 	font-size: 20px;
 }
 
-
-
 .nick {
-  width: 70px;
-  height: 20px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color:#D7AC87;
-  background-color: #000000;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-  }
+	width: 70px;
+	height: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	font-weight: 500;
+	color: #D7AC87;
+	background-color: #000000;
+	border: none;
+	border-radius: 20px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	outline: none;
+}
 
 .nick:hover {
-  background-color: #2EE59D;
-  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-  color: #fff;
-  transform: translateX(5px);
+	background-color: #2EE59D;
+	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+	color: #fff;
+	transform: translateX(5px);
 }
-
 
 .chang {
-  width: 95px;
-  height: 20px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #D7AC87;
-  background-color: #000000;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-  }
-
-.chang:hover {
-  background-color: #2EE59D;
-  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-  color: #fff;
-  transform: translateX(5px);
+	width: 95px;
+	height: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	font-weight: 500;
+	color: #D7AC87;
+	background-color: #000000;
+	border: none;
+	border-radius: 20px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	outline: none;
 }
 
-
+.chang:hover {
+	background-color: #2EE59D;
+	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+	color: #fff;
+	transform: translateX(5px);
+}
