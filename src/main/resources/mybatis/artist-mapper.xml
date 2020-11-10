@@ -70,7 +70,7 @@
 	<insert id="supportInsert" parameterType="SupportDto">
 		INSERT INTO SUPPORT_BOARD
 		VALUES (SUPPORT_NO_SEQ.NEXTVAL, #{member_id}, #{member_nickname}, 
-		#{writer_nickname}, #{writer_nickname}, #{support_content}, SYSDATE)
+		#{writer_id}, #{writer_nickname}, #{support_content}, SYSDATE)
 	</insert>
 	
 	<update id="supportUpdate">

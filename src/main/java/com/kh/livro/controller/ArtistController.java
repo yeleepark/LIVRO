@@ -97,6 +97,9 @@ public class ArtistController {
 	@RequestMapping(value = "/mylist.do", method = RequestMethod.POST)
 	public String myList(Model model, @RequestBody SupportDto dto) {
 		logger.info("내가 쓴 글 리스트 컨트롤러");
+		System.out.println(dto.getMember_id());
+		System.out.println(dto.getWriter_id());
+		System.out.println("확");
 
 		model.addAttribute("supportdto", artistBiz.myList(dto));
 

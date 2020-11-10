@@ -36,7 +36,8 @@ function showNhide(){
 		showMore.style.display = "block";
 	}
 	
-	if (lastnum+5 >= count){
+	if (lastnum !=0 && lastnum+5 >= count){
+		var showMore = document.getElementsByClassName('showMoreBtn')[0];
 		showMore.style.display = "none";
 		var closeMore = document.getElementsByClassName('closeMoreBtn')[0];
 		closeMore.style.display = "block";
@@ -114,7 +115,8 @@ function myShowNhide(){
 		myShowMore.style.display = "block";
 	}
 	
-	if (lastnum+5 >= count){
+	if (lastnum != 0 && lastnum+5 >= count){
+		var myShowMore = document.getElementsByClassName('myShowMoreBtn')[0];
 		myShowMore.style.display = "none";
 		var myCloseMore = document.getElementsByClassName('myCloseMoreBtn')[0];
 		myCloseMore.style.display = "block";
