@@ -95,16 +95,16 @@
 	
 	<!-- 내가 쓴 글 조회 -->
 	<select id="myqnalist" resultType="QnaDto">
-		SELECT *
-		FROM (
-			SELECT ROW_NUMBER() OVER (ORDER BY QNA_NO) NUM, Q.*
-			FROM QNA_BOARD Q
-			ORDER BY Q.QNA_REGDATE DESC
-		)
-		WHERE NUM
-		BETWEEN #{startList} +1
-		AND #{startList} +
-		#{listSize} -1
-		AND MEMBER_NICKNAME = #{member_nickname}
+	SELECT *
+	FROM (
+	SELECT ROW_NUMBER() OVER (ORDER BY QNA_NO) NUM, Q.*
+	FROM QNA_BOARD Q
+	WHERE MEMBER_NICKNAME = #{member_nickname}
+	ORDER BY Q.QNA_REGDATE DESC
+	)
+	WHERE NUM
+	BETWEEN #{startList} +1
+	AND #{startList} +
+	#{listSize} -1
 	</select>
 </mapper>

@@ -43,14 +43,6 @@
 					function() {
 						$(window).scroll(
 								function() {
-								 	/* console.log("윈도우스크롤탑 : "
-											+ $(window).scrollTop())
-									console
-											.log("윈도우 높이 :"
-													+ $(window).height())
-									console.log("전체 문서 높이 :"
-											+ $(document).height())  */
-
 									if ($(window).scrollTop()
 											+ $(window).height()  == $(document)
 											.height()) {
@@ -119,7 +111,6 @@
 																			+ "["
 																			+ data[i].broadcast_category
 																			+ "]"
-																			+ data[i].broadcast_no
 																			+ "</p>"
 																			+ "</div>"
 																			+ "</div>"
@@ -159,9 +150,7 @@
 				<i class="fas fa-bullhorn"></i>지금 방송을 시작해보세요!
 			</p>
 			<input class="startbtn" type="button" id="broadgo" value="방송하기"
-				onclick="chkRole()"> <input type="button" value="test"
-				onclick="shm1113()">
-
+				onclick="chkRole()"> 
 		</div>
 		<div class="broadcast-table" id="broadcast-table-cnt">
 
@@ -170,7 +159,6 @@
 
 					<c:if test="${dto.broadcast_flag eq 'Y' }">
 						<div class="brolist_wrapper">
-							<input type="text" value="${dto.broadcast_no }">
 							<div class="broadcast-thumnail">
 								<img class="liveimg" src="resources/img/red.png"> <a
 									href="broadDetail.do?broadcast_no=${dto.broadcast_no }"> <img

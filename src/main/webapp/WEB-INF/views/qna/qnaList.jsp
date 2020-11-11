@@ -33,7 +33,7 @@ function myQna(){
 		alert("로그인 후 이용해주세요!");
 		location.href='loginForm.do';
 	}else{
-		location.href="myqnalist.do?member_nickname="+ logininfo;
+		location.href="qnalist.do?member_nickname="+ logininfo;
 	}
 }
 
@@ -151,8 +151,9 @@ function myQna(){
 					<select name="searchType" id="searchType">
 						<option value="title">제목</option>
 						<option value="writer">작성자</option>
-					</select> <input type="text" placeholder="검색" name="keyword" id="keyword" />
+					</select> <input type="text" placeholder="검색" name="keyword" id="keyword" required="required"/>
 					<input type="submit" value="검색" id="btnSearch" class="qna_list_btn" />
+					<input type="button" value="목록" class="qna_list_btn" onclick="location.href='qnalist.do'"/>
 				</form>
 			</div>
 

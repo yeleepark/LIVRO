@@ -6,6 +6,7 @@ function chkRole(){
  function alertMsg(){
 		alert("해당 글은 작성자만 볼 수 있습니다.");
 } 
+
 	//이전 버튼 이벤트
 		function fn_prev(page, range, rangeSize) {
 			var page = ((range - 2) * rangeSize) + 1;
@@ -31,6 +32,8 @@ function chkRole(){
 			url = url + "&range=" + range;
 			location.href = url;
 		}
+		
+		
 		
 
 		

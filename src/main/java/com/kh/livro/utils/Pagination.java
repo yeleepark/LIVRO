@@ -4,21 +4,46 @@ public class Pagination {
 
 	private int listSize = 10; // 초기값 목록 개수 10
 	private int rangeSize = 10; // 초기값 페이지 범위 10
-	private int page; //현재페이지
-	private int range; //현재 페이지 범위
-	private int listCnt; //총 게시물 갯수
-	private int pageCnt; //총 페이지 범위의 개수
-	private int startPage; //시작번호
-	private int startList; 
-	private int endPage; //끝번호
-	private boolean prev; //이전페이지
-	private boolean next; //다음페이지
+	private int page; // 현재페이지
+	private int range; // 현재 페이지 범위
+	private int listCnt; // 총 게시물 갯수
+	private int pageCnt; // 총 페이지 범위의 개수
+	private int startPage; // 시작번호
+	private int startList;
+	private int endPage; // 끝번호
+	private boolean prev; // 이전페이지
+	private boolean next; // 다음페이지
 
 	// 현승 : notice 키워드
 	private String noticeKeyword;
 
+	private String member_nickname;
 
-	//getter setter
+	public int getPageCnt() {
+		return pageCnt;
+	}
+
+	public void setPageCnt(int pageCnt) {
+		this.pageCnt = pageCnt;
+	}
+
+	public String getMember_nickname() {
+		return member_nickname;
+	}
+
+	public void setMember_nickname(String member_nickname) {
+		this.member_nickname = member_nickname;
+	}
+
+	public void setRangeSize(int rangeSize) {
+		this.rangeSize = rangeSize;
+	}
+
+	public void setStartList(int startList) {
+		this.startList = startList;
+	}
+
+	// getter setter
 	public int getRangeSize() {
 		return rangeSize;
 	}
@@ -90,8 +115,8 @@ public class Pagination {
 	public int getStartList() {
 		return startList;
 	}
-	
-	//현승 notice 검색 getter , setter
+
+	// 현승 notice 검색 getter , setter
 
 	public String getNoticeKeyword() {
 		return noticeKeyword;
@@ -101,8 +126,7 @@ public class Pagination {
 		this.noticeKeyword = noticeKeyword;
 	}
 
-	
-	//게시글 페이징
+	// 게시글 페이징
 	public void pageInfo(int page, int range, int listCnt) {
 		this.page = page;
 		this.range = range;
@@ -132,7 +156,7 @@ public class Pagination {
 		}
 	}
 
-	//현승 notice 검색 페이징
+	// 현승 notice 검색 페이징
 	public void pageSearchInfo(int page, int range, int listCnt, String noticeKeyword) {
 		this.page = page;
 		this.range = range;
@@ -161,7 +185,5 @@ public class Pagination {
 			this.next = false;
 		}
 	}
-
-
 
 }
