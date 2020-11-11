@@ -97,7 +97,9 @@ function mine() {
 		success : function(result) {
 			supportContent.innerHTML = result;
 			countArea = document.getElementById('listCount');
+			if(countArea!=null){
 			count = countArea.innerHTML;
+			}
 			
 			myShowNhide();
 		}
@@ -108,7 +110,9 @@ function mine() {
 function myShowNhide(){
 
 	var countArea = document.getElementById('listCount');
-	count = countArea.innerHTML;
+	if(countArea!=null){
+		count = countArea.innerHTML;
+		}
 	
 	if (count > 5) {
 		var myShowMore = document.getElementsByClassName('myShowMoreBtn')[0];

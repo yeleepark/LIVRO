@@ -136,6 +136,11 @@
 							<div class="support-login">
 							</div>
 						</c:when>
+						<c:when test="${memberdto.member_id == logindto.member_id }">
+							<div class="support-login">
+								<p>응원하는 팬들을 위해 댓글을 작성해주세요</p>
+							</div>
+						</c:when>
 						<c:otherwise>
 							<div class="supportInsert">
 								<div>

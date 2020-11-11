@@ -41,10 +41,14 @@
 							<input type="button" value="삭제" class="deleteBtn" onclick="deleteSupport(this);">
 							<input type="hidden" value="${support.support_no }" class="supportNo">
 						</c:if>
+						<c:if test="${logindto.member_role == 'M'}">
+							<input type="button" value="삭제" class="deleteBtn" onclick="deleteSupport(this);">
+						</c:if>
 						<c:choose>
 						<c:when test="${empty logindto }"></c:when>
 						<c:otherwise>
-							<c:if test="${logindto.member_id == support.member_id || logindto.member_id != support.writer_id }">
+							<c:if test="${logindto.member_id == support.member_id && support.writer_id != support.member_id 
+							|| logindto.member_id != support.writer_id}">
 								<input type="button" value="신고" class="reportBtn" onclick="report(this);">
 							</c:if>
 						</c:otherwise>
