@@ -7,8 +7,8 @@ public class QnaSearch extends Pagination {
 	private String keyword;
 	//내가 쓴 글 검색 
 	private String member_nickname;
-	
 
+	
 	public String getMember_nickname() {
 		return member_nickname;
 	}
@@ -28,5 +28,6 @@ public class QnaSearch extends Pagination {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	
 	
 }

@@ -2,8 +2,6 @@ package com.kh.livro.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.livro.biz.QnaBiz;
 import com.kh.livro.biz.QnareBiz;
-import com.kh.livro.dto.MemberDto;
 import com.kh.livro.dto.QnaDto;
 import com.kh.livro.dto.QnareDto;
 import com.kh.livro.utils.QnaSearch;
@@ -39,8 +36,9 @@ public class QnaController {
 			@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			 @RequestParam(required = false, defaultValue = "title") String searchType
-			, @RequestParam(required = false) String keyword , @RequestParam(required = false) String member_nickname
-			,HttpSession session) throws Exception {
+			, @RequestParam(required = false) String keyword , 
+			String member_nickname
+			) throws Exception {
 		logger.info("[qnalist.do]");
 		
 		
@@ -49,16 +47,19 @@ public class QnaController {
 		QnaSearch search = new QnaSearch();
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
-		
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member_nickname);
 		//전체 게시글 개수
 		int listCnt = qnaBiz.getQnaListCnt(search);
 		search.pageInfo(page, range, listCnt);
+		
+		
+		
 		
 		//pagination 객체 생성
 		//Pagination pagination = new Pagination();
 		//pagination.pageInfo(page, range, listCnt);
 		
-		model.addAttribute("myqnalist", qnaBiz.myqnaList(search, member_nickname));
+		model.addAttribute("myqnalist", qnaBiz.myqnaList(search));
 		model.addAttribute("pagination", search);
 		model.addAttribute("qnalist", qnaBiz.selectList(search));
 		return "qna/qnaList";

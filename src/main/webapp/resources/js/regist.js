@@ -11,7 +11,7 @@ var nameR = /^[가-힣]{2,6}/;
 var nickR = /^[가-힣a-zA-Z]{3,16}$/;
 //이메일 검사 정규식
 var mailR = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-// 휴대폰번호 정규식
+//휴대폰번호 정규식
 var phoneR = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
 //최종 sign up 버튼을 누르기 전, 유효성 검사를 위한 배열선언 
@@ -35,22 +35,22 @@ $(document)
 						var memberpwchk = $("#member_pwchk")
 							.val().trim();
 
-						if (memberpw != null|| memberpw != ""|| memberpwchk != ""|| memberpwchk != null) {
+						if (memberpw != null || memberpw != ""  || memberpwchk != "" || memberpwchk != null) {
 							//일치여부 확인 , 정규식 검사 후 비밀번호를 사용가능한 문구출력
-							if ((pwR.test(memberpw)&& pwR.test(memberpwchk) && (memberpw == memberpwchk))) {
+							if ((pwR.test(memberpw) && pwR.test(memberpwchk) && (memberpw == memberpwchk))) {
 								$('#pwchk_check').text('비밀번호를 사용할 수 있습니다.');
-								$('#pwchk_check').css({'color': 'blue','font-size': '11px'});
+								$('#pwchk_check').css({ 'color': 'blue', 'font-size': '11px' });
 								arr[1] = true;
 
-							} else if (pwR.test(memberpw) == false&& pwR.test(memberpwchk) == false) {
+							} else if (pwR.test(memberpw) == false && pwR.test(memberpwchk) == false) {
 								//정규식을 만족하지 못했을 경우
 								$('#pwchk_check').text('비밀번호는 8~15자 이내 문자, 특수문자, 숫자를 반드시 포함해야합니다.');
-								$('#pwchk_check').css({'color': 'red','font-size': '11px'});
+								$('#pwchk_check').css({ 'color': 'red', 'font-size': '11px' });
 
 							} else {
 								//입력된 비밀번호가 일치하지 않을 때
 								$('#pwchk_check').text('비밀번호가 일치하지 않습니다.');
-								$('#pwchk_check').css({'color': 'red','font-size': '11px'});
+								$('#pwchk_check').css({ 'color': 'red', 'font-size': '11px' });
 							}
 
 						}
@@ -63,7 +63,7 @@ $(document)
 					if ($("#member_pw").val() != $("#member_pwchk").val()) {
 						if ($("#member_pwchk").val() != '') {
 							$('#pwchk_check').text('비밀번호를 다시 입력해주세요.');
-							$('#pwchk_check').css({'color': 'red','font-size': '11px'});
+							$('#pwchk_check').css({ 'color': 'red', 'font-size': '11px' });
 							$("#member_pwchk").val('');
 							$("#member_pw").focus();
 						}
@@ -109,24 +109,44 @@ $(document)
 			$("#member_email").keydown(function() {
 				arr[5] = false;
 				var member_email = $("#member_email").val().trim();
+				$.ajax({
+					url: "emailChk.do",
+					type: "post",
+					dataType: "json",
+					data: {
+						"member_email": member_email
+					},
+					success: function(data) {
+						if (data == 1) {
+							$("#email_check").text('이미 존재하는 이메일입니다.');
+							$('#email_check').css({
+								'color': 'red',
+								'font-size': '11px'
+							});
 
+						} else {
+							if (mailR.test(member_email) == false) {
+								$("#email_check").text('올바른 이메일 형식으로 입력해주세요.');
+								$('#email_check').css({
+									'color': 'red',
+									'font-size': '11px'
+								});
+							} else {
+								$("#email_check").text('');
+								$("#emailChkBtn").show();
+								arr[5] = true;
+							}
+						}
+					},
+					error: function(error) {
+						alert("통신실패");
+					}
+				});
+			});
+		
 
-				if (mailR.test(member_email) == false) {
-					$("#email_check").text('올바른 이메일 형식으로 입력해주세요.');
-					$('#email_check').css({
-						'color': 'red',
-						'font-size': '11px'
-					});
-				} else {
-					$("#email_check").text('');
-					$("#emailChkBtn").show();
-					arr[5] = true;
-				}
-
-			})
-
-			//이메일 인증번호 입력하는 div 클래스 안 보이게 
-			$(".email_auth_code").hide();
+//이메일 인증번호 입력하는 div 클래스 안 보이게 
+$(".email_auth_code").hide();
 
 			$("#confirm").click(function() {
 				console.log(arr);
@@ -272,7 +292,6 @@ function emailSend() {
 			$(".email_auth_code").show();
 			$("#input_email_auth_code").focus();
 			emailcode = data;
-			alert(emailcode);
 			arr[5] = true;
 
 		},

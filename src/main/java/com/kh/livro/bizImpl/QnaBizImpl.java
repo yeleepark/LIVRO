@@ -14,13 +14,13 @@ import com.kh.livro.utils.Pagination;
 import com.kh.livro.utils.QnaSearch;
 
 @Service
-public class QnaBizImpl implements QnaBiz{
+public class QnaBizImpl implements QnaBiz {
 
 	@Autowired
 	private QnaDao qnaDao;
-	
+
 	private Logger logger = LoggerFactory.getLogger(QnaBizImpl.class);
-	
+
 	@Override
 	public List<QnaDto> selectList(QnaSearch search) {
 		return qnaDao.selectList(search);
@@ -48,7 +48,7 @@ public class QnaBizImpl implements QnaBiz{
 
 	@Override
 	public int getQnaListCnt(QnaSearch search) throws Exception {
-		
+
 		return qnaDao.getQnaListCnt(search);
 	}
 
@@ -59,17 +59,13 @@ public class QnaBizImpl implements QnaBiz{
 
 	@Override
 	public int flagdowndate(int qna_no) {
-		
+
 		return qnaDao.flagdowndate(qna_no);
 	}
 
 	@Override
-	public List<QnaDto> myqnaList(QnaSearch search , String member_nickname) {
-		return qnaDao.myqnaList(search, member_nickname);
+	public List<QnaDto> myqnaList(QnaSearch search) {
+		return qnaDao.myqnaList(search);
 	}
-
-
-
-	
 
 }

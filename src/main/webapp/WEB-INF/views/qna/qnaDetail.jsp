@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="resources/css/qna_detail.css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<!-- font awesome -->
+<!-- font awesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js"
 	crossorigin="anonymous" defer></script>
 <title>Q&A-글상세</title>
@@ -73,7 +73,6 @@ function qnareUpdateForm(e){
 	$(".qnare_content").css("background-color", "white");
 	
 }
-
 //댓글완료버튼 번호, content 가지고 감
 function qnareUpdateDone(qnare_no){
 	var qnare_content = $(".qnare_content").val();
@@ -102,17 +101,20 @@ function qnareUpdateDone(qnare_no){
 </script>
 <body>
 
-<!-- 본문내용  -->
+	<!-- 본문내용  -->
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
 	<div class="qna_detail_wrap">
-	<p><i class="far fa-comment-dots"></i>Q&A게시판</p>
-		
+		<p>
+			<i class="far fa-comment-dots"></i>Q&A게시판
+		</p>
+
 		<div class="qna_title_wrap">
-		<c:if test="${qnadetaildto.qna_secret =='Y' }">
-		<i class="fas fa-lock"></i>
-		</c:if>
-		${qnadetaildto.qna_title }</div>
-		
+			<c:if test="${qnadetaildto.qna_secret =='Y' }">
+				<i class="fas fa-lock"></i>
+			</c:if>
+			${qnadetaildto.qna_title }
+		</div>
+
 		<div class="qna_nick_wrap">${qnadetaildto.member_nickname }
 			<fmt:formatDate value="${qnadetaildto.qna_regdate }"
 				pattern="yy-MM-dd HH:mm" />
@@ -145,7 +147,8 @@ function qnareUpdateDone(qnare_no){
 							<div class="qna_reply_content">
 								<textarea readonly="readonly" class="qnare_content">${qnarelist.qnare_content }</textarea>
 								<c:if test="${logindto.member_role eq 'M' }">
-									<input type="button" value="수정" onclick="qnareUpdateForm(this)" class="qnare_btns"/>
+									<input type="button" value="수정" onclick="qnareUpdateForm(this)"
+										class="qnare_btns" />
 									<input type="button" value="완료"
 										onclick="qnareUpdateDone(${qnarelist.qnare_no})"
 										class="qnare_update_res_btn qnare_btns" />
@@ -154,7 +157,8 @@ function qnareUpdateDone(qnare_no){
 									<input type="hidden" name="qnare_no"
 										value="${qnarelist.qnare_no }">
 									<input type="button" value="삭제"
-										onclick="qnareDelete(${qnarelist.qnare_no})" class="qnare_btns" />
+										onclick="qnareDelete(${qnarelist.qnare_no})"
+										class="qnare_btns" />
 								</c:if>
 							</div>
 						</div>
@@ -185,14 +189,17 @@ function qnareUpdateDone(qnare_no){
 
 		<!-- 글쓴이만 볼 수 있는 수정,삭제버튼 + 목록으로 돌아가기 -->
 		<div class="qna_btn">
-			<input type="button" value="목록" onclick="history.go(-1);" class="qnare_btns">
+			<input type="button" value="목록" onclick="location.href='qnalist.do'"
+				class="qnare_btns">
 			<c:if
 				test="${logindto.member_nickname eq qnadetaildto.member_nickname}">
 
 				<input type="button" value="수정"
-					onclick="location.href='qnaupdateform.do?qna_no=${qnadetaildto.qna_no}'" class="qnare_btns">
+					onclick="location.href='qnaupdateform.do?qna_no=${qnadetaildto.qna_no}'"
+					class="qnare_btns">
 				<input type="button" value="삭제"
-					onclick="location.href='qnadelete.do?qna_no=${qnadetaildto.qna_no }'" class="qnare_btns">
+					onclick="location.href='qnadelete.do?qna_no=${qnadetaildto.qna_no }'"
+					class="qnare_btns">
 
 			</c:if>
 

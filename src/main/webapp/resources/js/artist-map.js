@@ -2,7 +2,6 @@ var tab5 = document.getElementById('tab5');
 tab5.addEventListener('click', () => {
 
 	var addr = document.getElementsByClassName('addr')[0].value;
-	console.log(addr);
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -24,7 +23,6 @@ tab5.addEventListener('click', () => {
 				position: coords
 			});
 
-			console.log(coords);
 
 			var postcode = $("#artistPostcode").val().trim();
 			var location = $("#artistLoc").val().trim();
@@ -111,7 +109,6 @@ function execPostCode() {
 //주소등록 확인하기
 $("#addAddr").click(function() {
 	var getAddr = $("#artist_addr1").val() + $("#artist_addr2").val() + $("#artist_addr3").val();
-	console.log = (getAddr);
 	var result = confirm("아래 주소로 등록하시겠습니까?\n" + getAddr);
 	if (result) {
 		if (getAddr == null || getAddr == '') {
@@ -133,17 +130,9 @@ function locConfirm() {
 	var artist_loc = $("input[name=artist_loc]").val();
 	var artist_detail_loc = $("input[name=artist_detail_loc]").val();
 
-	console.log(member_id);
-	console.log(artist_postcode);
-	console.log(artist_loc);
-	console.log(artist_detail_loc);
-
 	//이미 등록된 주소가 있는지 확인할 값 
 	var chkVal = $("#artist_addr1").val().trim();
-	console.log(chkVal);
-
 	var result = confirm("기존에 있던 주소를 변경하시겠습니까?");
-
 
 	var locVal = {
 		"member_id": member_id,
@@ -151,8 +140,7 @@ function locConfirm() {
 		"artist_loc": artist_loc,
 		"artist_detail_loc": artist_detail_loc
 	}
-	console.log(JSON.stringify(locVal));
-	console.log(result)
+	
 	if (result) {
 		if (chkVal == null || chkVal == '') {
 			alert("주소를 먼저 입력해주세요!");

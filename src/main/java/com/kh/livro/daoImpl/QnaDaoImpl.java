@@ -136,7 +136,7 @@ public class QnaDaoImpl implements QnaDao {
 	}
 
 	@Override
-	public List<QnaDto> myqnaList(QnaSearch search, String member_nickname) {
+	public List<QnaDto> myqnaList(QnaSearch search) {
 		logger.info("[qnaDao selectList]");
 		List<QnaDto> myqnalist = new ArrayList<QnaDto>();
 		try {
