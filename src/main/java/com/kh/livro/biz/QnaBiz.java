@@ -3,6 +3,7 @@ package com.kh.livro.biz;
 import java.util.List;
 
 import com.kh.livro.dto.QnaDto;
+import com.kh.livro.utils.MySearch;
 import com.kh.livro.utils.QnaSearch;
 
 public interface QnaBiz {
@@ -26,6 +27,5 @@ public interface QnaBiz {
 	// 답변여부(n으로)
 	public int flagdowndate(int qna_no);
 
-	// 내가 쓴 글 조회
-	public List<QnaDto> myqnaList(QnaSearch search);
+
 }

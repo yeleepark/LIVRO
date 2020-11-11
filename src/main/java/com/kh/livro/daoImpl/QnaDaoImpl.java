@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.livro.dao.QnaDao;
 import com.kh.livro.dto.QnaDto;
+import com.kh.livro.utils.MySearch;
 import com.kh.livro.utils.QnaSearch;
 
 @Repository
@@ -98,12 +99,6 @@ public class QnaDaoImpl implements QnaDao {
 		return sqlSession.selectOne(NAMESPACE + "getQnaListCnt", search);
 	}
 
-	// 검색
-	@Override
-	public List<QnaDto> searchList(QnaDto dto) {
-
-		return sqlSession.selectList(NAMESPACE + "searchList", dto);
-	}
 
 	// 답변여부 업데이트
 	@Override
@@ -135,18 +130,5 @@ public class QnaDaoImpl implements QnaDao {
 		return res;
 	}
 
-	@Override
-	public List<QnaDto> myqnaList(QnaSearch search) {
-		logger.info("[qnaDao selectList]");
-		List<QnaDto> myqnalist = new ArrayList<QnaDto>();
-		try {
-			myqnalist = sqlSession.selectList(NAMESPACE + "myqnalist", search);
-		} catch (Exception e) {
-			logger.info("[error] qnaDao selectList");
-			e.printStackTrace();
-		}
-
-		return myqnalist;
-	}
 
 }

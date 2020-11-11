@@ -13,6 +13,7 @@ public class Pagination {
 	private int endPage; // 끝번호
 	private boolean prev; // 이전페이지
 	private boolean next; // 다음페이지
+	private int MylistCnt; // 내가 쓴 글 갯수
 
 	// 현승 : notice 키워드
 	private String noticeKeyword;
@@ -124,6 +125,15 @@ public class Pagination {
 
 	public void setNoticeKeyword(String noticeKeyword) {
 		this.noticeKeyword = noticeKeyword;
+	}
+	
+	// 유정 내가 쓴 글 검색
+	public int getMylistCnt() {
+		return MylistCnt;
+	}
+
+	public void setMylistCnt(int mylistCnt) {
+		MylistCnt = mylistCnt;
 	}
 
 	// 게시글 페이징

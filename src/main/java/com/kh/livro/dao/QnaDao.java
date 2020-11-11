@@ -3,6 +3,7 @@ package com.kh.livro.dao;
 import java.util.List;
 
 import com.kh.livro.dto.QnaDto;
+import com.kh.livro.utils.MySearch;
 import com.kh.livro.utils.QnaSearch;
 
 
@@ -18,16 +19,11 @@ public interface QnaDao {
 	//페이징 
 	public int getQnaListCnt(QnaSearch search) throws Exception;
 	
-	//검색
-	public List<QnaDto> searchList(QnaDto dto);
-	
 	//답변여부(y로)
 	public int flagupdate(int qna_no);
 	
 	//답변여부(n으로)
 	public int flagdowndate(int qna_no);
 	
-	//내가 쓴 글 조회
-	public List<QnaDto> myqnaList(QnaSearch search);
 }
 
