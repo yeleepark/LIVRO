@@ -22,20 +22,35 @@
         connection.open = (event) => {
         }
         
-        connection.onmessage = appendDIV;
+		
         
         
         /*
            비로그인 일 때, 접속해 있는 사람들에게 누가 들어 왔다라는 표현 없음,
            로그인 일 때, userid가 들어 왔다라고 표현 해줌.
         */
+			
         connection.onopen = (event) => {
+				//비로그인 일 때 조건
            if(userId.value == ''){
               
            }else{	
-            	connection.send('님이 들어 왔습니다.'); //연결하나당 들어왔을 때 모두에게 보이는 MESSAGE              				
+				//로그인 일 때
+				if(event.userid != userId.value){
+				connection.send('님이 들어 왔습니다.'); //연결하나당 들어왔을 때 모두에게 보이는 MESSAGE
+				console.log(event.data);
+				console.log(event.userid);
+				console.log(event);             				
+				}else{
+				connection.send('이건 분기처리');			
+					
+				}
            }
         }
+	
+			connection.onmessage = appendDIV;
+			console.log(onmessage);
+
         connection.onclose = function() {
            if (connection.getAllParticipants().length) {
               document.querySelector('h1').innerHTML =
@@ -120,6 +135,7 @@
             } else {
                 div.innerHTML = (event.userid) + ':' + (event.data || event);
             }
+					        
             console.log(event.userid + ' <-상대방 || 나->' + connection.userid);
             chatContainer.appendChild(div);
             div.tabIndex = 0;
