@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kh.livro.biz.QnaBiz;
 import com.kh.livro.dao.QnaDao;
 import com.kh.livro.dto.QnaDto;
+import com.kh.livro.utils.MySearch;
 import com.kh.livro.utils.Pagination;
 import com.kh.livro.utils.QnaSearch;
 
@@ -42,8 +43,8 @@ public class QnaBizImpl implements QnaBiz {
 	}
 
 	@Override
-	public int delete(int notice_no) {
-		return qnaDao.delete(notice_no);
+	public int delete(int qna_no) {
+		return qnaDao.delete(qna_no);
 	}
 
 	@Override
@@ -61,11 +62,6 @@ public class QnaBizImpl implements QnaBiz {
 	public int flagdowndate(int qna_no) {
 
 		return qnaDao.flagdowndate(qna_no);
-	}
-
-	@Override
-	public List<QnaDto> myqnaList(QnaSearch search) {
-		return qnaDao.myqnaList(search);
 	}
 
 }

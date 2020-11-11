@@ -23,28 +23,12 @@
 <link rel="stylesheet" href="resources/css/qna_list.css">
 <script type="text/javascript" src="resources/js/qnaList.js">
 </script>
-<script>
-
-
-function myQna(){
-	var logininfo = document.getElementById('myqna_chk_info').value;
-	console.log(logininfo);
-	if(logininfo == null || logininfo == ''){
-		alert("로그인 후 이용해주세요!");
-		location.href='loginForm.do';
-	}else{
-		location.href="qnalist.do?member_nickname="+ logininfo;
-	}
-}
-
-
-</script>
 
 <body>
 <jsp:include page="/WEB-INF/views/header/header.jsp" />
 	<div class="board_list_wrap">
 		<div class="board_list">
-			<span><i class="far fa-comment-dots"></i>Q&A</span>
+			<span><a href = "qnalist.do"><i class="far fa-comment-dots"></i>Q&A</a></span>
 			<!-- 버튼 -->
 			<div class="board_list_btns">
 				<input type="button" value="내가 쓴 글" onclick="myQna();" class="qna_list_btn">

@@ -25,7 +25,7 @@
 	<!-- 검색리스트 -->
 	<div class="board_list_wrap">
 		<div class="board_list" >
-		<span><i class="far fa-bell"></i>공지사항</span> 
+		<span><a href="notice.do"><i class="far fa-bell"></i>공지사항</a></span>
 			<div class="board_list_head">
 				<div class="notice_no">번호</div>
 				<div class="notice_title">제목</div>

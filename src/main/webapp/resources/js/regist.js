@@ -282,7 +282,6 @@ var emailcode = null;
 function emailSend() {
 	arr[5] = false;
 	var member_email = $("#member_email").val().trim();
-	alert(member_email);
 	$.ajax({
 		url: "emailSend.do?member_email=" + member_email,
 		type: "get",
@@ -304,7 +303,6 @@ function emailSend() {
 //이메일 인증
 function emailCodeChk() {
 	arr[5] = false;
-	alert("emailcode" + emailcode);
 	var inputemailcode = $("#input_email_auth_code").val().trim();
 
 	if (emailcode == inputemailcode) {
