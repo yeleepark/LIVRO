@@ -52,5 +52,8 @@ public interface MemberDao {
 	//userPage에서 pw 변경
 	public int userPw(MemberDto dto);
 	
+	//회원탈퇴
+	public int delete(String delMem);
+	
 
 }

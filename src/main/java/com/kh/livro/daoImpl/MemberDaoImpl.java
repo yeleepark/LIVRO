@@ -223,5 +223,20 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		return res;
 	}
+
+	//회원탈퇴
+	@Override
+	public int delete(String delMem) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "delete", delMem);
+		} catch (Exception e) {
+			logger.info("[ERROR] delete");
+			e.printStackTrace();
+		}
+		return res;
+	}
 	
 }
