@@ -103,8 +103,9 @@
 			<div class="board_list_search">
 				<form action="noticeSearch.do" method="get">
 					<input type="text" class="noticeSearch" name="noticeKeyword"
-						placeholder="글 + 제목 검색"> <input type="submit"
-						class="noticeBtn" value="검색하기">
+						placeholder="글 + 제목"> <input type="submit"
+						class="noticeBtn" value="검색">
+						<input type="button" class="noticeBtn" value="목록" onclick="location.href='notice.do'">
 				</form>
 			</div>
 

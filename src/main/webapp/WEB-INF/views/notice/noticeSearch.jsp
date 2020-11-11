@@ -16,6 +16,8 @@
 <script type="text/javascript" src="resources/js/noticeSearch.js">
 
 </script>
+<script src="https://kit.fontawesome.com/d28db34e8b.js"
+	crossorigin="anonymous" defer></script>
 
 </head>
 <body>
@@ -23,7 +25,7 @@
 	<!-- 검색리스트 -->
 	<div class="board_list_wrap">
 		<div class="board_list" >
-		<span>공지사항</span> 
+		<span><i class="far fa-bell"></i>공지사항</span> 
 			<div class="board_list_head">
 				<div class="notice_no">번호</div>
 				<div class="notice_title">제목</div>
@@ -78,8 +80,9 @@
 		<form action="noticeSearch.do" method="get">
 			<input type="hidden" name="page" value="1">
 			<input type="hidden" name="range" value="1">
-			<input type="text" class="noticeSearch" name="noticeKeyword" placeholder="글 + 제목 검색">
-			<input type="submit" class="noticeBtn" value="검색하기">
+			<input type="text" class="noticeSearch" name="noticeKeyword" placeholder="글 + 제목">
+			<input type="submit" class="noticeBtn" value="검색">
+			<input type="button" class="noticeBtn" value="목록" onclick="location.href='notice.do'">
 		</form>
 	</div>
 	<input type="hidden" id="noticeKeyword" value="${searchpagination.noticeKeyword }">
