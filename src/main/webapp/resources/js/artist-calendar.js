@@ -174,7 +174,7 @@ calendar.on('beforeDeleteSchedule', scheduleData => {
 });
 
 // 팝업 디테일 - 리스트 출력 완료
-for (var i = 0; getCalNo.length; i++){
+for (var i = 0; i < getCalNo.length; i++){
 	
 	var startDate = parseDate(getCalStart[i].value);
 	var endDate = parseDate(getCalEnd[i].value);

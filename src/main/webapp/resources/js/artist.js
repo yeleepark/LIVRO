@@ -113,7 +113,6 @@ function unfollow(e){
 
 // ------프로필변경
 function updateProfile(){
-    window.name = "artistPage.do";
-    window.open("updateForm.do", "insert",
+    window.open("updateForm2.do", "insert",
                 "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
 }

@@ -26,7 +26,7 @@ function pay(){
                     }, 
                     order_id: '고유order_id_1234', 			//고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
                     params: { member_id, dona_nickname },
-                    account_expire_at: '2020-10-25', 		// 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
+                    account_expire_at: '2021-11-25', 		// 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
                 }).error(function (data) {
                     console.log(data);
                 }).cancel(function (data) {

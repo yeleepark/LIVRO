@@ -37,8 +37,13 @@ public class ProfileController {
 	
 	//프로필 사진 업데이트 폼
 	@RequestMapping(value="/updateForm.do")
-	public String uploadForm() {
+	public String updateForm() {
 		return "mypage/updateForm";
+	}
+	
+	@RequestMapping(value="/updateForm2.do")
+	public String updateForm2() {
+		return "mypage/updateForm2";
 	}
 	
 	//프로필 사진 업로드	
@@ -150,6 +155,7 @@ public class ProfileController {
 		
 		logger.info("프로필 업로드");
 		
+		
 		// MultipartFile : 스프링에서 제공하는 인터페이스.
 		// profile란 변수에 업로드한 사진 데이터를 담는다
 		MultipartFile profile = profiledto.getProfile();
@@ -233,6 +239,11 @@ public class ProfileController {
 		profiledto.setProfile_path(profile_path); // 경로 저장
 		
 		profileBiz.profileUpdate(profiledto); //db에 값 업데이트
+		
+		String referer = (String)request.getHeader("REFERER");
+		if(referer.contains("updateForm2.do")) {
+			return "redirect:artist.do?member_id="+member_id ;
+		}
 		
 		return "redirect:mypageIndex.do";
 	}
