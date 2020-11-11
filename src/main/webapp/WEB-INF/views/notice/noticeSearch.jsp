@@ -35,7 +35,7 @@
 		<c:choose>
 		<c:when test="${empty searchlist }">
 				<div class="board_list_body">
-					<div>작성된 글	이 없습니다</div>
+					<div>작성된 공지사항이 없습니다</div>
 				</div>
 		</c:when>
 		<c:otherwise>
