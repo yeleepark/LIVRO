@@ -36,10 +36,6 @@ import com.kh.livro.utils.RandomCode;
 @Controller
 public class MemberController {
 
-	private static final LoginGoogleBO loginNaverBO = null;
-
-	private Logger logger = LoggerFactory.getLogger(MemberController.class);
-
 	@Autowired
 	private MemberBiz memberBiz;
 	@Autowired
@@ -63,13 +59,13 @@ public class MemberController {
 
 	@RequestMapping("/loginForm.do")
 	public String login(Model model, HttpSession session) {
-		logger.info("[loginForm.do]");
+	
 
 		String naverAuthUrl = loginnaverBO.getAuthorizationUrl(session);
-		logger.info("네이버 : " + naverAuthUrl);
+		
 
 		String googleAuthUrl = logingoogleBO.getAuthorizationUrl(session);
-		logger.info("구글 : " + googleAuthUrl);
+		
 
 		model.addAttribute("naver", naverAuthUrl);
 		model.addAttribute("google", googleAuthUrl);
@@ -80,7 +76,6 @@ public class MemberController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> login(@RequestBody MemberDto dto, HttpSession session, Model model) {
-		logger.info("[login.do]");
 
 		// member_id를 가지고가서 아이디랑 비밀번호를 res에 담아서 갖고옴
 		MemberDto res = memberBiz.encryptchk(dto.getMember_id());
@@ -117,11 +112,11 @@ public class MemberController {
 	@RequestMapping(value = "/success.do")
 	public String success(HttpServletRequest request, RedirectAttributes redirectAttributes, HttpSession session,
 			Model model) {
-		logger.info("[success.do]");
+		
 
 		String referer = request.getHeader("Referer");
 
-		logger.info(referer);
+		
 		
 		if (referer.contains("broadDetail.do")) {
 			return "redirect:" + referer;
@@ -142,20 +137,18 @@ public class MemberController {
 
 	@RequestMapping("/registForm.do")
 	public String regist() {
-		logger.info("[registForm.do]");
+		
 		return "regist/regist";
 	}
 
 	@RequestMapping("/join.do")
 	public String registRes(MemberDto dto, Model model, String member_addr1, String member_addr2, String member_addr3) {
-		logger.info("[join.do]");
+	
 		// 주소 db에 넣어주기
 		String member_addr = member_addr1 + " " + member_addr2 + " " + member_addr3;
 		dto.setMember_addr(member_addr);
 
-		logger.info("[암호화 안된 패스워드 :]" + dto.getMember_pw());
-		logger.info("[암호화 안된 패스워드 체크 :]" + dto.getMember_pwchk());
-
+		
 		// 비밀번호 암호화
 		String encryPassword = PwSHA256.encrypt(dto.getMember_pw());
 		String encryPassword_chk = PwSHA256.encrypt(dto.getMember_pwchk());
@@ -163,8 +156,7 @@ public class MemberController {
 		dto.setMember_pw(encryPassword);
 		dto.setMember_pwchk(encryPassword_chk);
 
-		logger.info("[암호화 된 패스워드 : ]" + dto.getMember_pw());
-		logger.info("[암호화 된 패스워드 체크 :]" + dto.getMember_pwchk());
+
 
 		int res = memberBiz.join(dto);
 		if (res > 0) {
@@ -215,8 +207,6 @@ public class MemberController {
 		OAuth2AccessToken oauthToken = loginnaverBO.getAccessToken(session, code, state);
 		String apiResult = loginnaverBO.getUserProfile(oauthToken);
 
-		logger.info(" apiResult : " + apiResult);
-
 		JsonObject object = JsonParser.parseString(apiResult).getAsJsonObject().get("response").getAsJsonObject();
 
 		MemberDto naverdto = new MemberDto();
@@ -225,8 +215,6 @@ public class MemberController {
 		naverdto.setMember_pw(object.get("id").toString().split("\"")[1]);
 		naverdto.setMember_email(object.get("email").toString().split("\"")[1]);
 		naverdto.setMember_name(object.get("name").toString().split("\"")[1]);
-
-		logger.info(">>>naverdto :" + naverdto);
 
 		MemberDto res = memberBiz.selectOne(naverdto);
 		if (res == null) {
@@ -245,13 +233,10 @@ public class MemberController {
 	public String googlecallback(@RequestParam String code, @RequestParam String state, HttpSession session)
 			throws IOException, InterruptedException, ExecutionException {
 
-		logger.info(">> [CONTROLLER-USERINFO] GOOGLE callback");
 		// 사용자 정보 받아옴.
 		OAuth2AccessToken oauthToken = logingoogleBO.getAccessToken(session, code, state);
-		logger.info("@@@@ session : " + session + "  code : " + code + "   state : " + state);
 
 		String google = logingoogleBO.getUserProfile(oauthToken);
-		logger.info("@@@ apiResult : " + google);
 
 		MemberDto googledto = new MemberDto();
 
@@ -285,13 +270,8 @@ public class MemberController {
 	@RequestMapping(value = "/idchk.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> id(@RequestBody MemberDto dto, HttpSession session, Model model) {
-		logger.info(">>>>>>>>[id.chk.do]");
-
-		logger.info("NAME" + dto.getMember_name());
-		logger.info("PHONE" + dto.getMember_phone());
 
 		MemberDto res = memberBiz.idfind(dto);
-		logger.info("[res]>>>>>" + res);
 
 		boolean check = false;
 		// 입력받은 값이 있다면
@@ -311,16 +291,13 @@ public class MemberController {
 	   //아이디 찾기 후 리턴 
 	   @RequestMapping(value = "/goid.do")
 	   public String goid(MemberDto dto, HttpSession session, Model model) {
-	      logger.info(">>>>>goid.do");
-	      
-	      
+	        
 	      return "find/find";
 	   }
 
 	// sns 로그인
 	@RequestMapping(value = "/snsjoin.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String snsjoin(MemberDto dto, Model model, String member_addr1, String member_addr2, String member_addr3) {
-		logger.info(">>>[SNS sign up]");
 
 		String member_addr = member_addr1 + " " + member_addr2 + " " + member_addr3;
 		dto.setMember_addr(member_addr);
@@ -344,15 +321,10 @@ public class MemberController {
 	@RequestMapping(value = "/pwchk.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> pw(@RequestBody MemberDto dto, HttpSession session, Model model) {
-		logger.info(">>>>>>>>[pw.chk.do]");
-
-		logger.info("ID    " + dto.getMember_id());
-		logger.info("EMAIL   " + dto.getMember_email());
 
 		String member_email = dto.getMember_email();
 
 		MemberDto res = memberBiz.pwfind(dto);
-		logger.info("[res]>>>>>" + res);
 
 		boolean check = false;
 		// 입력받은 값이 있다면
@@ -369,7 +341,6 @@ public class MemberController {
 		RandomCode randomcode = new RandomCode();
 		// 랜덤코드를 생성해주는 메소드 호출
 		String ran = randomcode.excuteGenerate();
-		logger.info("1." + ran);
 		session.setAttribute("pw", ran);
 		String subject = "비밀번호 찾기 인증 코드 발급 안내입니다.";
 		StringBuilder sb = new StringBuilder();
@@ -390,12 +361,8 @@ public class MemberController {
 	@RequestMapping(value = "/pwupdate.do")
 	public String pwupdate(Model model, String member_id, HttpSession session) {
 
-		logger.info("member_id :" + member_id);
-
 		session.getAttribute(member_id);
 		model.addAttribute("member_id", member_id);
-
-		logger.info(">>>>> Controller PWupdate");
 
 		return "find/pwupdate";
 
@@ -412,10 +379,6 @@ public class MemberController {
 		member.setMember_pw(member_pw);
 		member.setMember_pwchk(member_pwchk);
 
-		logger.info(">>>ID : " + member.getMember_id());
-		logger.info(">>>PW : " + member.getMember_pw());
-		logger.info(">>>pwChk" + member.getMember_pwchk());
-		
 		String encryPassword = PwSHA256.encrypt(member.getMember_pw());
 		String encryPassword_chk = PwSHA256.encrypt(member.getMember_pwchk());
 
@@ -442,13 +405,7 @@ public class MemberController {
 	@ResponseBody
 	public Map<String, Boolean> userupdate(@RequestBody MemberDto dto, Model model, HttpSession session) {
 
-		logger.info("!!!!DTO : " + dto);
-
 		int res = memberBiz.userupdate(dto);
-
-		logger.info(">>>> updateDto : " + dto);
-
-		logger.info(">>>USER RES : " + res);
 
 		MemberDto rdto = new MemberDto();
 
@@ -524,8 +481,6 @@ public class MemberController {
 
 
 			int res = memberBiz.arupdate(dto);
-
-			logger.info(">>>Artist : " + res);
 
 			MemberDto rdto = new MemberDto();
 

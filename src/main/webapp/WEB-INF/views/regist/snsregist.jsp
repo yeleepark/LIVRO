@@ -65,7 +65,7 @@
                </div>
                
                <input type="submit" value="Sign Up" id="confirm" class="goJoinBtn">
-               <input type="button" value="홈으로" class="goJoinBtn" onclick="historyback();">
+               <input type="button" value="홈으로" class="goJoinBtn" onclick="location.href='main.do'">
          
          </form>
       </div>   
