@@ -104,6 +104,13 @@ public class MemberBizImpl implements MemberBiz {
 		
 		return memberDao.userPw(dto);
 	}
+
+	//회원탈퇴
+	@Override
+	public int delete(String delMem) {
+		
+		return memberDao.delete(delMem);
+	}
 	
 
 }

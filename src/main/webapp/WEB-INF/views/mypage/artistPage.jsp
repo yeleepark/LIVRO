@@ -59,6 +59,11 @@
 						<input type="hidden" name="memebr_role" id="member_role" value="${logindto.member_role }">
 						<input type="button" value="수정" onclick="arup()" class="btn"/>
 						<input type="button" value="비밀번호 수정" onclick="location.href='userPw.do'" class="pbtn">
+						 <form action="deleteres.do">
+                  		<input type="hidden" name="delMem" value="${logindto.member_id}">	
+	                    <input type="submit" value="회원탈퇴" class="deleteres" >
+                  		</form>
+						
 					</div>
 					<div class="tab-1-right">
 						<p>프로필 사진</p>

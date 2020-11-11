@@ -9,8 +9,6 @@ import java.util.concurrent.ExecutionException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -505,6 +503,35 @@ public class MemberController {
 			map.put("check", check);
 
 			return map;
+		}
+		
+		
+	//회원탈퇴
+		@RequestMapping(value = "/deleteres.do")
+		public String delete(String delMem, Model model, HttpSession session) {
+			
+		
+			
+
+			int res = memberBiz.delete(delMem);
+			
+			
+			if (res > 0 ) {
+				model.addAttribute("msg", "회원탈퇴 성공!");
+				model.addAttribute("url", "/main.do");
+			
+				return "redirect";
+			
+			}else{
+				model.addAttribute("msg", "회원탈퇴 실패..");
+				model.addAttribute("url", "/mypageIndex.do");
+				
+				return "redirect";
+				
+			}
+			
+			
+			
 		}
 		
 

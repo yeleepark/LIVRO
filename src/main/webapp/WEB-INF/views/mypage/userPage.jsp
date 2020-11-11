@@ -80,7 +80,10 @@
                   <div id="upcheck"></div>
                   <input type="button" class="nick" value="수정" onclick="userup()"/>
                   <input type="button" value="비밀번호 수정" onclick="location.href='userPw.do'" class="chang">
-                  
+                  <form action="deleteres.do">
+                  		<input type="hidden" name="delMem" value="${logindto.member_id}">	
+	                    <input type="submit" value="회원탈퇴" class="deleteres" >
+                  </form>
                </div>
             </div>
          </div>

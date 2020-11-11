@@ -50,4 +50,7 @@ public interface MemberBiz {
 	//userPw 변경
 	public int userPw(MemberDto dto);
 	
+	//회원탈퇴
+	public int delete(String dleMem);
+	
 }
