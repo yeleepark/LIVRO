@@ -26,6 +26,20 @@
     </script>
 </head>
 <body>
+    <script>
+    $(document).ready(function(){
+        $('section').css('background-image', 'none' );
+        
+    })
+    $(window).on("beforeunload", function(){
+    	var userId = $("#member_Id");
+    	if(userId.val() == ''){
+    		
+    	}else{
+         connection.send('님이 나가셨습니다.');    		
+    	}
+    });
+    </script>
    <header>
        <jsp:include page="/WEB-INF/views/header/header.jsp"/>
    </header>
