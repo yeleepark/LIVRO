@@ -40,6 +40,7 @@
     	}
     });
     </script>
+
    <header>
        <jsp:include page="/WEB-INF/views/header/header.jsp"/>
    </header>
@@ -141,7 +142,7 @@
      		</div>
       	</div>
      </div>
-     
+
      <script src="resources/js/broadcast_detail_rtc.js"></script>
      <script src="resources/js/broadcast_detail.js"></script>
      <script type="text/javascript">
