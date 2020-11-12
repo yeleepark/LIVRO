@@ -5,29 +5,34 @@
 	<select id="selectList" resultType="QnaDto">
 		SELECT *
 		FROM (
-			SELECT ROW_NUMBER() OVER (ORDER BY QNA_NO) NUM, Q.*
-			FROM QNA_BOARD Q
-			
-			<trim prefix="WHERE" prefixOverrides="AND|OR">
-				<if
-					test="searchType=='title' and keyword != null and keyword != '' ">
-					AND QNA_TITLE LIKE '%'||#{keyword}||'%'
-				</if>
-				<if
-					test="searchType=='writer' and keyword != null and keyword != '' ">
-					AND MEMBER_NICKNAME LIKE '%'||#{keyword}||'%'
-				</if>
-			</trim>
-			ORDER BY Q.QNA_REGDATE DESC
+		SELECT ROW_NUMBER() OVER (ORDER BY QNA_NO) NUM, Q.*
+		FROM QNA_BOARD Q
+
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if
+				test="searchType=='title' and keyword != null and keyword != '' ">
+				AND QNA_TITLE LIKE '%'||#{keyword}||'%'
+			</if>
+			<if
+				test="searchType=='writer' and keyword != null and keyword != '' ">
+				AND MEMBER_NICKNAME LIKE '%'||#{keyword}||'%'
+			</if>
+			<if test="member_nickname != null and member_nickname != ''">
+				AND MEMBER_NICKNAME = #{member_nickname}
+			</if>
+		</trim>
+		ORDER BY Q.QNA_REGDATE DESC
 		)
 		WHERE NUM
 		BETWEEN #{startList} +1
-		AND #{startList} +
+		AND
+		#{startList} +
 		#{listSize} -1
 	</select>
 	<select id="selectOne" resultType="QnaDto" parameterType="int">
 		SELECT
-		QNA_NO, MEMBER_NICKNAME, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_SECRET
+		QNA_NO, MEMBER_NICKNAME, QNA_TITLE, QNA_CONTENT, QNA_REGDATE,
+		QNA_SECRET
 		FROM
 		QNA_BOARD
 		WHERE QNA_NO = #{qna_no}
@@ -46,7 +51,8 @@
 	<update id="update" parameterType="QnaDto">
 		UPDATE QNA_BOARD
 		SET
-		QNA_TITLE = #{qna_title},
+		QNA_TITLE =
+		#{qna_title},
 		QNA_CONTENT = #{qna_content},
 		QNA_SECRET =
 		#{qna_secret}
@@ -90,21 +96,11 @@
 					AND MEMBER_NICKNAME LIKE '%'||#{keyword}||'%'
 				</if>
 			</if>
+			<if test="member_nickname != null and member_nickname != ''">
+				AND MEMBER_NICKNAME = #{member_nickname}
+			</if>
 		</trim>
 	</select>
-	
-	<!-- 내가 쓴 글 조회 -->
-	<select id="myqnalist" resultType="QnaDto">
-	SELECT *
-	FROM (
-	SELECT ROW_NUMBER() OVER (ORDER BY QNA_NO) NUM, Q.*
-	FROM QNA_BOARD Q
-	WHERE MEMBER_NICKNAME = #{member_nickname}
-	ORDER BY Q.QNA_REGDATE DESC
-	)
-	WHERE NUM
-	BETWEEN #{startList} +1
-	AND #{startList} +
-	#{listSize} -1
-	</select>
+
+
 </mapper>

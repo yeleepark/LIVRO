@@ -29,7 +29,7 @@
 	<!-- 리스트 -->
 	<div class="board_list_wrap">
 		<div class="board_list">
-			<span><i class="far fa-bell"></i>공지사항</span>
+			<span><a href="notice.do"><i class="far fa-bell"></i>공지사항</a></span>
 			<div id="insert_block" class="board_list_btn">
 				<c:if test="${logindto.member_role eq 'M'}">
 					<input type="button" class="noticeBtn" value="글작성"
