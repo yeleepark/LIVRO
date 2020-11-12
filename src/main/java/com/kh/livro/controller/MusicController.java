@@ -117,10 +117,7 @@ public class MusicController {
 	
 	@RequestMapping(value="deletemusic.do")
 	public String delete(Model model, int music_no, String member_id) {
-		System.out.println(music_no);
 		String music_savename = musicBiz.musicSavename(music_no);
-		System.out.println(music_savename);
-		System.out.println(path+"/"+music_savename+"dddddddddddddddddddd");
 		
 		File file = new File(path+"/"+music_savename); 
 		if( file.exists() ){ 
