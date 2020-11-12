@@ -50,6 +50,10 @@
 			<mapping path="/*" />
 			<beans:bean class="com.kh.livro.interceptor.LoginInterceptor"></beans:bean>
 		</interceptor>
+		<interceptor>
+			<mapping path="/*" />
+			<beans:bean class="com.kh.livro.interceptor.MypageInterceptor"></beans:bean>
+		</interceptor>
 	</interceptors>
 	
 </beans:beans>
