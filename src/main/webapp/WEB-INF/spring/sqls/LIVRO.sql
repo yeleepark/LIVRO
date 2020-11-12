@@ -620,6 +620,7 @@ FOR EACH ROW
 BEGIN ~ END 
 --실행할 쿼리
 --:NEW, :OLD는 각각 수정전(추가전), 수정후(추가후) DB를 의미
+--쿼리 마지막에 ; 안 붙이면 ORA-04098: trigger '트리거명' is invalid and failed re-validation (0 rows affected) 오류발생
 --그 외에는 DML 과 동일
 
 CREATE TRIGGER MEMBER_ID_ARTIST_UPDATE
