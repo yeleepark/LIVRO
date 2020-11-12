@@ -9,7 +9,7 @@
 }
 
 .wrapper {
-/* 	border: 2px solid black; */
+	/* 	border: 2px solid black; */
 	width: 1200px;
 	margin: 0 auto;
 	display: flex;
@@ -25,7 +25,7 @@
 	margin: 0 auto;
 }
 /* 방송문구 */
-.live_start>p {
+.live_start>.starter_notice {
 	display: inline-block;
 	font-size: 37px;
 	margin-bottom: 25px;
@@ -56,7 +56,8 @@
 
 /* foreach 문 돌면서 생성되는 큰 div */
 .brolist_wrapper {
-	width: 200px; margin : 40px;
+	width: 200px;
+	margin: 40px;
 	position: relative;
 	transition: transform 0.1s ease-in-out, box-shadow 0.1s;
 	box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.3);
@@ -119,4 +120,22 @@
 	white-space: nowrap;
 	width: auto;
 	height: 20px;
+}
+
+/* 방송하기 버튼 앞 이모티콘 */
+.live_start>.starter_btn {
+	display: inline-block;
+	font-size: 30px;
+	margin-left: 7px;
+	cursor: pointer;
+}
+
+/* 방송하기 버튼*/
+#broadgo {
+	border: none;
+	cursor: pointer;
+	font-size: 25px;
+}
+.starter_btn:hover, input:hover{
+	color: 	#4682B4;
 }
