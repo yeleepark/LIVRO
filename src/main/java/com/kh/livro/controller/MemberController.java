@@ -517,9 +517,10 @@ public class MemberController {
 			
 			
 			if (res > 0 ) {
+				
 				model.addAttribute("msg", "회원탈퇴 성공!");
 				model.addAttribute("url", "/main.do");
-			
+				session.invalidate();
 				return "redirect";
 			
 			}else{
