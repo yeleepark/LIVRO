@@ -70,6 +70,14 @@ public class BroadcastController {
 
 		return "redirect:broadcast.do";
 	}
+	
+	@RequestMapping("/closeAjax.do")
+	public void livecloseAjax(Model model, BroadcastDto dto) {
+
+		
+		broadcastBiz.broadCastClose(dto);
+		
+	}
 
 	// 스크롤 페이징
 	
