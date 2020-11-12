@@ -153,6 +153,7 @@
 		JOIN MEMBER ME
 		ON MU.MEMBER_ID = ME.MEMBER_ID
 		WHERE MU.MEMBER_ID = #{member_id} 
+		ORDER BY MU.MUSIC_DATE DESC
 	</select>
 	
 	<select id="selectOne" resultType="MemberDto">

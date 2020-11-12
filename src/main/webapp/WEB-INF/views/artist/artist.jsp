@@ -89,10 +89,12 @@
 									<div class="music_block">
 										<div class="music_tags">
 											<div class="music_iconbox">
-												<img alt="라이브로 아이콘" src="resources/img/livro_icon.png"
-													class="livro_icon">
+												<img alt="라이브로 아이콘" src="resources/img/livro_icon.png" class="livro_icon">
 											</div>
 											<div class="music_explain">
+												<p class="music_date_tag">
+													<fmt:formatDate value="${musicdto.music_date }" pattern="yyyy-MM-dd a h:ss" />
+												</p>
 												<p class="music_title_tag">${musicdto.music_title }</p>
 												<p class="music_content_tag">${musicdto.music_content }</p>
 											</div>
