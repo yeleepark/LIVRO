@@ -11,4 +11,5 @@ public interface MusicDao {
 	public int insert(MusicDto dto);
 	public int update(MusicDto dto);
 	public int deletemusic(int music_no);
+	public String musicSavename(int music_no);
 }

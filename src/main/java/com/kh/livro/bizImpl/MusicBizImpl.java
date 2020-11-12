@@ -33,4 +33,9 @@ public class MusicBizImpl implements MusicBiz {
 		return musicDao.deletemusic(music_no);
 	}
 
+	@Override
+	public String musicSavename(int music_no) {
+		return musicDao.musicSavename(music_no);
+	}
+
 }

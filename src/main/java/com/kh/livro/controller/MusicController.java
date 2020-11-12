@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -118,8 +117,21 @@ public class MusicController {
 	
 	@RequestMapping(value="deletemusic.do")
 	public String delete(Model model, int music_no, String member_id) {
-		System.out.println(music_no);
-		model.addAttribute("res", musicBiz.deletemusic(music_no));
+		String music_savename = musicBiz.musicSavename(music_no);
+		
+		File file = new File(path+"/"+music_savename); 
+		if( file.exists() ){ 
+			if(file.delete()) { 
+				System.out.println("파일삭제 성공"); 
+				model.addAttribute("res", musicBiz.deletemusic(music_no));
+			} else { 
+				System.out.println("파일삭제 실패"); 
+			} 
+			
+		} else { 
+			System.out.println("파일이 존재하지 않습니다."); 
+		} 
+		
 		return "redirect:artist.do?member_id="+member_id;
 	}
 	

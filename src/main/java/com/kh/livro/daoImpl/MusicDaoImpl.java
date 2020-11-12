@@ -58,4 +58,16 @@ public class MusicDaoImpl implements MusicDao {
 		return res;
 	}
 
+	@Override
+	public String musicSavename(int music_no) {
+		String music_savename = null;
+		
+		try {
+			music_savename = sqlSession.selectOne(NAMESPACE+"musicSavename", music_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return music_savename;
+	}
+
 }
