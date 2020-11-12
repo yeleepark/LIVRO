@@ -22,7 +22,25 @@
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-
+   <script type="text/javascript">
+   $(window).on("beforeunload", function(){
+      let member_id = $("#member_id").val();
+       let member_nickname = $('#member_nickname').val();
+       let broadcast_title = $("#broadcast_title").val();
+       let broadcast_content = $("#broadcast_content").val();
+       let broadcast_category = $("#broadcast_category").val();
+       console.log(member_id, broadcast_title, broadcast_content, broadcast_category);
+       $.ajax({
+          type : "POST",
+          url : "closeAjax.do",
+          data : {member_id: member_id,
+                    member_nickname: member_nickname,
+                broadcast_title: broadcast_title, 
+                broadcast_content: broadcast_content,
+                broadcast_category: broadcast_category}
+  })
+   });
+   </script>
 <header>
    <jsp:include page="/WEB-INF/views/header/header.jsp"/>
 </header>

@@ -80,7 +80,9 @@
            connection.checkPresence(roomId.value, (isRoomExist) => {
                if (isRoomExist === true) {
                      console.log('join했습니다');
+
                      document.getElementById('section2').style.display = 'flex';
+
                      connection.join(roomId.value);
                      connection.onstream = (event) => {
                          let video = event.mediaElement;
@@ -88,10 +90,15 @@
                              localStream.stop();
                          });
                          localVideosContainer.appendChild(video);
-							connection.send('님이 들어왔습니다.');
+						if(userId.value == ''){
+							
+						}else{
+							
+		                connection.send('님이 들어왔습니다');
+						}
                      }
-                 }else{
-                 alert('오류');
+                 } else {
+                 alert('종료된 방송입니다');
                  location.href='broadcast.do';
               }
            })
