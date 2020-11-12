@@ -1,6 +1,6 @@
+
 #footer {
 	width: 100%;
-	position: relative;
 	bottom: -70px;
 	z-index: 9999;
 	background-color: #ededed;
@@ -9,6 +9,7 @@
 	align-items: center;
 	padding : 10px;
 	font-size: 0.8rem;
+	margin-top: 20px;
 }
 
 #footer a{

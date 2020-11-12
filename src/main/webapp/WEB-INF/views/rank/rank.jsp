@@ -90,12 +90,10 @@
 				</div>
 			</div>
 		</div>
-		
 
-
-		<script src="https://d3js.org/d3.v6.min.js"></script>
-		<script type="text/javascript" src="resources/js/rank.js"></script>
-
+	<script src="https://d3js.org/d3.v6.min.js"></script>
 	</section>
+	<script type="text/javascript" src="resources/js/rank.js"></script>
+	<jsp:include page="/WEB-INF/views/footer/footer.jsp"/>
 </body>
 </html>

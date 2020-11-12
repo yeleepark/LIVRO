@@ -44,7 +44,8 @@ section {
 
 #new-title {
 	display: inline-block;
-	border-radius: 3px; padding : 3px 5px;
+	border-radius: 3px; 
+	padding : 3px 5px;
 	background-color: white;
 	padding: 3px 5px
 }

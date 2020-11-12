@@ -6,6 +6,11 @@
 	max-width: 1920px;
 }
 
+body{
+	position: relative !important;
+	min-height: 100vh;
+}
+
 button:focus,
 input:focus{
 	outline: none;

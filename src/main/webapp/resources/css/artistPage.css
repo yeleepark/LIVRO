@@ -11,6 +11,7 @@ section {
 	display: flex;
 	padding-top : 100px;
 	margin-bottom: 20px;
+	min-height: 100vh;
 }
 
 /* 탭메뉴 */
