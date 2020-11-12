@@ -63,6 +63,10 @@
 			  <beans:property name="useCacheControlNoStore" value="true" />
     	  </beans:bean>
 		</interceptor>
+		<interceptor>
+			<mapping path="/*" />
+			<beans:bean class="com.kh.livro.interceptor.noticeInterceptor"></beans:bean>
+		</interceptor>
 	</interceptors>
 	
 </beans:beans>
