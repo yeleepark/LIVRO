@@ -21,4 +21,10 @@
 		FROM MUSIC
 		WHERE MUSIC_NO = #{music_no}
 	</delete>
+	
+	<select id="musicSavename" resultType="String" parameterType="int">
+		SELECT MUSIC_SAVENAME
+		FROM MUSIC
+		WHERE MUSIC_NO = #{music_no}
+	</select>
 </mapper>
