@@ -1,7 +1,6 @@
 #footer {
 	width: 100%;
 	position : absolute;
-	bottom: -70px;
 	z-index: 9999;
 	background-color: #ededed;
 	display: flex;
@@ -9,7 +8,6 @@
 	align-items: center;
 	padding : 10px;
 	font-size: 0.8rem;
-	margin-top: 20px;
 }
 
 #footer a{
