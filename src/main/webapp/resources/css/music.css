@@ -1,6 +1,8 @@
 .music-table {
 	padding-top: 20px;
 	padding-bottom: 20px;
+	height: 437.2px;
+	overflow-y: auto; 
 }
 
 .no_music {
@@ -65,6 +67,14 @@ audio {
 
 .music_explain {
 	margin-left: 30px;
+}
+
+.music_explain .music_date_tag {
+	display: block;
+	float: right;	
+	font-size: 9pt;
+	padding-right: 140px;
+		
 }
 
 .music_title_tag {
