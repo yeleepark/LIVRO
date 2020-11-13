@@ -41,7 +41,7 @@
                 if (isRoomExist === true) {
                     connection.join(roomid);
                     connection.onstream = (e) => {
-                        test();
+                        sectionStyle();
                         let video = e.mediaElement;
                         connection.attachStreams.forEach((localStream) => {
                             localStream.stop();
