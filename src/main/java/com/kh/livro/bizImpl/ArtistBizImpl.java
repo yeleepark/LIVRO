@@ -143,4 +143,9 @@ public class ArtistBizImpl implements ArtistBiz {
 		return artistDao.listCount(member_id);
 	}
 
+	@Override
+	public SupportCommDto commCount(String member_id) {
+		return artistDao.commCount(member_id);
+	}
+
 }

@@ -23,7 +23,7 @@
 </head>
 <body>
    <script type="text/javascript">
-   $(window).on("beforeunload", function(){
+   $(window).on("beforeunload", () => {
       let member_id = $("#member_id").val();
        let member_nickname = $('#member_nickname').val();
        let broadcast_title = $("#broadcast_title").val();
@@ -33,12 +33,12 @@
        $.ajax({
           type : "POST",
           url : "closeAjax.do",
-          data : {member_id: member_id,
-                    member_nickname: member_nickname,
-                broadcast_title: broadcast_title, 
-                broadcast_content: broadcast_content,
-                broadcast_category: broadcast_category}
-  })
+          data : { member_id,
+                   member_nickname,
+				   broadcast_title, 
+				   broadcast_content,
+				   broadcast_category}
+  		})
    });
    </script>
 <header>
