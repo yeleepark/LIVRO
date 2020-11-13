@@ -127,10 +127,8 @@ public class MemberController {
 
 		session.invalidate();
 
-		model.addAttribute("msg", "성공적으로 로그아웃하였습니다.");
-		model.addAttribute("uri", "/");
 
-		return "redirect";
+		return "main/main";
 	}
 
 	@RequestMapping("/registForm.do")
