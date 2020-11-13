@@ -57,13 +57,13 @@ ul.tabs li.tabCurrent {
 	width: 80%;
 	float: left;
 	padding: 50 30;
+	margin-bottom: 40px;
 }
 
 .tab-content {
 	display: none;
 	background: #ededed;
 	padding: 15px;
-	margin-bottom: 20px;
 }
 
 .tab-content h2 {
@@ -285,10 +285,10 @@ ul.tabs li.tabCurrent {
 	border: none;
 	cursor: pointer;
 	margin: 5px;
-	padding : 3px;
+	padding: 3px;
 	font-size: 0.8rem;
-	background-color : transparent;
-	color : gray;
+	background-color: transparent;
+	color: gray;
 	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
 	border-radius: 50%;
 	display: flex;
@@ -296,13 +296,12 @@ ul.tabs li.tabCurrent {
 	align-items: center;
 }
 
-#gifton{
-	color : #b01700;
-	background-color : transparent;
+#gifton {
+	color: #b01700;
+	background-color: transparent;
 	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
 	border-radius: 50%;
 }
-
 
 .closeReply {
 	font-family: FontAwesome;
@@ -310,10 +309,7 @@ ul.tabs li.tabCurrent {
 	cursor: pointer;
 	display: none;
 	margin: 5px;
-
 }
-
-
 
 .rows-center textarea {
 	width: 100%;
@@ -430,19 +426,19 @@ ul.tabs li.tabCurrent {
 }
 
 .myShowMoreBtn, .showMoreBtn {
-	display : none;
+	display: none;
 	background-color: none;
 	cursor: pointer;
-	padding : 3px 5px;
+	padding: 3px 5px;
 }
 
 .myCloseMoreBtn, .closeMoreBtn {
 	text-align: right;
 	display: none;
-	padding : 3px 5px;
+	padding: 3px 5px;
 }
 
-.myShowMoreBtn, .myCloseMoreBtn{
+.myShowMoreBtn, .myCloseMoreBtn {
 	display: none;
 }
 
@@ -511,7 +507,7 @@ ul.tabs li.tabCurrent {
 	padding: 20px;
 }
 
-#momentWrapper{
+#momentWrapper {
 	text-align: right;
 }
 
@@ -614,8 +610,7 @@ ul.tabs li.tabCurrent {
 	cursor: pointer;
 }
 
-.followBtn,
-.YfollowBtn{
+.followBtn, .YfollowBtn {
 	color: white;
 	font-family: "Helvetica";
 	font-size: 10pt;
@@ -636,12 +631,12 @@ ul.tabs li.tabCurrent {
 	display: none;
 }
 
-.artistReport{
+.artistReport {
 	font-family: "Helvetica";
 	font-size: 10pt;
 	border: 1px solid;
 	border-color: #bf311f;
-	color : #bf311f;
+	color: #bf311f;
 	border-radius: 3px;
 	width: 85px;
 	height: 30px;
@@ -715,23 +710,23 @@ ul.tabs li.tabCurrent {
 	border-radius: 50px;
 }
 
-#closeList{
-	text-align: center;	
+#closeList {
+	text-align: center;
 	margin-bottom: 5px;
 }
 
-#modal{
+#modal {
 	display: none;
-	width : 200px;
-	height : 200px;
-	overflow-y :scroll;
-	padding : 20px;
+	width: 200px;
+	height: 200px;
+	overflow-y: scroll;
+	padding: 20px;
 	background-color: #ededed;
-	z-index: 5;		
+	z-index: 5;
 	border-radius: 10px;
 }
 
-.showList{
+.showList {
 	text-align: center;
 }
 
@@ -783,6 +778,10 @@ ul.tabs li.tabCurrent {
 		margin-top: 20px;
 		margin-left: 50px;
 	}
+	.btnDefault {
+		display: flex;
+		flex-direction: row;
+	}
 	.btnOn {
 		display: flex;
 		flex-direction: row;
@@ -801,6 +800,12 @@ ul.tabs li.tabCurrent {
 		width: 65px;
 		font-size: 0.5rem;
 		padding: 3px;
+	}
+	.artistReport {
+		width: 65px;
+		font-size: 0.5rem;
+		padding: 3px;
+		display: inline-block;
 	}
 	#artist-desc p {
 		font-size: 1.5rem;
@@ -824,8 +829,14 @@ ul.tabs li.tabCurrent {
 	}
 	.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
 		width: 60px;
+		font-size: 0.2rem;
+		padding: 3px;
+	}
+	.artistReport {
+		width: 60px;
 		font-size: 0.4rem;
 		padding: 3px;
+		display: inline-block;
 	}
 	#artist-profile, #artist-profile img {
 		width: 130px;
@@ -837,36 +848,36 @@ ul.tabs li.tabCurrent {
 }
 
 .deleteres {
-    width: 100px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
-    margin: 5px;
-    height: 24px;
-    text-align:center;
-    border: none;
-    background-size: 300% 100%;
-
-    border-radius: 50px;
-    moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+	width: 100px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #fff;
+	cursor: pointer;
+	margin: 5px;
+	height: 24px;
+	text-align: center;
+	border: none;
+	background-size: 300% 100%;
+	border-radius: 50px;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
 }
 
 .deleteres:hover {
-    background-position: 100% 0;
-    moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+	background-position: 100% 0;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
 }
 
 .deleteres:focus {
-    outline: none;
+	outline: none;
 }
 
-.deleteres{
-       background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+.deleteres {
+	background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);
+	box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
 }
