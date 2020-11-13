@@ -1,12 +1,5 @@
 @charset "UTF-8";
 
-@font-face {
-  font-family: nanumSquareR;
-  src: url('../font/NanumSquareR.ttf');
-}
-*{
-	font-family: nanumSquareR;
-}
 #needLogin, #donaProcess {
 	display: none;
 	position: fixed;
@@ -18,12 +11,20 @@
 	left: 0;
 }
 
+#needLogin-tab {
+	position: relative;
+	width: 300px;
+	height: 350px;
+	top: 30%;
+	margin: auto;
+}
+
 #closeLogin {
-	z-index: 9999;
+	z-index:9999;
 	position: absolute;
-	font-size: 2vw;
-	top: 28.5%;
-	left: 56%;
+	font-size: 50px;
+	top: -40px;
+	right: 10px;
 }
 
 #closeLogin:hover {
@@ -31,15 +32,13 @@
 }
 
 #donaRound{
-	position: absolute;
+	position: relative;
 	display: flex;
 	flex:1;
-	left: 49%;
-	top: 48%;
-	transform: translate(-50%, -50%);
-	width: 13%;
-	height: 30vh;
-	margin: 0 auto;
+	width: 300px;
+	height: 350px;
+	top: 30%;
+	margin: auto;
 	padding-bottom: 1%;
 	border-radius: 10px;
 	border-color: red;
