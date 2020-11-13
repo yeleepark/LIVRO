@@ -57,13 +57,13 @@ ul.tabs li.tabCurrent {
 	width: 80%;
 	float: left;
 	padding: 50 30;
+	margin-bottom: 40px;
 }
 
 .tab-content {
 	display: none;
 	background: #ededed;
 	padding: 15px;
-	margin-bottom: 20px;
 }
 
 .tab-content h2 {
