@@ -10,6 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- font awesome -->
+<script src="https://kit.fontawesome.com/d28db34e8b.js"
+	crossorigin="anonymous" defer></script>
 <link rel="stylesheet" href="resources/css/broadcast_list.css">
 <title>LIVRO</title>
 <style type="text/css">
@@ -44,7 +47,7 @@
 						$(window).scroll(
 								function() {
 									if ($(window).scrollTop()
-											+ $(window).height()  == $(document)
+											+ $(window).height() == $(document)
 											.height()) {
 										getList();
 									}
@@ -146,11 +149,13 @@
 	<input type="hidden" value="${logindto.member_role}" id="memberRole">
 	<section id="section">
 		<div class="live_start">
-			<p>
-				<i class="fas fa-bullhorn"></i>지금 방송을 시작해보세요!
+			<p class="starter_notice">
+				지금 방송을 시작해보세요!
 			</p>
-			<input class="startbtn" type="button" id="broadgo" value="방송하기"
-				onclick="chkRole()"> 
+		<p class ="starter_btn">
+			<i class="far fa-hand-point-right"></i><input class="startbtn" type="button" id="broadgo" name="focus" value="GO LIVRO"
+				onclick="chkRole()"><p>
+				
 		</div>
 		<div class="broadcast-table" id="broadcast-table-cnt">
 
