@@ -7,10 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/artistPage.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4" crossorigin="anonymous"></script>
 <script type="text/javascript"src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- fontawesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4" crossorigin="anonymous"></script>
 <!-- google font -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <script src="resources/js/ChartAjax.js"></script>
@@ -26,7 +26,7 @@
 					<li class="tab-link" data-tab="tab-2">팔로잉목록</li>
 					<li class="tab-link" data-tab="tab-3">팔로워목록</li>
 					<li class="tab-link" data-tab="tab-4">후원내역조회</li>
-					<li class="tab-link" data-tab="tab-5">후원받은조회</li>
+					<li class="tab-link" data-tab="tab-5">후원받은내역</li>
 				</ul>
 			
 			<!-- 회원 정보 수정 탭 -->
@@ -69,7 +69,7 @@
 					<div class="tab-1-right">
 						<p>프로필 사진</p>
 						<!-- <div class="profileImg"><img src="resources/img/BG.jpg" id="profile"></div> -->
-						<div class="profileImg"><img src="/LIVRO/resources/storage/${profiledto.profile_savedname }"></div>
+						<div class="profileImg"><img src="/resources/profileimg/${profiledto.profile_savedname }"></div>
 						<p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
 						<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
 						<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p>
