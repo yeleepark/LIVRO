@@ -31,7 +31,7 @@ public class MusicController {
 	
 	private Logger logger = LoggerFactory.getLogger(MusicController.class);
 	
-	@Resource(name="uploadpath")
+	@Resource(name="uploadpathlinux")
 	private String path;
 	
 	
@@ -62,16 +62,9 @@ public class MusicController {
 		
 		try {
 			inputStream = music.getInputStream(); //업로드된 파일의 입력스트림을 변수에 저장
-			
-			//프로젝트 내부에 파일 업로드하는 경로  
-			String servpath = WebUtils.getRealPath(request.getSession().getServletContext(), "/");
-			//String path = WebUtils.getRealPath(request.getSession().getServletContext() , "/resources/music");
-			
-			//model.addAttribute("filepath", path+music_savename);
-			//model.addAttribute("artistdto", member_id);
-			
+
 			//현재 사용중인 프로젝트 경로가 어디인가
-			System.out.println("서블렛 컨텍스트 경로 : "+ servpath);
+
 			System.out.println("업로드될 실제 경로 : "+ path);
 			
 			File storage = new File(path);	//문자열로 만들어진 경로를 파일객체로 저장
