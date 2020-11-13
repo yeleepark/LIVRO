@@ -113,8 +113,10 @@
     </div>
     
      <div id="needLogin">
-     	<div id="closeLogin" onclick="closeLogin();" >x</div>
-      	<jsp:include page="/WEB-INF/views/login/login.jsp" ></jsp:include>
+      	<div id="needLogin-tab">
+      		<div id="closeLogin" onclick="closeLogin();" >x</div>
+      		<jsp:include page="/WEB-INF/views/login/login.jsp" ></jsp:include>
+      	</div>
      </div>
      
      <div id="donaProcess">
