@@ -8,6 +8,6 @@
 <style type="text/css">* {margin:0px; padding:0px;}</style>
 </head>
 <body>
-	<img alt="livropopup" src="resources/img/livro_popup.jpg" style="width: 100vw; height: auto;">
+	<img alt="livropopup" src="resources/img/livro_popup.jpg" style="width: 480px; height: 484px;">
 </body>
 </html>

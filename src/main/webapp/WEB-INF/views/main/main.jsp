@@ -14,7 +14,7 @@
 <script type="text/javascript">
 //카카오 채널 팝업
 var url = "popup.do"
-window.open(url, "pop", "location=0,left=500,top=180,width=480,height=640");
+window.open(url, "pop", "location=0,left=500,top=180,width=480,height=484");
 </script>
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
