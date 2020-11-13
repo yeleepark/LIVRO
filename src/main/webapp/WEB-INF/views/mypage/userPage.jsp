@@ -124,9 +124,6 @@
 							<div id="donaAll" class="tab-4-1-2"></div>
 						</div>
 						<div class="tap-4-2">
-							<input type="button" onclick="horizonBar(chartData)" value="수직바">
-							<input type="button" onclick="bar(chartData);" value="수평바">
-							<input type="button" onclick="pie(chartData);" value="파이">
 							<input type="hidden" name="member_nickname" value="${logindto.member_nickname}">
 							<div class="myCharts">
 							<canvas id="myChart" class="chartjs">

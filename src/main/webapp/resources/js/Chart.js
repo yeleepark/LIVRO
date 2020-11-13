@@ -66,16 +66,3 @@ var chartData_1 = {
 
 var chart_1 = new Chart(myChart_1, chartData_1);
 
-function horizonBar(c){
-	c.type = 'bar';
-	chart_1.update();
-	chart.update();
-}
-
-function pie(c){
-	c.type = 'pie';
-	chart.update();
-	chart_1.update();
- }
-
-

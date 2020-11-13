@@ -169,7 +169,7 @@ section {
 	flex: 1;
 	width: 600px;
 	margin-bottom: 30px;
-	border: 1px solid dodgerblue;
+	border: 1px solid gray;
 	border-radius: 10px;
 	justify-content: center;
 }
@@ -214,7 +214,7 @@ section {
 	flex: 1;
 	width: 600px;
 	margin-bottom: 30px;
-	border: 1px solid dodgerblue;
+	border: 1px solid gray;
 	border-radius: 10px;
 	justify-content: center;
 }
