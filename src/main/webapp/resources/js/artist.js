@@ -116,3 +116,10 @@ function updateProfile(){
     window.open("updateForm2.do", "insert",
                 "width = 450, height = 320, resizable = no, scrollbars = no, status = no");
 }
+
+// 아티스트신고
+function artistReport(e) {
+	open("report.do?receive_id=" + artist_id + "&receive_nickname="
+			+ artist_nickname, "", "width=320, height=250");
+}
+
