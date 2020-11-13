@@ -80,7 +80,7 @@ public class ProfileController {
 			// Session에 담겨있는 객체들을 보다 짧은 코드로 넣고 빼고 할수 있으며 세션이나 쿠키 객체를 받아올수 있다
 			// request.getSession().getServletContext() : 해당 프로젝트의 경로? 파일업로드의 절대경로
 						
-			profile_path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
+//			profile_path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
 
 			// 웹사이트 루트디렉토리의 실제 디스크상의 경로 알아내기.
 			// WebUtil는 SpringMVC를 다룰 때 사용하는 클래스
@@ -89,8 +89,8 @@ public class ProfileController {
 
 			// 기존의 파일이나 폴더에 대한 제어를 하는 데 사용하는 File 클래스
 			// 변수path에 담긴 경로에 File 객체를 생성한다
-			//File storage = new File(path); 리눅스
-			File storage = new File(profile_path);// 로컬
+			File storage = new File(path);
+//			File storage = new File(profile_path);// 로컬
 
 			// 스토리지가 없으면
 			if (!storage.exists()) {
@@ -100,8 +100,8 @@ public class ProfileController {
 			}
 
 			// 지정한 경로에 서버에 저장될 파일명으로 새로운 파일 객체 생성
-			// File newFile = new File(path+ "/" + profile_savedname);  // 리눅스
-			File newFile = new File(profile_path+ "/" + profile_savedname);
+			File newFile = new File(path+ "/" + profile_savedname);  // 리눅스
+//			File newFile = new File(profile_path+ "/" + profile_savedname);
 			if (!newFile.exists()) {
 				newFile.createNewFile(); // 지정 경로에 파일 생성
 			}
@@ -184,12 +184,12 @@ public class ProfileController {
 			// Session에 담겨있는 객체들을 보다 짧은 코드로 넣고 빼고 할수 있으며 세션이나 쿠키 객체를 받아올수 있다
 			// request.getSession().getServletContext() : 해당 프로젝트의 경로? 파일업로드의 절대경로
 						
-			profile_path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
+//			profile_path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
 
 			// 기존의 파일이나 폴더에 대한 제어를 하는 데 사용하는 File 클래스
 			// 변수path에 담긴 경로에 File 객체를 생성한다
-			//File storage = new File(path); 리눅스
-			File storage = new File(profile_path);// 로컬
+			File storage = new File(path);
+//			File storage = new File(profile_path);// 로컬
 
 			// 스토리지가 없으면
 			if (!storage.exists()) {
@@ -199,8 +199,8 @@ public class ProfileController {
 			}
 
 			// 지정한 경로에 서버에 저장될 파일명으로 새로운 파일 객체 생성
-			// File newFile = new File(path+ "/" + profile_savedname);  // 리눅스
-			File newFile = new File(profile_path+ "/" + profile_savedname);
+			File newFile = new File(path+ "/" + profile_savedname);  // 리눅스
+//			File newFile = new File(profile_path+ "/" + profile_savedname);
 			if (!newFile.exists()) {
 				newFile.createNewFile(); // 지정 경로에 파일 생성
 			}
