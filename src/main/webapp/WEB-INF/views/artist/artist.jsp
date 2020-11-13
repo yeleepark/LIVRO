@@ -324,7 +324,7 @@
 			</div>
 			<div id="artist-profile">
 				<!-- <img src="resources/img/BG.jpg"> -->
-				<img src="/LIVRO/resources/storage/${profiledto.profile_savedname }">
+				<img src="/resources/profileimg/${profiledto.profile_savedname }">
 			</div>
 
 			<div id="artist-desc">

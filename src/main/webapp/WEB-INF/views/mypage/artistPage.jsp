@@ -69,7 +69,7 @@
 					<div class="tab-1-right">
 						<p>프로필 사진</p>
 						<!-- <div class="profileImg"><img src="resources/img/BG.jpg" id="profile"></div> -->
-						<div class="profileImg"><img src="/LIVRO/resources/storage/${profiledto.profile_savedname }"></div>
+						<div class="profileImg"><img src="/resources/profileimg/${profiledto.profile_savedname }"></div>
 						<p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
 						<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
 						<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p>
