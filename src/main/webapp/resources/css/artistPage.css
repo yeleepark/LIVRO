@@ -99,6 +99,15 @@ section {
 	overflow: hidden;
 }
 
+#tab-1 .profileImg img {
+	width: 200px;
+	height: 200px;
+}
+
+.profileBtn{
+	margin-top: 10px;
+}
+
 .tab-1-right input{
 	margin-left : 100px; 
 	width : 100px;

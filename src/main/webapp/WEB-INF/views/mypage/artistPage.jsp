@@ -70,9 +70,6 @@
 						<p>프로필 사진</p>
 						<!-- <div class="profileImg"><img src="resources/img/BG.jpg" id="profile"></div> -->
 						<div class="profileImg"><img src="/resources/profileimg/${profiledto.profile_savedname }"></div>
-						<p>서버에 저장된 프로필 사진 이름 : ${profiledto.profile_savedname }</p>
-						<p>프로필 사진의 실제 파일 이름 : ${profiledto.profile_realname }</p>
-						<p>프로필 사진 등록된 시간 : ${profiledto.profile_regdate }</p>
 						<input type="button" value="프로필사진수정" onclick="updateProfile();">	
 					</div>
 				</div>
