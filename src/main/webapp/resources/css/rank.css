@@ -5,7 +5,7 @@ section {
 	width: 90%;
 	margin: 0 auto;
 	margin-bottom: 20px;
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 }
 
 .descContainer {
@@ -75,6 +75,13 @@ section {
 	width: 100%;
 	padding: 20px;
 	background-color: #f2f2f2;
+	min-height: 300px;
+}
+
+.rank-row, .support-row {
+	display: flex;
+	margin-bottom: 5px;
+	align-items: center;
 }
 
 /* 차트 영역 */
@@ -177,11 +184,7 @@ section {
 	text-decoration: none;
 }
 
-.rank-row, .support-row {
-	display: flex;
-	margin-bottom: 5px;
-	align-items: center;
-}
+
 
 @media screen and (max-width:1024px) {
 	
@@ -202,5 +205,14 @@ section {
 @media screen and (max-width:500px){
 	.rank-row, .support-row {
 		font-size: 0.8rem;	
+	}
+	
+	.rankSpan {
+		width: 20px;
+		height: 20px;
+	}
+	
+	.top5list, .supportlist{
+		min-height: 200px;
 	}
 } 

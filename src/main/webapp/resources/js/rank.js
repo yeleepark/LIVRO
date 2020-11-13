@@ -1,5 +1,5 @@
 function setTime(){
-	window.setTimeout('window.location.reload()', 600000);
+	window.setTimeout('window.location.reload()', 60000);
 	let today = new Date();
 	let updateTime = document.getElementsByClassName('updateTime');
 	var res = moment(today).format('HH시mm분')
