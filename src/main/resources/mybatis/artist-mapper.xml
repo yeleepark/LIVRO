@@ -144,7 +144,13 @@
 		SET COMM_CONTENT = #{comm_content}
 		WHERE COMM_NO = ${comm_no}
 	</update>
-
+	
+	<select id="commCount" parameterType="SupportCommDto" resultType="SupportCommDto">
+		SELECT SUPPORT_NO, COUNT(*) as commcount
+		FROM SUPPORT_COMM
+		WHERE MEMBER_ID = #{member_id}
+		GROUP BY SUPPORT_NO
+	</select>
 
 	<!-- 아티스트 페이지 이동 -->
 	<select id="selectList" resultType="MusicDto">

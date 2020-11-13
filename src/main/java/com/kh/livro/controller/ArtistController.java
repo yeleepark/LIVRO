@@ -89,6 +89,7 @@ public class ArtistController {
 		logger.info("글 리스트 컨트롤러");
 
 		model.addAttribute("supportdto", artistBiz.supportList(dto));
+		model.addAttribute("commcount", artistBiz.commCount(dto.getMember_id()));
 
 		return "artist/artistSupport";
 	}

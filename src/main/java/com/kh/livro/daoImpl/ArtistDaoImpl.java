@@ -311,4 +311,11 @@ public class ArtistDaoImpl implements ArtistDao {
 		return dto;
 	}
 
+	@Override
+	public SupportCommDto commCount(String member_id) {
+		SupportCommDto dto = new SupportCommDto();
+		dto = sqlSession.selectOne(NAMESPACE+"commCount", member_id);
+		return dto;
+	}
+
 }

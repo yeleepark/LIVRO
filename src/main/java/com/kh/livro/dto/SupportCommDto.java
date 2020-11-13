@@ -10,6 +10,15 @@ public class SupportCommDto {
 	private String member_nickname;
 	private String comm_content;
 	private Date comm_regdate;
+	private int commcount;
+
+	public int getCommcount() {
+		return commcount;
+	}
+
+	public void setCommcount(int commcount) {
+		this.commcount = commcount;
+	}
 
 	public SupportCommDto() {
 		super();
