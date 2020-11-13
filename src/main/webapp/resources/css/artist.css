@@ -285,8 +285,19 @@ ul.tabs li.tabCurrent {
 	border: none;
 	cursor: pointer;
 	margin: 5px;
+	padding : 2px;
 	font-size: 0.8rem;
+	background-color : transparent;
+	color : gray;
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
 }
+
+#gifton{
+	color : #b01700;
+	background-color : transparent;
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 
 .closeReply {
 	font-family: FontAwesome;
@@ -294,6 +305,7 @@ ul.tabs li.tabCurrent {
 	cursor: pointer;
 	display: none;
 	margin: 5px;
+
 }
 
 

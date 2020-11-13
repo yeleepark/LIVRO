@@ -57,9 +57,24 @@
 					<!-- 두번째줄 -->
 					<div class="rows-middle">
 						<div>
-							<input type="button" value="&#xf06b" class="showReply" onclick="showReply(this);"> 
-							<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
-							<input type="hidden" value="${support.support_no }" class="supportNo">
+							<c:choose>
+								<c:when test="${empty commcount }"></c:when>
+								<c:otherwise>
+									<%-- 댓글 있을 때 --%>
+									<c:if test="${commcount.commcount == support.support_no }">
+											<input type="button" value="&#xf004" class="showReply" id="gifton" onclick="showReply(this);"> 
+											<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
+											<input type="hidden" value="${support.support_no }" class="supportNo">
+									</c:if>
+									<%-- 댓글 없을 때 --%>
+									<c:if test="${commcount.commcount != support.support_no }">
+											<input type="button" value="&#xf004" class="showReply" onclick="showReply(this);"> 
+											<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
+											<input type="hidden" value="${support.support_no }" class="supportNo">
+									</c:if>
+								</c:otherwise>
+							</c:choose>
+						
 						</div>
 						<!--  반복 부분 -->
 						<div class="replyArea"></div>
