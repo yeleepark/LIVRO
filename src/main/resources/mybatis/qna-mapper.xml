@@ -21,7 +21,7 @@
 				AND MEMBER_NICKNAME = #{member_nickname}
 			</if>
 		</trim>
-		ORDER BY Q.QNA_REGDATE DESC
+		ORDER BY Q.QNA_NO DESC
 		)
 		WHERE NUM
 		BETWEEN #{startList} +1
