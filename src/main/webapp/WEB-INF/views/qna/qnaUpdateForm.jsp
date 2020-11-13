@@ -21,34 +21,33 @@
 <link rel="stylesheet" href="resources/css/qna_insertform.css">
 <title>Q&A글수정</title>
 <script type="text/javascript">
-		function secretChk() {
-			alert("비밀글 설정 ");
-			document.getElementById("qna_secret").value = "Y";
+	function secretChk() {
+		alert("비밀글 설정 ");
+		document.getElementById("qna_secret").value = "Y";
 
-		}
-	</script>
+	}
+</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
 
 	<form action="qnaupdate.do" method="post">
-<input type="hidden" name="qna_no" value="${qnaupdatedto.qna_no }">
-	 <input type="hidden"
-			name="qna_secret" value="N" id="qna_secret">
+		<input type="hidden" name="qna_no" value="${qnaupdatedto.qna_no }">
+		<input type="hidden" name="qna_secret" value="N" id="qna_secret">
 		<div class="qna_wrap">
 			<div class="qna_writer">
-				<label>작성자</label> 
-					<span>${logindto.member_nickname }</span>
+				<label>작성자</label> <span>${logindto.member_nickname }</span>
 			</div>
 			<div class="qna_title">
-				<label>제목</label> <input type="text" name="qna_title" placeholder="${qnaupdatedto.qna_title }">
+				<label>제목</label> <input type="text" name="qna_title"
+					placeholder="${qnaupdatedto.qna_title }">
 			</div>
 			<div class="qna_content">
 				<label>내용</label>
 				<div id="editor">${qnaupdatedto.qna_content }</div>
 			</div>
 			<div class="qna_footer">
-			<div class="qna_secret">
+				<div class="qna_secret">
 					<input type="checkbox" onclick="secretChk()"><span>비밀글</span>
 				</div>
 				<input type="button" value="취소"
@@ -83,6 +82,6 @@
 	</script>
 
 
-
+	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 </body>
 </html>

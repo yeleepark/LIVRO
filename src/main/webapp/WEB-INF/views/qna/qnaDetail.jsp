@@ -216,6 +216,6 @@ function qnareUpdateDone(qnare_no){
 		});
 	</script>
 	<!-- <script type="text/javascript" src="resources/js/qnaDetail.js"></script> -->
-
+<jsp:include page="/WEB-INF/views/footer/footer.jsp" /> 	
 </body>
 </html>
