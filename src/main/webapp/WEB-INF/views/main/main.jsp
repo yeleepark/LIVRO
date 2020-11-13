@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="resources/css/main.css">
 <script type="text/javascript">
 //카카오 채널 팝업
-//var url = "popup.do"
-//window.open(url, "pop", "location=0,left=500,top=180,width=480,height=640");
+var url = "popup.do"
+window.open(url, "pop", "location=0,left=500,top=180,width=480,height=640");
 </script>
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/d28db34e8b.js" crossorigin="anonymous"></script>
