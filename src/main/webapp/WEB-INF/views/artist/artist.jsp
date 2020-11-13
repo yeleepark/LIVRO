@@ -369,6 +369,7 @@
 								<%-- <span>디폴트 해당 아티스트의 팔로워가 있고 내가 팔로우 안함</span>--%>
 								<button class="followBtn" onclick="follow(this);">FOLLOW</button>
 								<button class="unfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+								<button class="artistReport" onclick="artistReport(this);"><i class="fas fa-user-slash"></i> 신고  </button>
 							</div>
 							<c:choose>
 								<c:when test="${empty dto }">
@@ -376,6 +377,7 @@
 									<div class="btnOn">
 										<button class="followBtn" onclick="follow(this);">FOLLOW</button>
 										<button class="unfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+										<button class="artistReport" onclick="artistReport(this);"><i class="fas fa-user-slash"></i> 신고  </button>
 									</div>
 								</c:when>
 								<c:when test="${not empty dto }">
@@ -386,6 +388,7 @@
 												<%-- <p>해당 아티스트의 팔로워가 있고 내가 팔로우 함${dto.follower_id }</p>--%>
 												<button class="YfollowBtn" onclick="follow(this);">FOLLOW</button>
 												<button class="YunfollowBtn" onclick="unfollow(this);">UNFOLLOW</button>
+												<button class="artistReport" onclick="artistReport(this);"><i class="fas fa-user-slash"></i> 신고  </button>
 											</div>
 										</c:if>
 									</c:forEach>

@@ -51,7 +51,7 @@
 				</div>
 			</div>
 			
-<!-- 회원 정보 수정 탭 -->
+			<!-- 회원 정보 수정 탭 -->
          <div class="tab-content " id="tab-2">
             <h2><i class="fas fa-lock"></i> 정보수정</h2>
             <div class="tab-2-container">
