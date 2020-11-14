@@ -22,3 +22,8 @@
 > 한지용 [GitHub](https://github.com/gcancer)
 
 
+- 구현언어 : JAVA, JavaScript, HTML5, CSS3
+- 개발툴 : Eclipse JEE
+- 데이터베이스 : Oracle 11g
+- 서버 : Tomcat 9.0, AWS
+- 협업툴 : Github
