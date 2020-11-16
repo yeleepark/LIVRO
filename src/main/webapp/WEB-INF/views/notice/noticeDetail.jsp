@@ -24,7 +24,7 @@
 			<div class="notice_id_wrap">관리자</div>
 			<div class="notice_date_wrap">
 				<fmt:formatDate value="${dto.notice_regdate }"
-					pattern="yy-MM-dd HH:mm" />
+					pattern="yyyy-MM-dd HH:mm" />
 			</div>
 		</div>
 
