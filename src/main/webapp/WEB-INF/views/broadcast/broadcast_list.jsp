@@ -149,13 +149,12 @@
 	<input type="hidden" value="${logindto.member_role}" id="memberRole">
 	<section id="section">
 		<div class="live_start">
-			<p class="starter_notice">
-				지금 방송을 시작해보세요!
-			</p>
-		<p class ="starter_btn">
-			<i class="far fa-hand-point-right"></i><input class="startbtn" type="button" id="broadgo" name="focus" value="GO LIVRO"
-				onclick="chkRole()"><p>
-				
+			<p class="starter_notice">지금 방송을 시작해보세요!</p>
+			<p class="starter_btn">
+				<i class="far fa-hand-point-right"></i><input class="startbtn"
+					type="button" id="broadgo" name="focus" value="GO LIVRO"
+					onclick="chkRole()">
+			<p>
 		</div>
 		<div class="broadcast-table" id="broadcast-table-cnt">
 
@@ -199,16 +198,14 @@
 	<script>
 		/*방송 없을 떄*/
 
-		let ele = document.getElementsByClassName(('broadcast-table'))[0];
+ 		let ele = document.getElementsByClassName(('wrapper'))[0];
 		let h1 = document.createElement('h1');
 
 		if (ele.childElementCount < 1) {
-
 			// 방송이 하나도 없을 때 출력되는 메시지
 			h1.innerHTML = '진행중인 방송이 없습니다 헤헤';
-
 			ele.appendChild(h1);
-		}
+		} 
 	</script>
 </body>
 </html>
