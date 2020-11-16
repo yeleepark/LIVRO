@@ -21,7 +21,7 @@
 	<p><i class="far fa-bell"></i>공지사항</p>
 		<div>
 			<div class="notice_title_wrap">${dto.notice_title }</div>
-			<div class="notice_id_wrap">${dto.member_id }</div>
+			<div class="notice_id_wrap">관리자</div>
 			<div class="notice_date_wrap">
 				<fmt:formatDate value="${dto.notice_regdate }"
 					pattern="yy-MM-dd HH:mm" />
