@@ -63,11 +63,11 @@ public class DonationDaoImpl implements DonationDao {
 	}
 	
 	@Override
-	public List<HashMap<String, Object>> selectDaily(String dona_nickname) {
+	public List<HashMap<String, Object>> selectDaily(DonationDto dto) {
 		List<HashMap<String, Object>> list = new ArrayList<>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE + "selectDaily", dona_nickname);
+			list = sqlSession.selectList(NAMESPACE + "selectDaily", dto);
 		} catch (Exception e) {
 			logger.info("[ERROR] Donation selectDaily");
 			e.printStackTrace();
@@ -100,5 +100,20 @@ public class DonationDaoImpl implements DonationDao {
 			e.printStackTrace();
 		}
 		return res;
+	}
+	
+	@Override
+	public DonationDto selectAmountByUser(String dona_nickname) {
+		DonationDto dto = new DonationDto();
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "selectAmountByUser", dona_nickname);
+		} catch (Exception e) {
+			logger.info("[ERROR] Donation selectAmountByUser");
+			e.printStackTrace();
+		}
+		
+		
+		return dto;
 	}
 }

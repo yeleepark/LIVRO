@@ -145,15 +145,40 @@
 				</div>
 			</div>
 			
-			<div class="tab-content" id="tab-5">
+						<div class="tab-content" id="tab-5">
 				<h2><i class="fas fa-hand-holding-usd"></i> 후원 받은 내역 </h2>
 				<div class="tab-5-container">
 					<div class="tab-5-left">
 						<div class="tab-5-1">
 							<div class="tab-5-1-1">
-								<span class="totalPrice">총후원금액</span>
+								<div class="tab-5-1-1-1">
+									<span class="totalPrice">후원 받은 금액</span>									
+								</div>
+								<div class="tab-5-1-1-1">
+									<span class="MonthByPrice">월별 후원 금액</span>								
+								</div>
 							</div>
-							<div id="donaAll_1" class="tab-5-1-2"></div>
+							<div class="tab-5-1-2">
+								<div id="donaAll_1" class="tab-5-1-2-1"></div>
+								<div id="donaMonth_1" class="tab-5-1-2-1"></div>
+							</div>
+							<div class="tab-5-1-3">
+								<select id="selectMonth" onchange="selectMonth()">
+									<option>--선택--</option>
+									<option value="01">1월</option>
+									<option value="02">2월</option>
+									<option value="03">3월</option>
+									<option value="04">4월</option>
+									<option value="05">5월</option>
+									<option value="06">6월</option>
+									<option value="07">7월</option>
+									<option value="08">8월</option>
+									<option value="09">9월</option>
+									<option value="10">10월</option>
+									<option value="11">11월</option>
+									<option value="12">12월</option>
+								</select>
+							</div>
 						</div>
 						<div class="tap-5-2">
 							<input type="hidden" name="member_nickname" value="${logindto.member_nickname}">

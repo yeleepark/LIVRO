@@ -22,6 +22,11 @@
 		WHERE DONA_NO = #{dona_no}
 	</delete>
 	
+	<select id="selectAmountByUser" parameterType="String" resultType="DonationDto">
+		SELECT SUM(DONA_PRICE) AS DONA_PRICE
+		FROM DONATION
+		WHERE DONA_NICKNAME = #{dona_nickname}
+	</select>
 	
 	<select id="selectAmountById" parameterType="String" resultType="HashMap">
 		SELECT DONA_NICKNAME, SUM(DONA_PRICE) AS DONA_PRICE
@@ -30,16 +35,12 @@
 		GROUP BY DONA_NICKNAME
 	</select>
 	
-	<select id="selectDaily" parameterType="String" resultType="HashMap">
-		SELECT TO_CHAR(DONA_DATE, 'MM"월" DD"일"') AS DONA_DATE, SUM(DONA_PRICE) AS DONA_PRICE
-		FROM DONATION
-		WHERE DONA_NICKNAME = #{dona_nickname} 
-		AND DONA_DATE IN
-		(SELECT TO_DATE('2020-01-01','YYYY-MM-DD') + LEVEL - 1 AS DONA_DATE
- 	    FROM DUAL 
-		CONNECT BY LEVEL &lt; (TO_DATE('2020-12-31','YYYY-MM-DD')
-                   - TO_DATE('2020-01-01','YYYY-MM-DD') + 1))
-		GROUP BY DONA_DATE
+	<select id="selectDaily"  parameterType="DonationDto" resultType="HashMap">
+		SELECT DONA_DATE, DONA_PRICE
+		FROM(
+			SELECT SUBSTR(TO_CHAR(DONA_DATE, 'MM"월" DD"일"'),1,7) DONA_DATE , SUM(DONA_PRICE) DONA_PRICE FROM DONATION
+			WHERE SUBSTR(TO_CHAR(DONA_DATE, 'MM"월" DD"일"'),1,2) = #{dona_month} AND DONA_NICKNAME= #{dona_nickname}
+			GROUP BY SUBSTR(TO_CHAR(DONA_DATE, 'MM"월" DD"일"'),1,7))
 		ORDER BY DONA_DATE
 	</select>
 </mapper>
