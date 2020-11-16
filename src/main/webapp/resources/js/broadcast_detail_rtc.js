@@ -106,14 +106,14 @@
         // 채팅 내용 담기는 부분
         function appendDIV(e) {
             let div = document.createElement('div');
-            
+            div.style.marginBottom = '5px';
             if (e.userid == null) { // 보내는 사람이 undefined면.. 즉, 내가 보냈다면
 
-                div.innerHTML = (connection.userid) + ':' + (e.data || e);
+                div.innerHTML = (connection.userid) + ' ' + (e.data || e);
 
             } else {
 	
-                div.innerHTML = (e.userid) + ':' + (e.data || e);
+                div.innerHTML = (e.userid) + ' ' + (e.data || e);
             }
 					        
             console.log(e.userid + ' <-상대방 || 나->' + connection.userid);
