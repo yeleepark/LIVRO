@@ -193,6 +193,6 @@ for (var i = 0; i < getCalNo.length; i++){
 }
 
 function parseDate(str){
-	var date = new Date (str.replace("KST", "UTC+0000"));
+	var date = new Date (str.replace("KST", "UTC+0900"));
 	return date;
 }
