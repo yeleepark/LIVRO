@@ -65,13 +65,13 @@
 								</c:when>
 								<c:otherwise>
 									<%-- 댓글 있을 때 --%>
-									<c:if test="${commcount.commcount == support.support_no }">
+									<c:if test="${commcount.support_no == support.support_no }">
 										<input type="button" value="&#xf004" class="showReply" id="gifton" onclick="showReply(this);"> 
 										<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
 										<input type="hidden" value="${support.support_no }" class="supportNo">
 									</c:if>
 									<%-- 댓글 없을 때 --%>
-									<c:if test="${commcount.commcount != support.support_no }">
+									<c:if test="${commcount.support_no != support.support_no }">
 										<input type="button" value="&#xf004" class="showReply" onclick="showReply(this);"> 
 										<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
 										<input type="hidden" value="${support.support_no }" class="supportNo">
