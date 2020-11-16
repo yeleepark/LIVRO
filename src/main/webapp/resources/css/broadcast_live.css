@@ -90,14 +90,14 @@ video {
 }
 #section1 {
 	width: 100%;
-	height: 1000px;
+	height: 100vh;
 	border: 3px solid black;
 	background-image: url('../img/broadcast_back.png');
 }
 
 #section2 {
 	width: 80%;
-	height: 1000px;
+	height: 100vh;
 	display: flex;
 	padding-top: 12vh;
 	display : none;
