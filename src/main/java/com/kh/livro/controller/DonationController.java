@@ -55,16 +55,28 @@ public class DonationController {
 		return gson;
 	}
 	
-	@RequestMapping(value = "/selectDaily.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectDaily.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String selectDaily(String dona_nickname) {
+	public String selectDaily(@RequestBody DonationDto dto) {
 		List<HashMap<String, Object>> list = new ArrayList<>();
 		
-		list = donationBiz.selectDaily(dona_nickname);
+		list = donationBiz.selectDaily(dto);
 		
 		String gson = new Gson().toJson(list);
 		logger.info("selectDaily list : " + gson);
 		
+		return gson;
+	}
+	
+	@RequestMapping(value = "/selectAmountByUser.do", method = RequestMethod.GET)
+	@ResponseBody
+	public String selectAmountByUser(String dona_nickname) {
+		DonationDto dto = new DonationDto();
+		
+		dto = donationBiz.selectAmountByUser(dona_nickname);
+		
+		String gson = new Gson().toJson(dto);
+		logger.info("selectAmountByUser dto : " + gson);
 		return gson;
 	}
 }

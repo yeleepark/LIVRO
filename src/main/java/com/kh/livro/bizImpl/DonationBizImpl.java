@@ -32,8 +32,8 @@ public class DonationBizImpl implements DonationBiz {
 	}
 	
 	@Override
-	public List<HashMap<String, Object>> selectDaily(String dona_nickname) {
-		return donationDao.selectDaily(dona_nickname);
+	public List<HashMap<String, Object>> selectDaily(DonationDto dto) {
+		return donationDao.selectDaily(dto);
 	}
 	
 	@Override
@@ -44,5 +44,10 @@ public class DonationBizImpl implements DonationBiz {
 	@Override
 	public int delete(int dona_no) {
 		return donationDao.delete(dona_no);
+	}
+	
+	@Override
+	public DonationDto selectAmountByUser(String dona_nickname) {
+		return donationDao.selectAmountByUser(dona_nickname);
 	}
 }
