@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.Soundbank;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -90,6 +91,8 @@ public class ArtistController {
 
 		model.addAttribute("supportdto", artistBiz.supportList(dto));
 		model.addAttribute("commcount", artistBiz.commCount(dto.getMember_id()));
+		System.out.println(dto.getMember_id());
+		System.out.println("확인");
 
 		return "artist/artistSupport";
 	}
