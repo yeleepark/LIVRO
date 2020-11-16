@@ -286,7 +286,7 @@ function listRest() {
 
 // 댓글 보기
 function showReply(e) {
-	var target = e.parentNode.parentNode;
+	var target = e.parentNode.parentNode.parentNode;
 
 	var res = target.getElementsByClassName('replyArea')[0];
 	res.classList.add('replyActive');
@@ -315,13 +315,52 @@ function showReply(e) {
 
 // 댓글 닫기
 function closeReply(e) {
-	var target = e.parentNode.parentNode;
+	var target = e.parentNode.parentNode.parentNode;
 
 	var res = target.getElementsByClassName('replyArea')[0];
 	res.classList.remove('replyActive');
 
 	e.style.display = "none";
 	target.getElementsByClassName('showReply')[0].style.display = "block";
+}
+
+function YshowReply(e) {
+	var target = e.parentNode.parentNode.parentNode;
+
+	var res = target.getElementsByClassName('replyArea')[0];
+	res.classList.add('replyActive');
+
+	e.style.display = "none";
+	target.getElementsByClassName('YcloseReply')[0].style.display = "inherit";
+
+	var support_no = target.getElementsByClassName('supportNo')[0].value;
+
+	$.ajax({
+		type : "post",
+		url : "showList.do?support_no=" + support_no,
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		data : JSON.stringify({
+			support_no : support_no,
+			member_id : artist_id
+		}),
+		success : function(result) {
+			res.innerHTML = result;
+		}
+	});
+
+}
+
+// 댓글 닫기
+function YcloseReply(e) {
+	var target = e.parentNode.parentNode.parentNode;
+
+	var res = target.getElementsByClassName('replyArea')[0];
+	res.classList.remove('replyActive');
+
+	e.style.display = "none";
+	target.getElementsByClassName('YshowReply')[0].style.display = "block";
 }
 
 // 댓글입력
@@ -439,3 +478,4 @@ function report(e) {
 	open("report.do?receive_id=" + receive_id + "&receive_nickname="
 			+ receive_nickname, "", "width=320, height=250");
 }
+
