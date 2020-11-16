@@ -172,7 +172,7 @@
 	<select id="broadList" resultType="BroadcastDto">
 		SELECT *
 		FROM BROADCAST
-		WHERE MEMBER_ID = #{member_id} AND BROADCAST_STARTDATE >= TO_CHAR(SYSDATE-7, 'YYYYMMDD')
+		WHERE MEMBER_ID = #{member_id}
 	</select>
 
 	<!-- 일정 -->
