@@ -76,7 +76,7 @@ $(document)
 				arr[2] = false;
 				var member_name = $("#member_name").val().trim();
 				if (nameR.test(member_name) == false) {
-					$("#name_check").text('이름은 한글만 가능합니다.');
+					$("#name_check").text('이름은 2~6자 이내 한글만 가능합니다.');
 					$('#name_check').css({
 						'color': 'red',
 						'font-size': '11px'
