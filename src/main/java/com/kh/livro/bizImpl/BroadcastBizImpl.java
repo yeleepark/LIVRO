@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kh.livro.biz.BroadcastBiz;
 import com.kh.livro.dao.BroadcastDao;
 import com.kh.livro.dto.BroadcastDto;
+import com.kh.livro.dto.ProfileDto;
 
 @Service
 public class BroadcastBizImpl implements BroadcastBiz {
@@ -46,8 +47,8 @@ public class BroadcastBizImpl implements BroadcastBiz {
 	}
 
 	@Override
-	public BroadcastDto profile(String member_id) {
-		
+	public ProfileDto profile(String member_id) {
+		logger.info("비즈 확인"+broadcastDao.profile(member_id));
 		return broadcastDao.profile(member_id);
 	}
 
