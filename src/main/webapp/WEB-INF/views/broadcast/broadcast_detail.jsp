@@ -59,8 +59,8 @@
           		<div class="profileSection-tab-img">
           		<!-- 프로필 사진 사이즈 전해 줘야 함!!! -->
           			<div class="profileImg">
-          				<%-- <img src="/resources/profileimg/${broadDto.member_profile }"> --%>
-          				<img src="resources/img/broadcast_back.png">
+          				<img src="/resources/profileimg/${broadDto.member_profile }">
+          				<!-- <img src="resources/img/broadcast_back.png"> -->
           			</div>
         	  	</div>
         	  	<div class="profileSection-tab-text">            
