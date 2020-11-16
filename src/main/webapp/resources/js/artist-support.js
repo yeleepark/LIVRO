@@ -14,7 +14,7 @@ var moreContent = document.getElementsByClassName('more-content')[0];
 
 // 전체 게시글 출력
 function list() {
-	
+
 	$.ajax({
 		type : "post",
 		url : "supportList.do?member_id=" + artist_id + "&lastnum=0",
@@ -25,18 +25,19 @@ function list() {
 	})
 }
 
+function showNhide() {
 
-function showNhide(){
-	
 	var countArea = document.getElementById('listCount');
-	count = countArea.innerHTML;
-	
+	if (countArea != null) {
+		count = countArea.innerHTML;
+	}
+
 	if (count > 5) {
 		var showMore = document.getElementsByClassName('showMoreBtn')[0];
 		showMore.style.display = "block";
 	}
-	
-	if (lastnum !=0 && lastnum+5 >= count){
+
+	if (lastnum != 0 && lastnum + 5 >= count) {
 		var showMore = document.getElementsByClassName('showMoreBtn')[0];
 		showMore.style.display = "none";
 		var closeMore = document.getElementsByClassName('closeMoreBtn')[0];
@@ -47,7 +48,7 @@ function showNhide(){
 
 var lastnum = 0;
 function showMore(e) {
-	
+
 	lastnum += 5;
 
 	$.ajax({
@@ -74,14 +75,14 @@ function closeMore(e) {
 
 // 내가 작성한 글 리스트
 function mine() {
-	
+
 	var mineBtn = document.getElementsByClassName('mineBtn')[0];
-	mineBtn.style.display ="none";
+	mineBtn.style.display = "none";
 	var allBtn = document.getElementsByClassName('allBtn')[0];
-	allBtn.style.display ="block";
+	allBtn.style.display = "block";
 
 	lastnum = 0;
-	
+
 	$.ajax({
 		type : "post",
 		url : "mylist.do",
@@ -97,29 +98,28 @@ function mine() {
 		success : function(result) {
 			supportContent.innerHTML = result;
 			countArea = document.getElementById('listCount');
-			if(countArea!=null){
-			count = countArea.innerHTML;
+			if (countArea != null) {
+				count = countArea.innerHTML;
 			}
-			
+
 			myShowNhide();
 		}
 	})
 }
 
-
-function myShowNhide(){
+function myShowNhide() {
 
 	var countArea = document.getElementById('listCount');
-	if(countArea!=null){
+	if (countArea != null) {
 		count = countArea.innerHTML;
-		}
-	
+	}
+
 	if (count > 5) {
 		var myShowMore = document.getElementsByClassName('myShowMoreBtn')[0];
 		myShowMore.style.display = "block";
 	}
-	
-	if (lastnum != 0 && lastnum+5 >= count){
+
+	if (lastnum != 0 && lastnum + 5 >= count) {
 		var myShowMore = document.getElementsByClassName('myShowMoreBtn')[0];
 		myShowMore.style.display = "none";
 		var myCloseMore = document.getElementsByClassName('myCloseMoreBtn')[0];
@@ -128,8 +128,8 @@ function myShowNhide(){
 
 }
 
-function myShowMore(e){
-	
+function myShowMore(e) {
+
 	lastnum += 5;
 
 	$.ajax({
@@ -149,32 +149,30 @@ function myShowMore(e){
 			myShowNhide();
 		}
 	})
-	
+
 }
 
-function myCloseMore(e){
-	
+function myCloseMore(e) {
+
 	var res = confirm('닫으시겠습니까?');
 
-	if (res) { 
+	if (res) {
 		lastnum = 0;
 		mine();
 		e.style.display = "none";
-		document.documentElement.scrollTop = 0; 
+		document.documentElement.scrollTop = 0;
 	}
 }
 
-
 // 완료
 function allBtn(e) {
-	
+
 	e.style.display = "none";
 	e.previousSibling.previousSibling.style.display = "block";
-	
-	list();
-	
-}
 
+	list();
+
+}
 
 // 글 작성 - 완료
 function insertSupport(e) {
@@ -273,10 +271,6 @@ function updateRes(e) {
 				})
 	}
 }
-
-
-
-
 
 // 게시글 리스트 출력
 function listRest() {

@@ -94,6 +94,7 @@ calendar.on('beforeCreateSchedule', scheduleData => {
         }),
 		success : function(result) {
 			alert('일정 생성 완료');
+			console.log(result)
 			
 			calendar.createSchedules([
 			    {
