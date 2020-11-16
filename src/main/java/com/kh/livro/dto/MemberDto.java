@@ -1,6 +1,6 @@
 package com.kh.livro.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 

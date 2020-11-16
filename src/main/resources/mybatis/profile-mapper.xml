@@ -10,7 +10,7 @@
 	
 	<update id="roleUpdate">
 		UPDATE MEMBER
-		SET MEMBER_ROLE = 'A'
+		SET MEMBER_ROLE = 'A', MEMBER_REGDATE = SYSDATE
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 	

@@ -11,7 +11,7 @@ function setTime(){
 setTime();
 
 let regdate = document.getElementById('newRegdate').value;
-var regRes = new Date(regdate);
+var regRes = new Date (regdate.replace("KST", "UTC+0900"));
 let regdateRes = moment(regRes, "YYYYMMDDHHMMSS").fromNow()
 let regdatePrint = document.getElementById('regdatePrint');
 regdatePrint.innerHTML = regdateRes;
