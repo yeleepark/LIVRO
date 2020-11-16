@@ -40,6 +40,9 @@
 				   broadcast_category}
   		})
    });
+    $(document).ready(function(){
+        $('#header').css('background-color', 'rgba( 255, 255, 255, 0 )');
+    })
    </script>
 <header>
    <jsp:include page="/WEB-INF/views/header/header.jsp"/>
