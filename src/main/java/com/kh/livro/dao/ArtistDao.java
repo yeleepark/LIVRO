@@ -53,7 +53,7 @@ public interface ArtistDao {
 	public int commUpdate(SupportCommDto dto);
 	
 	// 응원 댓글 카운트
-	public SupportCommDto commCount(String member_id);
+	public List<SupportCommDto> commCount(String member_id);
 	
 	// 프로필 정보
 	public ProfileDto selectProfile(String member_id);

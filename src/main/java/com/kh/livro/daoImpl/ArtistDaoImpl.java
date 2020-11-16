@@ -312,10 +312,10 @@ public class ArtistDaoImpl implements ArtistDao {
 	}
 
 	@Override
-	public SupportCommDto commCount(String member_id) {
-		SupportCommDto dto = new SupportCommDto();
-		dto = sqlSession.selectOne(NAMESPACE+"commCount", member_id);
-		return dto;
+	public List<SupportCommDto> commCount(String member_id) {
+		List<SupportCommDto> list = new ArrayList<SupportCommDto>();
+		list = sqlSession.selectList(NAMESPACE+"commCount", member_id);
+		return list;
 	}
 
 }

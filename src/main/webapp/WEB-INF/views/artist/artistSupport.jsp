@@ -57,6 +57,9 @@
 					<!-- 두번째줄 -->
 					<div class="rows-middle">
 						<div>
+								<input type="button" value="&#xf004" class="showReply" onclick="showReply(this);"> 
+								<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
+								<input type="hidden" value="${support.support_no }" class="supportNo">
 							<c:choose>
 								<c:when test="${empty commcount }">
 										<input type="button" value="&#xf004" class="showReply" onclick="showReply(this);"> 
@@ -64,21 +67,16 @@
 										<input type="hidden" value="${support.support_no }" class="supportNo">
 								</c:when>
 								<c:otherwise>
-									<%-- 댓글 있을 때 --%>
+									<c:forEach items="${commcount }" var="commcount">
+										<%-- 댓글 있을 때 --%>
 									<c:if test="${commcount.support_no == support.support_no }">
-										<input type="button" value="&#xf004" class="showReply" id="gifton" onclick="showReply(this);"> 
-										<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
-										<input type="hidden" value="${support.support_no }" class="supportNo">
+											<input type="button" value="&#xf004" class="showReply" class="gifton" onclick="showReply(this);"> 
+											<input type="button" value="&#xf00d" class="closeReply" class="giftoff" onclick="closeReply(this);"> 
+											<input type="hidden" value="${support.support_no }" class="supportNo">
 									</c:if>
-									<%-- 댓글 없을 때 --%>
-									<c:if test="${commcount.support_no != support.support_no }">
-										<input type="button" value="&#xf004" class="showReply" onclick="showReply(this);"> 
-										<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
-										<input type="hidden" value="${support.support_no }" class="supportNo">
-									</c:if>
+									</c:forEach>
 								</c:otherwise>
 							</c:choose>
-						
 						</div>
 						<!--  반복 부분 -->
 						<div class="replyArea"></div>
