@@ -1,6 +1,8 @@
 package com.kh.livro.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -218,8 +220,16 @@ public class ArtistController {
 	@ResponseBody
 	public List<CalendarDto> calInsert(@RequestBody CalendarDto dto) {
 
+		
+		Calendar cal = Calendar.getInstance();
+		
+		cal.setTime(dto.getCal_start());
+		cal.add(Calendar.HOUR, 9);
+		
+		dto.setCal_start(cal.getTime());
+		
 		artistBiz.calInsert(dto);
-
+		
 		List<CalendarDto> list = new ArrayList<CalendarDto>();
 		try {
 			list = artistBiz.calList(dto.getMember_id());
