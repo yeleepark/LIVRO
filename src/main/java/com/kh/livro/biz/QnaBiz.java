@@ -3,7 +3,6 @@ package com.kh.livro.biz;
 import java.util.List;
 
 import com.kh.livro.dto.QnaDto;
-import com.kh.livro.utils.MySearch;
 import com.kh.livro.utils.QnaSearch;
 
 public interface QnaBiz {

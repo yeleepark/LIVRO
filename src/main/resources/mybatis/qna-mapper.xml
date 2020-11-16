@@ -31,7 +31,7 @@
 	</select>
 	<select id="selectOne" resultType="QnaDto" parameterType="int">
 		SELECT
-		QNA_NO, MEMBER_NICKNAME, QNA_TITLE, QNA_CONTENT, QNA_REGDATE,
+		QNA_NO, MEMBER_NICKNAME, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_SECRET
 		QNA_SECRET
 		FROM
 		QNA_BOARD

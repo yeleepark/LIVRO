@@ -19,14 +19,9 @@
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <link rel="stylesheet" href="resources/css/qna_insertform.css">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <title>Q&A글수정</title>
-<script type="text/javascript">
-	function secretChk() {
-		alert("비밀글 설정 ");
-		document.getElementById("qna_secret").value = "Y";
-
-	}
-</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header/header.jsp" />
@@ -34,8 +29,12 @@
 	<form action="qnaupdate.do" method="post">
 		<input type="hidden" name="qna_no" value="${qnaupdatedto.qna_no }">
 		<input type="hidden" name="qna_secret" value="N" id="qna_secret">
+		
+
 		<div class="qna_wrap">
 			<div class="qna_writer">
+			<input type="hidden" value="${qnaupdatedto.qna_secret }"
+			id="qna_secret_res">
 				<label>작성자</label> <span>${logindto.member_nickname }</span>
 			</div>
 			<div class="qna_title">
@@ -47,8 +46,9 @@
 				<div id="editor">${qnaupdatedto.qna_content }</div>
 			</div>
 			<div class="qna_footer">
+
 				<div class="qna_secret">
-					<input type="checkbox" onclick="secretChk()"><span>비밀글</span>
+					<input type="checkbox" id="chkbox_secret" onclick="secretChk()"><span>비밀글</span>
 				</div>
 				<input type="button" value="취소"
 					onclick="location.href='qnainsert.do'"> <input
@@ -81,6 +81,29 @@
 		 */
 	</script>
 
+<script type="text/javascript">
+	function secretChk() {
+		console.log("비밀글 설정 ");
+		document.getElementById("qna_secret").value = "Y";
+	}
+	
+	var secret = document.getElementById("qna_secret_res").value;
+	var chkboxsecret = $("#chkbox_secret");
+	console.log(secret);
+	console.log(chkboxsecret);
+	
+	if(secret == 'Y'){
+		$("input:checkbox[id='chkbox_secret']").prop("checked", true);
+		$("input:checkbox[id='chkbox_secret']").click(function(){
+			alert("비밀글 설정은 변경하실 수 없습니다!");
+			$("input:checkbox[id='chkbox_secret']").prop("checked", true);
+		})
+	}else{
+		$("input:checkbox[id='chkbox_secret']").prop("checked", false);
+	}
+	
+	
+</script>
 
 	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 </body>
