@@ -5,7 +5,7 @@
 	<select id="selectList" resultType="QnaDto">
 		SELECT *
 		FROM (
-		SELECT ROW_NUMBER() OVER (ORDER BY QNA_NO) NUM, Q.*
+		SELECT ROW_NUMBER() OVER (ORDER BY QNA_NO DESC) NUM, Q.*
 		FROM QNA_BOARD Q
 
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
