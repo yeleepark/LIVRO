@@ -58,6 +58,8 @@ public class BroadcastController {
 		logger.info(member_id + broadcast_title);
 		BroadcastDto dto = new BroadcastDto(member_id, broadcast_title, broadcast_content, broadcast_category,
 				member_nickname);
+		BroadcastDto dto2 = broadcastBiz.profile(member_id);
+		model.addAttribute("profile", dto2);
 		model.addAttribute("livedto", broadcastBiz.broadInsert(dto));
 		return "broadcast/broadcast_live";
 	}
