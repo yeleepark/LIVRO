@@ -1,6 +1,8 @@
 package com.kh.livro.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -218,8 +220,20 @@ public class ArtistController {
 	@ResponseBody
 	public List<CalendarDto> calInsert(@RequestBody CalendarDto dto) {
 
+		//  주석 사이 부분 +9시간 적용 코드
+			Calendar calStart = Calendar.getInstance();
+			Calendar calEnd = Calendar.getInstance();
+			
+			calStart.setTime(dto.getCal_start());
+			calStart.add(Calendar.HOUR, 9);
+			calEnd.setTime(dto.getCal_end());
+			calEnd.add(Calendar.HOUR, 9);;
+			
+			dto.setCal_start(calStart.getTime());
+			dto.setCal_end(calEnd.getTime());
+		//
 		artistBiz.calInsert(dto);
-
+		
 		List<CalendarDto> list = new ArrayList<CalendarDto>();
 		try {
 			list = artistBiz.calList(dto.getMember_id());
@@ -232,6 +246,19 @@ public class ArtistController {
 	@RequestMapping(value = "/calUpdate.do", method = RequestMethod.POST)
 	@ResponseBody
 	public void calUpdate(@RequestBody CalendarDto dto) {
+		//  주석 사이 부분 +9시간 적용 코드
+			Calendar calStart = Calendar.getInstance();
+			Calendar calEnd = Calendar.getInstance();
+			
+			calStart.setTime(dto.getCal_start());
+			calStart.add(Calendar.HOUR, 9);
+			calEnd.setTime(dto.getCal_end());
+			calEnd.add(Calendar.HOUR, 9);;
+			
+			dto.setCal_start(calStart.getTime());
+			dto.setCal_end(calEnd.getTime());
+		//
+		
 		try {
 			artistBiz.calUpdate(dto);
 		} catch (Exception e) {
