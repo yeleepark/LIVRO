@@ -1,6 +1,5 @@
 package com.kh.livro.controller;
 
-import java.io.InputStream;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,7 +15,6 @@ import com.kh.livro.biz.QnaBiz;
 import com.kh.livro.biz.QnareBiz;
 import com.kh.livro.dto.QnaDto;
 import com.kh.livro.dto.QnareDto;
-import com.kh.livro.utils.MySearch;
 import com.kh.livro.utils.QnaSearch;
 
 @Controller

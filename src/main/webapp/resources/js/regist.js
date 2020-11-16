@@ -286,7 +286,6 @@ function emailSend() {
 		url: "emailSend.do?member_email=" + member_email,
 		type: "get",
 		success: function(data) {
-			console.log(data)
 			alert("이메일을 발송되었습니다. 인증번호를 확인 후 입력하여주십시오.")
 			$(".email_auth_code").show();
 			$("#input_email_auth_code").focus();
