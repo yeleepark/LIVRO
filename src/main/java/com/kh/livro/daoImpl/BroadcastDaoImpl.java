@@ -94,10 +94,12 @@ public class BroadcastDaoImpl implements BroadcastDao {
 	@Override
 	public ProfileDto profile(String member_id) {
 		ProfileDto dto = new ProfileDto();
+		String trim = member_id.trim(); 
+		String res= trim.substring(1, trim.length()-1);
 
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "select_profile", member_id);
-			System.out.println(dto.getProfile_savedname()+"프로필 세이브드네임ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
+			dto = sqlSession.selectOne(NAMESPACE + "select_profile", res);
+			
 		} catch (Exception e) {
 
 			e.printStackTrace();
