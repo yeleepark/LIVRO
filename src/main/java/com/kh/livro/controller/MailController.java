@@ -1,7 +1,6 @@
 package com.kh.livro.controller;
 
 
-import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.livro.utils.MailService;
-import com.kh.livro.utils.MailServiceImpl;
 import com.kh.livro.utils.RandomCode;
 
 @Controller
@@ -39,11 +36,12 @@ public class MailController {
 	    	String ran = randomcode.excuteGenerate();
 	    	logger.info("1."+ran);
 	    	session.setAttribute("join", ran);
-	        String subject = "회원가입 인증 코드 발급 안내입니다.";
+	        String subject = "LIVRO 회원가입 인증 코드 발급 안내입니다.";
 	        StringBuilder sb = new StringBuilder();
 	        sb.append("귀하의 인증 코드는 " + ran + " 입니다.");
+	        sb.append("접속하신 사이트로 돌아가셔서 인증완료해주세요.");
 	        //이메일 전송
-	        mailService.send(subject, sb.toString(), "dywjdal1995@naver.com", member_email, null, ran);
+	        mailService.send(subject, sb.toString(), "choi01045823013@gmail.com", member_email, null, ran);
 	        System.out.println(ran);
 	        //발송된 랜덤코드 리턴
 	        return ran;
