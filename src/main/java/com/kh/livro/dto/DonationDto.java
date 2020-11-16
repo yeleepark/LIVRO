@@ -5,6 +5,7 @@ import java.util.Date;
 public class DonationDto {
 
 	private int dona_no;
+	private int dona_month;
 	private String member_id;
 	private String dona_price;
 	private Date dona_date;
@@ -14,8 +15,9 @@ public class DonationDto {
 		
 	}
 
-	public DonationDto(int dona_no, String member_id, String dona_price, Date dona_date, String dona_nickname) {
+	public DonationDto(int dona_no, int dona_month, String member_id, String dona_price, Date dona_date, String dona_nickname) {
 		this.dona_no = dona_no;
+		this.dona_month = dona_month;
 		this.member_id = member_id;
 		this.dona_price = dona_price;
 		this.dona_date = dona_date;
@@ -61,7 +63,12 @@ public class DonationDto {
 	public void setDona_nickname(String dona_nickname) {
 		this.dona_nickname = dona_nickname;
 	}
-	
-	
-	
+
+	public int getDona_month() {
+		return dona_month;
+	}
+
+	public void setDona_month(int dona_month) {
+		this.dona_month = dona_month;
+	}
 }
