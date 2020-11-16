@@ -70,7 +70,7 @@
 						<p>프로필 사진</p>
 						<!-- <div class="profileImg"><img src="resources/img/BG.jpg" id="profile"></div> -->
 						<div class="profileImg"><img src="/resources/profileimg/${profiledto.profile_savedname }"></div>
-						<input type="button" value="프로필사진수정" onclick="updateProfile();">	
+						<input type="button" value="프로필사진수정" onclick="updateProfile();" class="profileUpdateBtn">	
 					</div>
 				</div>
 			</div>

@@ -92,16 +92,22 @@ section {
 #tab-1 .tab-1-right p{
 	margin-bottom: 5px;	
 }
+
 #tab-1 .profileImg {
 	width: 200px;
 	height: 200px;
 	box-sizing: content-box;
 	overflow: hidden;
+	border : 1px dotted gray;
 }
 
 #tab-1 .profileImg img {
 	width: 200px;
 	height: 200px;
+}
+
+.profileUpdateBtn{
+	margin-top: 10px;
 }
 
 .profileBtn{
