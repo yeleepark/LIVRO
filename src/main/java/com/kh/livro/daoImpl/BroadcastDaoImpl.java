@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import com.kh.livro.dao.BroadcastDao;
 import com.kh.livro.dto.BroadcastDto;
+import com.kh.livro.dto.ProfileDto;
 
 @Repository
 public class BroadcastDaoImpl implements BroadcastDao {
@@ -91,11 +92,12 @@ public class BroadcastDaoImpl implements BroadcastDao {
 	}
 
 	@Override
-	public BroadcastDto profile(String member_id) {
-		BroadcastDto dto = new BroadcastDto();
+	public ProfileDto profile(String member_id) {
+		ProfileDto dto = new ProfileDto();
 
 		try {
 			dto = sqlSession.selectOne(NAMESPACE + "select_profile", member_id);
+			System.out.println(dto.getProfile_savedname()+"프로필 세이브드네임ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
 		} catch (Exception e) {
 
 			e.printStackTrace();

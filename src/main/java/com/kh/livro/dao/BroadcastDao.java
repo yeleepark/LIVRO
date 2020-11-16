@@ -3,6 +3,7 @@ package com.kh.livro.dao;
 import java.util.List;
 
 import com.kh.livro.dto.BroadcastDto;
+import com.kh.livro.dto.ProfileDto;
 
 public interface BroadcastDao {
 	
@@ -15,7 +16,7 @@ public interface BroadcastDao {
 	public int broadDelete(int broadcast_no);
 	
 	//프로필 가져오기
-	public BroadcastDto profile(String member_id);
+	public ProfileDto profile(String member_id);
 	//방송 종료하기
 	public int broadCastClose(BroadcastDto dto);
 	

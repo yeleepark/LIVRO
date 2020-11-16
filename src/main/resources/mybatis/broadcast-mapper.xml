@@ -34,8 +34,8 @@
 		SET BROADCAST_FLAG = 'N', BROADCAST_ENDDATE = SYSDATE WHERE MEMBER_ID = #{member_id}
 	</update>
 	
-	<select id="select_profile" parameterType="String" resultType="BroadcastDto">
-		SELECT PROFILE_SAVEDNAME AS MEMBER_PROFILE FROM PROFILE
+	<select id="select_profile" parameterType="String" resultType="ProfileDto">
+		SELECT PROFILE_SAVEDNAME FROM PROFILE
 		WHERE MEMBER_ID = #{member_id}
 	</select>
 	

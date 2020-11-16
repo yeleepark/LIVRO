@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.livro.biz.BroadcastBiz;
 import com.kh.livro.dto.BroadcastDto;
+import com.kh.livro.dto.ProfileDto;
 
 @Controller
 public class BroadcastController {
@@ -44,9 +45,10 @@ public class BroadcastController {
 	// broadcastlist에서 방송하기 form으로 이동
 	@RequestMapping("/live.do")
 	public String broadcastLive(String member_id, Model model) {
-		BroadcastDto dto = broadcastBiz.profile(member_id);
+		ProfileDto dto = broadcastBiz.profile(member_id);
+		logger.info("dto"+dto);
 		model.addAttribute("profiledto", dto);
-
+		logger.info("프로필 들어와");
 		return "broadcast/broadcast_live";
 	}
 
@@ -58,8 +60,6 @@ public class BroadcastController {
 		logger.info(member_id + broadcast_title);
 		BroadcastDto dto = new BroadcastDto(member_id, broadcast_title, broadcast_content, broadcast_category,
 				member_nickname);
-		BroadcastDto dto2 = broadcastBiz.profile(member_id);
-		model.addAttribute("profile", dto2);
 		model.addAttribute("livedto", broadcastBiz.broadInsert(dto));
 		return "broadcast/broadcast_live";
 	}
