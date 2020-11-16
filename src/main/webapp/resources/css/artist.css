@@ -274,7 +274,6 @@ ul.tabs li.tabCurrent {
 	align-items: center;
 	flex-direction: column;
 	background: rgba(255, 255, 255, 0.6);
-	border : 1px solid black;
 }
 
 .rows-middle div:nth-child(1) {
@@ -295,17 +294,7 @@ ul.tabs li.tabCurrent {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border : 1px solid black;
 	position: relative;
-}
-
-.gifton {
-	color: #b01700;
-	background-color: transparent;
-	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-	border-radius: 50%;
-	border : 1px solid red;
-	position: absolute;
 }
 
 .closeReply {
@@ -317,6 +306,9 @@ ul.tabs li.tabCurrent {
 	position: relative;
 }
 
+.replyon{
+	color : red !important;	
+}
 
 .rows-center textarea {
 	width: 100%;
