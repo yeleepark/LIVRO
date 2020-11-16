@@ -41,7 +41,7 @@
 				<c:otherwise>
 					<input type="button" value="LogOut" id="loginForm" onclick="location.href='logout.do'">
 					<c:if test="${logindto.member_role eq 'M' }">
-						<input type="button" value="Admin" id="registForm" onclick="location.href='http://localhost:8788/'">
+						<input type="button" value="Admin" id="registForm" onclick="location.href='http://18.190.148.129:8788/'">
 					</c:if>
 					<c:if test="${logindto.member_role ne 'M' }">
 						<input type="button" value="Mypage" id="registForm" onclick="location.href='mypageIndex.do'">
