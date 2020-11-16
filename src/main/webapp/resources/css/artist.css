@@ -447,6 +447,7 @@ ul.tabs li.tabCurrent {
 	width: 100%;
 	height: 100%;
 	padding: 20px;
+	margin-bottom: 80px;
 }
 
 #calendar-menu {
@@ -501,6 +502,9 @@ ul.tabs li.tabCurrent {
 	min-height: 430px !important;
 }
 
+.tui-datepicker {
+	top: -150px;
+}
 /* 방송기록 */
 .broadTable {
 	width: 100%;
