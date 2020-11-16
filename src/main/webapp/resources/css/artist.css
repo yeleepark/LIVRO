@@ -276,38 +276,81 @@ ul.tabs li.tabCurrent {
 	background: rgba(255, 255, 255, 0.6);
 }
 
+.rows-middle-btn {
+	width: 100%;
+	height: 30px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.reply-gray-heart {
+	z-index: 0;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 50%;
+	top: 50%;
+	transform: translate(50%, -50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.reply-red-heart {
+	z-index: 10;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 50%;
+	top: 50%;
+	transform: translate(50%, -50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .rows-middle div:nth-child(1) {
 	display: flex;
 }
 
-.showReply {
+.showReply, .YshowReply {
 	font-family: FontAwesome;
 	border: none;
 	cursor: pointer;
-	margin: 5px;
-	padding: 3px;
 	font-size: 0.8rem;
-	background-color: transparent;
 	color: gray;
 	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
 	border-radius: 50%;
+	position: absolute;
+	width: 25px;
+	height: 25px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: relative;
+	display: inline-block;
 }
 
-.closeReply {
+.YshowReply {
+	color: red !important;
+}
+
+.closeReply, .YcloseReply {
 	font-family: FontAwesome;
 	border: none;
 	cursor: pointer;
+	font-size: 0.8rem;
+	color: gray;
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 50%;
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	display: none;
-	margin: 5px;
-	position: relative;
-}
-
-.replyon{
-	color : red !important;	
 }
 
 .rows-center textarea {
@@ -315,6 +358,1092 @@ ul.tabs li.tabCurrent {
 	overflow: auto;
 	resize: none;
 	margin-bottom: 10px;
+}
+
+.replyArea
+{
+display
+:
+none;
+}
+.replyActive
+{
+display
+:
+block;
+width
+:
+100%;
+}
+.replySection
+{
+padding
+:
+0;
+display
+:
+flex;
+flex-direction
+:
+row;
+width
+:
+100%;
+margin-bottom
+:
+10px;
+display
+:
+flex;
+}
+.replySection
+ 
+span
+{
+text-align
+:
+center;
+display
+:
+inline-block;
+width
+:
+100%;
+}
+.replyInsertArea
+{
+width
+:
+100%;
+display
+:
+flex;
+align-items
+:
+center;
+}
+.supportInsert
+ 
+input
+{
+padding
+:
+3px
+5px;
+font-size
+:
+0.7rem;
+background-color
+:
+transparent;
+border-radius
+:
+5px;
+margin-bottom
+:
+3px;
+cursor
+:
+pointer;
+border
+:
+0.3px
+solid
+gray;
+}
+.supportInsert
+ 
+input
+:hover
+{
+background-color
+:
+rgba(
+255
+,
+255
+,
+255
+,
+0.6
+);
+}
+.rows-left
+{
+width
+:
+20%;
+height
+:
+100%;
+display
+:
+flex;
+align-items
+:
+center;
+flex-direction
+:
+column;
+}
+.rows-right
+{
+width
+:
+10%;
+height
+:
+100%;
+display
+:
+flex;
+align-items
+:
+center;
+flex-direction
+:
+column;
+}
+.rows-center
+{
+width
+:
+70%;
+height
+:
+100%;
+display
+:
+flex;
+justify-content
+:
+center;
+align-items
+:
+center;
+flex-direction
+:
+column;
+}
+.rows-center
+ 
+textarea
+{
+width
+:
+100%;
+overflow
+:
+auto;
+resize
+:
+none;
+}
+.rows-center
+ 
+p
+{
+width
+:
+100%;
+padding
+:
+5px;
+}
+.rows-center
+ 
+p
+:nth-child
+(
+2
+)
+{
+text-align
+:
+right;
+font-size
+:
+0.7rem;
+}
+.updateDone
+{
+display
+:
+none;
+}
+.comm_content
+{
+width
+:
+100%;
+resize
+:
+none;
+background
+:
+transparent;
+border
+:
+none;
+}
+.commActive
+{
+background
+:
+white;
+border
+:
+1px
+solid
+black;
+}
+.showClose
+{
+width
+:
+100%;
+display
+:
+flex;
+justify-content
+:
+center;
+}
+.myShowMoreBtn
+,
+.showMoreBtn
+{
+display
+:
+none;
+background-color
+:
+none;
+cursor
+:
+pointer;
+padding
+:
+3px
+5px;
+}
+.myCloseMoreBtn
+,
+.closeMoreBtn
+{
+text-align
+:
+right;
+display
+:
+none;
+padding
+:
+3px
+5px;
+}
+.myShowMoreBtn
+,
+.myCloseMoreBtn
+{
+display
+:
+none;
+}
+
+/* 일정게시판 */
+.Calendar-container
+{
+width
+:
+100%;
+height
+:
+100%;
+padding
+:
+20px;
+margin-bottom
+:
+100px;
+}
+#calendar-menu
+{
+display
+:
+flex;
+justify-content
+:
+space-between;
+}
+#menu-navi-left
+,
+#menu-navi-right
+{
+margin-bottom
+:
+10px;
+}
+#menu-navi-left
+{
+display
+:
+flex;
+align-items
+:
+center;
+justify-content
+:
+center;
+}
+#menu-navi-left
+ 
+button
+{
+padding
+:
+3px
+5px;
+}
+#today
+{
+border
+:
+none;
+border-bottom
+:
+1px
+dotted
+black;
+cursor
+:
+pointer;
+}
+#prevBtn
+,
+#nextBtn
+{
+border
+:
+none;
+background-color
+:
+none;
+cursor
+:
+pointer;
+font-size
+:
+1.5rem;
+}
+#printMonth
+{
+font-size
+:
+2rem;
+}
+.tui-full-calendar-section-private
+{
+display
+:
+none;
+}
+.tui-full-calendar-popup-section
+:nth-child
+(
+3
+)
+,
+.tui-full-calendar-popup-section
+:nth-child
+(
+5
+)
+{
+display
+:
+none;
+}
+.tui-full-calendar-popup-section
+:nth-child
+(
+4
+)
+ 
+div
+:nth-child
+(
+4
+)
+{
+display
+:
+none;
+}
+.tui-full-calendar-month
+{
+min-height
+:
+430px
+!important;
+}
+.tui-datepicker
+{
+top
+:
+-200px;
+}
+/* 방송기록 */
+.broadTable
+{
+width
+:
+100%;
+padding
+:
+20px;
+}
+#momentWrapper
+{
+text-align
+:
+right;
+}
+.broadTable
+ 
+img
+{
+width
+:
+40px;
+}
+.live-row
+ 
+a
+{
+text-decoration
+:
+none;
+color
+:
+black;
+background-color
+:
+rgba(
+255
+,
+255
+,
+255
+,
+0.6
+);
+border-radius
+:
+10px;
+padding
+:
+0
+10px;
+margin-left
+:
+5px;
+margin-right
+:
+5px;
+}
+
+/* 아티스트 프로필 출력 */
+.right-wrapper
+{
+width
+:
+20%;
+display
+:
+flex;
+justify-content
+:
+flex-start;
+align-items
+:
+center;
+flex-direction
+:
+column;
+}
+#artist-profile
+{
+width
+:
+150px;
+height
+:
+150px;
+border-radius
+:
+50%;
+overflow
+:
+hidden;
+margin-top
+:
+10px;
+}
+#artist-profile
+ 
+img
+{
+width
+:
+150px;
+height
+:
+150px;
+}
+#artist-desc
+{
+display
+:
+flex;
+flex-direction
+:
+column;
+justify-content
+:
+center;
+align-items
+:
+center;
+margin-top
+:
+20px;
+}
+.nick
+ 
+p
+{
+margin-bottom
+:
+10px;
+text-align
+:
+center;
+padding
+:
+5px
+20px;
+border-radius
+:
+10px;
+background-color
+:
+#ededed;
+}
+#artist-desc
+ 
+button
+{
+margin-bottom
+:
+10px;
+margin-left
+:
+5px;
+}
+
+/* 버튼 */
+.button-container
+{
+width
+:
+100%;
+height
+:
+40%;
+position
+:
+relative;
+}
+.btnDefault
+{
+width
+:
+100%;
+z-index
+:
+-1;
+float
+:
+left;
+display
+:
+flex;
+justify-content
+:
+center;
+align-items
+:
+center;
+flex-direction
+:
+column;
+}
+.btnOn
+{
+width
+:
+100%;
+float
+:
+right;
+z-index
+:
+1;
+position
+:
+absolute;
+background-color
+:
+white;
+display
+:
+flex;
+justify-content
+:
+center;
+align-items
+:
+center;
+flex-direction
+:
+column;
+}
+.unfollowBtn
+,
+.YunfollowBtn
+,
+#followerBtn
+,
+#artistBtn
+{
+color
+:
+#3399FF;
+font-family
+:
+"Helvetica";
+font-size
+:
+10pt;
+background-color
+:
+#ffffff;
+border
+:
+1px
+solid;
+border-color
+:
+#3399FF;
+border-radius
+:
+3px;
+width
+:
+85px;
+height
+:
+30px;
+cursor
+:
+pointer;
+}
+.followBtn
+,
+.YfollowBtn
+{
+color
+:
+white;
+font-family
+:
+"Helvetica";
+font-size
+:
+10pt;
+background-color
+:
+#3399FF;
+border
+:
+1px
+solid;
+border-color
+:
+#3399FF;
+border-radius
+:
+3px;
+width
+:
+85px;
+height
+:
+30px;
+cursor
+:
+pointer;
+}
+.YfollowBtn
+{
+display
+:
+none;
+}
+.unfollowBtn
+{
+display
+:
+none;
+}
+.artistReport
+{
+font-family
+:
+"Helvetica";
+font-size
+:
+10pt;
+border
+:
+1px
+solid;
+border-color
+:
+#bf311f;
+color
+:
+#bf311f;
+border-radius
+:
+3px;
+width
+:
+85px;
+height
+:
+30px;
+cursor
+:
+pointer;
+background-color
+:
+transparent;
+margin-left
+:
+3px;
+padding-right
+:
+4px;
+display
+:
+block;
+}
+.follower
+ 
+p
+{
+padding
+:
+10px;
+color
+:
+#D4AF37;
+font-size
+:
+2rem;
+}
+.followCount
+ 
+p
+{
+font-size
+:
+0.8rem;
+margin-bottom
+:
+10px;
+}
+.followCount
+ 
+span
+{
+font-weight
+:
+600;
+}
+
+/* 지도 */
+.map-container
+{
+width
+:
+100%;
+padding
+:
+20px;
+}
+
+/* 아티스트 맵  */
+.artist_loc
+{
+display
+:
+inline-block;
+}
+#textarea
+{
+display
+:
+inline-block;
+margin-bottom
+:
+10px;
+margin-left
+:
+10px;
+margin-top
+:
+10px;
+}
+.addr_btn_wrap
+{
+display
+:
+inline-block;
+}
+.artist_loc_wrap
+{
+margin-left
+:
+10px;
+}
+
+/* 버튼css */
+.artist_addr_btn
+{
+padding
+:
+3px
+5px;
+font-size
+:
+0.8rem;
+background-color
+:
+transparent;
+border
+:
+0.5px
+solid
+gray;
+border-radius
+:
+5px;
+margin-bottom
+:
+3px;
+cursor
+:
+pointer;
+}
+
+/* 주소 표시되는 곳 */
+.mappointer
+{
+width
+:
+150px;
+text-align
+:
+center;
+padding
+:
+6px
+0;
+font-weight
+:
+500;
+border
+:
+1px
+solid
+#D8D8D8;
+background
+:
+#FFFFFF;
+border-radius
+:
+50px;
+}
+#closeList
+{
+text-align
+:
+center;
+margin-bottom
+:
+5px;
+}
+#modal
+{
+display
+:
+none;
+width
+:
+200px;
+height
+:
+200px;
+overflow-y
+:
+scroll;
+padding
+:
+20px;
+background-color
+:
+#ededed;
+z-index
+:
+5;
+border-radius
+:
+10px;
+}
+.showList
+{
+text-align
+:
+center;
+}
+@media screen and (max-width:1024px) {
+	section {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: center;
+		align-items: center;
+	}
+	ul.tabs {
+		margin: 0px;
+		padding: 0px;
+		list-style: none;
+	}
+	ul.tabs li {
+		background: none;
+		color: #222;
+		display: inline-block;
+		cursor: pointer;
+	}
+	.file_upload_block {
+		display: flex;
+		flex-direction: column;
+	}
+	.file_upload_block input {
+		margin-bottom: 5px;
+	}
+	.left-wrapper {
+		width: 100%;
+	}
+	.right-wrapper {
+		display: flex;
+		flex-direction: row;
+		padding: 0px;
+		width: 100%;
+		padding: 0;
+		margin-bottom: 30px;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+	#artist-profile {
+		width: 150px;
+		height: 150px;
+		margin: 0;
+	}
+	#artist-desc {
+		padding: 0px;
+		margin-top: 20px;
+		margin-left: 50px;
+	}
+	.btnDefault {
+		display: flex;
+		flex-direction: row;
+	}
+	.btnOn {
+		display: flex;
+		flex-direction: row;
+	}
+	#artist-desc+p {
+		font-size: 1rem;
+	}
+	.follower {
+		order: 3;
+		float: right;
+	}
+	.followCount p {
+		font-size: 0.8rem !important;
+	}
+	.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
+		width: 65px;
+		font-size: 0.5rem;
+		padding: 3px;
+	}
+	.artistReport {
+		width: 65px;
+		font-size: 0.5rem;
+		padding: 3px;
+		display: inline-block;
+	}
+	#artist-desc p {
+		font-size: 1.5rem;
+	}
+	.file_upload_block {
+		display: flex;
+		flex-direction: column;
+	}
+	.file_upload_block input {
+		margin-bottom: 5px;
+	}
+}
+
+@media screen and (max-width:600px) {
+	ul.tabs li {
+		font-size: 0.8rem;
+		padding: 10px;
+	}
+	#artist-desc p {
+		font-size: 1rem;
+	}
+	.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
+		width: 60px;
+		font-size: 0.2rem;
+		padding: 3px;
+	}
+	.artistReport {
+		width: 60px;
+		font-size: 0.4rem;
+		padding: 3px;
+		display: inline-block;
+	}
+	#artist-profile, #artist-profile img {
+		width: 130px;
+		height: 130px;
+	}
+	.tab-content h2 {
+		font-size: 1.3rem;
+	}
 }
 
 .replyArea {
@@ -733,123 +1862,322 @@ ul.tabs li.tabCurrent {
 	text-align: center;
 }
 
-@media screen and (max-width:1024px) {
-	section {
-		display: flex;
-		flex-direction: column-reverse;
-		justify-content: center;
-		align-items: center;
-	}
-	ul.tabs {
-		margin: 0px;
-		padding: 0px;
-		list-style: none;
-	}
-	ul.tabs li {
-		background: none;
-		color: #222;
-		display: inline-block;
-		cursor: pointer;
-	}
-	.file_upload_block {
-		display: flex;
-		flex-direction: column;
-	}
-	.file_upload_block input {
-		margin-bottom: 5px;
-	}
-	.left-wrapper {
-		width: 100%;
-	}
-	.right-wrapper {
-		display: flex;
-		flex-direction: row;
-		padding: 0px;
-		width: 100%;
-		padding: 0;
-		margin-bottom: 30px;
-		justify-content: space-between;
-		align-items: flex-start;
-	}
-	#artist-profile {
-		width: 150px;
-		height: 150px;
-		margin: 0;
-	}
-	#artist-desc {
-		padding: 0px;
-		margin-top: 20px;
-		margin-left: 50px;
-	}
-	.btnDefault {
-		display: flex;
-		flex-direction: row;
-	}
-	.btnOn {
-		display: flex;
-		flex-direction: row;
-	}
-	#artist-desc+p {
-		font-size: 1rem;
-	}
-	.follower {
-		order: 3;
-		float: right;
-	}
-	.followCount p {
-		font-size: 0.8rem !important;
-	}
-	.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
-		width: 65px;
-		font-size: 0.5rem;
-		padding: 3px;
-	}
-	.artistReport {
-		width: 65px;
-		font-size: 0.5rem;
-		padding: 3px;
-		display: inline-block;
-	}
-	#artist-desc p {
-		font-size: 1.5rem;
-	}
-	.file_upload_block {
-		display: flex;
-		flex-direction: column;
-	}
-	.file_upload_block input {
-		margin-bottom: 5px;
-	}
+@media
+screen
+and
+(max-width:1024px)
+{
+section
+{
+display
+:
+flex;
+flex-direction
+:
+column-reverse;
+justify-content
+:
+center;
+align-items
+:
+center;
 }
-
-@media screen and (max-width:600px) {
-	ul.tabs li {
-		font-size: 0.8rem;
-		padding: 10px;
-	}
-	#artist-desc p {
-		font-size: 1rem;
-	}
-	.followBtn, .unfollowBtn, .YfollowBtn, .YunfollowBtn, #followerBtn, #artistBtn {
-		width: 60px;
-		font-size: 0.2rem;
-		padding: 3px;
-	}
-	.artistReport {
-		width: 60px;
-		font-size: 0.4rem;
-		padding: 3px;
-		display: inline-block;
-	}
-	#artist-profile, #artist-profile img {
-		width: 130px;
-		height: 130px;
-	}
-	.tab-content h2 {
-		font-size: 1.3rem;
-	}
+ul
+.tabs
+{
+margin
+:
+0px;
+padding
+:
+0px;
+list-style
+:
+none;
 }
-
+ul
+.tabs
+ 
+li
+{
+background
+:
+none;
+color
+:
+#222;
+display
+:
+inline-block;
+cursor
+:
+pointer;
+}
+.file_upload_block
+{
+display
+:
+flex;
+flex-direction
+:
+column;
+}
+.file_upload_block
+ 
+input
+{
+margin-bottom
+:
+5px;
+}
+.left-wrapper
+{
+width
+:
+100%;
+}
+.right-wrapper
+{
+display
+:
+flex;
+flex-direction
+:
+row;
+padding
+:
+0px;
+width
+:
+100%;
+padding
+:
+0;
+margin-bottom
+:
+30px;
+justify-content
+:
+space-between;
+align-items
+:
+flex-start;
+}
+#artist-profile
+{
+width
+:
+150px;
+height
+:
+150px;
+margin
+:
+0;
+}
+#artist-desc
+{
+padding
+:
+0px;
+margin-top
+:
+20px;
+margin-left
+:
+50px;
+}
+.btnDefault
+{
+display
+:
+flex;
+flex-direction
+:
+row;
+}
+.btnOn
+{
+display
+:
+flex;
+flex-direction
+:
+row;
+}
+#artist-desc
++
+p
+{
+font-size
+:
+1rem;
+}
+.follower
+{
+order
+:
+3;
+float
+:
+right;
+}
+.followCount
+ 
+p
+{
+font-size
+:
+0.8rem
+!important;
+}
+.followBtn
+,
+.unfollowBtn
+,
+.YfollowBtn
+,
+.YunfollowBtn
+,
+#followerBtn
+,
+#artistBtn
+{
+width
+:
+65px;
+font-size
+:
+0.5rem;
+padding
+:
+3px;
+}
+.artistReport
+{
+width
+:
+65px;
+font-size
+:
+0.5rem;
+padding
+:
+3px;
+display
+:
+inline-block;
+}
+#artist-desc
+ 
+p
+{
+font-size
+:
+1.5rem;
+}
+.file_upload_block
+{
+display
+:
+flex;
+flex-direction
+:
+column;
+}
+.file_upload_block
+ 
+input
+{
+margin-bottom
+:
+5px;
+}
+}
+@media
+screen
+and
+(max-width:600px)
+{
+ul
+.tabs
+ 
+li
+{
+font-size
+:
+0.8rem;
+padding
+:
+10px;
+}
+#artist-desc
+ 
+p
+{
+font-size
+:
+1rem;
+}
+.followBtn
+,
+.unfollowBtn
+,
+.YfollowBtn
+,
+.YunfollowBtn
+,
+#followerBtn
+,
+#artistBtn
+{
+width
+:
+60px;
+font-size
+:
+0.2rem;
+padding
+:
+3px;
+}
+.artistReport
+{
+width
+:
+60px;
+font-size
+:
+0.4rem;
+padding
+:
+3px;
+display
+:
+inline-block;
+}
+#artist-profile
+,
+#artist-profile
+ 
+img
+{
+width
+:
+130px;
+height
+:
+130px;
+}
+.tab-content
+ 
+h2
+{
+font-size
+:
+1.3rem;
+}
+}
 .deleteres {
 	width: 100px;
 	font-size: 13px;

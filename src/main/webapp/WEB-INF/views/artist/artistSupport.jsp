@@ -56,26 +56,20 @@
 					</div>
 					<!-- 두번째줄 -->
 					<div class="rows-middle">
-						<div>
-								<c:if test="${empty commcount }">
-									<input type="button" value="&#xf004" class="showReply" onclick="showReply(this);"> 
-									<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
-									<input type="hidden" value="${support.support_no }" class="supportNo">
-								</c:if>
+						<div class="rows-middle-btn">					
+							<div class="reply-gray-heart">
+								<input type="button" value="&#xf004" class="showReply" onclick="showReply(this);"> 
+								<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
+								<input type="hidden" value="${support.support_no }" class="supportNo">
+							</div>	
 								<c:forEach items="${commcount }" var="commcount">
-										<%-- 댓글 있을 때 --%>
-									<c:if test="${commcount.support_no != support.support_no }">
-										<input type="button" value="&#xf004" class="showReply" onclick="showReply(this);"> 
-										<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
-										<input type="hidden" value="${support.support_no }" class="supportNo">
-									</c:if>
-								</c:forEach>
-								<c:forEach items="${commcount }" var="commcount">
-										<%-- 댓글 있을 때 --%>
+									<%-- 댓글 있을 때 --%>
 									<c:if test="${commcount.support_no == support.support_no }">
-											<input type="button" value="&#xf004" class="showReply replyon" onclick="showReply(this);"> 
-											<input type="button" value="&#xf00d" class="closeReply" onclick="closeReply(this);"> 
+									<div class="reply-red-heart">
+											<input type="button" value="&#xf004" class="YshowReply" onclick="YshowReply(this);"> 
+											<input type="button" value="&#xf00d" class="YcloseReply" onclick="YcloseReply(this);"> 
 											<input type="hidden" value="${support.support_no }" class="supportNo">
+									</div>
 									</c:if>
 								</c:forEach>
 						</div>
