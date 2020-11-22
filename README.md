@@ -1,5 +1,7 @@
 # LIVRO 
-> 라이브 스트리밍이 가능한 온라인 음원 유통 플랫폼
+
+### 라이브 스트리밍이 가능한 온라인 음원 유통 플랫폼
+
 
 ## 📍개발동기
 '누구나 가수가 될 수 있다'
@@ -13,7 +15,7 @@
 
 
 ## 📍팀원소개
-- 박서윤 | 팀장 [GitHub](https://github.com/pionari) 
+- 박서윤 | 팀장 [GitHub](https://github.com/pionari) [Notion](https://www.notion.so/pionari/LIVRO-2516ded2ae5b4e32bb953f1d6804984f)
 
   일반 로그인, 통합검색, 팔로우/팔로잉 구현, 음원게시판(CRUD), 응원게시판(CRUD, 댓글, 페이징, 내가 쓴 글, 신고), 
   
