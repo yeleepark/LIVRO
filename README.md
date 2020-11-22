@@ -1,9 +1,5 @@
 # LIVRO 라이브 스트리밍이 가능한 온라인 음원 유통 플랫폼
 
-## INDEX
-[개발기간](#📍개발기간)
-[팀원소개](#📍팀원소개)
-
 
 # 📍개발기간
 
@@ -46,7 +42,7 @@
   AWS 인스턴스 및 서버 관리, 실시간 스트리밍 및 채팅(WebRTC), 후원(부트페이), 후원 내역조회(Chart.js)
 
 
-📍 개발환경
+# 📍개발환경
 - 운영체제 : Window, Mac OS
 - 서버 : Apache Tomcat 9.0, AWS EC2
 - 구현 언어 : JAVA, JavaScript, HTML5/CSS3
