@@ -10,8 +10,10 @@
 📍 팀원소개 및 구현기능
 - 박서윤 [GitHub](https://github.com/pionari) 
 
-  일반 로그인, 팔로우/팔로잉 구현, 음원게시판(CRUD), 응원게시판(CRUD, 댓글, 페이징, 내가 쓴 글, 신고), 
+  일반 로그인, 통합검색, 팔로우/팔로잉 구현, 음원게시판(CRUD), 응원게시판(CRUD, 댓글, 페이징, 내가 쓴 글, 신고), 
+  
   일정게시판(CRUD, Toast Calendar api), 아티스트 별 방송내역(moment.js),  아티스트 채널 별 지도 (카카오 지도 API), 
+  
   랭킹 (d3.js, moment.js), 아티스트 채널 개설(이미지 업로드 및 수정), Interceptor 적용, 아티스트 채널 및 랭킹 페이지 반응형 구현
 
 - 라현준 [GitHub](https://github.com/la-Hyun-Jun)
@@ -24,13 +26,16 @@
 
 - 이현승 [GitHub](https://github.com/LHSEUNGG)
 
-  footer 구현, 공지사항 (CRUD, 검색, 페이징, toast editor api)
-  스프링 부트를 이용한 관리자페이지 (신고내역 관리 및 전체 회원 조회)  
+  footer 구현, 공지사항 (CRUD, 검색, 페이징, toast editor api),
+  
+  스프링 부트를 이용한 관리자페이지 (신고내역 관리 및 전체 회원 조회),
+  
   팔로우한 아티스트 일정 알림 (웹노티피케이션)
 
 - 최유정 [GitHub](https://github.com/LIEBEALLES)
 
-  회원가입 (정규식, 이메일인증 및 주소 API, 비밀번호 SHA256 암호화), 방송목록 (스크롤페이징)
+  회원가입 (정규식, 이메일인증 및 주소 API, 비밀번호 SHA256 암호화), 방송목록 (스크롤페이징),
+  
   Q&A (CRUD, 검색, 페이징, 비밀글, 댓글, 내가 쓴 글 조회, Toast editor api)
 
 - 한지용 [GitHub](https://github.com/gcancer)
