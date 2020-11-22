@@ -8,22 +8,25 @@
 2020년 10월 19일 ~ 2020년 11월 17일
 
 
+📍 팀원소개
+- 박서윤 [GitHub](https://github.com/pionari) 
 
-> 박서윤 [GitHub](https://github.com/pionari) 
+- 라현준 [GitHub](https://github.com/la-Hyun-Jun)
 
-> 라현준 [GitHub](https://github.com/la-Hyun-Jun)
+- 박진우 [GitHub](https://github.com/ParkJinWoo1)
 
-> 박진우 [GitHub](https://github.com/ParkJinWoo1)
+- 이현승 [GitHub](https://github.com/LHSEUNGG)
 
-> 이현승 [GitHub](https://github.com/LHSEUNGG)
+- 최유정 [GitHub](https://github.com/LIEBEALLES)
 
-> 최유정 [GitHub](https://github.com/LIEBEALLES)
-
-> 한지용 [GitHub](https://github.com/gcancer)
+- 한지용 [GitHub](https://github.com/gcancer)
 
 
-- 구현언어 : JAVA, JavaScript, HTML5, CSS3
-- 개발툴 : Eclipse JEE
-- 데이터베이스 : Oracle 11g
-- 서버 : Tomcat 9.0, AWS
-- 협업툴 : Github
+📍 개발환경
+- 운영체제 : Window, Mac OS
+- 서버 : Apache Tomcat 9.0, AWS EC2
+- 구현 언어 : JAVA, JavaScript, HTML5/CSS3
+- 프레임워크 : Spring framework, Mybatis
+- DBMS : Oracle 11g
+- 개발 툴 : Eclipse Jee, Visual Studio Code
+- 형상관리 : Github
