@@ -8,7 +8,7 @@
 
 
 📍 팀원소개 및 구현기능
-- 박서윤 [GitHub](https://github.com/pionari) | 팀장
+- 박서윤 | 팀장 [GitHub](https://github.com/pionari) 
 
   일반 로그인, 통합검색, 팔로우/팔로잉 구현, 음원게시판(CRUD), 응원게시판(CRUD, 댓글, 페이징, 내가 쓴 글, 신고), 
   
@@ -16,15 +16,15 @@
   
   랭킹 (d3.js, moment.js), 아티스트 채널 개설(이미지 업로드 및 수정), Interceptor 적용, 아티스트 채널 및 랭킹페이지 반응형
 
-- 라현준 [GitHub](https://github.com/la-Hyun-Jun) | 팀원
+- 라현준 | 팀원 [GitHub](https://github.com/la-Hyun-Jun) 
 
   SNS 로그인 (구글, 네이버), 아이디/비밀번호 찾기, 일반유저 및 아티스트 회원정보 수정, 비밀번호 변경, 회원탈퇴
 
-- 박진우 [GitHub](https://github.com/ParkJinWoo1) | 팀원
+- 박진우 | 팀원 [GitHub](https://github.com/ParkJinWoo1)
 
-  카카오 채널 개설 팝업, 통합검색, 라이브 스트리밍 및 채팅 (WebRTC)
+  카카오 채널 개설 팝업, 라이브 스트리밍 및 채팅 (WebRTC)
 
-- 이현승 [GitHub](https://github.com/LHSEUNGG) | 팀원
+- 이현승 | 팀원 [GitHub](https://github.com/LHSEUNGG)
 
   footer 구현, 공지사항 (CRUD, 검색, 페이징, toast editor api),
   
@@ -32,15 +32,15 @@
   
   팔로우한 아티스트 일정 알림 (웹노티피케이션)
 
-- 최유정 [GitHub](https://github.com/LIEBEALLES) | 팀원
+- 최유정 | 팀원 [GitHub](https://github.com/LIEBEALLES)
 
   회원가입 (정규식, 이메일인증 및 주소 API, 비밀번호 SHA256 암호화), 방송목록 (스크롤페이징),
   
   Q&A (CRUD, 검색, 페이징, 비밀글, 댓글, 내가 쓴 글 조회, Toast editor api)
 
-- 한지용 [GitHub](https://github.com/gcancer) | 팀원
+- 한지용 | 팀원 [GitHub](https://github.com/gcancer) 
 
-  AWS 인스턴스 및 서버 관리, 실시간 스트르밍 및 채팅(WebRTC), 후원(부트페이), 후원 내역조회(Chart.js)
+  AWS 인스턴스 및 서버 관리, 실시간 스트리밍 및 채팅(WebRTC), 후원(부트페이), 후원 내역조회(Chart.js)
 
 
 📍 개발환경
